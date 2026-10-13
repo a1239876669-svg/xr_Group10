@@ -1,4 +1,54 @@
-# M2-B2：VR 移动与转向（待 Unity / Quest Link 验证）
+# 公寓 VR：走路、转向与 A 键传送
+
+## M2-B3：A 键传送（2026-10-13）
+
+已在个人分支 `fzj/teleport` 实现传送代码和场景配置，没有提交或推送。原本的包修改、场景修改和测试覆盖率设置均保留；原公寓灰盒及 Furnished 场景未改动。下面的 M2-B2 章节是历史实现记录，不代表最新安装状态。
+
+玩法：右手 **按住 A** 显示弧线，绿色圆圈可以落脚，**松开 A** 传送；红色落点不传送。最大距离 5 米。保留左摇杆走路；右摇杆默认 **连续转向**，拨得越多转得越快，满幅 60°/秒。瞄准时暂停水平走路/转向，但保留重力。系统菜单、失焦、断连或追踪丢失会取消瞄准，恢复后需要先松开再重新按 A，摇杆回中后才能恢复转向。只有 VR 模式能提交传送，键盘 Debug Mode 不提供虚假的手柄测试。
+
+### 跨房间传送 / 连续转向修复（2026-10-13）
+
+用户实测发现其他房间不能传送。旧地图代理高度 2.10m，与所有房间门框净高 2.10m 相同，体素计算后门洞没有余量；修复前的门洞诊断中五个门洞均未得到完整路径。另外旧版直接对起点至落点扫掠身体，斜着瞄准时可能碰到门边，即使有可走路线也拒绝。
+
+修复采用 1.80m 的候选导航高度，不改变公寓几何或玩家实际身高。每次传送仍对**实际追踪身体高度**检查落点和导航路线的每段，因此真正低矮门框、实时关闭的门和家具仍可阻挡。弧线仍在首次实体碰撞处停止，不能指向墙后的地板。通过开放门洞指向 5m 内的安全地板才能传送，不是随意穿墙到任意房间。
+
+右摇杆 `Turn Mode = Smooth`、`Smooth Turn Speed = 60`、`Turn Dead Zone = 0.20`。连续转向围绕头部水平位置同时更新根位置与朝向，避免先旋转再碰撞补偿造成侧移。觉得太快可在退出 Play 后把速度设为 30–45，并保存场景；不适时停止测试，也可选择 `Snap` 回到 30° 分段转向。Q/E 键盘调试仍用分段转向，不能代替真实摇杆验收。
+
+`Run Teleport Checks` 新增五个门洞双向传送、关闭门阻挡/重开恢复、实际高胶囊拒绝、斜向门洞路线，以及连续转向死区、持续输入、恢复回中、不同帧率和头部偏移检查。临时玩家和门碰撞体只在未保存的独立场景内使用，不修改公寓对象。
+
+修复后已在 Unity Editor 编译并执行 **97 项检查，全部通过**（`Logs/TeleportChecks.json`，2026-10-13T02:31:21Z）。新地图为 `Assets/Scenes/ApartmentPhase2_VR_Teleport 1.asset`，旧地图保留，可恢复。VR 场景相比修复前仅更新地图引用并保存三项转向设置，没有改变建筑/家具尺寸。仍须用户通过 Air Link 戴 Quest 3 检查真实 A 键、弧线瞄准和连续转向舒适性；报告 `questLinkVerified=false`，不把 Editor 通过当作真机通过。
+
+### 已配置的场景
+
+- 场景：`Assets/Scenes/ApartmentPhase2_VR.unity`，原有 VRPlayer/OVRCameraRig/CharacterController 不重复添加。
+- Debug Mode 已关闭，DesktopDebugCamera 保持 inactive，CenterEyeAnchor 为有效相机和音频监听器。
+- 14 块 `Floor_…` 和 6 块 `Threshold_Door_…` 归类为 `TeleportFloor`；墙、门框和家具不是落点。
+- ApartmentRoot 上的 NavMeshSurface 收集 Current Object Hierarchy，使用 Physics Colliders，包含 Default/TeleportFloor，Walkable，不生成 Links，Voxel Size 0.05。
+- TeleportPlayer：Radius 0.30、候选导航 Height 1.80、Step Height 0.20、Max Slope 45。实际身体高度由头显决定（最大 2.10），落点和通路用实时胶囊检查。原 Humanoid 参数不改。
+- 当前地图保存在 `Assets/Scenes/ApartmentPhase2_VR_Teleport 1.asset`，移动组件已引用此地图。旧版 `ApartmentPhase2_VR_Teleport.asset` 未删除。
+
+### 安全规则与接口
+
+弧线检查所有非 Trigger 实体，在首次碰撞处截止，不穿过家具找后面的地板。落点必须有完整地板支撑、属于指定体型的导航地图、与当前区域连通，且通过最终胶囊净空检查。沿完整导航路线分段扫掠实际身体，不再要求直线冲过门洞；关闭的门或新障碍物仍会拒绝传送。松开 A 后重新计算弧线，真正移动前同步碰撞并再次检查落点；旧的绿色落点不构成承诺。传送移动整个 VRPlayer，保留朝向/眼高，补偿真实头部的水平偏移，并重置下落速度。
+
+UI/交互后续可读取 `TeleportState`、`TeleportFailureReason`、`TeleportTarget`、`IsTeleportAiming`，订阅 `TeleportStateChanged` 和 `Teleported`。`TryTeleportTo(Vector3, out string)` 是唯一传送提交入口；外部调用也不能绕过头显追踪、输入焦点与碰撞检查。`ValidateTeleportDestination` 仅查询不移动。
+
+运行时自动生成不带 Collider 的弧线和落点圈，停止运行后清理。当前使用 Built-in 的 Unlit/Color；Android 打包和 shader stripping 尚未验证，不要把本阶段的 Link 测试当作 APK 验收。
+
+### 菜单与新手测试步骤
+
+1. 仅打开 ApartmentPhase2_VR，先退出 Play 并保存有意保留的修改。
+2. 场景已经配置，不必再次安装。以后调整固定家具/地板时可运行 `Apartment Phase 2 → M2-B3 → Configure A-Button Teleport` 重新烘焙；每次保留旧地图资产并创建新的独立资产，不覆盖同学的数据。
+3. 用 `Validate Teleport (Read Only)` 检查结构，用 `Run Teleport Checks` 检查按钮状态机、偏移数学和实际 Physics/NavMesh 查询。检查的临时碰撞体只位于单独的未保存场景，完成后关闭，不写入公寓。结果写入 `Logs/TeleportChecks.json`。
+4. 电脑打开 Quest Link，在头显进入 Link；如果使用过 Simulator，先停用模拟器。确认 Debug Mode 没有勾选，在 Unity 点击 Play。
+5. 先确认头显转头、左摇杆走路和右摇杆转向，再按住右手 A 指向空地，看到绿色圆圈后松开。
+6. 分别尝试墙、桌面、床、地板边缘、家具旁窄缝；这些无效落点不能移动。真实站位偏移后反复传送，检查眼高/落点。瞄准时打开系统菜单，再返回，不能自动传送。
+
+Editor 检查不等于真机验收：真实 A 键、弧线显示、眼高、舒适性以及 Link 会话需用户戴头显确认。项目刷新时另有 OpenXR FeatureHelpers 的空引用错误，属于现有 XR 配置/SDK 路径；本阶段不修改 XR 配置来掩盖它，实际会话若不能启动需另外排查。
+
+首次实现时的验证（修复前）：Unity Editor 编译完成，原 44 项自动检查通过；进入并退出 Play Mode，Inspector 显示 `Waiting for tracked HMD` / `Unavailable`。当时 OpenXR 返回 `XR_ERROR_FORM_FACTOR_UNAVAILABLE`，并出现已有 FeatureHelpers 空引用，未验证真实 VR 会话。用户随后通过 Air Link 实测并报告了门洞和转向问题；本次修复后的最新 97 项检查结果见上方“跨房间传送 / 连续转向修复”。历史 Play 检查没有保存运行时状态。
+
+## M2-B2 历史记录：VR 移动与转向
 
 适用项目：Unity **6000.6.4f1**，Meta XR SDK **205.0.0**，OpenXR **1.18.0**；Windows PC VR，Quest 3 + Quest Link。
 
