@@ -1,0 +1,46 @@
+# 阶段 A 新建文件清单
+
+所有文件均为新增，未修改已有文件。共 42 个文件（包含目录和资源的 .meta）。
+
+- `Assets/ShoppingBag.meta`
+- `Assets/ShoppingBag/Config/Large.asset`
+- `Assets/ShoppingBag/Config/Large.asset.meta`
+- `Assets/ShoppingBag/Config/Medium.asset`
+- `Assets/ShoppingBag/Config/Medium.asset.meta`
+- `Assets/ShoppingBag/Config/Small.asset`
+- `Assets/ShoppingBag/Config/Small.asset.meta`
+- `Assets/ShoppingBag/Config.meta`
+- `Assets/ShoppingBag/Documentation/FileInventory.md`
+- `Assets/ShoppingBag/Documentation/FileInventory.md.meta`
+- `Assets/ShoppingBag/Documentation/PhaseA.md`
+- `Assets/ShoppingBag/Documentation/PhaseA.md.meta`
+- `Assets/ShoppingBag/Documentation.meta`
+- `Assets/ShoppingBag/Materials/Handle.mat`
+- `Assets/ShoppingBag/Materials/Handle.mat.meta`
+- `Assets/ShoppingBag/Materials/Whitebox.mat`
+- `Assets/ShoppingBag/Materials/Whitebox.mat.meta`
+- `Assets/ShoppingBag/Materials.meta`
+- `Assets/ShoppingBag/Prefabs/ShoppingBag.prefab`
+- `Assets/ShoppingBag/Prefabs/ShoppingBag.prefab.meta`
+- `Assets/ShoppingBag/Prefabs.meta`
+- `Assets/ShoppingBag/Scripts/BagGripFilter.cs`
+- `Assets/ShoppingBag/Scripts/BagGripFilter.cs.meta`
+- `Assets/ShoppingBag/Scripts/BagSizeProfile.cs`
+- `Assets/ShoppingBag/Scripts/BagSizeProfile.cs.meta`
+- `Assets/ShoppingBag/Scripts/BagSizeTestControls.cs`
+- `Assets/ShoppingBag/Scripts/BagSizeTestControls.cs.meta`
+- `Assets/ShoppingBag/Scripts/ShoppingBag.cs`
+- `Assets/ShoppingBag/Scripts/ShoppingBag.cs.meta`
+- `Assets/ShoppingBag/Scripts/XRGroup10.ShoppingBag.asmdef`
+- `Assets/ShoppingBag/Scripts/XRGroup10.ShoppingBag.asmdef.meta`
+- `Assets/ShoppingBag/Scripts.meta`
+- `Assets/ShoppingBag/ShoppingBag_Test.unity`
+- `Assets/ShoppingBag/ShoppingBag_Test.unity.meta`
+- `Assets/ShoppingBag/Tests/asset_checks.py`
+- `Assets/ShoppingBag/Tests/asset_checks.py.meta`
+- `Assets/ShoppingBag/Tests/Editor/ShoppingBagTests.cs`
+- `Assets/ShoppingBag/Tests/Editor/ShoppingBagTests.cs.meta`
+- `Assets/ShoppingBag/Tests/Editor/XRGroup10.ShoppingBag.EditorTests.asmdef`
+- `Assets/ShoppingBag/Tests/Editor/XRGroup10.ShoppingBag.EditorTests.asmdef.meta`
+- `Assets/ShoppingBag/Tests/Editor.meta`
+- `Assets/ShoppingBag/Tests.meta`

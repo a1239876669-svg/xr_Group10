@@ -1,0 +1,6 @@
+{
+  "name": "XRGroup10.ShoppingBag",
+  "rootNamespace": "XRGroup10.ShoppingBag",
+  "references": ["Oculus.Interaction"],
+  "autoReferenced": true
+}
