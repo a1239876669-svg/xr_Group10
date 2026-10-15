@@ -15,6 +15,9 @@ namespace XRGroup10.ShoppingBag.Tests
             Assert.That(prefab, Is.Not.Null);
             instance = Object.Instantiate(prefab);
             bag = instance.GetComponent<ShoppingBag>();
+            var grabbable = instance.GetComponent<Grabbable>();
+            if (grabbable.GrabPoints == null)
+                typeof(Grabbable).GetMethod("Awake", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).Invoke(grabbable, null);
         }
         [TearDown] public void TearDown() { if (instance != null) Object.DestroyImmediate(instance); }
 

@@ -27,11 +27,15 @@ namespace XRGroup10.ShoppingBag
         [SerializeField] private BoxCollider handleTrigger;
 
         public BagSize CurrentSize { get; private set; }
-        public bool IsHeld => grabbable != null && grabbable.SelectingPointsCount > 0;
+        // SDK's selecting-point list is initialized in Awake; Inspector/EditMode and an earlier
+        // component Awake must also be able to query this safely.
+        public bool IsSdkHeld => grabbable != null && grabbable.GrabPoints != null && grabbable.GrabPoints.Count > 0;
+        public bool IsHeld => IsSdkHeld || DesktopSimulationActive;
+        public bool DesktopSimulationActive { get; private set; }
         public bool AcquisitionAllowed { get; private set; } = true;
         public GrabInteractor HeldInteractor { get; private set; }
         public IController HeldController => BagGripFilter.ControllerFor(HeldInteractor);
-        public Handedness? HeldHand => HeldController?.Handedness;
+        public Handedness? HeldHand => DesktopSimulationActive ? desktopHand : HeldController?.Handedness;
         public Vector3 BodySize => Profile(CurrentSize)?.BodySize ?? Vector3.zero;
         public Transform GrabPoint => grabPoint;
         public BoxCollider BodyCollider => bodyCollider;
@@ -40,6 +44,8 @@ namespace XRGroup10.ShoppingBag
         public event Action<ShoppingBag> HoldStateChanged;
         private int ownerId = -1;
         private bool disabledGrabForCleanup;
+        private Handedness desktopHand;
+        private bool savedKinematic, savedGravity;
 
         private void Awake()
         {
@@ -60,9 +66,10 @@ namespace XRGroup10.ShoppingBag
 
         private void OnDisable()
         {
+            EndDesktopSimulation();
             if (grabbable != null) grabbable.WhenPointerEventRaised -= HandlePointer;
             // Never leave an invisible/non-solid dropped bag after this component is disabled.
-            if (grabInteractable != null && IsHeld)
+            if (grabInteractable != null && IsSdkHeld)
             { disabledGrabForCleanup = true; grabInteractable.Disable(); }
             ClearOwner();
         }
@@ -80,6 +87,32 @@ namespace XRGroup10.ShoppingBag
 
         // Future BagInteractionGate can block new selections without breaking release of a held bag.
         public void SetAcquisitionAllowed(bool allowed) => AcquisitionAllowed = allowed;
+
+        // Explicit Editor-only simulation: never selects an SDK interactor or reads VR buttons.
+        public bool TryBeginDesktopSimulation(Handedness hand)
+        {
+#if UNITY_EDITOR
+            if (!isActiveAndEnabled || IsHeld || !AcquisitionAllowed || !HasWiring()
+                || (hand != Handedness.Left && hand != Handedness.Right)) return false;
+            savedKinematic = body.isKinematic; savedGravity = body.useGravity;
+            body.isKinematic = true; body.useGravity = false;
+            desktopHand = hand; DesktopSimulationActive = true;
+            bodyCollider.enabled = false;
+            HoldStateChanged?.Invoke(this);
+            return true;
+#else
+            return false;
+#endif
+        }
+
+        public void EndDesktopSimulation()
+        {
+            if (!DesktopSimulationActive) return;
+            DesktopSimulationActive = false;
+            if (body != null) { body.isKinematic = savedKinematic; body.useGravity = savedGravity; }
+            if (bodyCollider != null) bodyCollider.enabled = true;
+            HoldStateChanged?.Invoke(this);
+        }
 
         public bool TrySetSize(BagSize size)
         {
