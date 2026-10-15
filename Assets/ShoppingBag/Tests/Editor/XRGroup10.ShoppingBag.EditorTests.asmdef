@@ -1,0 +1,7 @@
+{
+  "name": "XRGroup10.ShoppingBag.EditorTests",
+  "references": ["XRGroup10.ShoppingBag", "Oculus.Interaction"],
+  "includePlatforms": ["Editor"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "autoReferenced": false
+}
