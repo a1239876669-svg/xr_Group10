@@ -1,0 +1,6 @@
+{
+  "name": "XRGroup10.ShoppingBag.PlayTests",
+  "references": ["XRGroup10.ShoppingBag", "Oculus.Interaction"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "autoReferenced": false
+}
