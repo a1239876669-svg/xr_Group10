@@ -69,6 +69,7 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
     }
 
     readonly ApartmentInteractionTriggerLatch trigger = new ApartmentInteractionTriggerLatch();
+    readonly ApartmentMenuStickStepLatch menuStep = new ApartmentMenuStickStepLatch();
     readonly RaycastHit[] hits = new RaycastHit[128];
     readonly Collider[] originOverlaps = new Collider[128];
     IApartmentInteractable hover;
@@ -108,8 +109,12 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
             var hand=locomotion.rig.rightControllerAnchor;
             var menuRay=new Ray(hand.position,hand.forward);
             bool clicked=trigger.Sample(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger,OVRInput.Controller.RTouch),true);
+            // Right stick up/down steps the hovered comfort row one notch per flick. The menu blocks
+            // world input while open, so this axis is free here.
+            var menuStick=OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick,OVRInput.Controller.RTouch);
+            int menuStepDirection=menuStep.Sample(menuStick.y,locomotion.turnDeadZone);
             // Recovery UI must remain usable even if the tracked hand is inside a virtual wall.
-            menu.ProcessPointer(menuRay,maxDistance,clicked,out Vector3 end);
+            menu.ProcessPointer(menuRay,maxDistance,clicked,out Vector3 end,menuStepDirection);
             line.enabled=true;line.SetPosition(0,menuRay.origin);line.SetPosition(1,end);
             line.startColor=line.endColor=new Color(.2f,.95f,.85f);
             Status="Menu owns trigger";return;
@@ -163,7 +168,7 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
         Status = label.text;
     }
 
-    public void ResetUIInput() { trigger.Reset(); ClearHover(); HideVisuals(); }
+    public void ResetUIInput() { trigger.Reset(); menuStep.Reset(); ClearHover(); HideVisuals(); }
 
     public bool TryFirstHit(Ray ray, out RaycastHit hit)
     {
@@ -200,7 +205,7 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
 
     void CancelForTrackingLoss()
     {
-        trigger.Reset(); ClearHover(); HideVisuals(); Status = "Paused: tracking/input focus unavailable";
+        trigger.Reset(); menuStep.Reset(); ClearHover(); HideVisuals(); Status = "Paused: tracking/input focus unavailable";
         if (doors != null) foreach (var door in doors) if (door != null) door.PauseMotion();
         if (slidingDoors != null) foreach (var door in slidingDoors) if (door != null) door.PauseMotion();
     }

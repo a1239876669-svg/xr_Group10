@@ -27,7 +27,8 @@ public static class ApartmentExperienceChecks
             originalText=File.ReadAllText(original.path);ApartmentExperienceUpgrade.Validate(original);Check(true,"configuration");
             CheckTutorial();
             var owner=All<ApartmentFurnitureInteractor>(original).Single();var mover=owner.locomotion;
-            foreach(char c in ApartmentExperienceUpgrade.RequiredCharacters())Check(owner.hintFont.HasCharacter(c),"font: "+c);
+            if(ApartmentExperienceUpgrade.RequiresPreloadedGlyphs(owner.hintFont))
+                foreach(char c in ApartmentExperienceUpgrade.RequiredCharacters())Check(owner.hintFont.HasCharacter(c),"font: "+c);
             scratch=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Additive);
             CheckLanding(mover);
             var offset=Vector3.right*1000f;

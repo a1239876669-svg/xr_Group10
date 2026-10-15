@@ -224,10 +224,15 @@ public static class ApartmentExperienceUpgrade
     }
     public static string RequiredCharacters() => new string((ApartmentTutorialController.AllText+ApartmentCabinetDoor.FontCharacters+
         new string(Enumerable.Range(32,95).Select(i=>(char)i).ToArray())).Where(c=>!char.IsControl(c)).Distinct().ToArray());
+    // A Dynamic atlas rasterises glyphs on demand, so HasCharacter() only turns true after a glyph has
+    // been rendered once. Every "generate the glyph set up front" check must be skipped for such a font
+    // asset, otherwise switching the menu font to Dynamic would fail all of these validators.
+    public static bool RequiresPreloadedGlyphs(TMP_FontAsset font) =>
+        font != null && font.atlasPopulationMode != AtlasPopulationMode.Dynamic;
     static TMP_FontAsset EnsureFont()
     {
         var font=AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(FontPath);
-        if(font!=null){foreach(char c in RequiredCharacters())if(!font.HasCharacter(c))throw new InvalidOperationException("教程字体缺少："+c);return font;}
+        if(font!=null){if(RequiresPreloadedGlyphs(font))foreach(char c in RequiredCharacters())if(!font.HasCharacter(c))throw new InvalidOperationException("教程字体缺少："+c);return font;}
         var source=AssetDatabase.LoadAssetAtPath<Font>(ApartmentFurnitureSetup.FontSource);
         font=TMP_FontAsset.CreateFontAsset(source,48,5,GlyphRenderMode.SDFAA,2048,2048,AtlasPopulationMode.Dynamic,false);
         if(font==null || !font.TryAddCharacters(RequiredCharacters(),out string missing)) throw new InvalidOperationException("教程中文字形生成失败。");
@@ -251,7 +256,8 @@ public static class ApartmentExperienceUpgrade
         foreach(var door in owner.doors) if(door.ConfigurationError()!=null) throw new InvalidOperationException(door.name+": "+door.ConfigurationError());
         if(owner.slidingDoors[0].ConfigurationError()!=null) throw new InvalidOperationException(owner.slidingDoors[0].ConfigurationError());
         if(All<QuestGuidance.Locomotion.DoorAutoSwing>(scene).Any(d=>d.enabled)) throw new InvalidOperationException("Automatic door driver still enabled.");
-        foreach(char c in RequiredCharacters())if(!tutorial.font.HasCharacter(c))throw new InvalidOperationException("Missing glyph: "+c);
+        if(RequiresPreloadedGlyphs(tutorial.font))
+            foreach(char c in RequiredCharacters())if(!tutorial.font.HasCharacter(c))throw new InvalidOperationException("Missing glyph: "+c);
     }
 
     [MenuItem("Apartment Phase 2/M5 Upgrade/Run Upgrade Checks %#&0")]

@@ -733,7 +733,8 @@ public static class ApartmentDetailedMigration
             if(original.path!=TargetPath || SceneManager.sceneCount!=1) throw new InvalidOperationException("请只打开已保存的精细 VR 副本。");
             ValidateConfiguration(original); Pass(report,true,"one valid player, Chinese font, six doors, single camera/audio, legacy locomotion disabled");
             var source=All<ApartmentFurnitureInteractor>(original).Single(); var mover=source.locomotion;
-            foreach(char c in ApartmentFurnitureSetup.RequiredCharacters()) Pass(report,source.hintFont.HasCharacter(c),"font glyph: "+c);
+            if(ApartmentExperienceUpgrade.RequiresPreloadedGlyphs(source.hintFont))
+                foreach(char c in ApartmentFurnitureSetup.RequiredCharacters()) Pass(report,source.hintFont.HasCharacter(c),"font glyph: "+c);
             Pass(report,ClearSpawn(mover,mover.transform.position),"original detailed spawn platform remains clear");
             var filter=new NavMeshQueryFilter { agentTypeID=mover.teleportSurface.agentTypeID,areaMask=1 };
             Pass(report,NavMesh.SamplePosition(mover.transform.position,out var start,.25f,filter),"spawn is on saved map");

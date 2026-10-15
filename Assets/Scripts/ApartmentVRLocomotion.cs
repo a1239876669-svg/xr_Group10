@@ -28,6 +28,13 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
     public float snapThreshold = .70f;
     public float snapRearmThreshold = .25f;
 
+    [Header("Comfort: ramp time to reach full speed / full turn rate (0 = instant, legacy behaviour)")]
+    [Range(0f, 1f)] public float moveSmoothTime = .25f;
+    [Range(0f, 1f)] public float turnSmoothTime = .20f;
+    [Header("Comfort: brake time from full speed / full turn rate down to a stop (0 = stop in the same frame)")]
+    [Range(0f, 1f)] public float moveStopSmoothTime;
+    [Range(0f, 1f)] public float turnStopSmoothTime;
+
     [Header("FloorLevel capsule (metres)")]
     public float capsuleRadius = .30f;
     public float minimumHeight = .90f;
@@ -65,6 +72,10 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
     public bool debugMode;
 
     public bool Grounded { get; private set; }
+    /// <summary>Smoothed planar speed actually applied last frame, in metres per second.</summary>
+    public float CurrentPlanarSpeed => currentPlanarSpeed;
+    /// <summary>Smoothed yaw rate actually applied last frame, in degrees per second.</summary>
+    public float CurrentTurnRate => currentTurnRate;
     public string Status { get; private set; } = "Not running";
     CharacterController controller;
     readonly ApartmentSnapTurnLatch snap = new ApartmentSnapTurnLatch();
@@ -76,6 +87,14 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
     bool[] originalCameras, originalListeners;
     bool originalRigEnabled, appliedDebugMode, configured, inputFailed;
     float verticalVelocity, nextWarningTime;
+    // Startup-only ramps driven by the comfort settings. A value leaving rest is eased up to its target;
+    // any slow-down, release or hard stop is applied in the same frame, so nothing glides on after the
+    // stick is released.
+    ApartmentMotionRamp moveRamp, turnRamp;
+    // Ramped by the comfort settings. Cleared outright whenever input is blocked, so closing a menu
+    // can never leave residual motion behind.
+    float currentPlanarSpeed, currentTurnRate;
+    Vector3 lastMoveDirection;
     ApartmentTeleportButtonLatch teleportButton;
     NavMeshPath teleportPath;
     Vector3[] arcPoints;
@@ -100,6 +119,7 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
             Vector3.Angle(transform.up, Vector3.up) > .01f)
             return "VRPlayer must be an upright, unscaled scene root.";
         float[] values = { moveSpeed, moveDeadZone, smoothTurnSpeed, turnDeadZone, snapAngle, snapThreshold, snapRearmThreshold,
+            moveSmoothTime, turnSmoothTime, moveStopSmoothTime, turnStopSmoothTime,
             capsuleRadius, minimumHeight, maximumHeight, headClearance, skinWidth, stepOffset,
             slopeLimit, gravity, groundedVelocity, terminalVelocity, maximumFrameTime };
         foreach (float value in values)
@@ -109,6 +129,8 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
             (turnMode != ApartmentTurnMode.Smooth && turnMode != ApartmentTurnMode.Snap) ||
             snapAngle <= 0f || snapAngle > 90f || snapThreshold > 1f ||
             snapRearmThreshold < 0f || snapThreshold <= snapRearmThreshold ||
+            moveSmoothTime < 0f || moveSmoothTime > 1f || turnSmoothTime < 0f || turnSmoothTime > 1f ||
+            moveStopSmoothTime < 0f || moveStopSmoothTime > 1f || turnStopSmoothTime < 0f || turnStopSmoothTime > 1f ||
             capsuleRadius < .1f || skinWidth <= 0f || skinWidth >= capsuleRadius ||
             minimumHeight < 2f * capsuleRadius || maximumHeight < minimumHeight ||
             headClearance < 0f || stepOffset < 0f || stepOffset >= minimumHeight ||
@@ -306,42 +328,54 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
         }
         bool poseSafe = head != null && UpdateCapsule(head);
         if (!poseSafe) { move = Vector2.zero; canControl = false; }
+        bool movementBlocked = false, turningBlocked = false;
         if (tutorial != null && tutorial.isActiveAndEnabled)
         {
-            if (!tutorial.AllowMove) move = Vector2.zero;
-            if (!tutorial.AllowTurn) turn = Vector2.zero;
+            if (!tutorial.AllowMove) { move = Vector2.zero; movementBlocked = true; }
+            if (!tutorial.AllowTurn) { turn = Vector2.zero; turningBlocked = true; }
             if (!tutorial.AllowTeleport) teleportTracked = false;
         }
         if (menu != null && menu.isActiveAndEnabled)
         {
-            if (menu.BlocksWorldInput) { move = turn = Vector2.zero; canControl = teleportTracked = false; }
-            if (!menu.AllowsSmoothMove) move = Vector2.zero;
+            if (menu.BlocksWorldInput) { move = turn = Vector2.zero; canControl = teleportTracked = false; movementBlocked = turningBlocked = true; }
+            if (!menu.AllowsSmoothMove) { move = Vector2.zero; movementBlocked = true; }
             if (!menu.AllowsTeleport) teleportTracked = false;
         }
         vrTeleportInputReady = !debugMode && canControl && teleportTracked && poseSafe && !inputFailed;
         // A press/release is processed by the same movement owner. No cached green target is committed.
         bool teleportFrame = ProcessTeleport(vrTeleportInputReady, rightA);
-        if (teleportFrame) { move = Vector2.zero; canControl = false; }
+        if (teleportFrame) { move = Vector2.zero; canControl = false; movementBlocked = turningBlocked = true; }
         float dt = Mathf.Min(Time.deltaTime, maximumFrameTime);
+        // Only continuous (smooth) turning is ramped. Snap turning, keyboard debug turning and any
+        // blocked state clear the ramp outright instead of coasting through a gate.
+        float targetTurnRate = 0f;
+        bool rampedTurn = false;
         if (!canControl) { snap.Reset(); smoothTurn.Reset(); }
-        else if (!debugMode && turnMode == ApartmentTurnMode.Smooth)
+        else if (!debugMode && turnMode == ApartmentTurnMode.Smooth && !turningBlocked)
         {
             snap.Reset();
+            rampedTurn = true;
             float strength = smoothTurn.Sample(turn, turnDeadZone);
-            if (Mathf.Abs(strength) > .0001f) TryTurn(head, strength * smoothTurnSpeed * dt);
+            if (Mathf.Abs(strength) > .0001f) targetTurnRate = strength * smoothTurnSpeed;
         }
         else
         {
             smoothTurn.Reset();
-            int direction = snap.Sample(turn.x, turn.magnitude, snapThreshold, snapRearmThreshold);
-            if (direction != 0) TryTurn(head, direction * snapAngle);
+            if (turningBlocked) snap.Reset();
+            else
+            {
+                int direction = snap.Sample(turn.x, turn.magnitude, snapThreshold, snapRearmThreshold);
+                if (direction != 0) TryTurn(head, direction * snapAngle);
+            }
         }
-        if (!Application.isFocused) move = Vector2.zero;
+        currentTurnRate = turnRamp.Step(currentTurnRate, targetTurnRate, smoothTurnSpeed, turnSmoothTime, turnStopSmoothTime, dt, !rampedTurn);
+        if (rampedTurn && Mathf.Abs(currentTurnRate) > .0001f) TryTurn(head, currentTurnRate * dt);
+        if (!Application.isFocused) { move = Vector2.zero; movementBlocked = true; }
         Grounded = controller.isGrounded;
         if (Grounded && verticalVelocity < 0f) verticalVelocity = groundedVelocity;
         verticalVelocity = Mathf.Max(terminalVelocity, verticalVelocity + gravity * dt);
-        Vector3 planar = Vector3.zero;
-        if (head != null && move.magnitude > moveDeadZone)
+        float targetSpeed = 0f;
+        if (head != null && move.magnitude > moveDeadZone && !movementBlocked)
         {
             Vector3 forward = Vector3.ProjectOnPlane(head.forward, Vector3.up);
             if (!Finite(forward) || forward.sqrMagnitude < .001f) forward = transform.forward;
@@ -349,8 +383,14 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
             Vector3 right = Vector3.Cross(Vector3.up, forward);
             Vector2 axis = Vector2.ClampMagnitude(move, 1f);
             float strength = Mathf.Clamp01((axis.magnitude - moveDeadZone) / (1f - moveDeadZone));
-            planar = (forward * axis.y + right * axis.x).normalized * (moveSpeed * strength);
+            Vector3 heading = forward * axis.y + right * axis.x;
+            if (Finite(heading) && heading.sqrMagnitude > .000001f) lastMoveDirection = heading.normalized;
+            targetSpeed = moveSpeed * strength;
         }
+        // The ramp is on the speed only and keeps the last heading. It eases the start of a movement and
+        // ends the movement in the same frame the stick is released, so there is no coasting.
+        currentPlanarSpeed = moveRamp.Step(currentPlanarSpeed, targetSpeed, moveSpeed, moveSmoothTime, moveStopSmoothTime, dt, !canControl || movementBlocked);
+        Vector3 planar = lastMoveDirection * currentPlanarSpeed;
         // Walking/gravity use Move; turning uses an atomic head-pivot compensation.
         // Teleport is the only operation that relocates the tracked head to a new landing point.
         Vector3 beforeWalk = transform.position;
@@ -400,6 +440,8 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
         vrTeleportInputReady = false;
         smoothTurn?.Reset();
         snap.Reset();
+        moveRamp.Reset();
+        turnRamp.Reset();
         if (teleportButton != null) teleportButton.Reset();
         HideTeleportVisuals();
         SetTeleportState(ApartmentTeleportState.Idle, "");
@@ -407,6 +449,56 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
 
     void OnApplicationFocus(bool focused) { if (!focused) CancelTeleport(); }
     void OnApplicationPause(bool paused) { if (paused) CancelTeleport(); }
+
+    /// <summary>
+    /// Applies one comfort profile through a single clamped entry point. Returns false and rolls back
+    /// to the defaults only when this assignment is what introduced a configuration error, so a
+    /// pre-existing unrelated error is never silently turned into "settings were reset".
+    /// </summary>
+    public bool ApplyComfort(ApartmentComfortProfile profile)
+    {
+        if (profile == null) return false;
+        string before = ConfigurationError();
+        profile.Clamp();
+        Assign(profile);
+        if (before == null && ConfigurationError() != null)
+        {
+            UnityEngine.Debug.LogWarning("Comfort values were rejected by the movement configuration check; defaults restored.", this);
+            Assign(ApartmentComfortProfile.Default);
+            return false;
+        }
+        return true;
+    }
+
+    void Assign(ApartmentComfortProfile profile)
+    {
+        moveSpeed = profile.moveSpeed;
+        moveSmoothTime = profile.moveSmoothTime;
+        moveStopSmoothTime = profile.moveStopSmoothTime;
+        smoothTurnSpeed = profile.turnSpeed;
+        turnSmoothTime = profile.turnSmoothTime;
+        turnStopSmoothTime = profile.turnStopSmoothTime;
+        turnMode = profile.snapTurn ? ApartmentTurnMode.Snap : ApartmentTurnMode.Smooth;
+        snapAngle = profile.snapAngle;
+        currentPlanarSpeed = 0f;
+        currentTurnRate = 0f;
+        moveRamp.Reset();
+        turnRamp.Reset();
+        snap.Reset();
+        smoothTurn?.Reset();
+    }
+
+    /// <summary>Current live values as a profile. Used by the editor checks, never by gameplay.</summary>
+    public ApartmentComfortProfile CaptureComfort()
+    {
+        var profile = new ApartmentComfortProfile
+        {
+            moveSpeed = moveSpeed, moveSmoothTime = moveSmoothTime, moveStopSmoothTime = moveStopSmoothTime,
+            turnSpeed = smoothTurnSpeed, turnSmoothTime = turnSmoothTime, turnStopSmoothTime = turnStopSmoothTime,
+            snapTurn = turnMode == ApartmentTurnMode.Snap, snapAngle = snapAngle
+        };
+        return profile;
+    }
 
     void SetTeleportState(ApartmentTeleportState state, string reason)
     {
