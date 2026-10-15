@@ -1,30 +1,47 @@
-# 阶段 A 新建文件清单
+# ShoppingBag 文件清单
 
-所有文件均为新增，未修改已有文件。共 42 个文件（包含目录和资源的 .meta）。
+阶段 A 原始提交包含 42 个文件。以下为阶段 B 当前完整模块清单（含 .meta），共 62 个文件。精确阶段 B 差异以 Git 与 PhaseB.md 为准。
 
 - `Assets/ShoppingBag.meta`
+- `Assets/ShoppingBag/Config.meta`
 - `Assets/ShoppingBag/Config/Large.asset`
 - `Assets/ShoppingBag/Config/Large.asset.meta`
 - `Assets/ShoppingBag/Config/Medium.asset`
 - `Assets/ShoppingBag/Config/Medium.asset.meta`
 - `Assets/ShoppingBag/Config/Small.asset`
 - `Assets/ShoppingBag/Config/Small.asset.meta`
-- `Assets/ShoppingBag/Config.meta`
+- `Assets/ShoppingBag/Documentation.meta`
 - `Assets/ShoppingBag/Documentation/FileInventory.md`
 - `Assets/ShoppingBag/Documentation/FileInventory.md.meta`
 - `Assets/ShoppingBag/Documentation/PhaseA.md`
 - `Assets/ShoppingBag/Documentation/PhaseA.md.meta`
-- `Assets/ShoppingBag/Documentation.meta`
+- `Assets/ShoppingBag/Documentation/PhaseB.md`
+- `Assets/ShoppingBag/Documentation/PhaseB.md.meta`
+- `Assets/ShoppingBag/Materials.meta`
+- `Assets/ShoppingBag/Materials/BagWarning.shader`
+- `Assets/ShoppingBag/Materials/BagWarning.shader.meta`
+- `Assets/ShoppingBag/Materials/ContactWarning.mat`
+- `Assets/ShoppingBag/Materials/ContactWarning.mat.meta`
 - `Assets/ShoppingBag/Materials/Handle.mat`
 - `Assets/ShoppingBag/Materials/Handle.mat.meta`
 - `Assets/ShoppingBag/Materials/Whitebox.mat`
 - `Assets/ShoppingBag/Materials/Whitebox.mat.meta`
-- `Assets/ShoppingBag/Materials.meta`
+- `Assets/ShoppingBag/Prefabs.meta`
 - `Assets/ShoppingBag/Prefabs/ShoppingBag.prefab`
 - `Assets/ShoppingBag/Prefabs/ShoppingBag.prefab.meta`
-- `Assets/ShoppingBag/Prefabs.meta`
+- `Assets/ShoppingBag/Scripts.meta`
+- `Assets/ShoppingBag/Scripts/BagContactSensor.cs`
+- `Assets/ShoppingBag/Scripts/BagContactSensor.cs.meta`
+- `Assets/ShoppingBag/Scripts/BagContactTarget.cs`
+- `Assets/ShoppingBag/Scripts/BagContactTarget.cs.meta`
+- `Assets/ShoppingBag/Scripts/BagDesktopTestDriver.cs`
+- `Assets/ShoppingBag/Scripts/BagDesktopTestDriver.cs.meta`
 - `Assets/ShoppingBag/Scripts/BagGripFilter.cs`
 - `Assets/ShoppingBag/Scripts/BagGripFilter.cs.meta`
+- `Assets/ShoppingBag/Scripts/BagHaptics.cs`
+- `Assets/ShoppingBag/Scripts/BagHaptics.cs.meta`
+- `Assets/ShoppingBag/Scripts/BagInteractionGate.cs`
+- `Assets/ShoppingBag/Scripts/BagInteractionGate.cs.meta`
 - `Assets/ShoppingBag/Scripts/BagSizeProfile.cs`
 - `Assets/ShoppingBag/Scripts/BagSizeProfile.cs.meta`
 - `Assets/ShoppingBag/Scripts/BagSizeTestControls.cs`
@@ -33,14 +50,17 @@
 - `Assets/ShoppingBag/Scripts/ShoppingBag.cs.meta`
 - `Assets/ShoppingBag/Scripts/XRGroup10.ShoppingBag.asmdef`
 - `Assets/ShoppingBag/Scripts/XRGroup10.ShoppingBag.asmdef.meta`
-- `Assets/ShoppingBag/Scripts.meta`
 - `Assets/ShoppingBag/ShoppingBag_Test.unity`
 - `Assets/ShoppingBag/ShoppingBag_Test.unity.meta`
+- `Assets/ShoppingBag/Tests.meta`
 - `Assets/ShoppingBag/Tests/asset_checks.py`
 - `Assets/ShoppingBag/Tests/asset_checks.py.meta`
+- `Assets/ShoppingBag/Tests/Editor.meta`
+- `Assets/ShoppingBag/Tests/Editor/BagFeedbackTests.cs`
+- `Assets/ShoppingBag/Tests/Editor/BagFeedbackTests.cs.meta`
 - `Assets/ShoppingBag/Tests/Editor/ShoppingBagTests.cs`
 - `Assets/ShoppingBag/Tests/Editor/ShoppingBagTests.cs.meta`
 - `Assets/ShoppingBag/Tests/Editor/XRGroup10.ShoppingBag.EditorTests.asmdef`
 - `Assets/ShoppingBag/Tests/Editor/XRGroup10.ShoppingBag.EditorTests.asmdef.meta`
-- `Assets/ShoppingBag/Tests/Editor.meta`
-- `Assets/ShoppingBag/Tests.meta`
+- `Assets/ShoppingBag/Tests/phase_b_assets.py`
+- `Assets/ShoppingBag/Tests/phase_b_assets.py.meta`
