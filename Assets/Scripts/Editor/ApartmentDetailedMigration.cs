@@ -16,7 +16,7 @@ using Object = UnityEngine.Object;
 public static class ApartmentDetailedMigration
 {
     public const string SourcePath = "Assets/Scenes/Apartment.unity";
-    public const string OriginalVRPath = "Assets/Scenes/ApartmentPhase2_VR.unity";
+    public const string OriginalVRPath = "Assets/Scenes/test/ApartmentPhase2_VR.unity";
     public const string TargetPath = "Assets/Scenes/Apartment_Detailed_VR.unity";
     public const string GeneratedFolder = "Assets/Apartment/DetailedMigration";
     public static T[] All<T>(Scene scene) where T : Component => scene.GetRootGameObjects()

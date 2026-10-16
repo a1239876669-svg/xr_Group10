@@ -12,7 +12,7 @@ using Unity.AI.Navigation;
 // Explicit menus only: no automatic import callbacks, scene opening, package edits or Git operations.
 public static class ApartmentTeleportSetup
 {
-    const string ScenePath = "Assets/Scenes/ApartmentPhase2_VR.unity";
+    const string ScenePath = "Assets/Scenes/test/ApartmentPhase2_VR.unity";
     const string FloorLayer = "TeleportFloor";
     const string AgentName = "TeleportPlayer";
 
@@ -66,7 +66,7 @@ public static class ApartmentTeleportSetup
             // Keep every previous bake asset recoverable: always create a fresh asset, never delete/overwrite it.
             surface.BuildNavMesh();
             if (surface.navMeshData == null) throw new InvalidOperationException("导航地图烘焙失败；未保存场景，请检查 Console。");
-            string dataPath = AssetDatabase.GenerateUniqueAssetPath("Assets/Scenes/ApartmentPhase2_VR_Teleport.asset");
+            string dataPath = AssetDatabase.GenerateUniqueAssetPath("Assets/Scenes/test/ApartmentPhase2_VR_Teleport.asset");
             AssetDatabase.CreateAsset(surface.navMeshData, dataPath);
             EditorUtility.SetDirty(surface);
             Undo.RecordObject(mover, "Assign teleport and restore VR mode");

@@ -14,7 +14,7 @@ using Unity.AI.Navigation;
 // Explicit installation only. No import callbacks, package changes, Git operations or source-scene edits.
 public static class ApartmentFurnitureSetup
 {
-    public const string ScenePath = "Assets/Scenes/ApartmentPhase2_VR.unity";
+    public const string ScenePath = "Assets/Scenes/test/ApartmentPhase2_VR.unity";
     public const string KitchenPath = "ApartmentRoot/Furniture/M1B/Kitchen";
     public const string FontPath = "Assets/Apartment/Fonts/KitchenHints-SC.asset";
     public const string FontSource = "Assets/Apartment/Fonts/NotoSansSC-Regular.otf";
@@ -63,7 +63,7 @@ public static class ApartmentFurnitureSetup
             Undo.RecordObject(mover.teleportSurface, "Update navigation for moving cabinet doors");
             mover.teleportSurface.BuildNavMesh();
             if (mover.teleportSurface.navMeshData == null) throw new InvalidOperationException("导航地图未生成。");
-            string bakePath = AssetDatabase.GenerateUniqueAssetPath("Assets/Scenes/ApartmentPhase2_VR_FurnitureNav.asset");
+            string bakePath = AssetDatabase.GenerateUniqueAssetPath("Assets/Scenes/test/ApartmentPhase2_VR_FurnitureNav.asset");
             AssetDatabase.CreateAsset(mover.teleportSurface.navMeshData, bakePath);
             EditorUtility.SetDirty(mover.teleportSurface);
             EditorSceneManager.MarkSceneDirty(scene);

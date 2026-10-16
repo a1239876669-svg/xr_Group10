@@ -146,6 +146,16 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
         Physics.SyncTransforms();
         var origin = locomotion.rig.rightControllerAnchor;
         Ray ray = new Ray(origin.position, origin.forward);
+        bool pressed = trigger.Sample(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch), true);
+        if (menu != null && menu.review != null && menu.review.ProcessPointer(ray, pressed, out Vector3 reviewEnd))
+        {
+            ClearHover();
+            if (hint != null) hint.SetActive(false);
+            line.enabled = !menu.HasOpenPanel;
+            line.SetPosition(0, ray.origin); line.SetPosition(1, reviewEnd);
+            line.startColor = line.endColor = Color.cyan;
+            Status = "Review tool owns trigger"; return;
+        }
         bool found = TryFirstHit(ray, out RaycastHit hit);
         IApartmentInteractable next = found ? FindInteractable(hit.collider) : null;
         if (!ReferenceEquals(next, hover)) { ClearHover(); hover = next; ApplyHighlight(); }
@@ -153,7 +163,6 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
         line.SetPosition(0, ray.origin);
         line.SetPosition(1, found ? hit.point : ray.GetPoint(maxDistance));
         line.startColor = line.endColor = hover != null ? new Color(.2f, .95f, .85f) : new Color(.75f, .8f, .85f, .5f);
-        bool pressed = trigger.Sample(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch), true);
         if (pressed && hover != null && hover.CanInteract) hover.TryInteract(out _);
         hint.SetActive(hover != null && (tutorial == null || !tutorial.isActiveAndEnabled ||
             !tutorial.HasSeen(hover.HintCategory) || hover.NeedsAttention));
@@ -170,12 +179,15 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
 
     public void ResetUIInput() { trigger.Reset(); menuStep.Reset(); ClearHover(); HideVisuals(); }
 
-    public bool TryFirstHit(Ray ray, out RaycastHit hit)
+    // The two-argument form keeps the authored interaction reach; the overload exists for callers that
+    // need a longer ray (review measuring reaches 30 m) without changing any existing caller's behaviour.
+    public bool TryFirstHit(Ray ray, out RaycastHit hit) => TryFirstHit(ray, maxDistance, out hit);
+    public bool TryFirstHit(Ray ray, float distance, out RaycastHit hit)
     {
         hit = default;
         RayOriginBlocked = false;
         if (locomotion == null || !Finite(ray.origin) || !Finite(ray.direction) ||
-            float.IsNaN(maxDistance) || float.IsInfinity(maxDistance) || maxDistance <= 0f) return false;
+            float.IsNaN(distance) || float.IsInfinity(distance) || distance <= 0f) return false;
         // Raycasts don't report a wall containing the origin. Fail closed if the hand is inside a solid.
         int near = Physics.OverlapSphereNonAlloc(ray.origin, .002f, originOverlaps, ~0, QueryTriggerInteraction.Collide);
         if (near == originOverlaps.Length) { RayOriginBlocked = true; return false; }
@@ -185,7 +197,7 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
             if (!Eligible(c)) continue;
             if ((c.ClosestPoint(ray.origin) - ray.origin).sqrMagnitude < .00000001f) { RayOriginBlocked = true; return false; }
         }
-        int count = Physics.RaycastNonAlloc(ray, hits, maxDistance, ~0, QueryTriggerInteraction.Collide);
+        int count = Physics.RaycastNonAlloc(ray, hits, distance, ~0, QueryTriggerInteraction.Collide);
         if (count == hits.Length) { RayOriginBlocked = true; return false; }
         float nearest = float.PositiveInfinity;
         for (int i = 0; i < count; i++)

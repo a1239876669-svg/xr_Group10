@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 // Explicit menus only: no auto-installation, scene opening, runtime logic or respawn.
 public static class ApartmentPhase2EntranceSafetyInstaller
 {
-    const string ScenePath = "Assets/Scenes/ApartmentPhase2_VR.unity";
+    const string ScenePath = "Assets/Scenes/test/ApartmentPhase2_VR.unity";
     const string GrayboxLayout = "Assets/Apartment/ApartmentGrayboxLayout.json";
     const string FurnitureLayout = "Assets/Apartment/Furniture/ApartmentFurnitureLayout.json";
     const string RuntimePath = "Assets/Scripts/ApartmentVRLocomotion.cs";
@@ -23,7 +23,7 @@ public static class ApartmentPhase2EntranceSafetyInstaller
     static readonly Vector3 Size = new Vector3(1.20f, 2.80f, .10f);
     static readonly Bounds Candidate = new Bounds(Center, Size);
     static readonly string[] Sources = {
-        "Assets/Scenes/ApartmentPhase2.unity", "Assets/Scenes/ApartmentPhase2_Furnished.unity" };
+        "Assets/Scenes/test/ApartmentPhase2.unity", "Assets/Scenes/test/ApartmentPhase2_Furnished.unity" };
     static bool installing;
 
     [MenuItem("Apartment Phase 2/M2-B3/Install Entrance Safety Boundary (No Overwrite)")]

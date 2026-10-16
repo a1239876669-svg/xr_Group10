@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 public static class ApartmentPhase2GrayboxBuilder
 {
     const string LayoutPath = "Assets/Apartment/ApartmentGrayboxLayout.json";
-    const string ScenePath = "Assets/Scenes/ApartmentPhase2.unity";
+    const string ScenePath = "Assets/Scenes/test/ApartmentPhase2.unity";
     const string MaterialFolder = "Assets/Apartment/Materials/";
 
     static string AbsolutePath(string projectPath)
@@ -102,7 +102,7 @@ public static class ApartmentPhase2GrayboxBuilder
             // Always select a new path; never overwrite the supplied scene or a teammate's scene.
             string output = !File.Exists(AbsolutePath(ScenePath)) && !File.Exists(AbsolutePath(ScenePath + ".meta"))
                 ? ScenePath
-                : AssetDatabase.GenerateUniqueAssetPath("Assets/Scenes/ApartmentPhase2_Copy.unity");
+                : AssetDatabase.GenerateUniqueAssetPath("Assets/Scenes/test/ApartmentPhase2_Copy.unity");
             if (File.Exists(AbsolutePath(output)) || File.Exists(AbsolutePath(output + ".meta")))
                 throw new IOException("Output already exists; refusing to overwrite: " + output);
 

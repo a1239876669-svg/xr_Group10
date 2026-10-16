@@ -15,7 +15,7 @@ using Object = UnityEngine.Object;
 public static class ApartmentMenuUpgrade
 {
     const string FontPath="Assets/Apartment/Fonts/VRMenu-SC.asset";
-    public static readonly string[] Protected={"Assets/Scenes/Apartment.unity","Assets/Scenes/ApartmentPhase2_VR.unity","Assets/Scenes/ApartmentPhase2.unity","Assets/Scenes/ApartmentPhase2_Furnished.unity"};
+    public static readonly string[] Protected={"Assets/Scenes/Apartment.unity","Assets/Scenes/test/ApartmentPhase2_VR.unity","Assets/Scenes/test/ApartmentPhase2.unity","Assets/Scenes/test/ApartmentPhase2_Furnished.unity"};
     public static T[] All<T>(Scene scene) where T:Component => scene.GetRootGameObjects().SelectMany(g=>g.GetComponentsInChildren<T>(true)).ToArray();
     public static string Hash(string path) { using(var sha=System.Security.Cryptography.SHA256.Create()) return BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(path))); }
     public static Scene RequireScene()

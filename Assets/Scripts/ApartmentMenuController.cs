@@ -47,6 +47,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
     public ApartmentShoppingBagBridge shoppingBag;
     public Transform safeResetPoint;
     public ApartmentTourTracker tour;
+    public ApartmentReviewController review;
     public ApartmentComfortVignette comfortVignette;
     public TMP_FontAsset font;
     public Shader panelShader, textOverlayShader;
@@ -108,13 +109,13 @@ public sealed class ApartmentMenuController : MonoBehaviour
         SmoothStartLabel + SmoothStopLabel +
         RestoreDefault + ComfortBack + ComfortFooter + "%m/sdeg/s当前未启用";
     public static string AllText => MenuTitle + string.Join("", Tabs) + string.Join("", Modes) + string.Join("", ModeDetails) +
-        Footer + NeutralText + ChooseHelp + ResetQuestion + ResetHelp + ExitQuestion + TourTitle + "继续探索取消确认退出" + ApartmentShoppingBagBridge.PageText + KeyText(ApartmentMovementMode.Both) +
+        Footer + NeutralText + ChooseHelp + ResetQuestion + ResetHelp + ExitQuestion + TourTitle + "继续探索取消确认退出" + ApartmentShoppingBagBridge.PageText + ApartmentReviewController.AllText + KeyText(ApartmentMovementMode.Both) +
         ComfortText +
         "关闭菜单暂未开放当前未启用移动方式选择适合你的移动方式安全重置卡住或迷路时，返回出生安全位置返回安全点返回取消安全点未配置安全点被物体占用，请稍后重试安全点下方没有可站立的地板头显高度无效，请恢复正常追踪等待头显、右手柄追踪和输入焦点安全点配置无效○●";
     public static string KeyText(ApartmentMovementMode mode) =>
         "左摇杆   平滑行走" + (mode == ApartmentMovementMode.TeleportOnly ? "（当前未启用）" : "") +
         "\n右摇杆左右   连续转向\n右手 A   按住瞄准，松开瞬移" + (mode == ApartmentMovementMode.SmoothOnly ? "（当前未启用）" : "") +
-        "\n右手 B   打开 / 关闭菜单\n右食指扳机   确认按钮 / 开关门";
+        "\n右手 B   打开 / 关闭菜单\n右食指扳机   确认按钮 / 开关门\n测距或标记开启时，扳机用于放置点位";
     readonly ApartmentMenuButtonLatch bLatch = new ApartmentMenuButtonLatch();
     ApartmentVRPanel view, completionView, quitView;
     ApartmentPanelState quitSource = ApartmentPanelState.Menu;
@@ -161,7 +162,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
         if (neutral) waitingNeutral = false;
         // The welcome question is a distinct screen. B becomes available after an explicit choice.
         bool welcome = tutorial != null && tutorial.isActiveAndEnabled && tutorial.Session.Welcome;
-        if (bLatch.Sample(b, !welcome)) Toggle();
+        if (bLatch.Sample(b, !welcome && (review == null || !review.IsEditingText))) Toggle();
         if (tour != null && tour.Complete && !tour.NotificationShown && !HasOpenPanel && !waitingNeutral && neutral &&
             (tutorial == null || (tutorial.Session.Step == 3 && !tutorial.Session.Explaining)) && !locomotion.IsTeleportAiming)
             ShowTourCompletion();
@@ -277,6 +278,22 @@ public sealed class ApartmentMenuController : MonoBehaviour
         if (!isActiveAndEnabled || !IsOpen || Page != 3) return;
         UIRevision++; interactor?.ResetUIInput(); Rebuild(false);
     }
+    public void StartReview(QuestGuidance.Review.ReviewMode mode)
+    {
+        if (!Visible || review == null || !review.Begin(mode)) return;
+        ChangePanel(ApartmentPanelState.Closed);
+    }
+    public void OpenMarkerEditor()
+    {
+        if (!InputReady || (HasOpenPanel && !IsOpen)) return;
+        Page = 1;
+        if (IsOpen) RefreshReview(); else ChangePanel(ApartmentPanelState.Menu);
+    }
+    public void RefreshReview()
+    {
+        if (!IsOpen || Page > 1) return;
+        UIRevision++; interactor?.ResetUIInput(); Rebuild(false);
+    }
     void RequestReset() { ConfirmingReset = true; status = ""; UIRevision++; interactor?.ResetUIInput(); Rebuild(false); }
     void ConfirmQuit()
     {
@@ -307,7 +324,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
     public void ProcessPointer(Ray ray, float maxDistance, bool pressed, out Vector3 end, int stickStep = 0)
     {
         end = ray.GetPoint(maxDistance);
-        if (Visible) CurrentView?.ProcessPointer(ray, maxDistance, pressed, out end, stickStep);
+        if (Visible && (review == null || !review.IsEditingText)) CurrentView?.ProcessPointer(ray, maxDistance, pressed, out end, stickStep);
     }
     // Also used by the explicit editor-only preview in a scratch scene; not an input bypass.
     public void BuildPreview(int page)
@@ -355,7 +372,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
         view.Box("Divider", 28, 107, 1044, 2, new Color(.2f,.3f,.36f,1));
         for (int i = 0; i < Tabs.Length; i++)
         {
-            int index = i; bool placeholder = i == 0 || i == 1 || (i == 3 && (shoppingBag == null || !shoppingBag.IsConfigured));
+            int index = i; bool placeholder = (i == 0 || i == 1) ? review == null : (i == 3 && (shoppingBag == null || !shoppingBag.IsConfigured));
             view.Button("Tab " + i, Tabs[i] + (placeholder ? "\n<size=70%>暂未开放</size>" : ""), 28, 132+i*91, 248, 79,
                 () => SetPage(index), Page == i, 33);
         }
@@ -366,6 +383,10 @@ public sealed class ApartmentMenuController : MonoBehaviour
             view.Label("Reset explanation", ResetHelp, 330, 310, 700, 130, 30);
             view.Button("Confirm reset", "返回", 340, 490, 300, 80, ConfirmReset, true);
             view.Button("Cancel reset", "取消", 680, 490, 300, 80, () => { ConfirmingReset=false; interactor.ResetUIInput(); Rebuild(false); });
+        }
+        else if (Page <= 1 && review != null)
+        {
+            if (Page == 0) review.BuildMeasurementPage(view); else review.BuildMarkerPage(view);
         }
         else if (Page == 4 && ComfortSection == 1) RebuildComfort(view);
         else if (Page == 4)
@@ -511,12 +532,12 @@ public sealed class ApartmentVRPanel : IDisposable
         label.enableAutoSizing=true;label.fontSizeMin=size*.82f;label.fontSizeMax=size;
         label.alignment=TextAlignmentOptions.MidlineLeft;label.raycastTarget=false;return label;
     }
-    public void Button(string name,string text,float x,float y,float w,float h,Action action,bool selected=false,float size=33)
+    public void Button(string name,string text,float x,float y,float w,float h,Action action,bool selected=false,float size=33,bool richText=true)
     {
         var rect=Rect(name,x,y,w,h);var image=rect.gameObject.AddComponent<Image>();image.material=background;image.sprite=rounded;image.type=Image.Type.Sliced;image.raycastTarget=false;
         Color color=selected?new Color(.06f,.36f,.39f,1):new Color(.10f,.15f,.21f,1);image.color=color;
         if(selected)Box(name+" accent",x,y+12,4,h-24,new Color(.18f,.94f,.88f,1));
-        Label(name+" label",text,x+19,y+4,w-38,h-8,size);
+        Label(name+" label",text,x+19,y+4,w-38,h-8,size).richText=richText;
         controls.Add(new Control{rect=rect,image=image,color=color,action=action});
     }
     // A comfort row: one ray target spanning the whole row, plus -/+ buttons that step the same value.

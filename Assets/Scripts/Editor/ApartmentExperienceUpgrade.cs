@@ -19,8 +19,8 @@ public static class ApartmentExperienceUpgrade
     static readonly string[] RoomNames = { "Entrance", "Master", "Bed2", "Bath" };
     static readonly float[] RoomAngles = { 90, 90, 90, -90 };
     static readonly string[] FrameSuffixes = { "", "_fB", "_fT", "_fL", "_fR" };
-    static readonly string[] ProtectedPaths = { "Assets/Scenes/Apartment.unity", "Assets/Scenes/ApartmentPhase2_VR.unity",
-        "Assets/Scenes/ApartmentPhase2.unity", "Assets/Scenes/ApartmentPhase2_Furnished.unity" };
+    static readonly string[] ProtectedPaths = { "Assets/Scenes/Apartment.unity", "Assets/Scenes/test/ApartmentPhase2_VR.unity",
+        "Assets/Scenes/test/ApartmentPhase2.unity", "Assets/Scenes/test/ApartmentPhase2_Furnished.unity" };
     static Scene RequireScene()
     {
         if (EditorApplication.isPlayingOrWillChangePlaymode || EditorApplication.isCompiling || EditorApplication.isUpdating)

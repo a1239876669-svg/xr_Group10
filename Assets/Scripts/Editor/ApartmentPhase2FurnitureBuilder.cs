@@ -10,8 +10,8 @@ using UnityEngine.SceneManagement;
 // Editor only. Never writes the source scene, package settings or runtime systems.
 public static class ApartmentPhase2FurnitureBuilder
 {
-    const string SourceScene = "Assets/Scenes/ApartmentPhase2.unity";
-    const string TargetScene = "Assets/Scenes/ApartmentPhase2_Furnished.unity";
+    const string SourceScene = "Assets/Scenes/test/ApartmentPhase2.unity";
+    const string TargetScene = "Assets/Scenes/test/ApartmentPhase2_Furnished.unity";
     const string LayoutPath = "Assets/Apartment/Furniture/ApartmentFurnitureLayout.json";
     const string BaseLayoutPath = "Assets/Apartment/ApartmentGrayboxLayout.json";
     const string FloorPlanPath = "Docs/References/ApartmentFloorPlan.png";

@@ -100,7 +100,9 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
     Vector3[] arcPoints;
     Vector3[] ringPoints;
     GameObject teleportVisuals;
-    LineRenderer teleportArc, teleportRing;
+    LineRenderer teleportArc, teleportRing, teleportBeam;
+    MeshRenderer teleportDisc;
+    Mesh teleportDiscMesh;
     Material teleportMaterial;
     bool vrTeleportInputReady;
 
@@ -219,6 +221,11 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
     void OnDisable()
     {
         CancelTeleport();
+        // The landing disc owns a runtime mesh, which destroying the hierarchy alone would leak.
+        if (teleportDiscMesh != null)
+        {
+            if (Application.isPlaying) Destroy(teleportDiscMesh); else DestroyImmediate(teleportDiscMesh);
+        }
         if (teleportVisuals != null)
         {
             if (Application.isPlaying) Destroy(teleportVisuals); else DestroyImmediate(teleportVisuals);
@@ -229,6 +236,9 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
         }
         teleportVisuals = null;
         teleportMaterial = null;
+        teleportDiscMesh = null;
+        teleportDisc = null;
+        teleportArc = teleportRing = teleportBeam = null;
         if (!configured) return;
         if (rig != null) rig.enabled = originalRigEnabled;
         for (int i = 0; i < rigCameras.Length; i++)
@@ -749,14 +759,18 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
             teleportMaterial = new Material(shader) { name = "Teleport preview (runtime only)", hideFlags = HideFlags.DontSave };
             teleportVisuals = new GameObject("TeleportPreview (runtime only)") { hideFlags = HideFlags.DontSave };
             teleportVisuals.transform.SetParent(transform, false);
-            teleportArc = CreateTeleportLine("AimArc", .012f);
-            teleportRing = CreateTeleportLine("LandingRing", .018f);
+            teleportArc = CreateTeleportLine("AimArc", .022f);
+            teleportRing = CreateTeleportLine("LandingRing", .034f);
+            teleportBeam = CreateTeleportLine("LandingBeam", .022f);
+            teleportDisc = CreateTeleportDisc();
         }
         teleportVisuals.SetActive(true);
         teleportMaterial.color = valid ? new Color(.1f, 1f, .3f) : new Color(1f, .15f, .1f);
         teleportArc.positionCount = count;
         for (int i = 0; i < count; i++) teleportArc.SetPosition(i, arcPoints[i]);
-        teleportRing.enabled = hasHit;
+        // A hairline arc and ring are unreadable across a detailed apartment, so aiming also shows a
+        // filled footprint disc and a short vertical beacon that stays visible past low furniture.
+        teleportRing.enabled = teleportBeam.enabled = teleportDisc.enabled = hasHit;
         if (!hasHit) return;
         Vector3 center = (valid ? TeleportTarget : hit) + Vector3.up * .015f;
         for (int i = 0; i < ringPoints.Length; i++)
@@ -766,6 +780,12 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
         }
         teleportRing.positionCount = ringPoints.Length;
         teleportRing.SetPositions(ringPoints);
+        // The disc lies flat against the room, not the player, so it is placed in world space.
+        teleportDisc.transform.SetPositionAndRotation(center, Quaternion.identity);
+        teleportDisc.transform.localScale = new Vector3(capsuleRadius * 1.84f, 1f, capsuleRadius * 1.84f);
+        teleportBeam.positionCount = 2;
+        teleportBeam.SetPosition(0, center);
+        teleportBeam.SetPosition(1, center + Vector3.up * .55f);
     }
 
     LineRenderer CreateTeleportLine(string name, float width)
@@ -780,6 +800,41 @@ public sealed class ApartmentVRLocomotion : MonoBehaviour
         line.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         line.receiveShadows = false;
         return line;
+    }
+
+    // Built from a code-generated mesh instead of a primitive so the preview keeps its guarantee of
+    // carrying no colliders at all. It is authored at radius .5 and scaled to the footprint when drawn.
+    MeshRenderer CreateTeleportDisc()
+    {
+        const int segments = 32;
+        var item = new GameObject("LandingDisc") { hideFlags = HideFlags.DontSave };
+        item.transform.SetParent(teleportVisuals.transform, false);
+        var vertices = new Vector3[segments + 2];
+        var triangles = new int[segments * 3];
+        vertices[0] = Vector3.zero;
+        for (int i = 0; i <= segments; i++)
+        {
+            float angle = i * Mathf.PI * 2f / segments;
+            vertices[i + 1] = new Vector3(Mathf.Cos(angle) * .5f, 0f, Mathf.Sin(angle) * .5f);
+        }
+        for (int i = 0; i < segments; i++)
+        {
+            // Wound so the face normal is +Y; Unlit/Color back-face culls.
+            triangles[i * 3] = 0; triangles[i * 3 + 1] = i + 2; triangles[i * 3 + 2] = i + 1;
+        }
+        teleportDiscMesh = new Mesh { name = "Teleport landing disc (runtime only)", hideFlags = HideFlags.DontSave };
+        teleportDiscMesh.vertices = vertices;
+        teleportDiscMesh.triangles = triangles;
+        teleportDiscMesh.RecalculateNormals();
+        teleportDiscMesh.RecalculateBounds();
+        var renderer = item.AddComponent<MeshRenderer>();
+        renderer.sharedMaterial = teleportMaterial;
+        renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        renderer.receiveShadows = false;
+        renderer.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
+        renderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
+        item.AddComponent<MeshFilter>().sharedMesh = teleportDiscMesh;
+        return renderer;
     }
 
     void HideTeleportVisuals() { if (teleportVisuals != null) teleportVisuals.SetActive(false); }

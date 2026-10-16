@@ -12,12 +12,12 @@ using UnityEngine.SceneManagement;
 // Manual menus only. Never opens/builds another scene or edits an SDK/configuration asset.
 public static class ApartmentPhase2LocomotionInstaller
 {
-    const string ScenePath = "Assets/Scenes/ApartmentPhase2_VR.unity";
+    const string ScenePath = "Assets/Scenes/test/ApartmentPhase2_VR.unity";
     const string RuntimePath = "Assets/Scripts/ApartmentVRLocomotion.cs";
     const string RigPath = "Packages/com.meta.xr.sdk.core/Prefabs/OVRCameraRig.prefab";
     const string DebugName = "DesktopDebugCamera";
     static readonly string[] ProtectedScenes = {
-        "Assets/Scenes/ApartmentPhase2.unity", "Assets/Scenes/ApartmentPhase2_Furnished.unity" };
+        "Assets/Scenes/test/ApartmentPhase2.unity", "Assets/Scenes/test/ApartmentPhase2_Furnished.unity" };
     static bool installing;
 
     [MenuItem("Apartment Phase 2/M2-B2/Install Locomotion (No Overwrite)")]

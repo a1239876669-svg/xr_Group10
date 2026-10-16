@@ -11,8 +11,8 @@ using UnityEngine.SceneManagement;
 // Menu driven only: no InitializeOnLoad, runtime component, or automatic build.
 public static class ApartmentPhase2VRBuilder
 {
-    const string SourceScene = "Assets/Scenes/ApartmentPhase2_Furnished.unity";
-    const string TargetScene = "Assets/Scenes/ApartmentPhase2_VR.unity";
+    const string SourceScene = "Assets/Scenes/test/ApartmentPhase2_Furnished.unity";
+    const string TargetScene = "Assets/Scenes/test/ApartmentPhase2_VR.unity";
     const string RigPrefab = "Packages/com.meta.xr.sdk.core/Prefabs/OVRCameraRig.prefab";
     const string RigGuid = "126d619cf4daa52469682f85c1378b4a";
     const string CreateMenu = "Apartment Phase 2/M2-B1/Create VR Scene (No Overwrite)";

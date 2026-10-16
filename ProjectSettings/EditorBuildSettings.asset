@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TwoRooms.unity
+    path: Assets/Scenes/Apartment_Detailed_VR.unity
+    guid: ee9b4462a452cee4fb145bc6f215aad2
+  - enabled: 1
+    path: Assets/Scenes/test/TwoRooms.unity
     guid: fedb7d7d7948e654da6f918fd830dd6b
   - enabled: 1
     path: Assets/Scenes/Apartment.unity
