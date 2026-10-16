@@ -1,6 +1,6 @@
 # 精细公寓 VR 场景操作说明
 
-现在请打开 `Assets/Scenes/Apartment_Detailed_VR.unity`。精细副本提供右手 B 菜单、可跳过的中文教学、三种移动方式、安全重置、右食指扳机开关门，以及参观完成提示和退出游戏。原有 `ApartmentPhase2_VR` 仍保留，不需要再安装第二个玩家或相机。
+现在请打开 `Assets/Scenes/Apartment_Detailed_VR.unity`。精细副本提供右手 B 菜单、可跳过的中文教学、三种移动方式、可保存的舒适度调节（移动暗角 / 速度 / 转向 / 快照转向）、安全重置、右食指扳机开关门，以及参观完成提示和退出游戏。原有 `ApartmentPhase2_VR` 仍保留，不需要再安装第二个玩家或相机。
 
 ## 场景为什么不一样
 
@@ -61,6 +61,10 @@
 
 右摇杆连续转向在三种方式下都保留。选择立即生效；关闭菜单、松开按键和摇杆回中后恢复操作。
 
+“设置”下方另有“舒适度调节”子页面，用于减弱晕动。子页每一行都是一个整行目标：右手指向该行，右摇杆向上加一档、向下减一档；也可以直接点该行右侧的 `-` / `+`。可调项为移动暗角、最大移动速度、移动速度平滑、转向速度、转向平滑，另有转向方式（平滑 / 快照）与快照角度；“舒适 / 标准 / 灵敏”三个预设一键写入这些数值，另有“恢复默认”和“返回”。
+
+舒适度数值会保存（`PlayerPrefs`），下次进入 Play 仍然生效；移动方式本身仍不保存，每次启动回到“两种都使用”。暗角只由真实的平滑移动或连续转向触发，静止、瞬移、打开菜单时自动淡出，不会压暗菜单和教学文字。完整范围、取舍与真机验收步骤见 `Docs/ApartmentComfortSettings.md`。
+
 卡住或迷路时，进入“设置 → 返回安全点”，确认“返回”。玩家回到初始入户平台的固定安全点，保持眼高和朝向，不会关门或重置教学进度。它不受 5 米距离、导航连通或 A 键是否启用限制，但目标必须有地板和足够的身体空间。安全点被占用时不会强行传送，追踪丢失时也不会预约一次稍后自动执行的重置。
 
 开发时可在退出 Play 后选择 Hierarchy 根节点 `SafeResetPoint` 调整安全点，必须放在可站立地面上；不要把它拖入 VRPlayer 层级。菜单组件在 `VRPlayer/ApartmentMenu`。普通玩家无需改这些组件。
@@ -120,6 +124,8 @@
 退出 Play 并保存后，运行 `Apartment Phase 2 → M5 Upgrade → Run Upgrade Checks`。结果写入 `Logs/M5UpgradeChecks.json`。原 M4 检查入口会转到这套升级检查。它不表示真实 Quest 按键、双眼效果或舒适性已经通过，仍需完成上面的 Air Link 验收。
 
 菜单另运行 `Apartment Phase 2 → M6 Menu → Run Menu Checks`。菜单已经安装，普通测试无需再运行安装；重复执行 `Install Menu and Optional Tutorial` 只核对现有配置，不重复创建菜单或安全点。
+
+舒适度设置运行 `Apartment Phase 2 → M9 Comfort → Run Comfort Checks`，报告为 `Logs/M9ComfortChecks.json`，界面预览为 `Logs/M9-Comfort.png`、`Logs/M9-Comfort-Snap.png`、`Logs/M9-Settings.png`。安装入口是 `M9 Comfort → Install Comfort Settings and Vignette`，安装前场景备份在 `Logs/M9Backup-<时间戳>/`。新增文案扩大了菜单的字形需求，而 M8 的字体检查是缺字即报错，因此**必须先执行一次 M9 安装完成补字，M8 与 M6/M7 的校验才会通过**。若界面上出现空白方块（缺字），单独运行 `M9 Comfort → Repair Menu Font Glyphs (Asset Only)` 即可只修字体、不动场景；原因与 GUI 保底做法见 `Docs/ApartmentComfortSettings.md` 的排错一节。存档可用 `M9 Comfort → Forget Saved Comfort Settings` 删除。
 
 参观检查运行 `Apartment Phase 2 → M7 Visit → Run Visit Checks`，报告为 `Logs/M7VisitChecks.json`。`Install Exit and Visit Completion` 已执行，重复运行不会生成第二套范围。参观范围保存在 `VRPlayer/ApartmentMenu/ApartmentTourTracker` 的 Rooms 中，选中可查看线框；它们没有碰撞体，不会阻挡移动和射线。此轮修改前备份在 `C:/Users/fzj/Documents/Codex/Backups/tour-before-20261013-223202`。
 

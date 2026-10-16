@@ -15,10 +15,10 @@ using Object = UnityEngine.Object;
 public static class ApartmentMenuUpgrade
 {
     const string FontPath="Assets/Apartment/Fonts/VRMenu-SC.asset";
-    static readonly string[] Protected={"Assets/Scenes/Apartment.unity","Assets/Scenes/ApartmentPhase2_VR.unity","Assets/Scenes/ApartmentPhase2.unity","Assets/Scenes/ApartmentPhase2_Furnished.unity"};
+    public static readonly string[] Protected={"Assets/Scenes/Apartment.unity","Assets/Scenes/ApartmentPhase2_VR.unity","Assets/Scenes/ApartmentPhase2.unity","Assets/Scenes/ApartmentPhase2_Furnished.unity"};
     public static T[] All<T>(Scene scene) where T:Component => scene.GetRootGameObjects().SelectMany(g=>g.GetComponentsInChildren<T>(true)).ToArray();
-    static string Hash(string path) { using(var sha=System.Security.Cryptography.SHA256.Create()) return BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(path))); }
-    static Scene RequireScene()
+    public static string Hash(string path) { using(var sha=System.Security.Cryptography.SHA256.Create()) return BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(path))); }
+    public static Scene RequireScene()
     {
         var scene=SceneManager.GetActiveScene();
         if(EditorApplication.isPlayingOrWillChangePlaymode||EditorApplication.isCompiling||EditorApplication.isUpdating||
@@ -32,7 +32,8 @@ public static class ApartmentMenuUpgrade
         var font=AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(path);
         if(font!=null)
         {
-            foreach(char c in RequiredCharacters()) if(!font.HasCharacter(c))throw new InvalidOperationException("菜单字体缺少："+c);
+            if(ApartmentExperienceUpgrade.RequiresPreloadedGlyphs(font))
+                foreach(char c in RequiredCharacters()) if(!font.HasCharacter(c))throw new InvalidOperationException("菜单字体缺少："+c);
             return font;
         }
         var source=AssetDatabase.LoadAssetAtPath<Font>(ApartmentFurnitureSetup.FontSource);
@@ -106,7 +107,8 @@ public static class ApartmentMenuUpgrade
             menu.font==null||menu.panelShader==null||menu.textOverlayShader==null||menu.locomotion.debugMode)
             throw new InvalidOperationException("菜单、教学、固定安全点或输入引用无效。");
         if(All<ApartmentVRLocomotion>(scene).Length!=1||All<OVRCameraRig>(scene).Length!=1)throw new InvalidOperationException("Duplicate movement owner or camera rig.");
-        foreach(char c in RequiredCharacters())if(!menu.font.HasCharacter(c))throw new InvalidOperationException("Missing menu glyph: "+c);
+        if(ApartmentExperienceUpgrade.RequiresPreloadedGlyphs(menu.font))
+            foreach(char c in RequiredCharacters())if(!menu.font.HasCharacter(c))throw new InvalidOperationException("Missing menu glyph: "+c);
     }
     [Serializable] public sealed class Report { public int passed;public List<string> failures=new List<string>();public bool questVerified;public string[] previews; }
     static Report report;
@@ -120,7 +122,8 @@ public static class ApartmentMenuUpgrade
             original=RequireScene();string before=File.ReadAllText(original.path);Validate(original);
             CheckProgress();CheckInput();
             var menu=All<ApartmentMenuController>(original).Single();
-            foreach(char c in RequiredCharacters())Assert(menu.font.HasCharacter(c),"glyph "+c);
+            if(ApartmentExperienceUpgrade.RequiresPreloadedGlyphs(menu.font))
+                foreach(char c in RequiredCharacters())Assert(menu.font.HasCharacter(c),"glyph "+c);
             scratch=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Additive);
             CheckSafety(menu);
             CheckViews(menu);
@@ -315,15 +318,20 @@ public static class ApartmentMenuUpgrade
     {
         if(!EditorApplication.isPlaying){Debug.LogWarning("M6 session inspection requires Play.");return;}
         var scene=SceneManager.GetActiveScene();var menu=All<ApartmentMenuController>(scene).Single();
+        var profile=menu.Comfort;
         var data=new RuntimeSnapshot{menuEnabled=menu.isActiveAndEnabled,moverEnabled=menu.locomotion.isActiveAndEnabled,
             tutorialEnabled=menu.tutorial.isActiveAndEnabled,welcome=menu.tutorial.Session.Welcome,
             movementMode=menu.MovementMode.ToString(),menuOpen=menu.IsOpen,inputReady=menu.InputReady,
-            tutorialStep=menu.tutorial.Session.Step,safePoint=menu.safeResetPoint.position,questVerified=false};
+            tutorialStep=menu.tutorial.Session.Step,safePoint=menu.safeResetPoint.position,questVerified=false,
+            comfortVignetteInstalled=menu.comfortVignette!=null,comfortOpen=menu.ComfortSection==1,
+            vignettePercent=profile.vignettePercent,moveSpeed=profile.moveSpeed,moveSmoothTime=profile.moveSmoothTime,
+            turnSpeed=profile.turnSpeed,turnSmoothTime=profile.turnSmoothTime,snapTurn=profile.snapTurn,snapAngle=profile.snapAngle,
+            vignetteClearFov=menu.comfortVignette!=null?menu.comfortVignette.ClearFov:0f};
         Directory.CreateDirectory("Logs");File.WriteAllText("Logs/M6RuntimeSnapshot.json",JsonUtility.ToJson(data,true));
-        Debug.Log("M6 runtime inspected: menu="+data.menuEnabled+", mover="+data.moverEnabled+", welcome="+data.welcome+", mode="+data.movementMode+", inputReady="+data.inputReady+". Not hardware acceptance.");
+        Debug.Log("M6 runtime inspected: menu="+data.menuEnabled+", mover="+data.moverEnabled+", welcome="+data.welcome+", mode="+data.movementMode+", inputReady="+data.inputReady+", vignette="+data.vignettePercent+"%, speed="+data.moveSpeed+", clearFov="+data.vignetteClearFov+". Not hardware acceptance.");
     }
     [Serializable] sealed class RuntimeSnapshot
-    {public bool menuEnabled,moverEnabled,tutorialEnabled,welcome,menuOpen,inputReady,questVerified;public string movementMode;public int tutorialStep;public Vector3 safePoint;}
+    {public bool menuEnabled,moverEnabled,tutorialEnabled,welcome,menuOpen,inputReady,questVerified,comfortVignetteInstalled,comfortOpen,snapTurn;public string movementMode;public int tutorialStep;public Vector3 safePoint;public float vignettePercent,moveSpeed,moveSmoothTime,turnSpeed,turnSmoothTime,snapAngle,vignetteClearFov;}
     static void Render(GameObject go,RectTransform panel,string path)
     {
         panel.position=new Vector3(1000,1000,1001.2f);panel.rotation=Quaternion.identity;
