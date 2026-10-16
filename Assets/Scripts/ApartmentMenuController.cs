@@ -44,6 +44,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
     public ApartmentVRLocomotion locomotion;
     public ApartmentFurnitureInteractor interactor;
     public ApartmentTutorialController tutorial;
+    public ApartmentShoppingBagBridge shoppingBag;
     public Transform safeResetPoint;
     public ApartmentTourTracker tour;
     public ApartmentComfortVignette comfortVignette;
@@ -107,7 +108,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
         SmoothStartLabel + SmoothStopLabel +
         RestoreDefault + ComfortBack + ComfortFooter + "%m/sdeg/s当前未启用";
     public static string AllText => MenuTitle + string.Join("", Tabs) + string.Join("", Modes) + string.Join("", ModeDetails) +
-        Footer + NeutralText + ChooseHelp + ResetQuestion + ResetHelp + ExitQuestion + TourTitle + "继续探索取消确认退出" + KeyText(ApartmentMovementMode.Both) +
+        Footer + NeutralText + ChooseHelp + ResetQuestion + ResetHelp + ExitQuestion + TourTitle + "继续探索取消确认退出" + ApartmentShoppingBagBridge.PageText + KeyText(ApartmentMovementMode.Both) +
         ComfortText +
         "关闭菜单暂未开放当前未启用移动方式选择适合你的移动方式安全重置卡住或迷路时，返回出生安全位置返回安全点返回取消安全点未配置安全点被物体占用，请稍后重试安全点下方没有可站立的地板头显高度无效，请恢复正常追踪等待头显、右手柄追踪和输入焦点安全点配置无效○●";
     public static string KeyText(ApartmentMovementMode mode) =>
@@ -271,6 +272,11 @@ public sealed class ApartmentMenuController : MonoBehaviour
         Page = page; ConfirmingReset = false; status = ""; ComfortSection = 0; UIRevision++;
         interactor?.ResetUIInput(); Rebuild(false);
     }
+    public void RefreshMyItems()
+    {
+        if (!isActiveAndEnabled || !IsOpen || Page != 3) return;
+        UIRevision++; interactor?.ResetUIInput(); Rebuild(false);
+    }
     void RequestReset() { ConfirmingReset = true; status = ""; UIRevision++; interactor?.ResetUIInput(); Rebuild(false); }
     void ConfirmQuit()
     {
@@ -349,7 +355,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
         view.Box("Divider", 28, 107, 1044, 2, new Color(.2f,.3f,.36f,1));
         for (int i = 0; i < Tabs.Length; i++)
         {
-            int index = i; bool placeholder = i == 0 || i == 1 || i == 3;
+            int index = i; bool placeholder = i == 0 || i == 1 || (i == 3 && (shoppingBag == null || !shoppingBag.IsConfigured));
             view.Button("Tab " + i, Tabs[i] + (placeholder ? "\n<size=70%>暂未开放</size>" : ""), 28, 132+i*91, 248, 79,
                 () => SetPage(index), Page == i, 33);
         }
@@ -374,6 +380,11 @@ public sealed class ApartmentMenuController : MonoBehaviour
             view.Button("Comfort entry", ComfortTitle, 330, 500, 730, 56, OpenComfort, false, 30);
             view.Label("Safety text", string.IsNullOrEmpty(status) ? "安全重置：卡住或迷路时，返回出生安全位置" : status, 330, 562, 730, 60, 25);
             view.Button("Safety reset", "返回安全点", 330, 626, 730, 56, RequestReset, false, 30);
+        }
+        else if (Page == 3)
+        {
+            if (shoppingBag != null) shoppingBag.BuildMyItemsPage(view);
+            else view.Label("Bag unavailable", "Shopping Bag: Not configured", 330, 220, 730, 100, 30);
         }
         else if (Page == 2)
             view.Label("Controls", KeyText(MovementMode), 330, 208, 730, 455, 30);
