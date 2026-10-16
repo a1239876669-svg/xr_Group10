@@ -1,0 +1,2271 @@
+{
+  "schemaVersion": 1,
+  "source": "Docs/References/ApartmentFloorPlan.png",
+  "coordinateNote": "Entrance threshold centre (0,0,0); drawing right +X; drawing up +Z; all geometry is approximate.",
+  "wallHeight": 2.8,
+  "objects": [
+    {
+      "path": "ApartmentRoot",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Structure",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Rooms",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Entrance",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Entrance/Floor_Entrance_1",
+      "kind": "cube",
+      "position": {
+        "x": 0.95,
+        "y": -0.05,
+        "z": 0.875
+      },
+      "size": {
+        "x": 2.6999999999999997,
+        "y": 0.1,
+        "z": 1.15
+      },
+      "material": "RoomFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Entrance/Floor_Entrance_2",
+      "kind": "cube",
+      "position": {
+        "x": 0.325,
+        "y": -0.05,
+        "z": 0.22499999999999998
+      },
+      "size": {
+        "x": 1.4500000000000002,
+        "y": 0.1,
+        "z": 0.15
+      },
+      "material": "RoomFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/LivingRoom",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Rooms/LivingRoom/Floor_LivingRoom_1",
+      "kind": "cube",
+      "position": {
+        "x": 0.7749999999999999,
+        "y": -0.05,
+        "z": 3.2249999999999996
+      },
+      "size": {
+        "x": 3.05,
+        "y": 0.1,
+        "z": 3.15
+      },
+      "material": "PublicFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/LivingRoom/Floor_LivingRoom_2",
+      "kind": "cube",
+      "position": {
+        "x": 0.95,
+        "y": -0.05,
+        "z": 1.5499999999999998
+      },
+      "size": {
+        "x": 2.6999999999999997,
+        "y": 0.1,
+        "z": 0.19999999999999996
+      },
+      "material": "PublicFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/LivingRoom/Floor_LivingRoom_3",
+      "kind": "cube",
+      "position": {
+        "x": 3.175,
+        "y": -0.05,
+        "z": 5.1
+      },
+      "size": {
+        "x": 3.8499999999999996,
+        "y": 0.1,
+        "z": 0.6000000000000005
+      },
+      "material": "PublicFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/DiningArea",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Rooms/DiningArea/Floor_DiningArea_1",
+      "kind": "cube",
+      "position": {
+        "x": 0.25,
+        "y": -0.05,
+        "z": 5.925
+      },
+      "size": {
+        "x": 2,
+        "y": 0.1,
+        "z": 2.25
+      },
+      "material": "PublicFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Kitchen",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Kitchen/Floor_Kitchen_1",
+      "kind": "cube",
+      "position": {
+        "x": -2.25,
+        "y": -0.05,
+        "z": 5.925
+      },
+      "size": {
+        "x": 2.5999999999999996,
+        "y": 0.1,
+        "z": 2.25
+      },
+      "material": "RoomFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Bedroom1",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Bedroom1/Floor_Bedroom1_1",
+      "kind": "cube",
+      "position": {
+        "x": -2.25,
+        "y": -0.05,
+        "z": 1.575
+      },
+      "size": {
+        "x": 2.5999999999999996,
+        "y": 0.1,
+        "z": 2.5500000000000003
+      },
+      "material": "RoomFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Bedroom1/Floor_Bedroom1_2",
+      "kind": "cube",
+      "position": {
+        "x": -3.7249999999999996,
+        "y": -0.05,
+        "z": 1.05
+      },
+      "size": {
+        "x": 0.3500000000000001,
+        "y": 0.1,
+        "z": 1.5
+      },
+      "material": "RoomFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Bedroom1/Floor_Bedroom1_3",
+      "kind": "cube",
+      "position": {
+        "x": -0.7749999999999999,
+        "y": -0.05,
+        "z": 0.875
+      },
+      "size": {
+        "x": 0.35,
+        "y": 0.1,
+        "z": 1.15
+      },
+      "material": "RoomFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Bedroom2",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Bedroom2/Floor_Bedroom2_1",
+      "kind": "cube",
+      "position": {
+        "x": 3.8,
+        "y": -0.05,
+        "z": 2.4499999999999997
+      },
+      "size": {
+        "x": 2.5999999999999996,
+        "y": 0.1,
+        "z": 4.3
+      },
+      "material": "RoomFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Bedroom2/Floor_Bedroom2_2",
+      "kind": "cube",
+      "position": {
+        "x": 4.85,
+        "y": -0.05,
+        "z": 0.22499999999999998
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.1,
+        "z": 0.15
+      },
+      "material": "RoomFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Bathroom",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Bathroom/Floor_Bathroom_1",
+      "kind": "cube",
+      "position": {
+        "x": -2.25,
+        "y": -0.05,
+        "z": 3.8249999999999997
+      },
+      "size": {
+        "x": 2.5999999999999996,
+        "y": 0.1,
+        "z": 1.5499999999999998
+      },
+      "material": "RoomFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Balcony",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Rooms/Balcony/Floor_Balcony_1",
+      "kind": "cube",
+      "position": {
+        "x": 3.275,
+        "y": -0.05,
+        "z": 6.324999999999999
+      },
+      "size": {
+        "x": 3.6499999999999995,
+        "y": 0.1,
+        "z": 1.4500000000000002
+      },
+      "material": "Balcony",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_Pier1",
+      "kind": "cube",
+      "position": {
+        "x": -3.425,
+        "y": 1.4,
+        "z": 7.2
+      },
+      "size": {
+        "x": 0.85,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_Sill1",
+      "kind": "cube",
+      "position": {
+        "x": -2.275,
+        "y": 0.5,
+        "z": 7.2
+      },
+      "size": {
+        "x": 1.45,
+        "y": 1,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_Head1",
+      "kind": "cube",
+      "position": {
+        "x": -2.275,
+        "y": 2.45,
+        "z": 7.2
+      },
+      "size": {
+        "x": 1.45,
+        "y": 0.6999999999999997,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_WindowPlaceholder1",
+      "kind": "cube",
+      "position": {
+        "x": -2.275,
+        "y": 1.55,
+        "z": 7.2
+      },
+      "size": {
+        "x": 1.45,
+        "y": 1.1,
+        "z": 0.025
+      },
+      "material": "WindowPlaceholder",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_Pier2",
+      "kind": "cube",
+      "position": {
+        "x": -1.025,
+        "y": 1.4,
+        "z": 7.2
+      },
+      "size": {
+        "x": 1.05,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_Sill2",
+      "kind": "cube",
+      "position": {
+        "x": -0.07500000000000001,
+        "y": 0.5,
+        "z": 7.2
+      },
+      "size": {
+        "x": 0.85,
+        "y": 1,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_Head2",
+      "kind": "cube",
+      "position": {
+        "x": -0.07500000000000001,
+        "y": 2.45,
+        "z": 7.2
+      },
+      "size": {
+        "x": 0.85,
+        "y": 0.6999999999999997,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_WindowPlaceholder2",
+      "kind": "cube",
+      "position": {
+        "x": -0.07500000000000001,
+        "y": 1.55,
+        "z": 7.2
+      },
+      "size": {
+        "x": 0.85,
+        "y": 1.1,
+        "z": 0.025
+      },
+      "material": "WindowPlaceholder",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_Pier3",
+      "kind": "cube",
+      "position": {
+        "x": 0.8999999999999999,
+        "y": 1.4,
+        "z": 7.2
+      },
+      "size": {
+        "x": 1.1,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_Sill3",
+      "kind": "cube",
+      "position": {
+        "x": 3.125,
+        "y": 0.5,
+        "z": 7.2
+      },
+      "size": {
+        "x": 3.3499999999999996,
+        "y": 1,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_Head3",
+      "kind": "cube",
+      "position": {
+        "x": 3.125,
+        "y": 2.45,
+        "z": 7.2
+      },
+      "size": {
+        "x": 3.3499999999999996,
+        "y": 0.6999999999999997,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_WindowPlaceholder3",
+      "kind": "cube",
+      "position": {
+        "x": 3.125,
+        "y": 1.55,
+        "z": 7.2
+      },
+      "size": {
+        "x": 3.3499999999999996,
+        "y": 1.1,
+        "z": 0.025
+      },
+      "material": "WindowPlaceholder",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_North_EndPier",
+      "kind": "cube",
+      "position": {
+        "x": 5.1,
+        "y": 1.4,
+        "z": 7.2
+      },
+      "size": {
+        "x": 0.6,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_East_Pier1",
+      "kind": "cube",
+      "position": {
+        "x": 5.25,
+        "y": 1.4,
+        "z": 0.775
+      },
+      "size": {
+        "x": 0.3,
+        "y": 2.8,
+        "z": 1.55
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_East_Sill1",
+      "kind": "cube",
+      "position": {
+        "x": 5.25,
+        "y": 0.5,
+        "z": 2.5
+      },
+      "size": {
+        "x": 0.3,
+        "y": 1,
+        "z": 1.9000000000000001
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_East_Head1",
+      "kind": "cube",
+      "position": {
+        "x": 5.25,
+        "y": 2.45,
+        "z": 2.5
+      },
+      "size": {
+        "x": 0.3,
+        "y": 0.6999999999999997,
+        "z": 1.9000000000000001
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_East_WindowPlaceholder1",
+      "kind": "cube",
+      "position": {
+        "x": 5.25,
+        "y": 1.55,
+        "z": 2.5
+      },
+      "size": {
+        "x": 0.025,
+        "y": 1.1,
+        "z": 1.9000000000000001
+      },
+      "material": "WindowPlaceholder",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_East_Pier2",
+      "kind": "cube",
+      "position": {
+        "x": 5.25,
+        "y": 1.4,
+        "z": 4.525
+      },
+      "size": {
+        "x": 0.3,
+        "y": 2.8,
+        "z": 2.1499999999999995
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_East_Sill2",
+      "kind": "cube",
+      "position": {
+        "x": 5.25,
+        "y": 0.5,
+        "z": 6.25
+      },
+      "size": {
+        "x": 0.3,
+        "y": 1,
+        "z": 1.3000000000000007
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_East_Head2",
+      "kind": "cube",
+      "position": {
+        "x": 5.25,
+        "y": 2.45,
+        "z": 6.25
+      },
+      "size": {
+        "x": 0.3,
+        "y": 0.6999999999999997,
+        "z": 1.3000000000000007
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_East_WindowPlaceholder2",
+      "kind": "cube",
+      "position": {
+        "x": 5.25,
+        "y": 1.55,
+        "z": 6.25
+      },
+      "size": {
+        "x": 0.025,
+        "y": 1.1,
+        "z": 1.3000000000000007
+      },
+      "material": "WindowPlaceholder",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_East_EndPier",
+      "kind": "cube",
+      "position": {
+        "x": 5.25,
+        "y": 1.4,
+        "z": 7.050000000000001
+      },
+      "size": {
+        "x": 0.3,
+        "y": 2.8,
+        "z": 0.2999999999999998
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_WestUpper_Pier1",
+      "kind": "cube",
+      "position": {
+        "x": -3.7,
+        "y": 1.4,
+        "z": 2.625
+      },
+      "size": {
+        "x": 0.3,
+        "y": 2.8,
+        "z": 1.3499999999999999
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_WestUpper_Sill1",
+      "kind": "cube",
+      "position": {
+        "x": -3.7,
+        "y": 0.5,
+        "z": 3.65
+      },
+      "size": {
+        "x": 0.3,
+        "y": 1,
+        "z": 0.7000000000000002
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_WestUpper_Head1",
+      "kind": "cube",
+      "position": {
+        "x": -3.7,
+        "y": 2.45,
+        "z": 3.65
+      },
+      "size": {
+        "x": 0.3,
+        "y": 0.6999999999999997,
+        "z": 0.7000000000000002
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_WestUpper_WindowPlaceholder1",
+      "kind": "cube",
+      "position": {
+        "x": -3.7,
+        "y": 1.55,
+        "z": 3.65
+      },
+      "size": {
+        "x": 0.025,
+        "y": 1.1,
+        "z": 0.7000000000000002
+      },
+      "material": "WindowPlaceholder",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_WestUpper_EndPier",
+      "kind": "cube",
+      "position": {
+        "x": -3.7,
+        "y": 1.4,
+        "z": 5.6
+      },
+      "size": {
+        "x": 0.3,
+        "y": 2.8,
+        "z": 3.2
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_WestStep",
+      "kind": "cube",
+      "position": {
+        "x": -3.875,
+        "y": 1.4,
+        "z": 1.95
+      },
+      "size": {
+        "x": 0.6500000000000004,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_WestLower",
+      "kind": "cube",
+      "position": {
+        "x": -4.05,
+        "y": 1.4,
+        "z": 1.05
+      },
+      "size": {
+        "x": 0.3,
+        "y": 2.8,
+        "z": 1.8
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthBedroom1_Pier1",
+      "kind": "cube",
+      "position": {
+        "x": -3.8,
+        "y": 1.4,
+        "z": 0.15
+      },
+      "size": {
+        "x": 0.8,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthBedroom1_Sill1",
+      "kind": "cube",
+      "position": {
+        "x": -2.9749999999999996,
+        "y": 0.5,
+        "z": 0.15
+      },
+      "size": {
+        "x": 0.8500000000000001,
+        "y": 1,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthBedroom1_Head1",
+      "kind": "cube",
+      "position": {
+        "x": -2.9749999999999996,
+        "y": 2.45,
+        "z": 0.15
+      },
+      "size": {
+        "x": 0.8500000000000001,
+        "y": 0.6999999999999997,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthBedroom1_WindowPlaceholder1",
+      "kind": "cube",
+      "position": {
+        "x": -2.9749999999999996,
+        "y": 1.55,
+        "z": 0.15
+      },
+      "size": {
+        "x": 0.8500000000000001,
+        "y": 1.1,
+        "z": 0.025
+      },
+      "material": "WindowPlaceholder",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthBedroom1_EndPier",
+      "kind": "cube",
+      "position": {
+        "x": -1.4749999999999999,
+        "y": 1.4,
+        "z": 0.15
+      },
+      "size": {
+        "x": 2.15,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthEntryLeftReturn",
+      "kind": "cube",
+      "position": {
+        "x": -0.65,
+        "y": 1.4,
+        "z": 0.075
+      },
+      "size": {
+        "x": 0.3,
+        "y": 2.8,
+        "z": 0.15
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthMiddle_Pier1",
+      "kind": "cube",
+      "position": {
+        "x": 1.225,
+        "y": 1.4,
+        "z": 0.15
+      },
+      "size": {
+        "x": 0.34999999999999987,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthMiddle_Sill1",
+      "kind": "cube",
+      "position": {
+        "x": 1.8,
+        "y": 0.5,
+        "z": 0.15
+      },
+      "size": {
+        "x": 0.8000000000000003,
+        "y": 1,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthMiddle_Head1",
+      "kind": "cube",
+      "position": {
+        "x": 1.8,
+        "y": 2.45,
+        "z": 0.15
+      },
+      "size": {
+        "x": 0.8000000000000003,
+        "y": 0.6999999999999997,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthMiddle_WindowPlaceholder1",
+      "kind": "cube",
+      "position": {
+        "x": 1.8,
+        "y": 1.55,
+        "z": 0.15
+      },
+      "size": {
+        "x": 0.8000000000000003,
+        "y": 1.1,
+        "z": 0.025
+      },
+      "material": "WindowPlaceholder",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthMiddle_EndPier",
+      "kind": "cube",
+      "position": {
+        "x": 3.4,
+        "y": 1.4,
+        "z": 0.15
+      },
+      "size": {
+        "x": 2.3999999999999995,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthMiddleReturn",
+      "kind": "cube",
+      "position": {
+        "x": 1.2,
+        "y": 1.4,
+        "z": 0.075
+      },
+      "size": {
+        "x": 0.3,
+        "y": 2.8,
+        "z": 0.15
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthEastReturn",
+      "kind": "cube",
+      "position": {
+        "x": 4.45,
+        "y": 1.4,
+        "z": 0.075
+      },
+      "size": {
+        "x": 0.3,
+        "y": 2.8,
+        "z": 0.15
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/External_SouthEastFoot",
+      "kind": "cube",
+      "position": {
+        "x": 4.925000000000001,
+        "y": 1.4,
+        "z": 0
+      },
+      "size": {
+        "x": 0.9500000000000002,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_MainEntrance_SideA",
+      "kind": "cube",
+      "position": {
+        "x": -0.45,
+        "y": 1.4,
+        "z": 0
+      },
+      "size": {
+        "x": 0.09999999999999998,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_MainEntrance_SideB",
+      "kind": "cube",
+      "position": {
+        "x": 0.8,
+        "y": 1.4,
+        "z": 0
+      },
+      "size": {
+        "x": 0.7999999999999999,
+        "y": 2.8,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_MainEntrance_Lintel",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 2.45,
+        "z": 0
+      },
+      "size": {
+        "x": 0.8,
+        "y": 0.6999999999999997,
+        "z": 0.3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Threshold_Door_MainEntrance",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": -0.05,
+        "z": 0
+      },
+      "size": {
+        "x": 0.8,
+        "y": 0.1,
+        "z": 0.3
+      },
+      "material": "PublicFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/ASSUMED_Door_MainEntrance_W0p80_H2p10",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 2.95,
+        "z": 0
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.12,
+        "z": 0.12
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Structure/Partition_KitchenBathroom",
+      "kind": "cube",
+      "position": {
+        "x": -2.275,
+        "y": 1.4,
+        "z": 4.7
+      },
+      "size": {
+        "x": 2.85,
+        "y": 2.8,
+        "z": 0.2
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Partition_BathroomBedroom1",
+      "kind": "cube",
+      "position": {
+        "x": -2.275,
+        "y": 1.4,
+        "z": 2.95
+      },
+      "size": {
+        "x": 2.85,
+        "y": 2.8,
+        "z": 0.2
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Bedroom1_SideA",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 1.4,
+        "z": 1.75
+      },
+      "size": {
+        "x": 0.2,
+        "y": 2.8,
+        "z": 0.3999999999999999
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Bedroom1_SideB",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 1.4,
+        "z": 2.85
+      },
+      "size": {
+        "x": 0.2,
+        "y": 2.8,
+        "z": 0.20000000000000018
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Bedroom1_Lintel",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 2.45,
+        "z": 2.35
+      },
+      "size": {
+        "x": 0.2,
+        "y": 0.6999999999999997,
+        "z": 0.8
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Threshold_Door_Bedroom1",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": -0.05,
+        "z": 2.35
+      },
+      "size": {
+        "x": 0.2,
+        "y": 0.1,
+        "z": 0.8
+      },
+      "material": "PublicFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/ASSUMED_Door_Bedroom1_W0p80_H2p10",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 2.95,
+        "z": 2.35
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.12,
+        "z": 0.12
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Bathroom_SideA",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 1.4,
+        "z": 3.05
+      },
+      "size": {
+        "x": 0.2,
+        "y": 2.8,
+        "z": 0.19999999999999973
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Bathroom_SideB",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 1.4,
+        "z": 4.325
+      },
+      "size": {
+        "x": 0.2,
+        "y": 2.8,
+        "z": 0.75
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Bathroom_Lintel",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 2.45,
+        "z": 3.55
+      },
+      "size": {
+        "x": 0.2,
+        "y": 0.6999999999999997,
+        "z": 0.8000000000000003
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Threshold_Door_Bathroom",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": -0.05,
+        "z": 3.55
+      },
+      "size": {
+        "x": 0.2,
+        "y": 0.1,
+        "z": 0.8000000000000003
+      },
+      "material": "PublicFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/ASSUMED_Door_Bathroom_W0p80_H2p10",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 2.95,
+        "z": 3.55
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.12,
+        "z": 0.12
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Kitchen_SideA",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 1.4,
+        "z": 4.75
+      },
+      "size": {
+        "x": 0.2,
+        "y": 2.8,
+        "z": 0.09999999999999964
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Kitchen_SideB",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 1.4,
+        "z": 6.4
+      },
+      "size": {
+        "x": 0.2,
+        "y": 2.8,
+        "z": 1.6000000000000005
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Kitchen_Lintel",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 2.45,
+        "z": 5.199999999999999
+      },
+      "size": {
+        "x": 0.2,
+        "y": 0.6999999999999997,
+        "z": 0.7999999999999998
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Threshold_Door_Kitchen",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": -0.05,
+        "z": 5.199999999999999
+      },
+      "size": {
+        "x": 0.2,
+        "y": 0.1,
+        "z": 0.7999999999999998
+      },
+      "material": "PublicFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/ASSUMED_Door_Kitchen_W0p80_H2p10",
+      "kind": "cube",
+      "position": {
+        "x": -0.85,
+        "y": 2.95,
+        "z": 5.199999999999999
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.12,
+        "z": 0.12
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Structure/Partition_Bedroom1EntranceReturn",
+      "kind": "cube",
+      "position": {
+        "x": -0.675,
+        "y": 1.4,
+        "z": 1.55
+      },
+      "size": {
+        "x": 0.5499999999999999,
+        "y": 2.8,
+        "z": 0.2
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Partition_Bedroom1EntranceLower",
+      "kind": "cube",
+      "position": {
+        "x": -0.5,
+        "y": 1.4,
+        "z": 0.85
+      },
+      "size": {
+        "x": 0.2,
+        "y": 2.8,
+        "z": 1.4000000000000001
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Bedroom2_SideA",
+      "kind": "cube",
+      "position": {
+        "x": 2.4,
+        "y": 1.4,
+        "z": 0.525
+      },
+      "size": {
+        "x": 0.2,
+        "y": 2.8,
+        "z": 0.75
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Bedroom2_SideB",
+      "kind": "cube",
+      "position": {
+        "x": 2.4,
+        "y": 1.4,
+        "z": 3.2
+      },
+      "size": {
+        "x": 0.2,
+        "y": 2.8,
+        "z": 3
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_Bedroom2_Lintel",
+      "kind": "cube",
+      "position": {
+        "x": 2.4,
+        "y": 2.45,
+        "z": 1.3
+      },
+      "size": {
+        "x": 0.2,
+        "y": 0.6999999999999997,
+        "z": 0.7999999999999999
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Threshold_Door_Bedroom2",
+      "kind": "cube",
+      "position": {
+        "x": 2.4,
+        "y": -0.05,
+        "z": 1.3
+      },
+      "size": {
+        "x": 0.2,
+        "y": 0.1,
+        "z": 0.7999999999999999
+      },
+      "material": "PublicFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/ASSUMED_Door_Bedroom2_W0p80_H2p10",
+      "kind": "cube",
+      "position": {
+        "x": 2.4,
+        "y": 2.95,
+        "z": 1.3
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.12,
+        "z": 0.12
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Structure/Partition_Bedroom2North",
+      "kind": "cube",
+      "position": {
+        "x": 3.85,
+        "y": 1.4,
+        "z": 4.7
+      },
+      "size": {
+        "x": 3.1000000000000005,
+        "y": 2.8,
+        "z": 0.2
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Balcony_WestBoundary",
+      "kind": "cube",
+      "position": {
+        "x": 1.35,
+        "y": 1.4,
+        "z": 6.35
+      },
+      "size": {
+        "x": 0.2,
+        "y": 2.8,
+        "z": 1.7000000000000002
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_BalconySliding_SideA",
+      "kind": "cube",
+      "position": {
+        "x": 1.35,
+        "y": 1.4,
+        "z": 5.5
+      },
+      "size": {
+        "x": 0.19999999999999996,
+        "y": 2.8,
+        "z": 0.2
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_BalconySliding_SideB",
+      "kind": "cube",
+      "position": {
+        "x": 3.975,
+        "y": 1.4,
+        "z": 5.5
+      },
+      "size": {
+        "x": 2.8500000000000005,
+        "y": 2.8,
+        "z": 0.2
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Door_BalconySliding_Lintel",
+      "kind": "cube",
+      "position": {
+        "x": 2,
+        "y": 2.45,
+        "z": 5.5
+      },
+      "size": {
+        "x": 1.0999999999999999,
+        "y": 0.6999999999999997,
+        "z": 0.2
+      },
+      "material": "FixedStructure",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Structure/Threshold_Door_BalconySliding",
+      "kind": "cube",
+      "position": {
+        "x": 2,
+        "y": -0.05,
+        "z": 5.5
+      },
+      "size": {
+        "x": 1.0999999999999999,
+        "y": 0.1,
+        "z": 0.2
+      },
+      "material": "PublicFloor",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/ASSUMED_Door_BalconySliding_W1p10_H2p10",
+      "kind": "cube",
+      "position": {
+        "x": 2,
+        "y": 2.95,
+        "z": 5.5
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.12,
+        "z": 0.12
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/Spawn_Entrance_Assumed",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.04,
+        "z": 0.7
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.08,
+        "z": 0.12
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/Route01_Entrance",
+      "kind": "cube",
+      "position": {
+        "x": 0.65,
+        "y": 0.04,
+        "z": 1.15
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.08,
+        "z": 0.12
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/Route02_LivingRoom",
+      "kind": "cube",
+      "position": {
+        "x": 0.65,
+        "y": 0.04,
+        "z": 2.65
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.08,
+        "z": 0.12
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/Route03_LivingNorth",
+      "kind": "cube",
+      "position": {
+        "x": 0.65,
+        "y": 0.04,
+        "z": 4.3
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.08,
+        "z": 0.12
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/Route04_DiningArea",
+      "kind": "cube",
+      "position": {
+        "x": 0.4,
+        "y": 0.04,
+        "z": 5.2
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.08,
+        "z": 0.12
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/Route05_KitchenDoorOutside",
+      "kind": "cube",
+      "position": {
+        "x": -0.45,
+        "y": 0.04,
+        "z": 5.2
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.08,
+        "z": 0.12
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/Route06_KitchenInside",
+      "kind": "cube",
+      "position": {
+        "x": -1.3,
+        "y": 0.04,
+        "z": 5.2
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.08,
+        "z": 0.12
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/Route07_KitchenReview",
+      "kind": "cube",
+      "position": {
+        "x": -2.1,
+        "y": 0.04,
+        "z": 5.85
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.08,
+        "z": 0.12
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/ASSUMED_NormalizedReference_9p6x7p5",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 3.15,
+        "z": 7.35
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/ASSUMED_WallHeight_2p8m",
+      "kind": "empty",
+      "position": {
+        "x": -3.7,
+        "y": 3.15,
+        "z": 4.7
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/ASSUMED_InternalWalls_0p2m",
+      "kind": "empty",
+      "position": {
+        "x": 2.4,
+        "y": 3.15,
+        "z": 3
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/ASSUMED_ExternalWalls_0p3m",
+      "kind": "empty",
+      "position": {
+        "x": -4.05,
+        "y": 3.15,
+        "z": 1
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/ASSUMED_BalconyOutline",
+      "kind": "empty",
+      "position": {
+        "x": 5.1,
+        "y": 3.15,
+        "z": 6.3
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "InspectionCamera",
+      "kind": "camera",
+      "position": {
+        "x": 0.6,
+        "y": 12,
+        "z": 3.6
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "InspectionLight",
+      "kind": "light",
+      "position": {
+        "x": 0,
+        "y": 5,
+        "z": 3.5
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    }
+  ],
+  "rooms": [
+    {
+      "name": "Entrance",
+      "drawing": [
+        2.8,
+        1.25
+      ],
+      "label": 3.5,
+      "rects": [
+        [
+          -0.4,
+          2.3,
+          0.3,
+          1.45
+        ],
+        [
+          -0.4,
+          1.05,
+          0.15,
+          0.3
+        ]
+      ],
+      "area": 3.3225
+    },
+    {
+      "name": "LivingRoom",
+      "drawing": [
+        3.2,
+        4.3
+      ],
+      "label": 18,
+      "rects": [
+        [
+          -0.75,
+          2.3,
+          1.65,
+          4.8
+        ],
+        [
+          -0.4,
+          2.3,
+          1.45,
+          1.65
+        ],
+        [
+          1.25,
+          5.1,
+          4.8,
+          5.4
+        ]
+      ],
+      "area": 12.457500000000001
+    },
+    {
+      "name": "DiningArea",
+      "drawing": null,
+      "label": null,
+      "rects": [
+        [
+          -0.75,
+          1.25,
+          4.8,
+          7.05
+        ]
+      ],
+      "area": 4.5
+    },
+    {
+      "name": "Kitchen",
+      "drawing": [
+        2.7,
+        2.2
+      ],
+      "label": 6,
+      "rects": [
+        [
+          -3.55,
+          -0.95,
+          4.8,
+          7.05
+        ]
+      ],
+      "area": 5.85
+    },
+    {
+      "name": "Bedroom1",
+      "drawing": [
+        2.7,
+        3
+      ],
+      "label": 9,
+      "rects": [
+        [
+          -3.55,
+          -0.95,
+          0.3,
+          2.85
+        ],
+        [
+          -3.9,
+          -3.55,
+          0.3,
+          1.8
+        ],
+        [
+          -0.95,
+          -0.6,
+          0.3,
+          1.45
+        ]
+      ],
+      "area": 7.5575
+    },
+    {
+      "name": "Bedroom2",
+      "drawing": [
+        2.8,
+        4.3
+      ],
+      "label": 11.5,
+      "rects": [
+        [
+          2.5,
+          5.1,
+          0.3,
+          4.6
+        ],
+        [
+          4.6,
+          5.1,
+          0.15,
+          0.3
+        ]
+      ],
+      "area": 11.254999999999997
+    },
+    {
+      "name": "Bathroom",
+      "drawing": [
+        2.7,
+        1.85
+      ],
+      "label": 5,
+      "rects": [
+        [
+          -3.55,
+          -0.95,
+          3.05,
+          4.6
+        ]
+      ],
+      "area": 4.029999999999999
+    },
+    {
+      "name": "Balcony",
+      "drawing": [
+        3.5,
+        1.15
+      ],
+      "label": 4,
+      "rects": [
+        [
+          1.45,
+          5.1,
+          5.6,
+          7.05
+        ]
+      ],
+      "area": 5.2924999999999995
+    }
+  ],
+  "portals": [
+    {
+      "name": "Door_MainEntrance",
+      "axis": "X",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "width": 0.8,
+      "height": 2.1,
+      "thickness": 0.3
+    },
+    {
+      "name": "Door_Bedroom1",
+      "axis": "Z",
+      "position": {
+        "x": -0.85,
+        "y": 0,
+        "z": 2.35
+      },
+      "width": 0.8,
+      "height": 2.1,
+      "thickness": 0.2
+    },
+    {
+      "name": "Door_Bathroom",
+      "axis": "Z",
+      "position": {
+        "x": -0.85,
+        "y": 0,
+        "z": 3.55
+      },
+      "width": 0.8000000000000003,
+      "height": 2.1,
+      "thickness": 0.2
+    },
+    {
+      "name": "Door_Kitchen",
+      "axis": "Z",
+      "position": {
+        "x": -0.85,
+        "y": 0,
+        "z": 5.199999999999999
+      },
+      "width": 0.7999999999999998,
+      "height": 2.1,
+      "thickness": 0.2
+    },
+    {
+      "name": "Door_Bedroom2",
+      "axis": "Z",
+      "position": {
+        "x": 2.4,
+        "y": 0,
+        "z": 1.3
+      },
+      "width": 0.7999999999999999,
+      "height": 2.1,
+      "thickness": 0.2
+    },
+    {
+      "name": "Door_BalconySliding",
+      "axis": "X",
+      "position": {
+        "x": 2,
+        "y": 0,
+        "z": 5.5
+      },
+      "width": 1.0999999999999999,
+      "height": 2.1,
+      "thickness": 0.2
+    }
+  ],
+  "route": [
+    {
+      "name": "Spawn_Entrance_Assumed",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.7
+      }
+    },
+    {
+      "name": "Route01_Entrance",
+      "position": {
+        "x": 0.65,
+        "y": 0,
+        "z": 1.15
+      }
+    },
+    {
+      "name": "Route02_LivingRoom",
+      "position": {
+        "x": 0.65,
+        "y": 0,
+        "z": 2.65
+      }
+    },
+    {
+      "name": "Route03_LivingNorth",
+      "position": {
+        "x": 0.65,
+        "y": 0,
+        "z": 4.3
+      }
+    },
+    {
+      "name": "Route04_DiningArea",
+      "position": {
+        "x": 0.4,
+        "y": 0,
+        "z": 5.2
+      }
+    },
+    {
+      "name": "Route05_KitchenDoorOutside",
+      "position": {
+        "x": -0.45,
+        "y": 0,
+        "z": 5.2
+      }
+    },
+    {
+      "name": "Route06_KitchenInside",
+      "position": {
+        "x": -1.3,
+        "y": 0,
+        "z": 5.2
+      }
+    },
+    {
+      "name": "Route07_KitchenReview",
+      "position": {
+        "x": -2.1,
+        "y": 0,
+        "z": 5.85
+      }
+    }
+  ]
+}
