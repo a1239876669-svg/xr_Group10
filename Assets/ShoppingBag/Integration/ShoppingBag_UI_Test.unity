@@ -162,7 +162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1010, guid: 2e597e315c035e14849401dfa33bb18a, type: 3}
       propertyPath: contextProvider
-      value: 
+      value:
       objectReference: {fileID: 7002}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58d66244ba3d5b9aaac1bf8426dc8393, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier:
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e3bda0ffcf15abf94fb7b6397a90211, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier:
 --- !u!1 &5000
 GameObject:
@@ -282,8 +282,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   furnitureColliders:
   - {fileID: 5004}
   furnitureRenderers:
@@ -370,8 +370,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   furnitureColliders:
   - {fileID: 5104}
   furnitureRenderers:
@@ -458,8 +458,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   furnitureColliders:
   - {fileID: 5204}
   furnitureRenderers:
@@ -546,8 +546,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   furnitureColliders:
   - {fileID: 5304}
   furnitureRenderers:
@@ -603,8 +603,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfa110cf163f4ee78a98c57a3e9c3c32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   bag: {fileID: 3001}
   gate: {fileID: 3004}
   menu: {fileID: 0}
@@ -621,8 +621,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3c2434b339944a0ac8fc2032ae86f0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   bridge: {fileID: 7002}
   fixtureRoot: {fileID: 7001}
   uiScenePath: Assets/Scenes/Apartment_Detailed_VR.unity
@@ -636,5 +636,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53ce4b345b435f7e8b94c2838666b899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:

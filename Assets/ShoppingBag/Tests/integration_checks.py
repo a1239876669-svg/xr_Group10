@@ -7,7 +7,7 @@ def docs(s):return {fid:(typ,text) for typ,fid,text in re.findall(r'--- !u!(\d+)
 scene=read('Assets/ShoppingBag/Integration/ShoppingBag_UI_Test.unity');d=docs(scene)
 assert not any(t=='20' for t,s in d.values()), 'Fixture must have no Camera'
 assert 'ShoppingBag_TestControls' not in scene, 'Desktop simulator/OnGUI must not own integrated UI'
-assert 'propertyPath: contextProvider\n      value: \n      objectReference: {fileID: 7002}' in scene
+assert re.search(r'propertyPath: contextProvider\n\s+value:\s*\n\s+objectReference: \{fileID: 7002\}',scene)
 assert 'bag: {fileID: 3001}' in d['7002'][1] and 'gate: {fileID: 3004}' in d['7002'][1]
 assert 'bridge: {fileID: 7002}' in d['7003'][1] and 'fixtureRoot: {fileID: 7001}' in d['7003'][1]
 assert 'uiScenePath: Assets/Scenes/Apartment_Detailed_VR.unity' in scene
