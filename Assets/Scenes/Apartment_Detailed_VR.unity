@@ -253320,6 +253320,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 391153649}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1588222420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1588222422}
+  - component: {fileID: 1588222421}
+  m_Layer: 0
+  m_Name: ShoppingBagHint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1588222421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588222420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f9cc24cd96de54bb1358a0e7d8235f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShoppingBagHint
+  menu: {fileID: 184434899}
+  firstLine: "\u6309\u4F4F\u5DE6\u624B\u63E1\u628A\u53EF\u4EE5\u63D0\u8D77\u8D2D\u7269\u888B"
+  secondLine: "\u6309 B \u952E\u6253\u5F00\u83DC\u5355\uFF0C\u5728\u300C\u6211\u7684\u7269\u54C1\u300D\u91CC\u8C03\u8282\u888B\u5B50\u5927\u5C0F"
+  dismissLabel: "\u6211\u77E5\u9053\u4E86"
+--- !u!4 &1588222422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588222420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.415373, z: -0, w: 0.9096512}
+  m_LocalPosition: {x: 3.5, y: 1.45, z: -0.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1588278339
 GameObject:
   m_ObjectHideFlags: 0
@@ -310122,3 +310170,4 @@ SceneRoots:
   - {fileID: 1038835607}
   - {fileID: 1082077890}
   - {fileID: 854460279}
+  - {fileID: 1588222422}
