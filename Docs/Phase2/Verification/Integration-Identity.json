@@ -1,0 +1,15 @@
+{
+  "integrationSha": "d0f512eb453a19d47352dccf2dc4979bd094a90d",
+  "pr12HeadAcceptedByUser": "f3b25074535750a1198b5685fe9081723fc8a710",
+  "pr12MergeParents": [
+    "e0ddc2c752d99aab36941615635caa5cc90c2695",
+    "f3b25074535750a1198b5685fe9081723fc8a710"
+  ],
+  "pr10Merge": "ab149710c303d0ba8577db864cb9bdf961195707",
+  "pr11Merge": "e0ddc2c752d99aab36941615635caa5cc90c2695",
+  "mergeMethod": "normal Merge Commit",
+  "pr12MergedAtUtc": "2026-10-18T14:31:22Z",
+  "defaultBranch": "main",
+  "defaultBranchShaAtAudit": "fc0444ccc6b782527907ed2762a493d036694494",
+  "sourceAndBuildRuntimeEquivalent": "No Assets/Packages/ProjectSettings changes committed on docs branch"
+}
