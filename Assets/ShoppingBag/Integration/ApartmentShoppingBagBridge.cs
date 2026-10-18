@@ -17,6 +17,7 @@ public sealed class ApartmentShoppingBagBridge : MonoBehaviour, IBagInteractionC
     public bool IsConfigured => isActiveAndEnabled && bag != null && gate != null && menu != null &&
         bag.isActiveAndEnabled && gate.isActiveAndEnabled && menu.isActiveAndEnabled &&
         menu.shoppingBag == this && gate.GetComponent<ShoppingBag>() == bag;
+    public event Action<BagSize> SizeSelected;
     ShoppingBag subscribedBag;
     bool dirty;
     string status = "";
@@ -76,7 +77,9 @@ public sealed class ApartmentShoppingBagBridge : MonoBehaviour, IBagInteractionC
     {
         // Menu blocks Grip, not sizing. Old callbacks must recheck held state and page ownership.
         if (!IsConfigured || !menu.IsOpen || menu.Page != 3 || !menu.Visible || bag.IsHeld) return false;
-        bool changed = bag.TrySetSize(size); status = changed ? "" : "Not configured"; dirty = true; return changed;
+        bool changed = bag.TrySetSize(size); status = changed ? "" : "Not configured"; dirty = true;
+        if (changed) SizeSelected?.Invoke(size);
+        return changed;
     }
     public void BuildMyItemsPage(ApartmentVRPanel panel)
     {

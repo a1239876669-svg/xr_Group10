@@ -25,7 +25,42 @@ assert 'm_Father: {fileID: 542895440}' in ui['184434900'][1]
 player=re.search(r'm_GameObject: \{fileID: (-?\d+)\}',ui['542895440'][1]).group(1)
 assert 'm_Name: VRPlayer' in ui[player][1] and 'm_Father: {fileID: 0}' in ui['542895440'][1], 'Exact UI path changed'
 font=read('Assets/Apartment/Fonts/VRStandaloneUI-SC.asset');chars=set(map(int,re.findall(r'm_Unicode: (\d+)',font)))
-assert all(ord(c) in chars for c in 'Shopping Bag Small Medium Large Current size: Held - release first Not configured ●○'), 'Static font lacks new UI glyphs'
+required = set(map(ord, 'Shopping Bag Small Medium Large Current size: Held - release first Not configured ●○'))
+if re.search(r'm_AtlasPopulationMode: 1\b', font):
+    # Read OpenType Unicode cmap without dependencies or font/atlas mutations.
+    import struct
+    guid = re.search(r'm_SourceFontFileGUID: ([0-9a-f]{32})', font).group(1)
+    matches = [p for p in (R/'Assets').rglob('*.meta') if re.search(r'^guid: '+guid+r'\s*$', p.read_text(encoding='utf-8-sig'), re.M)]
+    assert len(matches) == 1, 'Dynamic font source GUID must resolve once'
+    data = Path(str(matches[0])[:-5]).read_bytes()
+    tables = {}
+    for i in range(struct.unpack_from('>H', data, 4)[0]):
+        tag, checksum, offset, length = struct.unpack_from('>4sIII', data, 12+i*16)
+        tables[tag] = (offset, length)
+    cmap = tables[b'cmap'][0]
+    offsets = [cmap+struct.unpack_from('>I', data, cmap+4+i*8+4)[0] for i in range(struct.unpack_from('>H', data, cmap+2)[0])]
+    def available(code):
+        for offset in offsets:
+            fmt = struct.unpack_from('>H', data, offset)[0]
+            if fmt == 12:
+                for i in range(struct.unpack_from('>I', data, offset+12)[0]):
+                    first, last, glyph = struct.unpack_from('>III', data, offset+16+i*12)
+                    if first <= code <= last and glyph+code-first != 0: return True
+            elif fmt == 4 and code <= 0xffff:
+                n = struct.unpack_from('>H', data, offset+6)[0]//2
+                end = offset+14; start = end+2*n+2; delta = start+2*n; ranges = delta+2*n
+                for i in range(n):
+                    lo = struct.unpack_from('>H', data, start+2*i)[0]; hi = struct.unpack_from('>H', data, end+2*i)[0]
+                    if lo <= code <= hi:
+                        adjust = struct.unpack_from('>h', data, delta+2*i)[0]; jump = struct.unpack_from('>H', data, ranges+2*i)[0]
+                        glyph = (code+adjust)&0xffff if jump == 0 else struct.unpack_from('>H', data, ranges+2*i+jump+2*(code-lo))[0]
+                        if glyph != 0: return True
+        return False
+    # New guide copy uses printable English in addition to existing UI symbols.
+    assert all(available(c) for c in required | set(range(32,127))), 'Dynamic source font lacks a required Unicode glyph'
+else:
+    assert required.issubset(chars), 'Static font lacks required pre-baked glyphs'
+
 menu=read('Assets/Scripts/ApartmentMenuController.cs')
 assert 'else if (Page == 3)' in menu and 'shoppingBag.BuildMyItemsPage(view)' in menu
 assert 'public void RefreshMyItems()' in menu and 'Page != 3' in menu

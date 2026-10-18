@@ -1,0 +1,38 @@
+{
+  "kind": "Read-only Python asset/scene checks, no Unity runtime",
+  "results": [
+    {
+      "file": "Assets/ShoppingBag/Tests/asset_checks.py",
+      "command": "python -X utf8 -B Assets/ShoppingBag/Tests/asset_checks.py",
+      "startedAt": "2026-10-18T11:25:37.506763+00:00",
+      "finishedAt": "2026-10-18T11:25:37.632758+00:00",
+      "exitCode": 0,
+      "output": "PASS: 40 files, GUID/fileID references, SDK near-grab wiring, sizes and camera-free scene. Unity import/runtime not tested.\n"
+    },
+    {
+      "file": "Assets/ShoppingBag/Tests/phase_b_assets.py",
+      "command": "python -X utf8 -B Assets/ShoppingBag/Tests/phase_b_assets.py",
+      "startedAt": "2026-10-18T11:25:37.632758+00:00",
+      "finishedAt": "2026-10-18T11:25:37.735491+00:00",
+      "exitCode": 0,
+      "output": "PASS: 40 files, GUID/fileID references, SDK near-grab wiring, sizes and camera-free scene. Unity import/runtime not tested.\nPASS: Phase B separate body sensor, hardware-capable haptics prefab (desktop simulation stays dry), registered two-width fixed channel.\n"
+    },
+    {
+      "file": "Assets/ShoppingBag/Tests/integration_checks.py",
+      "command": "python -X utf8 -B Assets/ShoppingBag/Tests/integration_checks.py",
+      "startedAt": "2026-10-18T11:25:37.735491+00:00",
+      "finishedAt": "2026-10-18T11:25:38.012155+00:00",
+      "exitCode": 0,
+      "output": "PASS: content-only fixture, serialized Bridge/Gate, existing UI exact path, hierarchy/fileIDs, font coverage, real sizing and public-state wiring. Runtime/Unity import NOT tested.\n"
+    },
+    {
+      "file": "Assets/GuidedJourney/Tests/check_scene.py",
+      "command": "python -X utf8 -B Assets/GuidedJourney/Tests/check_scene.py",
+      "startedAt": "2026-10-18T11:25:38.012155+00:00",
+      "finishedAt": "2026-10-18T11:25:39.138997+00:00",
+      "exitCode": 0,
+      "output": "{\n  \"result\": \"PASS\",\n  \"sceneDocuments\": 6985,\n  \"newSceneDocuments\": 5,\n  \"unchangedOriginalGeometryAndRig\": true,\n  \"validNewSceneReferences\": true,\n  \"contactTargets\": 26,\n  \"originalABAndC1RuntimeSourcesUnchanged\": true,\n  \"onlyPrefabChange\": \"dryRunInEditor1->0\",\n  \"protectedConfigurationUnchanged\": true,\n  \"unityImport\": \"Not Run\"\n}\n"
+    }
+  ],
+  "unityStarted": false
+}

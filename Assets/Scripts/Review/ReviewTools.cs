@@ -45,6 +45,11 @@ namespace QuestGuidance.Review
         public UnityEvent onModeChanged = new UnityEvent();
         public event Action<ReviewRecord> RecordCreated;
         public event Action<ReviewRecord> MarkerSelected;
+        /// <summary>Raised only after a new feedback submission is successfully written to the current session file.</summary>
+        public event Action<ReviewRecord> FeedbackSaved;
+        public long SuccessfulSaveRevision { get; private set; }
+        public long FeedbackSaveRevision { get; private set; }
+        public string LastSavedFeedbackMarkerId { get; private set; }
         public UnityEvent onStorageChanged = new UnityEvent();
         public ReviewMode Mode => mode;
         public bool HasPendingPoint => pending;
@@ -66,6 +71,8 @@ namespace QuestGuidance.Review
         private LineRenderer preview;
         private TextMesh previewLabel;
         private bool storageBlocked;
+        // Runtime-only acknowledgement: restored records and measurement autosaves are not new feedback submissions.
+        private string pendingFeedbackSaveId;
 
         private void Start()
         {
@@ -86,12 +93,23 @@ namespace QuestGuidance.Review
             {
                 session.scenePath = gameObject.scene.path;
                 ReviewStorage.Save(SavePath, session);
-                LastError = null;
-                StorageStatus = "Saved locally " + DateTime.Now.ToString("HH:mm:ss");
-                onStorageChanged.Invoke();
-                return true;
             }
             catch (Exception error) { return StorageFailure(error.Message); }
+
+            SuccessfulSaveRevision++;
+            LastError = null;
+            StorageStatus = "Saved locally " + DateTime.Now.ToString("HH:mm:ss");
+            var savedFeedback = FindRecord(pendingFeedbackSaveId);
+            pendingFeedbackSaveId = null;
+            if (savedFeedback != null && savedFeedback.kind == "marker" && savedFeedback.state == FeedbackState.Submitted)
+            {
+                FeedbackSaveRevision++;
+                LastSavedFeedbackMarkerId = savedFeedback.id;
+            }
+            onStorageChanged.Invoke();
+            if (savedFeedback != null && savedFeedback.kind == "marker" && savedFeedback.state == FeedbackState.Submitted)
+                FeedbackSaved?.Invoke(savedFeedback);
+            return true;
         }
 
         public bool RestoreSession()
@@ -106,6 +124,7 @@ namespace QuestGuidance.Review
                 foreach (var visual in visuals) RemoveVisual(visual);
                 visuals.Clear();
                 session = restored;
+                pendingFeedbackSaveId = null;
                 recordView = null;
                 SelectedId = null;
                 foreach (var record in session.records) visuals.Add(CreateVisual(record, record.number));
@@ -168,6 +187,7 @@ namespace QuestGuidance.Review
             RemoveVisual(visuals[index]);
             visuals.RemoveAt(index);
             session.records.RemoveAt(index);
+            if (pendingFeedbackSaveId == id) pendingFeedbackSaveId = null;
             foreach (var record in session.records)
                 if (record.measurementId == id) record.measurementId = "";
             if (SelectedId == id) SelectedId = null;
@@ -294,9 +314,13 @@ namespace QuestGuidance.Review
             int index = session.records.IndexOf(record);
             RemoveVisual(visuals[index]);
             visuals[index] = CreateVisual(record, record.number);
-            SelectedId = null;
-            Changed();
-            return true;
+            pendingFeedbackSaveId = record.id;
+            // "Save feedback" must report the actual disk result, even when autosave is disabled.
+            // Keep the submitted data and selection on failure so the user can retry without re-entering it.
+            bool saved = SaveSession();
+            if (saved) SelectedId = null;
+            onRecordsChanged.Invoke();
+            return saved;
         }
 
         public void UndoLast()
@@ -312,6 +336,7 @@ namespace QuestGuidance.Review
             foreach (var visual in visuals) RemoveVisual(visual);
             visuals.Clear();
             session.records.Clear();
+            pendingFeedbackSaveId = null;
             SelectedId = null;
             Changed();
         }
