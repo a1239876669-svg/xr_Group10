@@ -1,0 +1,22 @@
+{
+  "reportPages": 4,
+  "paper": "A4",
+  "marginsCm": [
+    2.499,
+    2.499,
+    2.499,
+    2.499
+  ],
+  "fonts": [
+    "BCDEEE+TimesNewRomanPSMT",
+    "BCDFEE+TimesNewRomanPSMT",
+    "BCDGEE+TimesNewRomanPS-BoldMT"
+  ],
+  "minimumRenderedFontPt": 12.0,
+  "renderer": "Microsoft Word native PDF export; packaged LibreOffice renderer unavailable on Windows; final pages rendered with bundled Poppler and visually inspected",
+  "pdfSha256": "54a8cbb1ca57b6f44eb626cfe2a8aa0de9d56b8275dd05d5e7e256204a7e0936",
+  "docxSha256": "b257ef196548aab3a40e04ffc07011b826097685d7d453d81990bd9b4d7c8891",
+  "nominalMarginsCm": 2.5,
+  "metricMarginNote": "Word serializes the metric value rounded to integer twips; nominal 2.5 cm is displayed at two decimal places.",
+  "auditClarification": "NUnit case duration 1.453418 seconds; Unity import/compilation excluded from the case time window."
+}
