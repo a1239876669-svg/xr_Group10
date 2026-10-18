@@ -1,6 +1,6 @@
 """Read-only contract/glyph checks for the dependent UI refinement; no Unity startup."""
 from pathlib import Path
-import subprocess,re,hashlib,json,runpy
+import subprocess,re,hashlib,json,runpy,argparse
 R=Path(__file__).resolve().parents[2]
 BASE="07ba53a976ff60237ed3a28726f065f829781e54"
 def git(*args):
@@ -8,7 +8,14 @@ def git(*args):
     return p.stdout.decode("utf-8-sig").replace("\r\n","\n")
 def read(p):return (R/p).read_text(encoding="utf-8-sig")
 protected=["Packages","ProjectSettings","Assets/Scenes","Assets/ShoppingBag/Prefabs","Assets/ShoppingBag/Scripts","Assets/GuidedJourney/Core","Assets/Scripts/ApartmentVRLocomotion.cs","Assets/Scripts/Review/ReviewStorage.cs","Assets/Apartment/Fonts"]
-assert not git("diff",BASE,"--name-only","--",*protected).strip(),"Unexpected protected difference"
+assert not git("diff",BASE,"HEAD","--name-only","--",*protected).strip(),"Unexpected committed protected difference"
+parser=argparse.ArgumentParser();parser.add_argument("--local-baseline",type=Path);args=parser.parse_args()
+local=git("diff","HEAD","--name-only","--",*protected).strip().splitlines()
+if local:
+    assert args.local_baseline,"Local protected changes require the private pre-test SHA manifest"
+    known={x["path"]:x["sha256"] for x in json.loads(args.local_baseline.read_text(encoding="utf-8-sig"))["files"]}
+    for path in local:
+        assert path in known and hashlib.sha256((R/path).read_bytes()).hexdigest()==known[path],("Unreviewed local change",path)
 xr=R/"Assets/XR/Settings/OpenXR Package Settings.asset"
 assert hashlib.sha256(xr.read_bytes()).hexdigest() in {"817943a6381d46b00db8cd8bf00155466e2d4ac3c4ab25ff8ed94f23ae09b2f1","1779ef7d5b765aab71b533295b765f3654c36c7e4665d8af0a9a916aa50b78ff"},"Unreviewed XR settings"
 assert not git("diff",BASE,"--name-only","--",str(xr.relative_to(R))+".meta").strip()
@@ -43,4 +50,4 @@ for folder in paths:
 g=runpy.run_path(str(R/"Assets/ShoppingBag/Tests/integration_checks.py"))
 characters={ord(c) for p in (R/"Assets/Scripts/Localization").glob("*.cs") for c in p.read_text(encoding="utf-8") if ord(c)>=32 and ord(c)!=127}
 missing=sorted(c for c in characters if not g["available"](c));assert not missing,missing
-print(json.dumps({"result":"PASS","base":BASE,"scenePrefabRigLocomotionCoreUnchanged":True,"reviewVersion2FieldsUnchanged":True,"sourceGlyphCharacters":len(characters),"missingGlyphs":0,"formalRecoveryPointAssigned":True,"localXRRepair":"Allowed only as separately approved unstaged local test configuration; never part of UI commit","hardware":"Not Run"},indent=2))
+print(json.dumps({"result":"PASS","base":BASE,"scenePrefabRigLocomotionCoreUnchanged":True,"reviewVersion2FieldsUnchanged":True,"sourceGlyphCharacters":len(characters),"missingGlyphs":0,"formalRecoveryPointAssigned":True,"openXR":"Approved asset SHA only; inherited through PR11 integration merge","hardware":"Not Run"},indent=2))

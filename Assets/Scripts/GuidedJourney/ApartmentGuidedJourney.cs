@@ -47,7 +47,10 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     public static string AllText => string.Join("", Titles) + ModelHelp + SafetyHelp + GuideFooter +
         "Review guideSkip this taskSkip all / exploreShow task cardHide task cardBack to controlsSkip basic practice" +
         "Welcome! You are reviewing this apartment to identify possible problems with everyday movement and furniture use.";
-    ApartmentVRPanel card, targetTag;
+    ApartmentVRPanel card, targetTag, toolHint;
+    readonly GuidancePanelPlacement toolPlacement = new GuidancePanelPlacement { VerticalOffset = -.26f };
+    TextMeshProUGUI toolTitle, toolTask, toolHelp;
+    bool toolWasVisible;
     readonly GuidancePanelPlacement cardPlacement = new GuidancePanelPlacement();
     bool cardWasVisible, recoveryHelp;
     TextMeshProUGUI cardTitle, cardTask;
@@ -68,7 +71,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         previousStage = Journey.CurrentStage;
     }
     void OnEnable() { ApartmentLanguage.Changed += LanguageChanged; Subscribe(); }
-    void LanguageChanged() { lastRenderedText = null; if(card!=null) { card.SetLabelText(cardTitle,StageTitle); card.SetLabelText(cardTask,CurrentInstruction); } }
+    void LanguageChanged() { lastRenderedText = null; if(card!=null) { card.SetLabelText(cardTitle,StageTitle); card.SetLabelText(cardTask,CurrentInstruction); } RefreshToolHintText(); }
     void Start()
     {
         if (!IsConfigured) { Debug.LogError("Guided journey: missing explicit scene references; existing apartment controls remain available.", this); enabled = false; return; }
@@ -87,7 +90,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     }
     void OnDisable()
     {
-        ApartmentLanguage.Changed -= LanguageChanged; cardPlacement.Reset(); cardWasVisible=false;
+        ApartmentLanguage.Changed -= LanguageChanged; cardPlacement.Reset(); cardWasVisible=false; toolPlacement.Reset(); toolWasVisible=false; toolHint?.SetVisible(false);
         if (subscribed)
         {
             if (locomotion != null) { locomotion.Teleported -= Relocated; locomotion.Walked -= Walked; }
@@ -99,7 +102,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     }
     void OnDestroy()
     {
-        card?.Dispose(); card = null; targetTag?.Dispose(); targetTag = null;
+        card?.Dispose(); card = null; targetTag?.Dispose(); targetTag = null; toolHint?.Dispose(); toolHint = null;
         if (dropVisual != null) Destroy(dropVisual);
         if (dropMaterial != null) Destroy(dropMaterial);
     }
@@ -110,7 +113,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         discontinuous = true; aimedTeleport = false; walkedThisFrame = 0; settled = 0;
         var unavailable = lastObservation; unavailable.Focused = unavailable.TrackingValid = false;
         Journey?.Tick(unavailable);
-        card?.SetVisible(false); targetTag?.SetVisible(false);
+        card?.SetVisible(false); targetTag?.SetVisible(false); toolHint?.SetVisible(false); toolWasVisible=false;
         if (dropVisual != null) dropVisual.SetActive(false);
     }
     bool Ready => !paused && Application.isFocused && IsConfigured && interactor.RuntimeReady;
@@ -175,7 +178,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (!IsConfigured) { card?.SetVisible(false); return; }
+        if (!IsConfigured) { card?.SetVisible(false); toolHint?.SetVisible(false); return; }
         Subscribe();
         lastObservation = Observe();
         if (tutorial.Session.Skipped && !skippedFromWelcome) { Journey.SkipAll(lastObservation); skippedFromWelcome = true; showTaskCard = false; }
@@ -188,6 +191,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         }
         EnsureDropVisual();
         UpdateCabinetTag();
+        UpdateToolHint(Ready && !menu.HasOpenPanel && !tutorial.ModalVisible && !locomotion.IsTeleportAiming);
         bool visible = Ready && showTaskCard && !menu.HasOpenPanel && !tutorial.ModalVisible && !locomotion.IsTeleportAiming && Journey.CurrentStage != JourneyStage.WelcomeMovement && !interactor.HasWorldHover && review.Mode == ReviewMode.None;
         card?.SetVisible(visible);
         if (!visible || card == null) { cardWasVisible = false; return; }
@@ -195,6 +199,32 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         if (task != lastRenderedText) { card.SetLabelText(cardTitle,StageTitle); card.SetLabelText(cardTask,task); lastRenderedText = task; }
         cardPlacement.Place(locomotion.rig.centerEyeAnchor,card.Root,locomotion.transform.forward,Time.unscaledTime,!cardWasVisible);
         cardWasVisible=true;
+    }
+    // One small view owned by this guide; no new tutorial state or input owner.
+    void UpdateToolHint(bool ready)
+    {
+        bool visible = ready && review != null && review.Mode != ReviewMode.None;
+        if (visible && toolHint == null && menu != null && menu.font != null)
+        {
+            toolHint = new ApartmentVRPanel(transform, "Current review tool (no collider)", menu.font, menu.panelShader, menu.textOverlayShader, 700, 172);
+            toolTitle = toolHint.Label("Tool", "", 18, 6, 664, 32, 25, true);
+            toolTask = toolHint.Label("Current tool task", "", 18, 42, 664, 74, 25);
+            toolHelp = toolHint.Label("Tool recovery", "", 18, 122, 664, 40, 19);
+        }
+        toolHint?.SetVisible(visible);
+        if (!visible || toolHint == null) { toolWasVisible = false; return; }
+        RefreshToolHintText();
+        if (locomotion != null && locomotion.rig != null)
+            toolPlacement.Place(locomotion.rig.centerEyeAnchor, toolHint.Root, locomotion.transform.forward, Time.unscaledTime, !toolWasVisible);
+        toolWasVisible = true;
+    }
+    void RefreshToolHintText()
+    {
+        if (toolHint == null || review == null) return;
+        bool measure = review.Mode == ReviewMode.Measure;
+        toolHint.SetLabelText(toolTitle, ApartmentLanguage.Text(measure ? "tool.measure.title" : "tool.marker.title"));
+        toolHint.SetLabelText(toolTask, ApartmentLanguage.Text(measure ? "tool.measure.task" : "tool.marker.task") + "\n" + review.CurrentToolReadout);
+        toolHint.SetLabelText(toolHelp, ApartmentLanguage.Text(measure ? "tool.measure.help" : "tool.marker.help"));
     }
     public string CurrentInstruction => ApartmentLanguage.Display(CurrentInstructionSource);
 

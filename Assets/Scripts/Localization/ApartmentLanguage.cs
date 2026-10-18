@@ -9,8 +9,8 @@ public enum ApartmentDisplayLanguage { English = 0, SimplifiedChinese = 1 }
 // Display-only catalog. No scene manager, record mutation, schema change or input ownership.
 public static partial class ApartmentLanguage
 {
+    // Legacy key is intentionally neither read nor changed. Language belongs to this runtime only.
     public const string PreferenceKey = "COMP5424.Group10.DisplayLanguage.v1";
-    static string preferenceKey = PreferenceKey;
     sealed class Entry { public string English, Chinese; }
     static readonly Dictionary<string, Entry> entries = new Dictionary<string, Entry>();
     static readonly Dictionary<string, string> aliases = new Dictionary<string, string>(StringComparer.Ordinal);
@@ -21,7 +21,7 @@ public static partial class ApartmentLanguage
     public static ApartmentDisplayLanguage Current => current;
     public static bool IsChinese => current == ApartmentDisplayLanguage.SimplifiedChinese;
     public static string FullTextCoverage => string.Concat(entries.Values.Select(e => e.English + e.Chinese));
-    static ApartmentLanguage() { RegisterCatalog(); RegisterJourney(); ReloadPreference(); }
+    static ApartmentLanguage() { RegisterCatalog(); RegisterJourney(); current = ApartmentDisplayLanguage.English; }
     static partial void RegisterCatalog();
     static partial void RegisterJourney();
     public static void Register(string key, string english, string chinese, string legacy = null)
@@ -53,20 +53,12 @@ public static partial class ApartmentLanguage
     {
         if (!Enum.IsDefined(typeof(ApartmentDisplayLanguage), language)) throw new ArgumentOutOfRangeException(nameof(language));
         bool changed = current != language; current = language;
-        PlayerPrefs.SetInt(preferenceKey, (int)language); PlayerPrefs.Save(); cache.Clear();
+        cache.Clear();
         if (changed) Changed?.Invoke();
     }
-    public static void ReloadPreference()
-    {
-        int value = PlayerPrefs.GetInt(preferenceKey, 0);
-        current = value == 1 ? ApartmentDisplayLanguage.SimplifiedChinese : ApartmentDisplayLanguage.English;
-        cache.Clear();
-    }
+    // Runs on every Player startup and every Play, including when Domain Reload is disabled.
+    // Preserve active listeners: disabling Scene Reload may leave the existing panels alive.
+    // SetLanguage refreshes those panels without resetting their journey or review state.
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-    static void BeginRun() { Changed = null; preferenceKey = PreferenceKey; ReloadPreference(); }
-    internal static void UsePreferenceKeyForTests(string key)
-    {
-        if (key != PreferenceKey && (key == null || !key.StartsWith("Group10.Tests.", StringComparison.Ordinal))) throw new ArgumentException("Isolated test key required");
-        preferenceKey = key; ReloadPreference();
-    }
+    static void BeginRun() { SetLanguage(ApartmentDisplayLanguage.English); }
 }

@@ -15,12 +15,53 @@ namespace Group10.GuidedJourney.Tests
         [SetUp] public void Setup()
         {
             language=Type.GetType("ApartmentLanguage, Assembly-CSharp",true);choice=Type.GetType("ApartmentDisplayLanguage, Assembly-CSharp",true);
-            key="Group10.Tests.Language."+Guid.NewGuid().ToString("N");Call("UsePreferenceKeyForTests",key);
+            key="Group10.Tests.Language."+Guid.NewGuid().ToString("N");Call("BeginRun");
         }
-        [TearDown] public void Teardown(){PlayerPrefs.DeleteKey(key);Call("UsePreferenceKeyForTests",language.GetField("PreferenceKey").GetValue(null));}
-        [Test] public void MissingOrInvalidPreferenceDefaultsToEnglish(){Assert.AreEqual("Settings",Display("设置"));PlayerPrefs.SetInt(key,99);Call("ReloadPreference");Assert.AreEqual("Settings",Display("设置"));}
+        [TearDown] public void Teardown(){PlayerPrefs.DeleteKey(key);Call("BeginRun");}
+        [TestCase(1)] [TestCase(99)]
+        public void NewSessionIgnoresAndDoesNotDeleteStoredPreferences(int legacyValue)
+        {
+            // Never write the participant's real legacy key or any unrelated preference.
+            PlayerPrefs.SetInt(key,legacyValue);Set(1);Call("BeginRun");
+            Assert.AreEqual("Settings",Display("设置"));
+            Assert.AreEqual(legacyValue,PlayerPrefs.GetInt(key),"A new session must not clear saved settings");
+        }
         [Test] public void ChineseAndEnglishToggleImmediately(){Set(1);Assert.AreEqual("设置",Display("设置"));Assert.AreEqual("保存反馈",Display("Save feedback"));Set(0);Assert.AreEqual("Save feedback",Display("保存反馈"));}
-        [Test] public void PreferenceReloadPreservesChoice(){Set(1);Call("ReloadPreference");Assert.IsTrue((bool)language.GetProperty("IsChinese").GetValue(null));}
+        [Test] public void EveryNewSessionStartsInEnglishAfterAnEarlierChineseSession()
+        {
+            for(int run=0;run<3;run++)
+            {
+                Set(1);Assert.IsTrue((bool)language.GetProperty("IsChinese").GetValue(null));
+                Call("BeginRun");Assert.AreEqual("Settings",Display("设置"));
+            }
+        }
+        [Test] public void SessionResetIsRegisteredForDisabledDomainReload()
+        {
+            var method=language.GetMethod("BeginRun",BindingFlags.Static|BindingFlags.NonPublic);
+            var attribute=method.GetCustomAttribute<RuntimeInitializeOnLoadMethodAttribute>();
+            Assert.IsNotNull(attribute);
+            Assert.AreEqual(RuntimeInitializeLoadType.SubsystemRegistration,attribute.loadType);
+        }
+        [Test] public void SessionResetRefreshesAndPreservesExistingLiveSubscribers()
+        {
+            int notifications=0;Action listener=()=>notifications++;
+            var changed=language.GetEvent("Changed");changed.AddEventHandler(null,listener);
+            try
+            {
+                Set(1);Assert.AreEqual(1,notifications);
+                Call("BeginRun");Assert.AreEqual(2,notifications);Assert.AreEqual("Settings",Display("设置"));
+                Set(1);Assert.AreEqual(3,notifications,"A no-domain-reload reset must retain live panel subscriptions");
+                Set(1);Assert.AreEqual(3,notifications,"Reapplying the same language must not rebuild UI unnecessarily");
+            }
+            finally {changed.RemoveEventHandler(null,listener);}
+        }
+        [Test] public void InvalidLanguageIsRejectedWithoutChangingCurrentSession()
+        {
+            Set(1);
+            var error=Assert.Throws<TargetInvocationException>(()=>Set(99));
+            Assert.IsInstanceOf<ArgumentOutOfRangeException>(error.InnerException);
+            Assert.IsTrue((bool)language.GetProperty("IsChinese").GetValue(null));
+        }
         [Test] public void SourceMarkupAndNumbersArePreserved(){Set(0);Assert.AreEqual("●  Smooth movement\n<size=75%>Walk with the left stick</size>",Display("●  平滑移动\n<size=75%>使用左摇杆行走</size>"));}
         [Test] public void RecoveryCopyMatchesRealButtonsInBothLanguages()
         {
@@ -53,6 +94,13 @@ namespace Group10.GuidedJourney.Tests
                 var labels=go.GetComponentsInChildren(textType,true);bool found=false;
                 foreach(var label in labels)if((string)textType.GetProperty("text").GetValue(label)=="语言")found=true;
                 Assert.IsTrue(found,"The currently rendered Language label must refresh without reloading the scene");
+                // Closing and reopening the menu is not a new runtime session.
+                menuType.GetMethod("Toggle").Invoke(menu,null);menuType.GetMethod("Toggle").Invoke(menu,null);
+                Assert.IsTrue((bool)language.GetProperty("IsChinese").GetValue(null));
+                bool reopenedChinese=false;
+                foreach(var label in go.GetComponentsInChildren(textType,true))
+                    if((string)textType.GetProperty("text").GetValue(label)=="语言")reopenedChinese=true;
+                Assert.IsTrue(reopenedChinese,"Menu reopening must retain this session's language choice");
             }
             finally {UnityEngine.Object.DestroyImmediate(go);}
         }

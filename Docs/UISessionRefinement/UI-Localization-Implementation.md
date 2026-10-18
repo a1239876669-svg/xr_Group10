@@ -9,7 +9,7 @@ The existing menu and review pages authored Chinese strings, while the Guided Jo
 
 `Assets/Scripts/Localization/ApartmentLanguage.cs` and its Catalog/Journey partial files provide stable text keys and English/Chinese copy. The existing `ApartmentVRPanel` translates authored display labels at its rendering boundary; dynamic labels keep their authored source so language changes refresh existing text. Tutorial labels, task cards, door prompts, feedback pages and bag sizes use the same service. There is no second menu, scene language manager, package or input mapping.
 
-B > Settings > Language offers **English** and **简体中文**. First use or an invalid preference defaults to English. The choice is saved under `COMP5424.Group10.DisplayLanguage.v1` in PlayerPrefs. Switching fires a display refresh without restarting the scene, resetting Journey stages or rewriting feedback. Tests use separate temporary preference keys and do not replace the participant's choice.
+B > Settings > Language offers **English** and **简体中文**. Every new Play/Player run starts in English through `SubsystemRegistration`; language is kept only within the current runtime. The legacy PlayerPrefs key is neither read nor changed. Switching refreshes open panels immediately; closing the menu or temporarily losing focus preserves the current language. The reset retains live listeners when Domain/Scene Reload is disabled and does not reset Journey or feedback data. Actual repeated Play and Player startup remain manual checks.
 
 ## Data boundary
 
@@ -19,6 +19,6 @@ The implementation uses existing TMP/Noto Sans SC assets and licence notices. Re
 
 ## Actual verification and limits
 
-Actual Unity 6000.6.4f1 DX11 EditMode: **160/160 Passed**, including 9 localization tests, 6 panel tests and 10 session/recovery tests. The rendered Settings page test verifies default English and live Chinese labels; other pages require the bilingual hardware checklist. New-session data tests use private system-temp files only.
+Historical Unity 6000.6.4f1 DX11 EditMode: **160/160 Passed**, including the earlier 9 localization tests, 6 panel tests and 10 session/recovery tests. These are the original `53434fb` results. The subsequent pre-integration UI run passed **172/172**, including 13 localization and 13 session/readout tests; the current merged-source rerun is recorded separately in `Verification/PR12-Integration-Results.json` when executed. The rendered Settings page test verifies default English and live Chinese labels; other pages require the bilingual hardware checklist. New-session data tests use private system-temp files only.
 
 The Editor still logs a pre-existing TMP `m_AtlasTextures` exception on shutdown. The seven known font/performance/settings side effects were backed up and restored byte-for-byte. No C# compilation errors occurred. Current-branch Quest 3, PlayMode and Windows Player validation are **Not Run**. Both-language overflow, runtime atlas expansion and actual readability remain manual acceptance items.

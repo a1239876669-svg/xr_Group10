@@ -10,7 +10,7 @@ The Guided Journey task card explicitly placed its centre about **0.57 m left an
 
 The panel stays still for small head movements. It recentres only after over 0.45 m translation, over 30 degrees rotation, unsafe distance or leaving the view, with a 0.6 s minimum interval. Pitch is bounded to 35 degrees and vertical gaze has a finite fallback. The Canvas alone is detached from inherited nonuniform scale/rotation; its owner, camera, tracking, height, controller and locomotion are not moved. Existing owner teardown disposes the Canvas.
 
-Task cards hide while a menu, modal tutorial, teleport aim, world-interactable hover or active review tool needs the view. No new popup or compulsory G stage was added. The existing task-card preference and Help remain available.
+Full task cards hide while a menu, modal tutorial, teleport aim, world-interactable hover or active review tool needs the view. Active measurement/marker tools retain a compact, lower-view hint with the current operation and real tool readout; stopping the tool returns the full task card. The compact hint also respects menu, modal, focus and teleport restrictions. No new popup or compulsory G stage was added. The existing task-card preference and Help remain available.
 
 ## Verification
 

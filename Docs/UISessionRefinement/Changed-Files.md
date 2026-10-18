@@ -37,3 +37,5 @@ Only the following UI/source/tests/documentation changes are intended for the co
 - `README.md`
 
 This inventory document is also included. See the implementation notes for per-module behavior and manual acceptance.
+
+Final authorized additions: `ReviewBillboard.cs`, `ReviewBillboardTests.cs` and `.meta`, `ToolHintDisplayTests.cs` and `.meta`; existing language/session tests, tool readouts and compact-hint adapters are updated. The approved OpenXR asset is inherited through the normal integration merge. Existing local font/ProBuilder/Code Coverage modifications are excluded.

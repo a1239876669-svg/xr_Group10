@@ -60,6 +60,36 @@ namespace QuestGuidance.Review
         public IReadOnlyList<ReviewRecord> Records => recordView ?? (recordView = session.records.AsReadOnly());
         /// <summary>Records created or explicitly opened in this runtime session only.</summary>
         public IReadOnlyList<ReviewRecord> ActiveRecords => activeRecordView ?? (activeRecordView = activeRecords.AsReadOnly());
+        /// <summary>Readable presentation of the current tool only; never changes records or anchors.</summary>
+        public string CurrentToolReadout
+        {
+            get
+            {
+                if (mode == ReviewMode.Measure)
+                {
+                    if (pending)
+                        return preview != null && preview.enabled
+                            ? ApartmentLanguage.Format("tool.distance.preview", Vector3.Distance(firstPoint, preview.GetPosition(1)).ToString("F2", System.Globalization.CultureInfo.InvariantCulture))
+                            : ApartmentLanguage.Text("tool.select.end");
+                    for (int i = activeRecords.Count - 1; i >= 0; i--)
+                        if (activeRecords[i].kind == "measurement")
+                            return ApartmentLanguage.Format("tool.distance.last", activeRecords[i].distanceMetres.ToString("F2", System.Globalization.CultureInfo.InvariantCulture));
+                    return ApartmentLanguage.Text("tool.select.start");
+                }
+                if (mode == ReviewMode.Mark)
+                {
+                    var record = IsRecordVisible(SelectedId) ? FindRecord(SelectedId) : null;
+                    if (record == null || record.kind != "marker")
+                        for (int i = activeRecords.Count - 1; i >= 0; i--)
+                            if (activeRecords[i].kind == "marker") { record = activeRecords[i]; break; }
+                    return record != null && record.kind == "marker"
+                        ? ApartmentLanguage.Format("tool.marker.current", record.number, ApartmentLanguage.Display(record.roomId),
+                            record.state == FeedbackState.Draft ? ApartmentLanguage.Text("review.draft") : ApartmentLanguage.Text("review.importance." + (int)record.importance))
+                        : ApartmentLanguage.Text("tool.marker.none");
+                }
+                return "";
+            }
+        }
         public string LastExportPath { get; private set; }
         public string LastError { get; private set; }
         public string StorageStatus { get; private set; } = "Not saved";
@@ -296,6 +326,7 @@ namespace QuestGuidance.Review
             preview.SetPosition(0, firstPoint);
             preview.SetPosition(1, point);
             previewLabel.transform.position = (firstPoint + point) * 0.5f + Vector3.up * 0.08f;
+            previewLabel.GetComponent<ReviewBillboard>().SetAnchor((firstPoint + point) * 0.5f);
             previewLabel.text = ApartmentLanguage.Format("review.preview",Vector3.Distance(firstPoint, point).ToString("F2", System.Globalization.CultureInfo.InvariantCulture));
         }
 
@@ -476,7 +507,7 @@ namespace QuestGuidance.Review
             labelObject.transform.position = labelPosition + Vector3.up * 0.08f;
             var text = AddLabel(labelObject,color);
             text.text = label;
-            labelObject.AddComponent<ReviewBillboard>();
+            labelObject.AddComponent<ReviewBillboard>().SetAnchor(labelPosition);
             return root;
         }
 

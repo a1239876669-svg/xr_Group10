@@ -137,7 +137,7 @@ public sealed class ApartmentReviewController : MonoBehaviour
     {
         panel.Button("Begin measurement", "开始测距", 330, 190, 350, 70, () => menu.StartReview(ReviewMode.Measure), true);
         panel.Button("Stop review", "停止工具", 710, 190, 350, 70, tools.StopTool);
-        panel.Label("Measurement help", tools.HasPendingPoint ? "已选起点，请选择终点" : "右手指向表面，扣动扳机选择两个点\n距离以米显示，记录自动保存", 330, 272, 730, 80, 27);
+        panel.Label("Measurement help", (tools.HasPendingPoint ? "已选起点，请选择终点" : "右手指向表面，扣动扳机选择两个点\n距离以米显示，记录自动保存") + "\n" + tools.CurrentToolReadout, 330, 272, 730, 80, 27);
         panel.Button("Cancel measurement point", "取消起点", 330, 355, 230, 55, () => { tools.CancelPending(); Refresh(); },false,23);
         panel.Button("Undo measurement display", ApartmentLanguage.Text("recovery.undo"), 580, 355, 230, 55, () => { tools.UndoLastMeasurementDisplay();Refresh(); },false,23);
         panel.Button("Hide measurements", ApartmentLanguage.Text("recovery.hideall"), 830, 355, 230, 55, tools.HideMeasurementDisplays,false,23);

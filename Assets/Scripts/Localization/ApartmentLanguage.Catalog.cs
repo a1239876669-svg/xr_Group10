@@ -66,7 +66,7 @@ public static partial class ApartmentLanguage
         Register("previous.page","Previous page","上一页");
         Register("next.page","Next page","下一页");
         Register("review.beginmark","Place marker","放置标记");
-        Register("review.markhelp","Point at a surface and press right Trigger.\nChoose feedback and importance, then Save feedback.\nOnly this session is shown. Saved history is retained.","右手指向表面，扣动扳机放置标记\n选择标记后填写现象描述和日常影响\n标记和留言自动保存");
+        Register("review.markhelp","Point at a surface and press right Trigger.\nChoose feedback and importance, then Save feedback.\nOnly this session is shown. Saved history is retained.","右手指向表面并按食指扳机放置标记。\n选择反馈和重要程度后点击保存反馈。\n本轮显示与历史存档分离，历史数据保留。", "右手指向表面，扣动扳机放置标记\n选择标记后填写现象描述和日常影响\n标记和留言自动保存");
         Register("previous","Previous","上一条");
         Register("next","Next","下一条");
         Register("review.aspect","Feedback aspect","反馈内容");
@@ -129,7 +129,7 @@ public static partial class ApartmentLanguage
         Register("door.invalid","Cabinet configuration is incomplete","柜门配置不完整");
         Register("door.slidinginvalid","Sliding-door configuration is incomplete","推拉门配置不完整");
         Register("cabinet","Kitchen cabinet","厨房柜门");
-        Register("hint.grab","Hold either Grip near the bag handle","按住左手握把可以提起购物袋");
+        Register("hint.grab","Hold either Grip near the bag handle","在提手附近按住任意一只手的侧握键可提起购物袋", "按住左手握把可以提起购物袋");
         Register("hint.size","Press B > My Items to choose a released bag size","按 B 键打开菜单，在「我的物品」里调节袋子大小");
         Register("hint.dismiss","Got it","我知道了");
         Register("hint.close","Press Trigger to close this hint","扣扳机关闭提示");
@@ -172,6 +172,18 @@ public static partial class ApartmentLanguage
         Register("diagnostic.25","Head tracking height is invalid","头显高度无效，请恢复正常追踪");
         Register("diagnostic.26","Safe position has no walkable floor","安全点下方没有可站立的地板");
         Register("diagnostic.27","Safe position is occupied; retry when clear","安全点被物体占用，请稍后重试");
+        Register("tool.measure.title", "Measurement", "测距");
+        Register("tool.marker.title", "Markers", "标记注释");
+        Register("tool.measure.task", "Select two points to measure a distance.", "选择两个点测量距离。");
+        Register("tool.marker.task", "Place a marker and submit your feedback.", "放置标记并提交反馈。");
+        Register("tool.select.start", "Select the first surface point.", "请选择第一个表面点。");
+        Register("tool.select.end", "Start selected; point at the endpoint.", "已选起点，请指向终点。");
+        Register("tool.distance.preview", "Preview: {0} m", "预览：{0} 米");
+        Register("tool.distance.last", "Latest measurement: {0} m", "最近测距：{0} 米");
+        Register("tool.marker.current", "Marker #{0} | {1} | {2}", "标记 #{0} | {1} | {2}");
+        Register("tool.marker.none", "Point at a surface and press right Trigger.", "指向表面并按右手食指扳机。");
+        Register("tool.measure.help", "B > Measurement: Cancel start point / Undo last display. Help in Controls.", "B > 测距：取消起点／撤销最近测距显示。帮助见按键说明。");
+        Register("tool.marker.help", "B > Markers: Cancel draft / Hide marker. Save feedback to submit.", "B > 标记注释：取消草稿／隐藏标记。点击保存反馈完成提交。");
         Register("room.Entrance","Entrance","入口");
         Register("room.LivingRoom","LivingRoom","客厅");
         Register("room.Kitchen","Kitchen","厨房");

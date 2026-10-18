@@ -134,6 +134,25 @@ namespace Group10.GuidedJourney.Tests
             Seed();Call(tools,"RestoreSession");Call(tools,"ExportSession");string exported=(string)Value(tools,"LastExportPath");Assert.IsTrue(exported.StartsWith(directory));
             string json=File.ReadAllText(exported);StringAssert.Contains("old-feedback",json);StringAssert.Contains("old-measure",json);StringAssert.DoesNotContain("old-draft",json);
         }
+        [Test] public void PreviewReadoutUsesRealPointsWithoutCreatingOrChangingARecord()
+        {
+            Seed();Call(tools,"RestoreSession");string before=(string)Call(tools,"ToJson");Call(tools,"BeginMeasurement");Call(tools,"ConfirmPoint",Vector3.zero,null);
+            Call(tools,"PreviewPoint",new Vector3(0,0,2.5f),true);StringAssert.Contains("2.50",(string)Value(tools,"CurrentToolReadout"));
+            Assert.AreEqual(before,Call(tools,"ToJson"));Call(tools,"PreviewPoint",Vector3.zero,false);StringAssert.DoesNotContain("2.50",(string)Value(tools,"CurrentToolReadout"));
+            Call(tools,"CancelPending");Assert.AreEqual(before,Call(tools,"ToJson"));
+        }
+        [Test] public void ReadoutFollowsVisibleMeasurementUndoAndHideWithoutErasingData()
+        {
+            Seed();Call(tools,"RestoreSession");AddMeasurement(tools);Call(tools,"BeginMeasurement");Call(tools,"ConfirmPoint",Vector3.zero,null);Call(tools,"ConfirmPoint",Vector3.right*3,null);
+            StringAssert.Contains("3.00",(string)Value(tools,"CurrentToolReadout"));string before=(string)Call(tools,"ToJson");Call(tools,"UndoLastMeasurementDisplay");
+            StringAssert.Contains("1.00",(string)Value(tools,"CurrentToolReadout"));Call(tools,"HideMeasurementDisplays");StringAssert.DoesNotContain("1.00",(string)Value(tools,"CurrentToolReadout"));Assert.AreEqual(before,Call(tools,"ToJson"));
+        }
+        [Test] public void MarkerReadoutUsesCurrentVisibleSelectionAndNeverHistoricalHiddenRecord()
+        {
+            Seed();Call(tools,"RestoreSession");Call(tools,"BeginMarking");StringAssert.DoesNotContain("#2",(string)Value(tools,"CurrentToolReadout"));
+            string id=AddMarker(tools);StringAssert.Contains("#4",(string)Value(tools,"CurrentToolReadout"));string before=(string)Call(tools,"ToJson");
+            Call(tools,"HideRecord",id);StringAssert.DoesNotContain("#4",(string)Value(tools,"CurrentToolReadout"));Assert.AreEqual(before,Call(tools,"ToJson"));
+        }
         [Test] public void TestStorageRejectsNonTemporaryPersistentPath()
         {
             var error=Assert.Throws<TargetInvocationException>(()=>Call(tools,"ConfigureStorageForTests",Path.Combine(Application.dataPath,"forbidden.json")));
