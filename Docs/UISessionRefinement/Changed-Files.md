@@ -39,3 +39,5 @@ Only the following UI/source/tests/documentation changes are intended for the co
 This inventory document is also included. See the implementation notes for per-module behavior and manual acceptance.
 
 Final authorized additions: `ReviewBillboard.cs`, `ReviewBillboardTests.cs` and `.meta`, `ToolHintDisplayTests.cs` and `.meta`; existing language/session tests, tool readouts and compact-hint adapters are updated. The approved OpenXR asset is inherited through the normal integration merge. Existing local font/ProBuilder/Code Coverage modifications are excluded.
+
+Current post-merge evidence: `PR12-Integration-Verification.md` and `Verification/PR12-Integration-Results.json`. The earlier `Actual-EditMode-Results.json` remains the original 160-case historical record.
