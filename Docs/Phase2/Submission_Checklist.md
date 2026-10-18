@@ -7,7 +7,7 @@ Course deadline supplied by the team: **18 October 2026, 23:59 (Asia/Shanghai)**
 
 - Integrated runtime source: [`d0f512eb453a19d47352dccf2dc4979bd094a90d`](https://github.com/a1239876669-svg/xr_Group10/commit/d0f512eb453a19d47352dccf2dc4979bd094a90d), branch `merge-apartmentguidence`.
 - PR #10/#11/#12 are actually merged through ordinary Merge Commits; their earlier implementation and author history is retained.
-- Documentation is prepared separately on `docs/phase2-final-deliverables`; the team must review its PR. A docs commit is not automatically the runtime/build source identity.
+- Documentation is maintained separately on `docs/phase2-final-deliverables` through [PR #13](https://github.com/a1239876669-svg/xr_Group10/pull/13); consult its live merge status. A documentation commit or merge is not automatically the runtime/build source identity.
 - Final clean-copy **Unity EditMode: 172/172 Passed**, as reported by the actual new-workspace run. Record the exact XML/log/hash and source in [Verification Summary](Verification_Summary.md). Do not substitute the older 160-case result.
 - Latest integrated-module Quest check applies to PR #12 head **`f3b25074535750a1198b5685fe9081723fc8a710`**: **User-reported Pass** for language/new Play English, UI/tutorial, G00–G11, bag, measurement, Marker, session display, save/reopen, safe teleport and second Play. The user supplied no exact execution time/screenshots/raw hardware log. The merge does not make this a Windows Player pass.
 - Actual Windows x86-64 generation **SUCCEEDED** from d0f512e. The ZIP is 129,428,303 bytes and passed CRC/full-extraction/file-hash checks. [Build manifest](Build_Manifest.json) records identity. Player/Quest Link/PQ604A/B/C acceptance remains NOT VERIFIED.
@@ -41,9 +41,9 @@ Course deadline supplied by the team: **18 October 2026, 23:59 (Asia/Shanghai)**
 
 A direct GitHub check during preparation found default branch **`main`**, at **`fc0444ccc6b782527907ed2762a493d036694494`**, which is older than the final integrated source. Opening the repository home page therefore does not guarantee teachers see the final prototype or updated documentation.
 
-- [ ] Team explicitly chooses the hand-in publication route: a pinned exact `merge-apartmentguidence` commit/build link, an approved release, or a separately authorized ordinary integration into main/default-branch change.
+- [ ] Use the explicit [integration-branch source and documentation](https://github.com/a1239876669-svg/xr_Group10/tree/merge-apartmentguidence) while main publication is paused. The built runtime is pinned to d0f512e. Main contains an independent legacy `Assets/Scenes/Apartment.unity` layout change from b636851 that is absent from d0f512e; conditional main-merge authorization does not permit silently introducing this source/build difference. Await the owner's explicit decision; preserve both histories.
 - [ ] Provide the teaching team the exact final source/docs/build locations; verify access/downloads.
-- [ ] Review/approve the documentation PR before merging it. Do not silently merge runtime code into main, change the default branch, rewrite history or enable auto-merge.
+- [ ] Check the actual [PR #13 merge receipt](https://github.com/a1239876669-svg/xr_Group10/pull/13) and final documentation commit. Any authorized publication uses an ordinary Merge Commit; never silently overwrite main work, change the default branch, rewrite history or enable auto-merge.
 - [ ] Confirm actual build/source identity again if the integration branch moves after this snapshot.
 
 ## Individual submission — each member is responsible
@@ -55,4 +55,4 @@ A direct GitHub check during preparation found default branch **`main`**, at **`
 
 ## Unresolved confirmations to hand over
 
-Player acceptance and build upload; classroom-PC compatibility; genuine weekly information; member/account aliases; external-resource permission gaps; final documentation PR review/publication route; each individual essay and the actual Canvas receipts remain human-confirmed hand-over items. Use [Verification Summary](Verification_Summary.md) for evolving technical results rather than editing historical evidence into a false pass.
+Player acceptance and build upload; classroom-PC compatibility; genuine weekly information; member/account aliases; external-resource permission gaps; actual documentation merge receipt/main publication decision; each individual essay and the actual Canvas receipts remain human-confirmed hand-over items. Use [Verification Summary](Verification_Summary.md) for evolving technical results rather than editing historical evidence into a false pass.

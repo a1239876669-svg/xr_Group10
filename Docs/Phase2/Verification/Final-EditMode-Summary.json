@@ -34,5 +34,9 @@
     "UnassignedReferenceException: The variable m_AtlasTextures of TMP_FontAsset has not been assigned."
   ],
   "runnerExitCode": 0,
-  "questAndPlayerInference": "None; separate acceptance required"
+  "questAndPlayerInference": "None; separate acceptance required",
+  "timeFieldMeaning": "XML start/end are NUnit case execution only; Unity import/compile precede them",
+  "caseDurationSeconds": 1.453418,
+  "batchLaunchChinaTime": "2026-10-18T22:35:11.0355916+08:00",
+  "projectInitializationSecondsFromLog": 103.5831534
 }

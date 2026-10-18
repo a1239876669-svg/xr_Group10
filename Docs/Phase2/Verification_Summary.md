@@ -7,7 +7,7 @@ Integrated runtime source: **`d0f512eb453a19d47352dccf2dc4979bd094a90d`** ([exac
 | Evidence | Actual status | Scope and remaining boundary |
 |---|---|---|
 | Clean integrated Unity import/compile | **PASS** | New final worktree, Unity 6000.6.4f1, DX11; 0 C# errors. Warnings/exceptions below remain. |
-| Actual EditMode | **172/172 PASS**, 0 failed/skipped | Clean `d0f512e`, 22:36:58-22:36:59 China time. [Raw XML](Verification/Final-EditMode-Results.xml), [summary/hashes](Verification/Final-EditMode-Summary.json). |
+| Actual EditMode | **172/172 PASS**, 0 failed/skipped | Clean `d0f512e`; NUnit case window 22:36:58-22:36:59 China time (XML duration 1.453418 s), excluding prior Unity import/compile. [Raw XML](Verification/Final-EditMode-Results.xml), [summary/hashes](Verification/Final-EditMode-Summary.json). |
 | Current PR #12 Quest 3 / Quest Link Editor regression | **User-reported Pass** | `f3b2507`: language/new-Play English, UI/tutorial, G00-G11, bag, measurement/Marker, Session display, save/reopen, safe teleport, second Play. [Owner report](Verification/Owner-Reported-Quest-Acceptance.md). No fabricated test clock, screenshot or generated headset log. |
 | OpenXR/static scene integrity | **PASS** | Approved asset SHA and reference counts below. Availability is not proof of runtime stability. |
 | Windows x86-64 generation | **Build Generated** (pipeline Succeeded) | Actual `Build Finished, Result: Success.` and Editor exit 0. Built from `d0f512e`; C# source/settings retained. |
@@ -49,3 +49,5 @@ All 76 LFS worktree objects were checked against their declared SHA-256. Before 
 Run the extracted complete EXE with Quest Link. Record actual headset/PC/runtime conditions and separate outcomes for immersive view and tracking; controllers/menu/movement; G00-G11; S/M/L/Grip/Rearm/contact/haptics; measurement/Marker/save; Exit and restart with retained records/hidden historical visuals; fresh English/live Chinese; safe recovery. Enter **Not Run** where not executed. Preserve logs and real screenshots if supplied. Do not infer these from a live process, build success, or Editor tests.
 
 Owner clarification received 18 October 2026: the completed headset regression was Unity Editor Play, not the independent EXE. Keep the generated EXE/full directory/ZIP unchanged; no rebuild is planned while waiting for the actual Player report.
+
+Timing clarification from original evidence: the batch-launch record is 22:35:11.0355916 +08:00; project initialization is logged as 103.583 seconds. The XML start/end describe NUnit case execution only. They are neither the entire Unity process duration nor a Quest hardware-test clock.
