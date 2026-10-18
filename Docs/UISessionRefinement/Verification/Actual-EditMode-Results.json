@@ -1,0 +1,736 @@
+{
+  "kind": "Actual Unity Test Runner EditMode; DX11; no hardware Play",
+  "unity": "6000.6.4f1",
+  "baseline": "07ba53a976ff60237ed3a28726f065f829781e54",
+  "startedUtc": "2026-10-18 12:45:38Z",
+  "finishedUtc": "2026-10-18 12:45:39Z",
+  "total": 160,
+  "passed": 160,
+  "failed": 0,
+  "rawXmlSha256": "cb028be556794525d4ce9db1de3080854497c712e69d6ac1d9088fc17a888bfc",
+  "rawXmlLocalPath": "Logs/UISessionRefinement-20261018/UnityActual/EditMode-results.xml",
+  "playMode": "Not Run this branch",
+  "quest3": "Not Run this branch",
+  "windowsBuild": "Not Run",
+  "shutdownException": "Existing TMP_FontAsset m_AtlasTextures UnassignedReferenceException on Editor quit; no C# compile error",
+  "tests": [
+    {
+      "name": "Group10.GuidedJourney.Tests.AdapterLifecycleTests.ApplicationFocusCallbackInvalidatesHeldDropProof",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.AdapterLifecycleTests.DisablingObserverInvalidatesHalfCompletedCabinetCycle",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.AimedTeleportDirectToKitchenWithoutLivingDoesNotComplete",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.AllTeleportCarryRouteUsesRealLivingAndKitchenEndpoints",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.AlreadyInsideVisitorIsNotForcedOutside",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.BalconyRequiresOpenDoorRatherThanProximity",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetAlreadyOpenMustCloseThenOpenAgain",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetOpeningClosingPausedOrBlockedNeverPretendToBeClosed",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetRequiresRealOpenThenCloseInKitchen",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetStateOutsideKitchenDoesNotCompletePractice",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetUnknownInitialStateIsNotAnObservedClosedState",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.CarryUsesHeldDistanceAndLivingToKitchenRoute",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.DroppedBagCanBePickedUpWithoutRestartingSelection",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.EarlierCabinetPracticeNeverCompletesKitchenDrop",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.EntranceRequiresRealDoorOrActualInsideRoom",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.EventDuringFocusLossDoesNotAutoCompleteAfterReturn",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.FeedbackRequiresNewSuccessfulSaveRevision",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.FocusRecoveryDoesNotCountAnAutomaticBagReleaseAsDrop",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.FocusRecoveryDoesNotCountAnUnobservedCabinetClose",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.FreeExplorationDoesNotRepeatOrDisableAnything",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.FullRealSequenceCompletesWithoutAnySkip",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidConfigFailsEarlyInsteadOfBreakingProgress",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidCoordinatesAndLongPauseDoNotInflateDistance",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidReportedWalkDistanceIsRejected",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.KitchenArrivalWithoutCarryingThroughLivingDoesNotComplete",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.KitchenDropRequiresRealHoldAndReleaseInCorrectVolume",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingMicroJitterDoesNotCount",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingRealRootMovementCompletesExploration",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingStationaryRootAndHeadRotationDoNotCount",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.MovementOutsideLivingDoesNotCount",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.NearBalconyNaturallyCompletesWithoutDistanceGrinding",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.NearBalconyOutsideLivingDoesNotFakeAnExploration",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.OldMeasurementIsNotReusedAndFreshRevisionCompletes",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.OldSelectionAndDefaultSizeDoNotCompletePickup",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.OneSnapshotNeverCompletesMultipleStages",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.ReportedZeroIgnoresTurningCompensationAndHeadMovement",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.RestartClearsSkippedAndDistanceState",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.ReturnEntranceUsesActualRoomNotARecoveryButton",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.SafetyResetNeverSubstitutesForTheCarryingRoute",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.SelectionAndHeldAreBothRequired",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.SkipIsRecordedAsSkippedRatherThanCompleted",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.StartsAtWelcomeWithoutCompletingAnything",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.TeleportAndResetDoNotInflateDistance",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.TeleportCannotAddEvenReportedWalkingDistance",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.TrackingLossNeverAdvancesRealAction",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.UnfocusedSnapshotDoesNotAdvanceOrCountMovement",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.ValidReportedWalkDistanceCountsRatherThanPoseMotion",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.WalkingWithoutBagDoesNotCountAndPickupCanRecover",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.JourneyStateMachineTests.WelcomeRequiresExplicitBasicsCompletion",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.LocalizationTests.AuthoredEnglishCopyHasChineseCounterpart",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.LocalizationTests.ChineseAndEnglishToggleImmediately",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.LocalizationTests.LoadingUnrecognisedParticipantFeedbackDoesNotReplaceTheirWords",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.LocalizationTests.MissingOrInvalidPreferenceDefaultsToEnglish",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.LocalizationTests.PreferenceReloadPreservesChoice",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.LocalizationTests.RecoveryCopyMatchesRealButtonsInBothLanguages",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.LocalizationTests.SettingsPageDefaultsToEnglishAndRefreshesChineseImmediately",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.LocalizationTests.SourceMarkupAndNumbersArePreserved",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.LocalizationTests.UnknownTextIsNeverInventedOrTranslated",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.PanelPlacementTests.InheritedNonuniformScaleCannotTiltOrStretchCanvas",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.PanelPlacementTests.InitialPanelIsCenteredAndFacesViewer",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.PanelPlacementTests.LargeTurnAndWalkingRecenter",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.PanelPlacementTests.LeftAndRightEdgesHaveEqualDistance",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.PanelPlacementTests.SmallHeadMotionDoesNotMovePanelEveryFrame",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.PanelPlacementTests.VerticalViewProducesFinitePose",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.SessionVisualsTests.CancelCurrentDraftCannotDeleteSavedOrHistoricalFeedback",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.SessionVisualsTests.CancelUnfinishedMeasurementCreatesNoRecord",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.SessionVisualsTests.ExplicitShowIsIdempotentAndUndoDoesNotDeleteSavedMarker",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.SessionVisualsTests.ExportRetainsSubmittedHistoryAndOmitsDrafts",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.SessionVisualsTests.HiddenHistoricalDraftDoesNotBlockNewMarkerOrCaptureRay",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.SessionVisualsTests.HideAllMeasurementDisplaysKeepsCurrentMarkerAndAllData",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.SessionVisualsTests.RestoreKeepsHistoryButCreatesNoVisualsOrCompletionEvents",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.SessionVisualsTests.SaveNewFeedbackPreservesHistoryAndNextRunStartsClean",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.SessionVisualsTests.TestStorageRejectsNonTemporaryPersistentPath",
+      "result": "Passed"
+    },
+    {
+      "name": "Group10.GuidedJourney.Tests.SessionVisualsTests.UndoMeasurementOnlyHidesAndRetainsLinkedHistoryAndDisk",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.DedicatedBodyTriggerMatchesAllUnchangedProfiles",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.FocusLossAndDisableClearContactsAndPulse",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.GateCombinesBlockersWithoutDroppingExistingHold",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticCooldownIsPerHandAndExpiresAtBoundary",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticRequestsOnlyUseOwnerAndCleanUpOnRelease(Left)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticRequestsOnlyUseOwnerAndCleanUpOnRelease(Right)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleCollidersDoNotEndFurnitureWarningUntilLastColliderLeaves",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleFurnitureTargetsAndTargetDisableCleanUpIndependently",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleRenderersReceiveOverlayWithoutDuplicatingGeometryOnReentry",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.OnlyHeldRegisteredFurnitureIsDetectedAndRepeatedScanDoesNotRetrigger",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.OverlayLeavesHoverPropertyBlockAndSharedMaterialsUntouched",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.RedOverlayActuallyRendersOverHoverAndRestoresHoverAfterExit",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Small,0.38f,0)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Medium,0.38f,2)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Large,0.38f,2)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Small,0.52f,0)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Medium,0.52f,0)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Large,0.52f,2)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagFeedbackTests.TwoBagSourcesKeepWarningUntilBothHaveReleased",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.BackgroundPollingCannotArmAStaleHeldSdkGrip",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.BAndGripInSameSampleBlockBeforeMenuStateChanges",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Menu)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Tutorial)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Teleport)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Tracking)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(InputFocus)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(VrFocus)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(TextEditing)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(ApplicationFocus)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Paused)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(MenuIntent)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(TeleportIntent)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(ContextUnavailable)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(InputUnavailable)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Disabled)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextDisappearanceOrExceptionFailsClosed",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EachHandRearmsIndependently",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Menu)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Tutorial)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Teleport)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Tracking)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(InputFocus)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(VrFocus)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(TextEditing)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(ApplicationFocus)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Paused)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(MenuIntent)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(TeleportIntent)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(ContextUnavailable)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(InputUnavailable)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Disabled)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ExistingOwnerPassesWhileBlockedButSecondHandCannotTakeOver",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.FocusAndPauseCallbacksRemainBlockedUntilAllHaveRecovered",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GateDisableOrRemovalAndNonGripSelectorsFailClosed",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GripHeldAtStartupCannotAcquire(Left)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GripHeldAtStartupCannotAcquire(Right)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InitiallyBlockedContextCanRecoverWithoutAnotherBindCall",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InputExceptionMissingTrackingAndDisconnectedControllerFailClosed",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InvalidTrackingCannotBeMistakenForARelease(Left)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InvalidTrackingCannotBeMistakenForARelease(Right)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.LaterBlockerInSameFrameOverridesEarlierArmedSample",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.MultipleReadsAndReleasePressInOneFrameDoNotRearm",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.NeutralDuringBlockingDoesNotArmAndClearInSameFrameDoesNotArm",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.NewlySeenSdkControllerCannotInheritRawOnlyArming",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.RawTeleportIntentBlocksBeforeTeleportStateChanges",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.RightMenuIntentAlsoBlocksLeftGripAndIsNotCachedPerFrame",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkGripStillPressedCannotBeArmedByNeutralRawInput",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkQueuedGripReleaseIsNotSuppressedByBlocking",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkSelectionEligibilityUsesFilterBeforeSelect",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.StackedManualBlockersCannotPrematurelyReenable",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.StaleSampleAndUnknownHandFailClosed",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagTests.FilterRejectsObjectsWithoutControllerNearGrab",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagTests.HeldSizeChangeDoesNotMutateGeometryOrEmitEvent",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagTests.InvalidSizeOrScaledParentCannotResize",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagTests.PrefabHasSingleControllerNearGrabAndNoRemoteOrHandTargets",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Small,0.3f,0.3f,0.15f)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Medium,0.45f,0.4f,0.22f)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Large,0.6f,0.48f,0.3f)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.ClosedOrUnrelatedPageRejectsOldCallbacks",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.DisabledOrMissingContextFailsClosed",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.FixtureHasSerializedGateBridgeAndNoSecondRig",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Small,0.3f)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Medium,0.45f)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Large,0.6f)",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.StaleButtonCannotResizeHeldBagAndReleaseRestoresSizing",
+      "result": "Passed"
+    },
+    {
+      "name": "XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.UnrelatedPageDoesNotRefreshAndChangesAreCoalesced",
+      "result": "Passed"
+    }
+  ],
+  "testedSourceHashes": {
+    "Assets/GuidedJourney/Tests/LocalizationTests.cs": "57bf3a4e80e05f5fc601672b081020987b8d6d522d97c60639943516864d3f2c",
+    "Assets/GuidedJourney/Tests/PanelPlacementTests.cs": "d770cfbe2a274abe370550a6c45341bd6194badc2f77912f39b5bcbb37d6ecf3",
+    "Assets/GuidedJourney/Tests/SessionVisualsTests.cs": "9da8d26dcc4ab85bb9423dfa9e5d116806132cabb5cffef0616960efc692ad01",
+    "Assets/Scripts/GuidedJourney/GuidancePanelPlacement.cs": "06eefcaf903c5b0ea27e3b23c27ec3a670edfc544aef586c403c2acd4aad1493",
+    "Assets/Scripts/Localization/ApartmentLanguage.Catalog.cs": "8ca63dd367dd774387d2a7c77b350f051ea962d13b121a1a649cf4ef337e4937",
+    "Assets/Scripts/Localization/ApartmentLanguage.Journey.cs": "889caddb7d60f3782f0a83fc8d93285ec5277cac4bc9cee5a01b802229de5bb5",
+    "Assets/Scripts/Localization/ApartmentLanguage.cs": "38c57aee5cb5e8b7421a06f90a9c086171e8d08e8a8baf8e474ab0aaf40ff09f",
+    "Assets/GuidedJourney/Core/Group10.GuidedJourney.Core.asmdef": "c6acfc7cf4d35cef453f9d4842b1f31fbeb90d723e127d927cf69a6df4b92a16",
+    "Assets/GuidedJourney/Core/JourneyStateMachine.cs": "eb8e1bde26014ea98f65b795a9ec0390ca1bc799169b875ae29b735839d4cf5f",
+    "Assets/GuidedJourney/Tests/AdapterLifecycleTests.cs": "4f64c99ae86d2633c6e2271af9efa5c26a39262dc39e50badd10b19c7a0d9c42",
+    "Assets/GuidedJourney/Tests/Group10.GuidedJourney.Tests.asmdef": "156570e174f928b450dab2e6943e557b1ab33708f2de72e3034870d907e23db0",
+    "Assets/GuidedJourney/Tests/JourneyStateMachineTests.cs": "720bc49c0e184ed6b7d8c4c5d4b923f48e82992d61fa322cbd48b6ba5d47ea22",
+    "Assets/Scripts/ApartmentCabinetDoor.cs": "1a617c034894dd3be389bfcb98d4a5ebc2af9a90347cd8114e524337a7c1d95a",
+    "Assets/Scripts/ApartmentComfortSettings.cs": "098afa30cdc0e085edf8d146a7b5ced79ffd912a527ef3731694826dfcb48085",
+    "Assets/Scripts/ApartmentComfortVignette.cs": "4e4f7580393a35d458777a9decf943177e745a7e918cef37af5c5b7134fee9c1",
+    "Assets/Scripts/ApartmentDoorAimSurface.cs": "fb3a0d8a3976575a4d28191272432cc2200aff3df7b9509638eb37c04da0a613",
+    "Assets/Scripts/ApartmentFurnitureInteractor.cs": "6eaa625b233d66bb59a1f1965a7ba22fd6a5dd05197202db8c9b998961e5b8f8",
+    "Assets/Scripts/ApartmentMenuController.cs": "f3eece85b8f28d3ffbc577e526efc791216c22f44aa23e1d6b14b17c9e7ef1f2",
+    "Assets/Scripts/ApartmentMotionRamp.cs": "16bf66d6fec2d0fc42e0be764cc251557b0d6761064a5dfdd2cd1062f058ba56",
+    "Assets/Scripts/ApartmentRoomDoor.cs": "18335a19fa74e569d239a91a21182b34710ec53e7669ee972e3ecfec8e16c2e8",
+    "Assets/Scripts/ApartmentSlidingDoor.cs": "67fb9efd543454c90709d332c178415fa2e5b71bf227ac8fd9347e5868684ad6",
+    "Assets/Scripts/ApartmentTourTracker.cs": "85c56b3aa6fcc852a47b9dcbe7f2b500b73767401464662c522c29602a4a3b8d",
+    "Assets/Scripts/ApartmentTutorialController.cs": "5d5993f5a14277a4e1b71b4adf0f12a75a785ac276c61f37e248f39fcd889988",
+    "Assets/Scripts/ApartmentVRLocomotion.cs": "71a7988fed3b1a951325b256f87461bdbf246fc54e49faaef973f76cbd6d06bf",
+    "Assets/Scripts/Editor/ApartmentComfortUpgrade.cs": "f948b3db982405b652f12a0a123e2e97f047f8270284504de692e4803450a4de",
+    "Assets/Scripts/Editor/ApartmentDetailedMigration.cs": "2d52dc3f4c66db3a209ed1b24f9cc9a239554ca04717f91d42b6195d0c0df83a",
+    "Assets/Scripts/Editor/ApartmentExperienceChecks.cs": "08b09ee6fd823a9910d521c21d73374493fcf94718d241418ec5f8344646013d",
+    "Assets/Scripts/Editor/ApartmentExperienceUpgrade.cs": "225641c1f50254a8e0d002d6a07a2a44ccf864df2d5bdd611f21445cbb74be2c",
+    "Assets/Scripts/Editor/ApartmentFurnitureChecks.cs": "060fe244ae5696bc61d7ef45eb8a34813123febfe3c0c9e35e041882e18e19fd",
+    "Assets/Scripts/Editor/ApartmentFurnitureSetup.cs": "100153e8ae19d617ff654526b9c142bf6274c02a2efb65a5425cbe939bd1ee54",
+    "Assets/Scripts/Editor/ApartmentMenuUpgrade.cs": "bfe897f169b9c1faf44494deb2a2eac4591858a9ec87e79189f197c49842bea9",
+    "Assets/Scripts/Editor/ApartmentPhase2EntranceSafetyInstaller.cs": "866fc479887e7acc87dc0bbb33d1a19eb1e175c43787a6d33edcc1f15cbd0f4d",
+    "Assets/Scripts/Editor/ApartmentPhase2FurnitureBuilder.cs": "167291507a7133c6d0f6ff70bbe59b0364acc99b47efe4f95636a6a30499cf22",
+    "Assets/Scripts/Editor/ApartmentPhase2GrayboxBuilder.cs": "0549721269d9fa23bd3c37712fddcfa8dff333885ec12204ede24440a753cac8",
+    "Assets/Scripts/Editor/ApartmentPhase2LocomotionInstaller.cs": "ae265341e379be55c0242908717d877a2f7e1936d397cf5c0cd845ccbfc97bb4",
+    "Assets/Scripts/Editor/ApartmentPhase2VRBuilder.cs": "ff518df453a33dec9a0c2e53f2fac6a850ec970bed1afa339a20120efd0aa7fc",
+    "Assets/Scripts/Editor/ApartmentTeleportChecks.cs": "390eda10281a8f5dbf220674d404b26ece82990cc7ac75769b065dda68c43388",
+    "Assets/Scripts/Editor/ApartmentTeleportSetup.cs": "8ca5239d96f5f933b0f287ddbab2c5f260b7bdc7490d1e7855adf76d4add52f3",
+    "Assets/Scripts/Editor/ApartmentTourUpgrade.cs": "0c703f149697296bfcb59a42c4c06fe749fc776f5e6f700e639d88ca3f872b15",
+    "Assets/Scripts/Editor/TwoRoomSceneBuilder.cs": "299707db62a84b172cfc6d4bd9364bf067a3f0110f55c92ac28c3530cb0aa917",
+    "Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs": "571157b557bb3210f64ba1bbfcfae77ffac7f0ebbd5312cd56479c81da41c4a0",
+    "Assets/Scripts/JoystickLocomotion.cs": "aaa3694fc39ea23f0cf78c75ec37629e1054f123cd6cd1cadb8122358efa9c4f",
+    "Assets/Scripts/Locomotion/DoorAutoSwing.cs": "b3682edf4269966cc5e8d6113ebc06dd75507e2a8893b16810113aa1eeff3edf",
+    "Assets/Scripts/Locomotion/LocomotionModeController.cs": "9e957425fb5b13653499da77e949c9cc6ae5eaa41ea931f9ee6aaf4eca6b0e32",
+    "Assets/Scripts/Locomotion/ThumbstickLocomotionBroadcaster.cs": "6f7c1af601c01bf337515b3f762019259b2f64b0fe5015c1c2262eb8fb73626a",
+    "Assets/Scripts/Review/ApartmentReviewController.cs": "89e1c0a3c98f4766eb523127cb543a6cbc0ea80977b8d80a97c0efeaca329f56",
+    "Assets/Scripts/Review/ReviewBillboard.cs": "a25f62e79568149fddf7e5f5426ad45e6c9bee3846cb3eb12dd45dc3fcb39f5e",
+    "Assets/Scripts/Review/ReviewPointerInput.cs": "552f7e7bb531ca06c044ddcb8a9e062c4b586ba14b40d7e5cd65dbe0b689076e",
+    "Assets/Scripts/Review/ReviewRoomMap.cs": "4001b375164ae19567ff29093fcbdbe128a1d9a5468dc9f1704d3b3603a68bcb",
+    "Assets/Scripts/Review/ReviewStorage.cs": "67d9b1294b67cebae03e4b21337829796ed0e676cafb7750386e4cddbc540054",
+    "Assets/Scripts/Review/ReviewTools.cs": "6a222b3531cf702440ca224beb7d2a637a1146129e2944e634eef2a8604cbfc9",
+    "Assets/Scripts/ShoppingBagHint.cs": "d2510034cb6eb986fed3e214fb49dcb96fb2b9c0d55e88c91698938e6ecf891a",
+    "Assets/Scripts/UI/LocomotionUIModule.cs": "620406b15ba45cf02c8dc03763be2db16729200b71ea5a5a302777ae1b1da2a4",
+    "Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs": "8eaf96dd1b40cb00b08278cc34b4cb2f85caa35407e0bf5a51f3a9fc5832a698",
+    "Assets/ShoppingBag/Integration/ShoppingBagUITestBootstrap.cs": "e18d429784f6a03941cffc324cdfd7cbbbafd22d2962a7db686246eb9c4296cc",
+    "Assets/ShoppingBag/Scripts/BagContactSensor.cs": "7ebacb42318e69a106fa978482887d17728d8080025161441bb56d1ec71d47cc",
+    "Assets/ShoppingBag/Scripts/BagContactTarget.cs": "886edaa6ba192a27caf169c3c399fb850fe516ca23ffba20415033802e41204c",
+    "Assets/ShoppingBag/Scripts/BagDesktopTestDriver.cs": "dc3b83baaa8fe6ca35558bc78a6a16c03f9d526cd7f2bd113490bf04895a040b",
+    "Assets/ShoppingBag/Scripts/BagGripFilter.cs": "8596135bb272026b49f7ae3c05a8d873dcb8e38944d84e6dd68b59e1738f8235",
+    "Assets/ShoppingBag/Scripts/BagGripRearmState.cs": "3a15d8c8d5636d7c0d1e8a7d5ce4633ecc81003d4610fe315e7e8c8e75fe97b4",
+    "Assets/ShoppingBag/Scripts/BagHaptics.cs": "3aadb58401a90ebdc0bda461490820dd5ad33ad91c76642a02f308811a6a89ba",
+    "Assets/ShoppingBag/Scripts/BagInteractionGate.cs": "fbd4e98be94042c178f3a8164751ef577d4810af08f8a72b938e92f987a152d5",
+    "Assets/ShoppingBag/Scripts/BagRuntimeInputSource.cs": "9cec8d915acffb9edd6d3400939212f32f320a58fbef16a1ff6090098dbee718",
+    "Assets/ShoppingBag/Scripts/BagSizeProfile.cs": "6dc0778d716f9c55d5e19720dc7aab6889f6f9514102eb248b8d5b224732f62e",
+    "Assets/ShoppingBag/Scripts/BagSizeTestControls.cs": "84eb0abaed292f66fb680be9d53c206fc748c8d0deedaeba6f101265c424e608",
+    "Assets/ShoppingBag/Scripts/IBagInteractionContext.cs": "a6ba1dc409bcd723ec8028dbf6d7127689eaee6a4c9a4ec85e89bc6805175a25",
+    "Assets/ShoppingBag/Scripts/ShoppingBag.cs": "fc9ba29bf66c756bb12d12314fbbe122f651825fcfc4c7fa652be8e113d64a68",
+    "Assets/ShoppingBag/Scripts/XRGroup10.ShoppingBag.asmdef": "782800dd07cc32d072bcf6f99b2d64d1dce7c8fac2ae99042bdb424128e58e40",
+    "Assets/ShoppingBag/Tests/Editor/BagFeedbackTests.cs": "d06b52bbb81de27dfa1926130ef7081061e71101780eef4501720fe1be8716d9",
+    "Assets/ShoppingBag/Tests/Editor/BagGripSafetyTests.cs": "9610665106fbde043755ed034cc8aae2cd5cc457bc4506bd84fff362138c8a6c",
+    "Assets/ShoppingBag/Tests/Editor/ShoppingBagTests.cs": "8cbf9578d35d0dff922643aaab6367575424b1a3b5afcc94b5edf9e0710c5f91",
+    "Assets/ShoppingBag/Tests/Editor/ShoppingBagUIIntegrationTests.cs": "c89bb3d6fe817ba3b32e264445d6f86bd404bf018484621623cef2d242876a52",
+    "Assets/ShoppingBag/Tests/Editor/XRGroup10.ShoppingBag.EditorTests.asmdef": "3f43b1bd1f5426ed8625605958b30fe19aae115244ffe8c36c55c98758799e64",
+    "Assets/ShoppingBag/Tests/PlayMode/BagGripGatePlayTests.cs": "38603ab3a1a66dd990abe4de997cfde5df2001677f3a955531920ece8b59ccdf",
+    "Assets/ShoppingBag/Tests/PlayMode/BagGripTestController.cs": "e3e01125b61dd4fe8411c47edd093b8e4f2777ab60e716ce5dfc9a8e21337fb3",
+    "Assets/ShoppingBag/Tests/PlayMode/XRGroup10.ShoppingBag.PlayTests.asmdef": "c031c21d4270694e3faeb7da8bc51ca8f63fec901556b0b1b6264ca6bc90c272"
+  }
+}

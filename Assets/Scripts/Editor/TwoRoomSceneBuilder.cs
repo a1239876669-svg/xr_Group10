@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 
 public static class TwoRoomSceneBuilder
 {
-    const string ScenePath = "Assets/Scenes/TwoRooms.unity";
+    const string ScenePath = "Assets/Scenes/test/TwoRooms.unity";
     const string RigPrefabPath = "Packages/com.meta.xr.sdk.core/Prefabs/OVRCameraRig.prefab";
     const float H = 2.8f;       // 墙高
     const float T = 0.15f;      // 墙厚

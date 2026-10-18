@@ -1,0 +1,13 @@
+ID,Test,Expected,Status,Evidence
+UI01,Menu navigation,Original menu opens/closes and My Items is accessible,Not Run,Pending Editor/Quest joint test
+UI02,Three sizes,Small Medium Large buttons use same bag and real profiles,Not Run,Offline source compile and static binding checks only
+UI03,Current selection,Displayed size and geometry/collider follow selection and reopen,Not Run,Pending joint test
+UI04,Held protection,No resize while held and stale callback rejected,Not Run,New NUnit test source compiled but not executed
+UI05,Release refresh,Release restores buttons without resetting bag,Not Run,Pending joint test
+UI06,Menu gate,Menu/tour/modal blocks new Grip but held release still works,Not Run,Pending joint test
+UI07,Per-hand rearm,Closing menu while Grip held requires release then press per hand,Not Run,Historical isolated C1 hardware pass is not joint acceptance
+UI08,UI input competition,B plus Grip and UI Trigger do not acquire bag,Not Run,Pending joint test
+UI09,Left/right near grab,Pickup release and reacquire both hands with single ownership,Not Run,Historical isolated A/C1 hardware pass is not joint acceptance
+UI10,Other pages,Existing controls/settings/quit/tutorial navigation still works,Not Run,Pending UI regression
+UI11,Contacts/haptics,Registered test targets restore and only owner vibrates briefly,Not Run,Historical isolated B hardware pass is not joint acceptance
+UI12,Two Play sessions,Same Editor stop10s and second Play recover without flood/crash,Not Run,Pending joint stability test

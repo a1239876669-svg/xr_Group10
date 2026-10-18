@@ -1,0 +1,3448 @@
+{
+  "schemaVersion": 1,
+  "sourceScene": "Assets/Scenes/ApartmentPhase2.unity",
+  "targetScene": "Assets/Scenes/ApartmentPhase2_Furnished.unity",
+  "sourceLayout": "Assets/Apartment/ApartmentGrayboxLayout.json",
+  "floorPlan": "Docs/References/ApartmentFloorPlan.png",
+  "referenceCommit": "7e8c817",
+  "coordinateNote": "Metres; Y up; entrance threshold origin; drawing right +X, drawing up +Z. Furniture.position is world floor pivot. Node.position is parent-local; all groups identity except floor-pivot translations. Sizes use world X,Y,Z; orientations are authored in child geometry, not root yaw.",
+  "furniture": [
+    {
+      "name": "EntryShoeCabinet",
+      "room": "Entrance",
+      "path": "ApartmentRoot/Furniture/M1B/Entrance/EntryShoeCabinet",
+      "position": {
+        "x": -0.22,
+        "y": 0,
+        "z": 1.3
+      },
+      "size": {
+        "x": 0.3,
+        "y": 1.1,
+        "z": 0.6
+      },
+      "orientation": "front +X",
+      "assumed": true
+    },
+    {
+      "name": "SofaWestModule",
+      "room": "LivingRoom",
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaWestModule",
+      "position": {
+        "x": 0.45,
+        "y": 0,
+        "z": 3.45
+      },
+      "size": {
+        "x": 0.9,
+        "y": 0.9,
+        "z": 2.1
+      },
+      "orientation": "front +X",
+      "assumed": true
+    },
+    {
+      "name": "SofaNorthReturn",
+      "room": "LivingRoom",
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaNorthReturn",
+      "position": {
+        "x": 1.425,
+        "y": 0,
+        "z": 4.075
+      },
+      "size": {
+        "x": 1.05,
+        "y": 0.9,
+        "z": 0.85
+      },
+      "orientation": "front -Z",
+      "assumed": true
+    },
+    {
+      "name": "CoffeeTable",
+      "room": "LivingRoom",
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/CoffeeTable",
+      "position": {
+        "x": 1.5,
+        "y": 0,
+        "z": 3.05
+      },
+      "size": {
+        "x": 0.7,
+        "y": 0.4,
+        "z": 0.7
+      },
+      "orientation": "round",
+      "assumed": true
+    },
+    {
+      "name": "Armchair",
+      "room": "LivingRoom",
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Armchair",
+      "position": {
+        "x": 1.8,
+        "y": 0,
+        "z": 2.1
+      },
+      "size": {
+        "x": 0.75,
+        "y": 0.9,
+        "z": 0.75
+      },
+      "orientation": "front +Z",
+      "assumed": true
+    },
+    {
+      "name": "DiningTable",
+      "room": "DiningArea",
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningTable",
+      "position": {
+        "x": 0.55,
+        "y": 0,
+        "z": 6
+      },
+      "size": {
+        "x": 1.2,
+        "y": 0.75,
+        "z": 0.8
+      },
+      "orientation": "long +X",
+      "assumed": true
+    },
+    {
+      "name": "DiningChairSouth01",
+      "room": "DiningArea",
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth01",
+      "position": {
+        "x": 0.27,
+        "y": 0,
+        "z": 5.45
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.85,
+        "z": 0.5
+      },
+      "orientation": "front +Z",
+      "assumed": true
+    },
+    {
+      "name": "DiningChairSouth02",
+      "room": "DiningArea",
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth02",
+      "position": {
+        "x": 0.83,
+        "y": 0,
+        "z": 5.45
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.85,
+        "z": 0.5
+      },
+      "orientation": "front +Z",
+      "assumed": true
+    },
+    {
+      "name": "DiningChairNorth01",
+      "room": "DiningArea",
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth01",
+      "position": {
+        "x": 0.27,
+        "y": 0,
+        "z": 6.55
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.85,
+        "z": 0.5
+      },
+      "orientation": "front -Z",
+      "assumed": true
+    },
+    {
+      "name": "DiningChairNorth02",
+      "room": "DiningArea",
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth02",
+      "position": {
+        "x": 0.83,
+        "y": 0,
+        "z": 6.55
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.85,
+        "z": 0.5
+      },
+      "orientation": "front -Z",
+      "assumed": true
+    },
+    {
+      "name": "CounterNorth",
+      "room": "Kitchen",
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterNorth",
+      "position": {
+        "x": -2.575,
+        "y": 0,
+        "z": 6.75
+      },
+      "size": {
+        "x": 1.95,
+        "y": 0.9,
+        "z": 0.6
+      },
+      "orientation": "front -Z",
+      "assumed": true
+    },
+    {
+      "name": "CounterWest",
+      "room": "Kitchen",
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterWest",
+      "position": {
+        "x": -3.25,
+        "y": 0,
+        "z": 5.925
+      },
+      "size": {
+        "x": 0.6,
+        "y": 0.9,
+        "z": 1.05
+      },
+      "orientation": "front +X",
+      "assumed": true
+    },
+    {
+      "name": "CounterSouth",
+      "room": "Kitchen",
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterSouth",
+      "position": {
+        "x": -2.65,
+        "y": 0,
+        "z": 5.1
+      },
+      "size": {
+        "x": 1.8,
+        "y": 0.9,
+        "z": 0.6
+      },
+      "orientation": "front +Z",
+      "assumed": true
+    },
+    {
+      "name": "Fridge",
+      "room": "Kitchen",
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/Fridge",
+      "position": {
+        "x": -1.275,
+        "y": 0,
+        "z": 6.725
+      },
+      "size": {
+        "x": 0.65,
+        "y": 1.8,
+        "z": 0.65
+      },
+      "orientation": "front -Z",
+      "assumed": true
+    },
+    {
+      "name": "Bed01",
+      "room": "Bedroom1",
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1/Bed01",
+      "position": {
+        "x": -2.85,
+        "y": 0,
+        "z": 1
+      },
+      "size": {
+        "x": 2,
+        "y": 0.6,
+        "z": 1.2
+      },
+      "orientation": "head -X",
+      "assumed": true
+    },
+    {
+      "name": "Wardrobe01",
+      "room": "Bedroom1",
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1/Wardrobe01",
+      "position": {
+        "x": -2.55,
+        "y": 0,
+        "z": 2.575
+      },
+      "size": {
+        "x": 1.2,
+        "y": 1.9,
+        "z": 0.55
+      },
+      "orientation": "front -Z",
+      "assumed": true
+    },
+    {
+      "name": "Bed02",
+      "room": "Bedroom2",
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2/Bed02",
+      "position": {
+        "x": 4.05,
+        "y": 0,
+        "z": 3.7
+      },
+      "size": {
+        "x": 2,
+        "y": 0.6,
+        "z": 1.5
+      },
+      "orientation": "head +X",
+      "assumed": true
+    },
+    {
+      "name": "Wardrobe02",
+      "room": "Bedroom2",
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2/Wardrobe02",
+      "position": {
+        "x": 3.8,
+        "y": 0,
+        "z": 0.6
+      },
+      "size": {
+        "x": 2.3,
+        "y": 1.9,
+        "z": 0.6
+      },
+      "orientation": "front +Z",
+      "assumed": true
+    },
+    {
+      "name": "ShowerArea",
+      "room": "Bathroom",
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/ShowerArea",
+      "position": {
+        "x": -3.075,
+        "y": 0,
+        "z": 3.75
+      },
+      "size": {
+        "x": 0.85,
+        "y": 2,
+        "z": 1.2
+      },
+      "orientation": "open +X",
+      "assumed": true
+    },
+    {
+      "name": "Toilet",
+      "room": "Bathroom",
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/Toilet",
+      "position": {
+        "x": -2.1,
+        "y": 0,
+        "z": 4.2
+      },
+      "size": {
+        "x": 0.4,
+        "y": 0.75,
+        "z": 0.65
+      },
+      "orientation": "front -Z",
+      "assumed": true
+    },
+    {
+      "name": "Vanity",
+      "room": "Bathroom",
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/Vanity",
+      "position": {
+        "x": -1.35,
+        "y": 0,
+        "z": 4.325
+      },
+      "size": {
+        "x": 0.65,
+        "y": 0.85,
+        "z": 0.45
+      },
+      "orientation": "front -Z",
+      "assumed": true
+    },
+    {
+      "name": "BalconyChair",
+      "room": "Balcony",
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/BalconyChair",
+      "position": {
+        "x": 4.45,
+        "y": 0,
+        "z": 6.35
+      },
+      "size": {
+        "x": 0.7,
+        "y": 0.9,
+        "z": 0.75
+      },
+      "orientation": "front -Z",
+      "assumed": true
+    },
+    {
+      "name": "PlantPot",
+      "room": "Balcony",
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/PlantPot",
+      "position": {
+        "x": 1.85,
+        "y": 0,
+        "z": 6.75
+      },
+      "size": {
+        "x": 0.35,
+        "y": 0.6,
+        "z": 0.35
+      },
+      "orientation": "none",
+      "assumed": true
+    }
+  ],
+  "nodes": [
+    {
+      "path": "ApartmentRoot/Furniture/M1B",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/M1B",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Entrance",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Entrance/EntryShoeCabinet",
+      "kind": "empty",
+      "position": {
+        "x": -0.22,
+        "y": 0,
+        "z": 1.3
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Entrance/EntryShoeCabinet/Body",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.55,
+        "z": 0
+      },
+      "size": {
+        "x": 0.3,
+        "y": 1.1,
+        "z": 0.6
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Entrance/EntryShoeCabinet/DoorUpper",
+      "kind": "cube",
+      "position": {
+        "x": 0.141,
+        "y": 0.8250000000000001,
+        "z": 0
+      },
+      "size": {
+        "x": 0.015,
+        "y": 0.517,
+        "z": 0.564
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Entrance/EntryShoeCabinet/DoorLower",
+      "kind": "cube",
+      "position": {
+        "x": 0.141,
+        "y": 0.275,
+        "z": 0
+      },
+      "size": {
+        "x": 0.015,
+        "y": 0.517,
+        "z": 0.564
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaWestModule",
+      "kind": "empty",
+      "position": {
+        "x": 0.45,
+        "y": 0,
+        "z": 3.45
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaWestModule/SeatBase",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.225,
+        "z": 0
+      },
+      "size": {
+        "x": 0.9,
+        "y": 0.45,
+        "z": 2.1
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaWestModule/Back",
+      "kind": "cube",
+      "position": {
+        "x": -0.39,
+        "y": 0.675,
+        "z": 0
+      },
+      "size": {
+        "x": 0.12,
+        "y": 0.45,
+        "z": 2.1
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaWestModule/Arm_S",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.55,
+        "z": -1
+      },
+      "size": {
+        "x": 0.9,
+        "y": 0.2,
+        "z": 0.1
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaWestModule/Arm_N",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.55,
+        "z": 1
+      },
+      "size": {
+        "x": 0.9,
+        "y": 0.2,
+        "z": 0.1
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaWestModule/SeatCushion",
+      "kind": "cube",
+      "position": {
+        "x": 0.06,
+        "y": 0.475,
+        "z": 0
+      },
+      "size": {
+        "x": 0.78,
+        "y": 0.05,
+        "z": 1.9000000000000001
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaNorthReturn",
+      "kind": "empty",
+      "position": {
+        "x": 1.425,
+        "y": 0,
+        "z": 4.075
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaNorthReturn/SeatBase",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.225,
+        "z": 0
+      },
+      "size": {
+        "x": 1.05,
+        "y": 0.45,
+        "z": 0.85
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaNorthReturn/Back",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.675,
+        "z": 0.365
+      },
+      "size": {
+        "x": 1.05,
+        "y": 0.45,
+        "z": 0.12
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaNorthReturn/Arm_W",
+      "kind": "cube",
+      "position": {
+        "x": -0.47500000000000003,
+        "y": 0.55,
+        "z": 0
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.2,
+        "z": 0.85
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaNorthReturn/Arm_E",
+      "kind": "cube",
+      "position": {
+        "x": 0.47500000000000003,
+        "y": 0.55,
+        "z": 0
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.2,
+        "z": 0.85
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Sofa_L01/SofaNorthReturn/SeatCushion",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.475,
+        "z": -0.06
+      },
+      "size": {
+        "x": 0.8500000000000001,
+        "y": 0.05,
+        "z": 0.73
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/CoffeeTable",
+      "kind": "empty",
+      "position": {
+        "x": 1.5,
+        "y": 0,
+        "z": 3.05
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/CoffeeTable/RoundTop",
+      "kind": "cylinder",
+      "position": {
+        "x": 0,
+        "y": 0.375,
+        "z": 0
+      },
+      "size": {
+        "x": 0.7,
+        "y": 0.05,
+        "z": 0.7
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/CoffeeTable/TopCollider",
+      "kind": "box",
+      "position": {
+        "x": 0,
+        "y": 0.375,
+        "z": 0
+      },
+      "size": {
+        "x": 0.7,
+        "y": 0.05,
+        "z": 0.7
+      },
+      "material": "",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/CoffeeTable/Leg_WS",
+      "kind": "cube",
+      "position": {
+        "x": -0.19999999999999996,
+        "y": 0.175,
+        "z": -0.19999999999999996
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.35,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/CoffeeTable/Leg_WN",
+      "kind": "cube",
+      "position": {
+        "x": -0.19999999999999996,
+        "y": 0.175,
+        "z": 0.19999999999999996
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.35,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/CoffeeTable/Leg_ES",
+      "kind": "cube",
+      "position": {
+        "x": 0.19999999999999996,
+        "y": 0.175,
+        "z": -0.19999999999999996
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.35,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/CoffeeTable/Leg_EN",
+      "kind": "cube",
+      "position": {
+        "x": 0.19999999999999996,
+        "y": 0.175,
+        "z": 0.19999999999999996
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.35,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Armchair",
+      "kind": "empty",
+      "position": {
+        "x": 1.8,
+        "y": 0,
+        "z": 2.1
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Armchair/SeatBase",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.225,
+        "z": 0
+      },
+      "size": {
+        "x": 0.75,
+        "y": 0.45,
+        "z": 0.75
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Armchair/Back",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.675,
+        "z": -0.315
+      },
+      "size": {
+        "x": 0.75,
+        "y": 0.45,
+        "z": 0.12
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Armchair/Arm_W",
+      "kind": "cube",
+      "position": {
+        "x": -0.325,
+        "y": 0.55,
+        "z": 0
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.2,
+        "z": 0.75
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Armchair/Arm_E",
+      "kind": "cube",
+      "position": {
+        "x": 0.325,
+        "y": 0.55,
+        "z": 0
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.2,
+        "z": 0.75
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/LivingRoom/Armchair/SeatCushion",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.475,
+        "z": 0.06
+      },
+      "size": {
+        "x": 0.55,
+        "y": 0.05,
+        "z": 0.63
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningTable",
+      "kind": "empty",
+      "position": {
+        "x": 0.55,
+        "y": 0,
+        "z": 6
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningTable/Top",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.725,
+        "z": 0
+      },
+      "size": {
+        "x": 1.2,
+        "y": 0.05,
+        "z": 0.8
+      },
+      "material": "FurnitureWorktop",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningTable/Leg_WS",
+      "kind": "cube",
+      "position": {
+        "x": -0.57,
+        "y": 0.35,
+        "z": -0.37
+      },
+      "size": {
+        "x": 0.06,
+        "y": 0.7,
+        "z": 0.06
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningTable/Leg_WN",
+      "kind": "cube",
+      "position": {
+        "x": -0.57,
+        "y": 0.35,
+        "z": 0.37
+      },
+      "size": {
+        "x": 0.06,
+        "y": 0.7,
+        "z": 0.06
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningTable/Leg_ES",
+      "kind": "cube",
+      "position": {
+        "x": 0.57,
+        "y": 0.35,
+        "z": -0.37
+      },
+      "size": {
+        "x": 0.06,
+        "y": 0.7,
+        "z": 0.06
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningTable/Leg_EN",
+      "kind": "cube",
+      "position": {
+        "x": 0.57,
+        "y": 0.35,
+        "z": 0.37
+      },
+      "size": {
+        "x": 0.06,
+        "y": 0.7,
+        "z": 0.06
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth01",
+      "kind": "empty",
+      "position": {
+        "x": 0.27,
+        "y": 0,
+        "z": 5.45
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth01/Seat",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.425,
+        "z": 0
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.05,
+        "z": 0.5
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth01/Back",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.65,
+        "z": -0.23
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.39999999999999997,
+        "z": 0.04
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth01/Leg_WS",
+      "kind": "cube",
+      "position": {
+        "x": -0.23,
+        "y": 0.2,
+        "z": -0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth01/Leg_WN",
+      "kind": "cube",
+      "position": {
+        "x": -0.23,
+        "y": 0.2,
+        "z": 0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth01/Leg_ES",
+      "kind": "cube",
+      "position": {
+        "x": 0.23,
+        "y": 0.2,
+        "z": -0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth01/Leg_EN",
+      "kind": "cube",
+      "position": {
+        "x": 0.23,
+        "y": 0.2,
+        "z": 0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth02",
+      "kind": "empty",
+      "position": {
+        "x": 0.83,
+        "y": 0,
+        "z": 5.45
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth02/Seat",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.425,
+        "z": 0
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.05,
+        "z": 0.5
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth02/Back",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.65,
+        "z": -0.23
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.39999999999999997,
+        "z": 0.04
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth02/Leg_WS",
+      "kind": "cube",
+      "position": {
+        "x": -0.23,
+        "y": 0.2,
+        "z": -0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth02/Leg_WN",
+      "kind": "cube",
+      "position": {
+        "x": -0.23,
+        "y": 0.2,
+        "z": 0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth02/Leg_ES",
+      "kind": "cube",
+      "position": {
+        "x": 0.23,
+        "y": 0.2,
+        "z": -0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairSouth02/Leg_EN",
+      "kind": "cube",
+      "position": {
+        "x": 0.23,
+        "y": 0.2,
+        "z": 0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth01",
+      "kind": "empty",
+      "position": {
+        "x": 0.27,
+        "y": 0,
+        "z": 6.55
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth01/Seat",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.425,
+        "z": 0
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.05,
+        "z": 0.5
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth01/Back",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.65,
+        "z": 0.23
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.39999999999999997,
+        "z": 0.04
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth01/Leg_WS",
+      "kind": "cube",
+      "position": {
+        "x": -0.23,
+        "y": 0.2,
+        "z": -0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth01/Leg_WN",
+      "kind": "cube",
+      "position": {
+        "x": -0.23,
+        "y": 0.2,
+        "z": 0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth01/Leg_ES",
+      "kind": "cube",
+      "position": {
+        "x": 0.23,
+        "y": 0.2,
+        "z": -0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth01/Leg_EN",
+      "kind": "cube",
+      "position": {
+        "x": 0.23,
+        "y": 0.2,
+        "z": 0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth02",
+      "kind": "empty",
+      "position": {
+        "x": 0.83,
+        "y": 0,
+        "z": 6.55
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth02/Seat",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.425,
+        "z": 0
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.05,
+        "z": 0.5
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth02/Back",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.65,
+        "z": 0.23
+      },
+      "size": {
+        "x": 0.5,
+        "y": 0.39999999999999997,
+        "z": 0.04
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth02/Leg_WS",
+      "kind": "cube",
+      "position": {
+        "x": -0.23,
+        "y": 0.2,
+        "z": -0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth02/Leg_WN",
+      "kind": "cube",
+      "position": {
+        "x": -0.23,
+        "y": 0.2,
+        "z": 0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth02/Leg_ES",
+      "kind": "cube",
+      "position": {
+        "x": 0.23,
+        "y": 0.2,
+        "z": -0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/DiningArea/DiningChairNorth02/Leg_EN",
+      "kind": "cube",
+      "position": {
+        "x": 0.23,
+        "y": 0.2,
+        "z": 0.23
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterNorth",
+      "kind": "empty",
+      "position": {
+        "x": -2.575,
+        "y": 0,
+        "z": 6.75
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterNorth/CabinetBody",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.425,
+        "z": 0
+      },
+      "size": {
+        "x": 1.95,
+        "y": 0.85,
+        "z": 0.6
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterNorth/Worktop",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.875,
+        "z": 0
+      },
+      "size": {
+        "x": 1.95,
+        "y": 0.05,
+        "z": 0.6
+      },
+      "material": "FurnitureWorktop",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterNorth/Door_0",
+      "kind": "cube",
+      "position": {
+        "x": -0.65,
+        "y": 0.425,
+        "z": -0.29
+      },
+      "size": {
+        "x": 0.625,
+        "y": 0.8,
+        "z": 0.015
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterNorth/Door_1",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.425,
+        "z": -0.29
+      },
+      "size": {
+        "x": 0.625,
+        "y": 0.8,
+        "z": 0.015
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterNorth/Door_2",
+      "kind": "cube",
+      "position": {
+        "x": 0.65,
+        "y": 0.425,
+        "z": -0.29
+      },
+      "size": {
+        "x": 0.625,
+        "y": 0.8,
+        "z": 0.015
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterNorth/SinkVisual",
+      "kind": "cube",
+      "position": {
+        "x": -0.225,
+        "y": 0.897,
+        "z": 0
+      },
+      "size": {
+        "x": 0.55,
+        "y": 0.006,
+        "z": 0.4
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterNorth/SinkBasinVisual",
+      "kind": "cube",
+      "position": {
+        "x": -0.225,
+        "y": 0.8995,
+        "z": 0
+      },
+      "size": {
+        "x": 0.39,
+        "y": 0.001,
+        "z": 0.27
+      },
+      "material": "FurnitureFabric",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterWest",
+      "kind": "empty",
+      "position": {
+        "x": -3.25,
+        "y": 0,
+        "z": 5.925
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterWest/CabinetBody",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.425,
+        "z": 0
+      },
+      "size": {
+        "x": 0.6,
+        "y": 0.85,
+        "z": 1.05
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterWest/Worktop",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.875,
+        "z": 0
+      },
+      "size": {
+        "x": 0.6,
+        "y": 0.05,
+        "z": 1.05
+      },
+      "material": "FurnitureWorktop",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterWest/Door_S",
+      "kind": "cube",
+      "position": {
+        "x": 0.29,
+        "y": 0.425,
+        "z": -0.25725
+      },
+      "size": {
+        "x": 0.015,
+        "y": 0.8,
+        "z": 0.4935
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterWest/Door_N",
+      "kind": "cube",
+      "position": {
+        "x": 0.29,
+        "y": 0.425,
+        "z": 0.25725
+      },
+      "size": {
+        "x": 0.015,
+        "y": 0.8,
+        "z": 0.4935
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterWest/HobVisual",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.897,
+        "z": 0
+      },
+      "size": {
+        "x": 0.45,
+        "y": 0.006,
+        "z": 0.55
+      },
+      "material": "FurnitureFabric",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterWest/HobRing_S",
+      "kind": "cylinder",
+      "position": {
+        "x": 0,
+        "y": 0.8995,
+        "z": -0.15
+      },
+      "size": {
+        "x": 0.15,
+        "y": 0.001,
+        "z": 0.15
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterWest/HobRing_N",
+      "kind": "cylinder",
+      "position": {
+        "x": 0,
+        "y": 0.8995,
+        "z": 0.15
+      },
+      "size": {
+        "x": 0.15,
+        "y": 0.001,
+        "z": 0.15
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterSouth",
+      "kind": "empty",
+      "position": {
+        "x": -2.65,
+        "y": 0,
+        "z": 5.1
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterSouth/CabinetBody",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.425,
+        "z": 0
+      },
+      "size": {
+        "x": 1.8,
+        "y": 0.85,
+        "z": 0.6
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterSouth/Worktop",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.875,
+        "z": 0
+      },
+      "size": {
+        "x": 1.8,
+        "y": 0.05,
+        "z": 0.6
+      },
+      "material": "FurnitureWorktop",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterSouth/Door_0",
+      "kind": "cube",
+      "position": {
+        "x": -0.6,
+        "y": 0.425,
+        "z": 0.29
+      },
+      "size": {
+        "x": 0.575,
+        "y": 0.8,
+        "z": 0.015
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterSouth/Door_1",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.425,
+        "z": 0.29
+      },
+      "size": {
+        "x": 0.575,
+        "y": 0.8,
+        "z": 0.015
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/CounterSouth/Door_2",
+      "kind": "cube",
+      "position": {
+        "x": 0.6,
+        "y": 0.425,
+        "z": 0.29
+      },
+      "size": {
+        "x": 0.575,
+        "y": 0.8,
+        "z": 0.015
+      },
+      "material": "FurnitureAppliance",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/Fridge",
+      "kind": "empty",
+      "position": {
+        "x": -1.275,
+        "y": 0,
+        "z": 6.725
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/Fridge/Body",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.9,
+        "z": 0
+      },
+      "size": {
+        "x": 0.65,
+        "y": 1.8,
+        "z": 0.65
+      },
+      "material": "FurnitureAppliance",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/Fridge/UpperDoor",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 1.25,
+        "z": -0.319
+      },
+      "size": {
+        "x": 0.625,
+        "y": 1.075,
+        "z": 0.01
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Kitchen/Fridge/LowerDoor",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.35,
+        "z": -0.319
+      },
+      "size": {
+        "x": 0.625,
+        "y": 0.675,
+        "z": 0.01
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1/Bed01",
+      "kind": "empty",
+      "position": {
+        "x": -2.85,
+        "y": 0,
+        "z": 1
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1/Bed01/Frame",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.125,
+        "z": 0
+      },
+      "size": {
+        "x": 2,
+        "y": 0.25,
+        "z": 1.2
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1/Bed01/Mattress",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.375,
+        "z": 0
+      },
+      "size": {
+        "x": 2,
+        "y": 0.25,
+        "z": 1.2
+      },
+      "material": "FurnitureAppliance",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1/Bed01/Pillow",
+      "kind": "cube",
+      "position": {
+        "x": -0.8,
+        "y": 0.55,
+        "z": 0
+      },
+      "size": {
+        "x": 0.3,
+        "y": 0.1,
+        "z": 1.05
+      },
+      "material": "FurnitureFabric",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1/Bed01/Blanket",
+      "kind": "cube",
+      "position": {
+        "x": 0.12,
+        "y": 0.49,
+        "z": 0
+      },
+      "size": {
+        "x": 1.24,
+        "y": 0.02,
+        "z": 1.16
+      },
+      "material": "FurnitureFabric",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1/Wardrobe01",
+      "kind": "empty",
+      "position": {
+        "x": -2.55,
+        "y": 0,
+        "z": 2.575
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1/Wardrobe01/Body",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.95,
+        "z": 0
+      },
+      "size": {
+        "x": 1.2,
+        "y": 1.9,
+        "z": 0.55
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1/Wardrobe01/Door_W",
+      "kind": "cube",
+      "position": {
+        "x": -0.2964,
+        "y": 0.95,
+        "z": -0.266
+      },
+      "size": {
+        "x": 0.576,
+        "y": 1.8239999999999998,
+        "z": 0.015
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom1/Wardrobe01/Door_E",
+      "kind": "cube",
+      "position": {
+        "x": 0.2964,
+        "y": 0.95,
+        "z": -0.266
+      },
+      "size": {
+        "x": 0.576,
+        "y": 1.8239999999999998,
+        "z": 0.015
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2/Bed02",
+      "kind": "empty",
+      "position": {
+        "x": 4.05,
+        "y": 0,
+        "z": 3.7
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2/Bed02/Frame",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.125,
+        "z": 0
+      },
+      "size": {
+        "x": 2,
+        "y": 0.25,
+        "z": 1.5
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2/Bed02/Mattress",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.375,
+        "z": 0
+      },
+      "size": {
+        "x": 2,
+        "y": 0.25,
+        "z": 1.5
+      },
+      "material": "FurnitureAppliance",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2/Bed02/Pillow",
+      "kind": "cube",
+      "position": {
+        "x": 0.8,
+        "y": 0.55,
+        "z": 0
+      },
+      "size": {
+        "x": 0.3,
+        "y": 0.1,
+        "z": 1.35
+      },
+      "material": "FurnitureFabric",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2/Bed02/Blanket",
+      "kind": "cube",
+      "position": {
+        "x": -0.12,
+        "y": 0.49,
+        "z": 0
+      },
+      "size": {
+        "x": 1.24,
+        "y": 0.02,
+        "z": 1.46
+      },
+      "material": "FurnitureFabric",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2/Wardrobe02",
+      "kind": "empty",
+      "position": {
+        "x": 3.8,
+        "y": 0,
+        "z": 0.6
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2/Wardrobe02/Body",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.95,
+        "z": 0
+      },
+      "size": {
+        "x": 2.3,
+        "y": 1.9,
+        "z": 0.6
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2/Wardrobe02/Door_W",
+      "kind": "cube",
+      "position": {
+        "x": -0.5680999999999999,
+        "y": 0.95,
+        "z": 0.291
+      },
+      "size": {
+        "x": 1.1039999999999999,
+        "y": 1.8239999999999998,
+        "z": 0.015
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bedroom2/Wardrobe02/Door_E",
+      "kind": "cube",
+      "position": {
+        "x": 0.5680999999999999,
+        "y": 0.95,
+        "z": 0.291
+      },
+      "size": {
+        "x": 1.1039999999999999,
+        "y": 1.8239999999999998,
+        "z": 0.015
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/ShowerArea",
+      "kind": "empty",
+      "position": {
+        "x": -3.075,
+        "y": 0,
+        "z": 3.75
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/ShowerArea/Tray",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.04,
+        "z": 0
+      },
+      "size": {
+        "x": 0.85,
+        "y": 0.08,
+        "z": 1.2
+      },
+      "material": "FurnitureWorktop",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/ShowerArea/WestScreen",
+      "kind": "cube",
+      "position": {
+        "x": -0.40499999999999997,
+        "y": 1,
+        "z": 0
+      },
+      "size": {
+        "x": 0.04,
+        "y": 2,
+        "z": 1.2
+      },
+      "material": "FurnitureAppliance",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/ShowerArea/NorthScreen",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 1,
+        "z": 0.58
+      },
+      "size": {
+        "x": 0.85,
+        "y": 2,
+        "z": 0.04
+      },
+      "material": "FurnitureAppliance",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/Toilet",
+      "kind": "empty",
+      "position": {
+        "x": -2.1,
+        "y": 0,
+        "z": 4.2
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/Toilet/Pedestal",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.175,
+        "z": -0.1
+      },
+      "size": {
+        "x": 0.3,
+        "y": 0.35,
+        "z": 0.38
+      },
+      "material": "FurnitureAppliance",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/Toilet/Bowl",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.375,
+        "z": -0.1
+      },
+      "size": {
+        "x": 0.4,
+        "y": 0.1,
+        "z": 0.45
+      },
+      "material": "FurnitureAppliance",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/Toilet/Seat",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.43,
+        "z": -0.1
+      },
+      "size": {
+        "x": 0.36000000000000004,
+        "y": 0.01,
+        "z": 0.4
+      },
+      "material": "FurnitureWorktop",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/Toilet/Cistern",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.375,
+        "z": 0.225
+      },
+      "size": {
+        "x": 0.35,
+        "y": 0.75,
+        "z": 0.2
+      },
+      "material": "FurnitureAppliance",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/Vanity",
+      "kind": "empty",
+      "position": {
+        "x": -1.35,
+        "y": 0,
+        "z": 4.325
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/Vanity/Cabinet",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.39,
+        "z": 0
+      },
+      "size": {
+        "x": 0.65,
+        "y": 0.78,
+        "z": 0.45
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/Vanity/BasinTop",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.815,
+        "z": 0
+      },
+      "size": {
+        "x": 0.65,
+        "y": 0.07,
+        "z": 0.45
+      },
+      "material": "FurnitureAppliance",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Bathroom/Vanity/BasinInset",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.8495,
+        "z": 0
+      },
+      "size": {
+        "x": 0.53,
+        "y": 0.001,
+        "z": 0.33
+      },
+      "material": "FurnitureFabric",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/BalconyChair",
+      "kind": "empty",
+      "position": {
+        "x": 4.45,
+        "y": 0,
+        "z": 6.35
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/BalconyChair/Seat",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.425,
+        "z": 0
+      },
+      "size": {
+        "x": 0.7,
+        "y": 0.05,
+        "z": 0.75
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/BalconyChair/Back",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.675,
+        "z": 0.355
+      },
+      "size": {
+        "x": 0.7,
+        "y": 0.45,
+        "z": 0.04
+      },
+      "material": "FurnitureFabric",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/BalconyChair/Leg_WS",
+      "kind": "cube",
+      "position": {
+        "x": -0.32999999999999996,
+        "y": 0.2,
+        "z": -0.355
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/BalconyChair/Leg_WN",
+      "kind": "cube",
+      "position": {
+        "x": -0.32999999999999996,
+        "y": 0.2,
+        "z": 0.355
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/BalconyChair/Leg_ES",
+      "kind": "cube",
+      "position": {
+        "x": 0.32999999999999996,
+        "y": 0.2,
+        "z": -0.355
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/BalconyChair/Leg_EN",
+      "kind": "cube",
+      "position": {
+        "x": 0.32999999999999996,
+        "y": 0.2,
+        "z": 0.355
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.4,
+        "z": 0.04
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/PlantPot",
+      "kind": "empty",
+      "position": {
+        "x": 1.85,
+        "y": 0,
+        "z": 6.75
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/PlantPot/Pot",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.125,
+        "z": 0
+      },
+      "size": {
+        "x": 0.3,
+        "y": 0.25,
+        "z": 0.3
+      },
+      "material": "FurnitureWood",
+      "collider": true
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/PlantPot/Stem",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.35,
+        "z": 0
+      },
+      "size": {
+        "x": 0.03,
+        "y": 0.2,
+        "z": 0.03
+      },
+      "material": "FurnitureWood",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Furniture/M1B/Balcony/PlantPot/Leaves",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.525,
+        "z": 0
+      },
+      "size": {
+        "x": 0.35,
+        "y": 0.15,
+        "z": 0.35
+      },
+      "material": "FurnitureFabric",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/00_Threshold",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.04,
+        "z": 0
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/01_EntryTurn01",
+      "kind": "cube",
+      "position": {
+        "x": 0,
+        "y": 0.04,
+        "z": 0.6
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/02_EntryTurn02",
+      "kind": "cube",
+      "position": {
+        "x": 0.45,
+        "y": 0.04,
+        "z": 0.6
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/03_SpawnCandidate",
+      "kind": "cube",
+      "position": {
+        "x": 0.45,
+        "y": 0.04,
+        "z": 0.7
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/04_EntranceReview",
+      "kind": "cube",
+      "position": {
+        "x": 0.65,
+        "y": 0.04,
+        "z": 1.15
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/05_LivingSouth",
+      "kind": "cube",
+      "position": {
+        "x": 0.65,
+        "y": 0.04,
+        "z": 2.05
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/06_LivingWest",
+      "kind": "cube",
+      "position": {
+        "x": -0.4,
+        "y": 0.04,
+        "z": 2.05
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/07_DiningWest",
+      "kind": "cube",
+      "position": {
+        "x": -0.4,
+        "y": 0.04,
+        "z": 5.25
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/08_KitchenOutside",
+      "kind": "cube",
+      "position": {
+        "x": -0.45,
+        "y": 0.04,
+        "z": 5.2
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/09_KitchenInside",
+      "kind": "cube",
+      "position": {
+        "x": -1.35,
+        "y": 0.04,
+        "z": 5.2
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/10_KitchenTurn",
+      "kind": "cube",
+      "position": {
+        "x": -1.35,
+        "y": 0.04,
+        "z": 5.85
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Core/11_KitchenReview",
+      "kind": "cube",
+      "position": {
+        "x": -2.1,
+        "y": 0.04,
+        "z": 5.85
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Bedroom1",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Bedroom1/00_Bedroom1_00",
+      "kind": "cube",
+      "position": {
+        "x": -0.4,
+        "y": 0.04,
+        "z": 2.35
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Bedroom1/01_Bedroom1_01",
+      "kind": "cube",
+      "position": {
+        "x": -1.4,
+        "y": 0.04,
+        "z": 2.35
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Bathroom",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Bathroom/00_Bathroom_00",
+      "kind": "cube",
+      "position": {
+        "x": -0.4,
+        "y": 0.04,
+        "z": 3.55
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Bathroom/01_Bathroom_01",
+      "kind": "cube",
+      "position": {
+        "x": -1.4,
+        "y": 0.04,
+        "z": 3.55
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Bedroom2",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Bedroom2/00_Bedroom2_00",
+      "kind": "cube",
+      "position": {
+        "x": 0.65,
+        "y": 0.04,
+        "z": 1.3
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Bedroom2/01_Bedroom2_01",
+      "kind": "cube",
+      "position": {
+        "x": 2.95,
+        "y": 0.04,
+        "z": 1.3
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Balcony",
+      "kind": "empty",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "material": "",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Balcony/00_Balcony_00",
+      "kind": "cube",
+      "position": {
+        "x": -0.4,
+        "y": 0.04,
+        "z": 4.85
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Balcony/01_Balcony_01",
+      "kind": "cube",
+      "position": {
+        "x": 1.9,
+        "y": 0.04,
+        "z": 4.85
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Balcony/02_Balcony_02",
+      "kind": "cube",
+      "position": {
+        "x": 1.9,
+        "y": 0.04,
+        "z": 5.95
+      },
+      "size": {
+        "x": 0.1,
+        "y": 0.08,
+        "z": 0.1
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/Anchors/M1B/M1B_Spawn_Entrance_Proposed",
+      "kind": "cube",
+      "position": {
+        "x": 0.45,
+        "y": 0.04,
+        "z": 0.7
+      },
+      "size": {
+        "x": 0.18,
+        "y": 0.08,
+        "z": 0.18
+      },
+      "material": "Anchor",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/M1B/WestSofaPassage_0p75m",
+      "kind": "cube",
+      "position": {
+        "x": -0.375,
+        "y": 0.03,
+        "z": 3.1
+      },
+      "size": {
+        "x": 0.75,
+        "y": 0.04,
+        "z": 0.08
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/M1B/DiningWestPassage_0p70m",
+      "kind": "cube",
+      "position": {
+        "x": -0.4,
+        "y": 0.03,
+        "z": 6
+      },
+      "size": {
+        "x": 0.7,
+        "y": 0.04,
+        "z": 0.08
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/M1B/Bedroom1BedWardrobeGap_0p70m",
+      "kind": "cube",
+      "position": {
+        "x": -2.55,
+        "y": 0.03,
+        "z": 1.95
+      },
+      "size": {
+        "x": 0.08,
+        "y": 0.04,
+        "z": 0.7
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/M1B/Bedroom2BedFootGap_0p55m",
+      "kind": "cube",
+      "position": {
+        "x": 2.775,
+        "y": 0.03,
+        "z": 3.7
+      },
+      "size": {
+        "x": 0.55,
+        "y": 0.04,
+        "z": 0.08
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/M1B/DiningNorthPullMax_0p25m",
+      "kind": "cube",
+      "position": {
+        "x": 0.55,
+        "y": 0.03,
+        "z": 6.925
+      },
+      "size": {
+        "x": 0.08,
+        "y": 0.04,
+        "z": 0.25
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/M1B/KitchenEntryNeck_0p80m",
+      "kind": "cube",
+      "position": {
+        "x": -1.35,
+        "y": 0.03,
+        "z": 5.2
+      },
+      "size": {
+        "x": 0.8,
+        "y": 0.04,
+        "z": 0.08
+      },
+      "material": "Assumption",
+      "collider": false
+    },
+    {
+      "path": "ApartmentRoot/AssumptionMarkers/M1B/SouthChairPullBlocksBalcony",
+      "kind": "cube",
+      "position": {
+        "x": 0.55,
+        "y": 0.03,
+        "z": 4.95
+      },
+      "size": {
+        "x": 0.08,
+        "y": 0.04,
+        "z": 0.08
+      },
+      "material": "Assumption",
+      "collider": false
+    }
+  ],
+  "routes": [
+    {
+      "name": "M1B_Core",
+      "points": [
+        {
+          "name": "Threshold",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "name": "EntryTurn01",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0.6
+          }
+        },
+        {
+          "name": "EntryTurn02",
+          "position": {
+            "x": 0.45,
+            "y": 0,
+            "z": 0.6
+          }
+        },
+        {
+          "name": "SpawnCandidate",
+          "position": {
+            "x": 0.45,
+            "y": 0,
+            "z": 0.7
+          }
+        },
+        {
+          "name": "EntranceReview",
+          "position": {
+            "x": 0.65,
+            "y": 0,
+            "z": 1.15
+          }
+        },
+        {
+          "name": "LivingSouth",
+          "position": {
+            "x": 0.65,
+            "y": 0,
+            "z": 2.05
+          }
+        },
+        {
+          "name": "LivingWest",
+          "position": {
+            "x": -0.4,
+            "y": 0,
+            "z": 2.05
+          }
+        },
+        {
+          "name": "DiningWest",
+          "position": {
+            "x": -0.4,
+            "y": 0,
+            "z": 5.25
+          }
+        },
+        {
+          "name": "KitchenOutside",
+          "position": {
+            "x": -0.45,
+            "y": 0,
+            "z": 5.2
+          }
+        },
+        {
+          "name": "KitchenInside",
+          "position": {
+            "x": -1.35,
+            "y": 0,
+            "z": 5.2
+          }
+        },
+        {
+          "name": "KitchenTurn",
+          "position": {
+            "x": -1.35,
+            "y": 0,
+            "z": 5.85
+          }
+        },
+        {
+          "name": "KitchenReview",
+          "position": {
+            "x": -2.1,
+            "y": 0,
+            "z": 5.85
+          }
+        }
+      ]
+    },
+    {
+      "name": "M1B_Bedroom1",
+      "points": [
+        {
+          "name": "Bedroom1_00",
+          "position": {
+            "x": -0.4,
+            "y": 0,
+            "z": 2.35
+          }
+        },
+        {
+          "name": "Bedroom1_01",
+          "position": {
+            "x": -1.4,
+            "y": 0,
+            "z": 2.35
+          }
+        }
+      ]
+    },
+    {
+      "name": "M1B_Bathroom",
+      "points": [
+        {
+          "name": "Bathroom_00",
+          "position": {
+            "x": -0.4,
+            "y": 0,
+            "z": 3.55
+          }
+        },
+        {
+          "name": "Bathroom_01",
+          "position": {
+            "x": -1.4,
+            "y": 0,
+            "z": 3.55
+          }
+        }
+      ]
+    },
+    {
+      "name": "M1B_Bedroom2",
+      "points": [
+        {
+          "name": "Bedroom2_00",
+          "position": {
+            "x": 0.65,
+            "y": 0,
+            "z": 1.3
+          }
+        },
+        {
+          "name": "Bedroom2_01",
+          "position": {
+            "x": 2.95,
+            "y": 0,
+            "z": 1.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "M1B_Balcony",
+      "points": [
+        {
+          "name": "Balcony_00",
+          "position": {
+            "x": -0.4,
+            "y": 0,
+            "z": 4.85
+          }
+        },
+        {
+          "name": "Balcony_01",
+          "position": {
+            "x": 1.9,
+            "y": 0,
+            "z": 4.85
+          }
+        },
+        {
+          "name": "Balcony_02",
+          "position": {
+            "x": 1.9,
+            "y": 0,
+            "z": 5.95
+          }
+        }
+      ]
+    }
+  ],
+  "spawnCandidate": {
+    "x": 0.45,
+    "y": 0,
+    "z": 0.7
+  },
+  "chairPullTest": {
+    "northDistance": 0.2,
+    "southDistance": 0.3,
+    "invalidNorthDistance": 0.3
+  },
+  "probeWidths": [
+    0.6,
+    0.8
+  ],
+  "probeHeight": 1.7,
+  "probeCentreY": 0.95,
+  "sampleStep": 0.04
+}

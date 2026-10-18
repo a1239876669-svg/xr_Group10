@@ -1,0 +1,42 @@
+{
+  "sourceSha": "d0f512eb453a19d47352dccf2dc4979bd094a90d",
+  "unity": "6000.6.4f1",
+  "mode": "Actual DX11 EditMode in a new clean worktree",
+  "total": 172,
+  "passed": 172,
+  "failed": 0,
+  "skipped": 0,
+  "startUtc": "2026-10-18 14:36:58Z",
+  "endUtc": "2026-10-18 14:36:59Z",
+  "startChinaTime": "2026-10-18 22:36:58 +08:00",
+  "endChinaTime": "2026-10-18 22:36:59 +08:00",
+  "testGroups": {
+    "AdapterLifecycleTests": 2,
+    "JourneyStateMachineTests": 47,
+    "LocalizationTests": 13,
+    "PanelPlacementTests": 6,
+    "ReviewBillboardTests": 3,
+    "SessionVisualsTests": 13,
+    "ToolHintDisplayTests": 2,
+    "BagFeedbackTests": 19,
+    "BagGripSafetyTests": 52,
+    "ShoppingBagTests": 7,
+    "ShoppingBagUIIntegrationTests": 8
+  },
+  "xmlSha256": "7928e45dc86c7b98d477b34f5392eb618c07753f4f25beceb26367bb9207857f",
+  "logSha256": "21c953cc3d8cb12da73946cfe25838085715b34c69c002b0bf774990003a60cb",
+  "compilerErrors": [],
+  "compilerWarnings": [
+    "Assets\\Scripts\\Editor\\ApartmentDetailedMigration.cs(790,62): warning CS0252: Possible unintended reference comparison; to get a value comparison, cast the left hand side to type 'Object'",
+    "Assets\\ShoppingBag\\Tests\\Editor\\ShoppingBagUIIntegrationTests.cs(20,51): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'."
+  ],
+  "exceptionLines": [
+    "UnassignedReferenceException: The variable m_AtlasTextures of TMP_FontAsset has not been assigned."
+  ],
+  "runnerExitCode": 0,
+  "questAndPlayerInference": "None; separate acceptance required",
+  "timeFieldMeaning": "XML start/end are NUnit case execution only; Unity import/compile precede them",
+  "caseDurationSeconds": 1.453418,
+  "batchLaunchChinaTime": "2026-10-18T22:35:11.0355916+08:00",
+  "projectInitializationSecondsFromLog": 103.5831534
+}
