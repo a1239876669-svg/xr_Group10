@@ -1,1 +1,24 @@
-{"name":"Group10.GuidedJourney.Tests","rootNamespace":"Group10.GuidedJourney.Tests","references":["Group10.GuidedJourney.Core"],"includePlatforms":["Editor"],"excludePlatforms":[],"allowUnsafeCode":false,"overrideReferences":false,"precompiledReferences":[],"autoReferenced":false,"defineConstraints":["UNITY_INCLUDE_TESTS"],"versionDefines":[],"noEngineReferences":false,"optionalUnityReferences":["TestAssemblies"]}
+{
+  "name": "Group10.GuidedJourney.Tests",
+  "rootNamespace": "Group10.GuidedJourney.Tests",
+  "references": [
+    "Group10.GuidedJourney.Core",
+    "Unity.TextMeshPro"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

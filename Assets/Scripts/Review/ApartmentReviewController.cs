@@ -28,12 +28,13 @@ public sealed class ApartmentReviewController : MonoBehaviour
     IssueImportance importance = IssueImportance.Medium;
     int measurementPage;
     TouchScreenKeyboard keyboard;
-    bool editingImpact;
+    bool editingImpact, originalText;
     public bool IsEditingText => keyboard != null && keyboard.status == TouchScreenKeyboard.Status.Visible;
 
     void OnEnable()
     {
         if (tools == null) return;
+        if(menu!=null)tools.DisplayFont=menu.font;
         tools.MarkerSelected += Select;
         tools.onRecordsChanged.AddListener(Refresh);
         tools.onModeChanged.AddListener(Refresh);
@@ -88,15 +89,16 @@ public sealed class ApartmentReviewController : MonoBehaviour
         aspect = found < 0 ? 0 : found;
         found = System.Array.IndexOf(AspectRatings[aspect], impact);
         rating = found < 0 ? 1 : found;
-        observation = AspectNames[aspect];
-        impact = AspectRatings[aspect][rating];
+        originalText = !string.IsNullOrEmpty(record.observation) && System.Array.IndexOf(AspectNames,record.observation)<0;
+        originalText |= !string.IsNullOrEmpty(record.everydayImpact) && System.Array.IndexOf(AspectRatings[aspect],record.everydayImpact)<0;
+        if(!originalText) { observation = AspectNames[aspect]; impact = AspectRatings[aspect][rating]; }
     }
     public bool Begin(ReviewMode mode)
     {
         if (tools == null || tools.IsStorageBlocked || (mode != ReviewMode.Mark && mode != ReviewMode.Measure)) return false;
         CloseKeyboard(); status = "";
         if (mode == ReviewMode.Mark)
-            foreach (var record in tools.Records)
+            foreach (var record in tools.ActiveRecords)
                 if (record.kind == "marker" && record.state == FeedbackState.Draft)
                 { tools.SelectMarker(record.id); return false; }
         tools.SetMode(mode); return true;
@@ -108,7 +110,7 @@ public sealed class ApartmentReviewController : MonoBehaviour
         if (tools.Mode == ReviewMode.None)
         {
             bool hasMarker = false;
-            foreach (var record in tools.Records) if (record.kind == "marker") { hasMarker = true; break; }
+            foreach (var record in tools.ActiveRecords) if (record.kind == "marker") { hasMarker = true; break; }
             if (!hasMarker) return false;
         }
         bool valid = menu.interactor.TryFirstHit(ray, maximumDistance, out RaycastHit hit);
@@ -128,15 +130,17 @@ public sealed class ApartmentReviewController : MonoBehaviour
     List<ReviewRecord> Records(string kind)
     {
         var result = new List<ReviewRecord>();
-        foreach (var record in tools.Records) if (record.kind == kind) result.Add(record);
+        foreach (var record in tools.ActiveRecords) if (record.kind == kind) result.Add(record);
         return result;
     }
     public void BuildMeasurementPage(ApartmentVRPanel panel)
     {
         panel.Button("Begin measurement", "开始测距", 330, 190, 350, 70, () => menu.StartReview(ReviewMode.Measure), true);
         panel.Button("Stop review", "停止工具", 710, 190, 350, 70, tools.StopTool);
-        panel.Label("Measurement help", tools.HasPendingPoint ? "已选起点，请选择终点" : "右手指向表面，扣动扳机选择两个点\n距离以米显示，记录自动保存", 330, 272, 730, 80, 27);
-        if (tools.HasPendingPoint) panel.Button("Cancel measurement point", "取消起点", 330, 355, 730, 55, () => { tools.CancelPending(); Refresh(); });
+        panel.Label("Measurement help", (tools.HasPendingPoint ? "已选起点，请选择终点" : "右手指向表面，扣动扳机选择两个点\n距离以米显示，记录自动保存") + "\n" + tools.CurrentToolReadout, 330, 272, 730, 80, 27);
+        panel.Button("Cancel measurement point", "取消起点", 330, 355, 230, 55, () => { tools.CancelPending(); Refresh(); },false,23);
+        panel.Button("Undo measurement display", ApartmentLanguage.Text("recovery.undo"), 580, 355, 230, 55, () => { tools.UndoLastMeasurementDisplay();Refresh(); },false,23);
+        panel.Button("Hide measurements", ApartmentLanguage.Text("recovery.hideall"), 830, 355, 230, 55, tools.HideMeasurementDisplays,false,23);
         var measurements = Records("measurement");
         measurementPage = Mathf.Clamp(measurementPage, 0, Mathf.Max(0, (measurements.Count - 1) / 3));
         for (int i = 0; i < 3; i++)
@@ -145,7 +149,7 @@ public sealed class ApartmentReviewController : MonoBehaviour
             if (index < 0) break;
             var record = measurements[index];
             panel.Label("Measurement " + record.id, "#" + record.number + "   " + record.distanceMetres.ToString("F2", CultureInfo.InvariantCulture) + " m   " + record.roomId, 330, 420 + i * 61, 550, 54, 28);
-            panel.Button("Delete measurement " + record.id, "删除", 910, 420 + i * 61, 150, 54, () => tools.DeleteRecord(record.id), false, 27);
+            panel.Button("Hide measurement " + record.id, ApartmentLanguage.Text("recovery.hide"), 910, 420 + i * 61, 150, 54, () => tools.HideRecord(record.id), false, 27);
         }
         if (measurements.Count == 0) panel.Label("No measurements", "暂无测距", 330, 440, 730, 70, 32);
         if (measurementPage > 0) panel.Button("Previous measurements", "上一页", 330, 615, 350, 55, () => { measurementPage--; Refresh(); });
@@ -154,7 +158,7 @@ public sealed class ApartmentReviewController : MonoBehaviour
     public void BuildMarkerPage(ApartmentVRPanel panel)
     {
         var markers = Records("marker");
-        var current = tools.FindRecord(editingId);
+        var current = tools.IsRecordVisible(editingId) ? tools.FindRecord(editingId) : null;
         if (current == null && markers.Count > 0) { current = markers[markers.Count - 1]; LoadEditor(current); }
         if (current == null)
         {
@@ -166,6 +170,14 @@ public sealed class ApartmentReviewController : MonoBehaviour
         panel.Label("Marker location", "#" + current.number + "  " + current.roomId, 330, 182, 490, 44, 27);
         panel.Button("Previous marker", "上一条", 830, 182, 110, 44, () => Adjacent(markers, current, -1), false, 22);
         panel.Button("Next marker", "下一条", 950, 182, 110, 44, () => Adjacent(markers, current, 1), false, 22);
+        if(originalText)
+        {
+            panel.Label("Original title",ApartmentLanguage.Text("recovery.original"),330,232,730,32,27);
+            panel.LabelRaw("User saved feedback",Preview(observation)+" / "+Preview(impact),330,272,730,82,27);
+            panel.Button("Use preset feedback",ApartmentLanguage.Text("recovery.usepresets"),330,368,730,58,()=>{originalText=false;SelectAspect(aspect);},false,27);
+        }
+        else
+        {
         panel.Label("Aspect title", "反馈内容", 330, 232, 730, 32, 27);
         for (int i = 0; i < AspectNames.Length; i++)
         {
@@ -178,12 +190,13 @@ public sealed class ApartmentReviewController : MonoBehaviour
             int index = i;
             panel.Button("Rating " + i, AspectRatings[aspect][i], 330 + i * 248, 368, 234, 58, () => SelectRating(index), rating == i, 27);
         }
+        }
         panel.Button("Importance", "重要程度：" + ImportanceNames[(int)importance], 330, 440, 270, 56, () => { importance = (IssueImportance)(((int)importance + 1) % 3); Refresh(); }, false, 27);
         var measurement = tools.FindRecord(measurementId);
         panel.Button("Linked measurement", "关联测距：" + (measurement == null ? "无" : "#" + measurement.number + " " + measurement.distanceMetres.ToString("F2") + " m"), 615, 440, 445, 56, CycleMeasurement, false, 26);
         panel.Label("Review status", string.IsNullOrEmpty(tools.LastError) ? status : tools.LastError, 330, 504, 730, 34, 23);
         panel.Button("Save feedback", "保存反馈", 330, 548, 350, 62, SaveFeedback, true);
-        panel.Button("Delete marker", current.state == FeedbackState.Draft ? "取消草稿" : "删除标记", 710, 548, 350, 62, () => { CloseKeyboard(); tools.DeleteRecord(current.id); editingId = null; status = ""; Refresh(); });
+        panel.Button("Delete marker", tools.CanCancelCurrentDraft(current.id) ? "取消草稿" : ApartmentLanguage.Text("recovery.hidemarker"), 710, 548, 350, 62, () => { CloseKeyboard(); if(!tools.CancelCurrentDraft(current.id))tools.HideRecord(current.id); editingId = null; status = ""; Refresh(); });
         if (current.state == FeedbackState.Submitted)
             panel.Button("Continue marking", "继续标记", 330, 618, 350, 54, () => menu.StartReview(ReviewMode.Mark));
         panel.Button("Stop marking", "停止工具", 710, 618, 350, 54, tools.StopTool);

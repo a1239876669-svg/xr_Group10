@@ -140,7 +140,7 @@ Detailed responsibilities, decisions and actual development dates belong in the 
 - **Historical automation:** ShoppingBag A/B/C1 recorded 78/78 EditMode and 2/2 simulated PlayMode passes, including the earlier 26 A/B cases. These are not fresh final-apartment results.
 - **Isolated hardware:** User-reported Quest 3 Pass: five grab/release cycles per hand, four C1 checks and eight Phase B checks. This is not final-apartment or user-study acceptance; no screenshots/times are invented.
 - **Final validation Pending:** integrated compilation/Test Runner, complete Quest journey, Windows Player, save/reopen and course-machine compatibility. Source wiring has been inspected; this documentation update runs no tests.
-- Shared OpenXR settings still contain known Standalone duplicates and Android null references. A separate verification copy's reviewed local repair is **not in this README-only change or shared source**. Preserve `FeatureHelpers` errors and obtain the owner's precise fix; do not regenerate all settings.
+- The integration baseline includes the reviewed PR #11 OpenXR Feature-reference repair. Preserve any remaining `FeatureHelpers` errors and logs; do not regenerate all settings or apply Fix All. This configuration repair does not establish that historical native XR crashes are resolved.
 - Historical `UnityOpenXR.dll` crashes / `XR_ERROR_LIMIT_REACHED` have an unproven root cause. Stop on persistent grey view, session failure, error floods or discomfort; preserve logs.
 - Editor haptic dry-run may suppress physical pulses. Dynamic fonts, route-specific contact coverage, save-failure recovery and complete task/model-limit guidance still need validation. Presets constrain feedback; no representative-user comfort study or full seated mode is claimed.
 
@@ -157,3 +157,9 @@ Existing repository evidence, retaining each record's historical scope/status:
 **Final technical-note PDF, genuine weekly record and final test-result publication locations: Pending team confirmation.** They are separate deliverables; no repository path or completed submission is invented.
 
 Third-party provenance/licences, including Furniture Mega Pack, Real Materials and SDKs, require the owners' final register. Existing [Noto](Assets/Apartment/Fonts/NotoSansSC-LICENSE.txt) and [Liberation Sans](Assets/TextMesh%20Pro/Fonts/LiberationSans%20-%20OFL.txt) notices do not license unrelated assets. Preserve authorship and declare assistance under course policy.
+
+## Review session display
+
+Saved review data persists between sessions, but previous markers and measurements are hidden by default when a new review session starts.
+
+Each new Unity Play or Player startup begins in English. English / 简体中文 can be changed under B > Settings > Language during the current runtime; menus and tutorial text refresh immediately. A new Play resets the language to English without clearing review records.

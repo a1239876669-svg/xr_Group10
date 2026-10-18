@@ -43,6 +43,7 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
     public ApartmentTutorialController tutorial;
     public ApartmentMenuController menu;
     public bool RayOriginBlocked { get; private set; }
+    public bool HasWorldHover => hover != null;
     public string Status { get; private set; } = "Waiting for tracked VR";
     public Vector3 HeadPosition => locomotion.rig.centerEyeAnchor.position;
     public bool RuntimeReady
@@ -167,7 +168,7 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
         hint.SetActive(hover != null && (tutorial == null || !tutorial.isActiveAndEnabled ||
             !tutorial.HasSeen(hover.HintCategory) || hover.NeedsAttention));
         if (hover == null) { Status = "No interactive target"; return; }
-        label.text = hover.InteractionPrompt;
+        label.text = ApartmentLanguage.Display(hover.InteractionPrompt);
         Vector3 anchor = hover.HintAnchor.position;
         if (hover.HighlightRenderer != null) anchor = hover.HighlightRenderer.bounds.center +
             Vector3.up * (hover.HighlightRenderer.bounds.extents.y + .13f);
@@ -262,7 +263,7 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
         text.transform.SetParent(hint.transform, false); Stretch(text.GetComponent<RectTransform>());
         label = text.GetComponent<TextMeshProUGUI>(); label.font = hintFont; label.fontSize = 36;
         label.alignment = TextAlignmentOptions.Center; label.color = Color.white; label.raycastTarget = false;
-        label.margin = new Vector4(20, 12, 20, 12); label.text = ApartmentCabinetDoor.OpenPrompt;
+        label.margin = new Vector4(20, 12, 20, 12); label.text = ApartmentLanguage.Display(ApartmentCabinetDoor.OpenPrompt);
         HideVisuals();
     }
     static void Stretch(RectTransform rect) { rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one; rect.offsetMin = rect.offsetMax = Vector2.zero; }
