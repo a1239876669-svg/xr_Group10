@@ -4,6 +4,23 @@
 
 Dimensions are documented assumptions in a simplified model, not construction information or proof of compliance. Structure is fixed; alternative layouts and direct furniture editing are deferred.
 
+## Quick Start — First-Time VR Reviewers
+
+**Your goal:** Find places where carrying shopping could feel cramped or awkward, and record the issue for the design team. Follow **Entrance → Living Room → Kitchen**.
+
+Ask the facilitator to prepare Quest Link and help with headset fit and the safety boundary. The downloadable Windows demo is still pending publication; setup instructions for teachers/developers follow below.
+
+1. **Learn the basics.** Follow the tutorial to practise movement, turning and the menu. Press **B on the right controller** to open the menu; point the right controller and press its front **Trigger** with your index finger to choose an option.
+2. **Choose and pick up a bag.** In **My Items / 我的物品**, choose a size while the bag is put down. Close the menu, move your hand near the handle and squeeze the side **Grip** control. Release Grip to put it down; either hand can hold it.
+3. **Compare the route.** Carry the bag towards the living room and kitchen. Put it down before choosing another size, then try the same route again.
+4. **Understand warnings.** Red furniture and a short vibration mean the bag touched a registered object. Move clear; this is a warning, not a physical barrier.
+5. **Record an issue.** Measure an opening if useful, place a **Marker**, then choose feedback, importance and an optional measurement link.
+6. **Finish.** Choose **保存反馈** (Save feedback), read the message, then use the menu's exit confirmation. If an error appears, keep the review open and ask for help. The full save/exit/reopen check remains pending final validation.
+
+**Need help?** Press right **B** for the menu. If the bag will not pick up after closing a menu, fully release Grip and press it again. The pointing line is the **ray** used to select things.
+
+This is a simplified design model, not certified real-world measurement. Stop whenever you feel uncomfortable. This written guide does not establish that the in-headset tutorial supports independent novice use; that still needs observation.
+
 ## Team
 
 | Name | Student ID | GitHub Account | Responsibility |
@@ -23,13 +40,21 @@ SDKs, external assets and subsequent integration are distinct from individual or
 - **Final frozen release SHA, Windows EXE/ZIP and download link: Pending — to be updated after final validation.** No final Player or course-machine pass is claimed.
 - Main scene: `Assets/Scenes/Apartment_Detailed_VR.unity`.
 
-| Component | Declared version / target |
+### Deployment Configuration
+
+| Item | Phase 2 configuration / status |
 | --- | --- |
-| Unity | 6000.6.4f1 |
+| Target platform | Windows PCVR: VR rendered by a Windows PC |
+| Headset and connection | Meta Quest 3 through Meta Quest Link |
+| Intended OpenXR runtime | Meta Quest Link OpenXR Runtime; confirm on the test PC |
+| Unity / graphics API | 6000.6.4f1 / DirectX 11 |
 | Meta XR Core, Interaction and Interaction OVR SDKs | 205.0.0 |
 | Unity OpenXR / XR Plug-in Management | 1.18.0 / 4.7.0 |
 | Unity Input System | 1.20.0 |
-| Intended environment | Windows PCVR, DX11, Meta Quest 3 through Meta Quest Link |
+| Main scene | `Assets/Scenes/Apartment_Detailed_VR.unity` |
+| Deliverable | Windows EXE and complete runtime ZIP; filename, architecture and download link Pending final build |
+| Classroom PCs | PQ604A/B/C verification Pending |
+| Frozen source and build identity | Final SHA and ZIP/EXE SHA256 Pending final validation |
 
 Versions come from project files; package resolution and runtime acceptance are separate checks. Android APK delivery is outside the current Phase 2 target.
 
@@ -71,7 +96,7 @@ The owner must supply the real EXE/ZIP names, download URL, source SHA, SHA256 a
 | Right **A** | Hold to aim teleport; release at a valid green destination, when enabled |
 | Right **B** | Open/close the menu; follow modal confirm/cancel prompts |
 | Right ray + index **Trigger** | Menu selection, nearby door interaction, measurement points or marker placement/selection, according to active mode |
-| Left or right **Grip** | Near-grab the bag; release Grip to put it down. Only one hand holds it at a time |
+| Left or right **Grip** | Hold the side Grip control with your hand close to the bag handle; release it to put the bag down. One hand at a time |
 | **My Items / 我的物品** | Select Small, Medium or Large while the bag is released |
 
 Menu/tutorial restrictions, teleport aiming, tracking loss and focus loss block new bag grabs. After an interruption, return controls to neutral and release Grip before pressing again. Existing holders can release; holding Grip through recovery must not automatically pick up the bag.
@@ -84,7 +109,7 @@ Menu/tutorial restrictions, teleport aiming, tracking loss and focus loss block 
 4. Registered furniture contact gives **red feedback and a short pulse in the holding hand**. Move clear to restore appearance. Warnings do not universally block movement or certify real-world clearance.
 5. Choose **测距 → 开始测距**; point/Trigger at two surface endpoints for distance in metres.
 6. Choose **标记注释 → 放置标记**, place/select an issue marker, choose feedback aspect/rating, importance (**低/中/高**, Low/Medium/High) and optional measurement link, then **保存反馈**. Feedback uses structured presets; free-text/voice entry is not verified.
-7. Check storage errors/records, confirm menu exit, then reopen the **same build/scene** and verify marker location, feedback and links. This final round trip remains pending.
+7. Choose **Save feedback**, read any message and confirm exit through the menu. If an error appears, keep the review open and ask for help. Reopen the **same build/scene** and check that your marker, feedback and links return. This final round trip remains pending.
 
 ## Saved records
 
@@ -95,6 +120,20 @@ Menu/tutorial restrictions, teleport aiming, tracking loss and focus loss block 
 ```
 
 Autosave, temporary-file writes, `.bak` and startup restore are implemented; a saved label alone does not prove disk persistence. Preserve errors/records and back up this folder before testing another clone, which may share it. Comfort preferences use PlayerPrefs separately. No unverified export-menu or tutorial/door-progress persistence is promised.
+
+## Integration & Validation Milestones
+
+Implementation, scene wiring and actual execution are separate milestones. Pending rows need real results and logs for the approved final source/configuration; no completion dates are implied.
+
+| Milestone | Acceptance criterion | Current status / evidence |
+| --- | --- | --- |
+| **M1 — Module implementation** | ShoppingBag A/B/C1, safety logic and supporting tests implemented | Historical module tests recorded; isolated Quest checks are user-reported Pass. See [C1 notes](Assets/ShoppingBag/Documentation/PhaseC1.md) and the verification section below |
+| **M2 — Scene integration** | Menu, bag, movement, measurement and markers connected to the formal apartment | Static connections inspected at `a27dd1c`; see the [formal scene](Assets/Scenes/Apartment_Detailed_VR.unity). Runtime acceptance is separate |
+| **M3 — Unity validation** | Approved final configuration imports/compiles without blocking errors; applicable Test Runner cases execute | Pending recorded final-candidate validation; local OpenXR repair is not a shared-source fix |
+| **M4 — Quest 3 validation** | Complete review journey works in the final apartment, including controls, contact feedback, issue recording and save/reopen; observe whether a novice needs continued prompts | Pending final-apartment results; isolated bag passes do not complete this milestone |
+| **M5 — Player delivery** | Windows EXE runs on the course platform, records survive reopening, and complete ZIP matches frozen source | Pending Build, PQ604A/B/C test, ZIP/hash and download verification |
+
+Detailed responsibilities, decisions and actual development dates belong in the genuine weekly activity record. Its final publication location remains pending team confirmation.
 
 ## Verification and known limitations
 
