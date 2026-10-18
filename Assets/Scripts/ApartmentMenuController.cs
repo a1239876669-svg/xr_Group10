@@ -108,7 +108,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
         string.Join("", ComfortRowTitles) + TurnModeTitle + TurnSmoothLabel + TurnSnapLabel + SnapAngleTitle +
         SmoothStartLabel + SmoothStopLabel +
         RestoreDefault + ComfortBack + ComfortFooter + "%m/sdeg/s当前未启用";
-    public static string AllText => MenuTitle + string.Join("", Tabs) + string.Join("", Modes) + string.Join("", ModeDetails) +
+    public static string AllText => ApartmentLanguage.FullTextCoverage + MenuTitle + string.Join("", Tabs) + string.Join("", Modes) + string.Join("", ModeDetails) +
         Footer + NeutralText + ChooseHelp + ResetQuestion + ResetHelp + ExitQuestion + TourTitle + "继续探索取消确认退出" + ApartmentShoppingBagBridge.PageText + ApartmentReviewController.AllText + KeyText(ApartmentMovementMode.Both) +
         ComfortText +
         "关闭菜单暂未开放当前未启用移动方式选择适合你的移动方式安全重置卡住或迷路时，返回出生安全位置返回安全点返回取消安全点未配置安全点被物体占用，请稍后重试安全点下方没有可站立的地板头显高度无效，请恢复正常追踪等待头显、右手柄追踪和输入焦点安全点配置无效○●";
@@ -126,13 +126,15 @@ public sealed class ApartmentMenuController : MonoBehaviour
     string status = "";
     bool guideHelpOpen;
 
+    void OnEnable() { ApartmentLanguage.Changed += LanguageChanged; }
+    void LanguageChanged() { UIRevision++; interactor?.ResetUIInput(); if (HasOpenPanel) Rebuild(false); }
     void Awake()
     {
         MovementMode = ApartmentMovementMode.Both; ActivePanel = ApartmentPanelState.Closed; waitingNeutral = true;
         // The saved profile is pushed through the mover's clamped entry point before anything is drawn.
         LoadComfort();
     }
-    void OnDisable() { Suspend(); view?.Dispose(); completionView?.Dispose(); quitView?.Dispose(); view = completionView = quitView = null; }
+    void OnDisable() { ApartmentLanguage.Changed -= LanguageChanged; Suspend(); view?.Dispose(); completionView?.Dispose(); quitView?.Dispose(); view = completionView = quitView = null; }
     void OnApplicationFocus(bool focused) { if (!focused) Suspend(); }
     void OnApplicationPause(bool paused) { if (paused) Suspend(); }
     void Suspend()
@@ -395,16 +397,19 @@ public sealed class ApartmentMenuController : MonoBehaviour
         else if (Page == 4 && ComfortSection == 1) RebuildComfort(view);
         else if (Page == 4)
         {
-            view.Label("Mode title", "移动方式", 330, 190, 650, 46, 30, true);
+            view.Label("Language title", "Language", 330, 180, 160, 44, 27, true);
+            view.Button("Language English", "English", 500, 180, 265, 44, () => ApartmentLanguage.SetLanguage(ApartmentDisplayLanguage.English), !ApartmentLanguage.IsChinese, 26);
+            view.Button("Language Chinese", "简体中文", 785, 180, 275, 44, () => ApartmentLanguage.SetLanguage(ApartmentDisplayLanguage.SimplifiedChinese), ApartmentLanguage.IsChinese, 26);
+            view.Label("Mode title", "移动方式", 330, 233, 650, 32, 27, true);
             for (int i = 0; i < 3; i++)
             {
                 var mode=(ApartmentMovementMode)i; bool selected=MovementMode==mode;
                 view.Button("Mode " + i, (selected ? "●  " : "○  ")+Modes[i]+"\n<size=75%>"+ModeDetails[i]+"</size>",
-                    330, 240+i*86, 730, 80, () => SelectMovementMode(mode), selected, 32);
+                    330, 273+i*65, 730, 60, () => SelectMovementMode(mode), selected, 32);
             }
-            view.Button("Comfort entry", ComfortTitle, 330, 500, 730, 56, OpenComfort, false, 30);
-            view.Label("Safety text", string.IsNullOrEmpty(status) ? "安全重置：卡住或迷路时，返回出生安全位置" : status, 330, 562, 730, 60, 25);
-            view.Button("Safety reset", "返回安全点", 330, 626, 730, 56, RequestReset, false, 30);
+            view.Button("Comfort entry", ComfortTitle, 330, 475, 730, 48, OpenComfort, false, 30);
+            view.Label("Safety text", string.IsNullOrEmpty(status) ? "安全重置：卡住或迷路时，返回出生安全位置" : status, 330, 532, 730, 56, 25);
+            view.Button("Safety reset", "返回安全点", 330, 608, 730, 56, RequestReset, false, 30);
         }
         else if (Page == 3)
         {
@@ -507,6 +512,7 @@ public sealed class ApartmentVRPanel : IDisposable
     readonly Texture2D roundTexture;
     readonly List<Control> controls = new List<Control>();
     readonly List<GameObject> content = new List<GameObject>();
+    readonly Dictionary<TextMeshProUGUI,string> authoredLabels = new Dictionary<TextMeshProUGUI,string>();
     sealed class Control { public RectTransform rect; public Image image; public Color color; public Action action; public Action<int> step; }
     // Fixed comfort-row geometry so every row lines up and the ray target stays predictable.
     public const float StepperButton = 90f, StepperGap = 10f;
@@ -517,6 +523,7 @@ public sealed class ApartmentVRPanel : IDisposable
     public static readonly Color RowColor = new Color(.055f,.11f,.15f,1), RowIdleColor = new Color(.05f,.06f,.08f,1), Dim = new Color(.42f,.46f,.5f,1);
     public ApartmentVRPanel(Transform parent, string name, TMP_FontAsset font, Shader panelShader, Shader textShader, float width, float height)
     {
+        ApartmentLanguage.Changed += RefreshLanguage;
         this.font=font; background=new Material(panelShader); textMaterial=new Material(font.material); textMaterial.shader=textShader;
         roundTexture=new Texture2D(32,32,TextureFormat.RGBA32,false);roundTexture.wrapMode=TextureWrapMode.Clamp;
         for(int y=0;y<32;y++)for(int x=0;x<32;x++)
@@ -541,10 +548,14 @@ public sealed class ApartmentVRPanel : IDisposable
     public TextMeshProUGUI Label(string name,string text,float x,float y,float w,float h,float size,bool bold=false)
     {
         var label=Rect(name,x,y,w,h).gameObject.AddComponent<TextMeshProUGUI>();label.font=font;label.fontSharedMaterial=textMaterial;
-        label.text=text;label.color=Color.white;label.fontSize=size;label.fontStyle=bold?FontStyles.Bold:FontStyles.Normal;
+        authoredLabels[label]=text; label.text=ApartmentLanguage.Display(text);label.color=Color.white;label.fontSize=size;label.fontStyle=bold?FontStyles.Bold:FontStyles.Normal;
         label.enableAutoSizing=true;label.fontSizeMin=size*.82f;label.fontSizeMax=size;
         label.alignment=TextAlignmentOptions.MidlineLeft;label.raycastTarget=false;return label;
     }
+    public void SetLabelText(TextMeshProUGUI label,string copy) { if(label==null)return; authoredLabels[label]=copy;label.text=ApartmentLanguage.Display(copy); }
+    public TextMeshProUGUI LabelRaw(string name,string raw,float x,float y,float w,float h,float size)
+    { var label=Label(name,raw,x,y,w,h,size);authoredLabels.Remove(label);label.text=raw;label.richText=false;return label; }
+    void RefreshLanguage() { foreach(var item in authoredLabels) if(item.Key!=null)item.Key.text=ApartmentLanguage.Display(item.Value); }
     public void Button(string name,string text,float x,float y,float w,float h,Action action,bool selected=false,float size=33,bool richText=true)
     {
         var rect=Rect(name,x,y,w,h);var image=rect.gameObject.AddComponent<Image>();image.material=background;image.sprite=rounded;image.type=Image.Type.Sliced;image.raycastTarget=false;
@@ -619,7 +630,7 @@ public sealed class ApartmentVRPanel : IDisposable
         Root.GetComponent<Canvas>().worldCamera=head.GetComponent<Camera>();
     }
     public void SetVisible(bool visible) { if(Root!=null)Root.gameObject.SetActive(visible); }
-    public void Clear() { controls.Clear();foreach(var go in content){go.SetActive(false);Destroy(go);}content.Clear(); }
+    public void Clear() { authoredLabels.Clear(); controls.Clear();foreach(var go in content){go.SetActive(false);Destroy(go);}content.Clear(); }
     static void Destroy(UnityEngine.Object obj) { if(Application.isPlaying)UnityEngine.Object.Destroy(obj);else UnityEngine.Object.DestroyImmediate(obj); }
-    public void Dispose() { if(Root!=null)Destroy(Root.gameObject);Destroy(background);Destroy(textMaterial);Destroy(rounded);Destroy(roundTexture);Root=null; }
+    public void Dispose() { ApartmentLanguage.Changed -= RefreshLanguage; authoredLabels.Clear(); if(Root!=null)Destroy(Root.gameObject);Destroy(background);Destroy(textMaterial);Destroy(rounded);Destroy(roundTexture);Root=null; }
 }

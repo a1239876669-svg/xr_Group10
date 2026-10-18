@@ -34,3 +34,7 @@ spatial evaluation.
 1. Install Unity Hub and Unity 6000.6.4f1.
 2. In Unity Hub, choose Add → Add project from disk and select the repository root folder.
 3. Open `Assets/Scenes/Apartment_Detailed_VR.unity` and click Play with a Meta Quest headset connected.
+
+## Review session display
+
+Saved review data persists between sessions, but previous markers and measurements are hidden by default when a new review session starts.

@@ -35,7 +35,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         balconyDoor != null && practiceCabinet != null && kitchenDropPoint != null;
     public bool FeedbackActuallySaved { get; private set; }
     public string LastSavedMarkerId { get; private set; }
-    public string StageTitle => Titles[(int)(Journey?.CurrentStage ?? JourneyStage.WelcomeMovement)];
+    public string StageTitle => ApartmentLanguage.Display(Titles[(int)(Journey?.CurrentStage ?? JourneyStage.WelcomeMovement)]);
     public static readonly string[] Titles = {
         "0 / 11 - Welcome and movement", "1 / 11 - Enter the apartment", "2 / 11 - Explore the living room",
         "3 / 11 - Try the balcony door", "4 / 11 - Try a kitchen cabinet", "5 / 11 - Return to the entrance",
@@ -48,12 +48,14 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         "Review guideSkip this taskSkip all / exploreShow task cardHide task cardBack to controlsSkip basic practice" +
         "Welcome! You are reviewing this apartment to identify possible problems with everyday movement and furniture use.";
     ApartmentVRPanel card, targetTag;
+    readonly GuidancePanelPlacement cardPlacement = new GuidancePanelPlacement();
+    bool cardWasVisible, recoveryHelp;
     TextMeshProUGUI cardTitle, cardTask;
     GameObject dropVisual;
     Material dropMaterial;
     long sizeRevision, measurementRevision, savedRevision;
     bool discontinuous, aimedTeleport, subscribed, skippedFromWelcome, paused;
-    float nextCardPlacement, settled;
+    float settled;
     double walkedThisFrame;
     readonly HashSet<string> freshFeedbackMarkers = new HashSet<string>();
     JourneyObservation lastObservation;
@@ -65,7 +67,8 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         Journey = new JourneyStateMachine(new JourneyConfig { LivingExplorationMetres = Mathf.Clamp(livingExplorationMetres, .5f, 3f) });
         previousStage = Journey.CurrentStage;
     }
-    void OnEnable() { Subscribe(); }
+    void OnEnable() { ApartmentLanguage.Changed += LanguageChanged; Subscribe(); }
+    void LanguageChanged() { lastRenderedText = null; if(card!=null) { card.SetLabelText(cardTitle,StageTitle); card.SetLabelText(cardTask,CurrentInstruction); } }
     void Start()
     {
         if (!IsConfigured) { Debug.LogError("Guided journey: missing explicit scene references; existing apartment controls remain available.", this); enabled = false; return; }
@@ -84,6 +87,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     }
     void OnDisable()
     {
+        ApartmentLanguage.Changed -= LanguageChanged; cardPlacement.Reset(); cardWasVisible=false;
         if (subscribed)
         {
             if (locomotion != null) { locomotion.Teleported -= Relocated; locomotion.Walked -= Walked; }
@@ -180,27 +184,21 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         if (Journey.CurrentStage != previousStage)
         {
             if (Journey.CurrentStage == JourneyStage.Feedback) freshFeedbackMarkers.Clear();
-            previousStage = Journey.CurrentStage; settled = 0; nextCardPlacement = 0; lastRenderedText = null;
+            previousStage = Journey.CurrentStage; settled = 0; cardPlacement.Reset(); lastRenderedText = null;
         }
         EnsureDropVisual();
         UpdateCabinetTag();
-        bool visible = Ready && showTaskCard && !menu.HasOpenPanel && !tutorial.ModalVisible && !locomotion.IsTeleportAiming && Journey.CurrentStage != JourneyStage.WelcomeMovement;
+        bool visible = Ready && showTaskCard && !menu.HasOpenPanel && !tutorial.ModalVisible && !locomotion.IsTeleportAiming && Journey.CurrentStage != JourneyStage.WelcomeMovement && !interactor.HasWorldHover && review.Mode == ReviewMode.None;
         card?.SetVisible(visible);
-        if (!visible || card == null) return;
+        if (!visible || card == null) { cardWasVisible = false; return; }
         string task = CurrentInstruction;
-        if (task != lastRenderedText) { cardTitle.text = StageTitle; cardTask.text = task; lastRenderedText = task; }
-        if (Time.unscaledTime >= nextCardPlacement)
-        {
-            nextCardPlacement = Time.unscaledTime + .15f;
-            Transform head = locomotion.rig.centerEyeAnchor;
-            Vector3 forward = Vector3.ProjectOnPlane(head.forward, Vector3.up).normalized;
-            if (forward.sqrMagnitude < .5f) forward = locomotion.transform.forward;
-            Vector3 right = Vector3.Cross(Vector3.up, forward);
-            card.Root.SetPositionAndRotation(head.position + forward * 1.35f - right * .57f - Vector3.up * .32f, Quaternion.LookRotation(forward));
-            card.Root.GetComponent<Canvas>().worldCamera = head.GetComponent<Camera>();
-        }
+        if (task != lastRenderedText) { card.SetLabelText(cardTitle,StageTitle); card.SetLabelText(cardTask,task); lastRenderedText = task; }
+        cardPlacement.Place(locomotion.rig.centerEyeAnchor,card.Root,locomotion.transform.forward,Time.unscaledTime,!cardWasVisible);
+        cardWasVisible=true;
     }
-    public string CurrentInstruction
+    public string CurrentInstruction => ApartmentLanguage.Display(CurrentInstructionSource);
+
+    string CurrentInstructionSource
     {
         get
         {
@@ -209,7 +207,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
                 Journey.CurrentStage == JourneyStage.CabinetPractice) && review.Mode != ReviewMode.None)
                 return "A measurement/marker tool currently owns Trigger. Open B > 测距 and choose 停止工具 (Stop tool), then try the door.";
             if (Journey.CurrentStage == JourneyStage.Feedback)
-                foreach (var record in review.Records)
+                foreach (var record in review.ActiveRecords)
                     if (record.kind == "marker" && record.state == FeedbackState.Draft && !freshFeedbackMarkers.Contains(record.id))
                         return "An earlier draft is open. Save it then choose 继续标记 (Continue marking), or cancel that draft. Place a new marker for this task.";
             switch (Journey.CurrentStage)
@@ -287,6 +285,13 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     public void BuildHelp(ApartmentVRPanel panel, Action back)
     {
         if (panel == null) return;
+        if(recoveryHelp)
+        {
+            panel.Label("Recovery title",ApartmentLanguage.Text("recovery.title"),330,190,730,48,30,true);
+            panel.Label("Recovery text",ApartmentLanguage.Text("recovery.help"),330,246,730,310,26);
+            panel.Button("Back guide",ApartmentLanguage.Text("recovery.back"),330,580,730,54,()=>{ recoveryHelp=false; menu.RefreshGuideHelp(); },false,25);
+            return;
+        }
         panel.Label("Guide stage", StageTitle, 330, 190, 730, 48, 30, true);
         panel.Label("Guide instruction", CurrentInstruction, 330, 246, 730, 128, 27);
         panel.Label("Model and safety", ModelHelp + "\n" + SafetyHelp, 330, 384, 730, 112, 22);
@@ -294,5 +299,6 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         panel.Button("Skip guide", "Skip all / explore", 710, 510, 350, 56, () => { SkipAll(); menu.RefreshGuideHelp(); }, false, 25);
         panel.Button("Toggle task card", showTaskCard ? "Hide task card" : "Show task card", 330, 580, 350, 54, () => { showTaskCard = !showTaskCard; menu.RefreshGuideHelp(); }, false, 25);
         panel.Button("Back controls", "Back to controls", 710, 580, 350, 54, back, false, 25);
+        panel.Button("Recovery help",ApartmentLanguage.Text("recovery.title"),330,635,730,42,()=>{ recoveryHelp=true;menu.RefreshGuideHelp(); },false,24);
     }
 }

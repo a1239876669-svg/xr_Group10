@@ -127,15 +127,18 @@ public sealed class ApartmentTutorialController : MonoBehaviour
     bool previousModal, wasReady;
     float nextScan;
     ApartmentVRPanel welcomeView;
+    readonly GuidancePanelPlacement basicPlacement=new GuidancePanelPlacement(), welcomePlacement=new GuidancePanelPlacement();
 
     void Awake() { Session = new ApartmentTutorialProgress(menu != null); }
     void OnEnable()
     {
+        ApartmentLanguage.Changed += LanguageChanged;
         if (locomotion == null) return;
         locomotion.Walked += OnWalked; locomotion.Turned += OnTurned; locomotion.Teleported += OnTeleported;
     }
     void OnDisable()
     {
+        ApartmentLanguage.Changed -= LanguageChanged; basicPlacement.Reset();welcomePlacement.Reset();
         if (locomotion != null)
         { locomotion.Walked -= OnWalked; locomotion.Turned -= OnTurned; locomotion.Teleported -= OnTeleported; }
         InputReady = false;
@@ -145,6 +148,7 @@ public sealed class ApartmentTutorialController : MonoBehaviour
         panel = null;
         welcomeView?.Dispose(); welcomeView = null;
     }
+    void LanguageChanged() { previousStep = -99; if(label!=null)label.text=ApartmentLanguage.Display(label.text); if(okRect!=null) { var caption=okRect.GetComponentInChildren<TextMeshProUGUI>();if(caption!=null)caption.text=ApartmentLanguage.Display("OK"); } }
     static void DisposeVisual(UnityEngine.Object value) { if(Application.isPlaying)Destroy(value);else DestroyImmediate(value); }
     void OnWalked(float value) { if (AllowMove) Session.Walk(value); }
     void OnTurned(float value) { if (AllowTurn) Session.Turn(value); }
@@ -184,7 +188,7 @@ public sealed class ApartmentTutorialController : MonoBehaviour
         {
             if(panel!=null)panel.SetActive(false);
             EnsureWelcome();
-            if(previousStep != -2) welcomeView?.Place(locomotion.rig.centerEyeAnchor,locomotion.transform.forward);
+            if(welcomeView!=null) welcomePlacement.Place(locomotion.rig.centerEyeAnchor,welcomeView.Root,locomotion.transform.forward,Time.unscaledTime,previousStep!=-2);
             previousStep=-2; welcomeView?.SetVisible(true); return;
         }
         welcomeView?.SetVisible(false);
@@ -200,15 +204,15 @@ public sealed class ApartmentTutorialController : MonoBehaviour
         bool modal = Session.Explaining;
         bool reposition = previousStep != Session.Step || previousKind != Session.PendingKind || previousModal != modal;
         previousStep = Session.Step; previousKind = Session.PendingKind; previousModal = modal;
-        if (reposition || !modal) PlacePanel(modal);
         okRect.gameObject.SetActive(modal);
         panelRect.sizeDelta = new Vector2(900, modal ? 420 : 120);
+        PlacePanel(reposition);
         label.rectTransform.offsetMin = new Vector2(30,modal ? 116 : 8);
         label.rectTransform.offsetMax = new Vector2(-30,-18);
         label.fontSize = modal ? 38 : 30;
         label.enableAutoSizing = true; label.fontSizeMin = modal ? 28 : 24; label.fontSizeMax = modal ? 38 : 30;
-        label.text = modal ? (Session.PendingKind >= 0 ? KindLessons[Session.PendingKind] : Session.Step == -1 ? MenuLesson : Lessons[Session.Step]) + "\n\n" + ConfirmHelp :
-            Session.WaitingForNeutral ? (menu != null ? ApartmentMenuController.NeutralText : NeutralHelp) : Session.Step == -1 ? MenuPractice : Session.Step == 0 ? PracticeMove : Session.Step == 1 ? PracticeTurn : PracticeTeleport;
+        label.text = ApartmentLanguage.Display(modal ? (Session.PendingKind >= 0 ? KindLessons[Session.PendingKind] : Session.Step == -1 ? MenuLesson : Lessons[Session.Step]) + "\n\n" + ConfirmHelp :
+            Session.WaitingForNeutral ? (menu != null ? ApartmentMenuController.NeutralText : NeutralHelp) : Session.Step == -1 ? MenuPractice : Session.Step == 0 ? PracticeMove : Session.Step == 1 ? PracticeTurn : PracticeTeleport);
     }
     void DiscoverNearbyType()
     {
@@ -234,12 +238,9 @@ public sealed class ApartmentTutorialController : MonoBehaviour
             closest = target; distance = d;
         }
     }
-    void PlacePanel(bool modal)
+    void PlacePanel(bool force)
     {
-        Transform head = locomotion.rig.centerEyeAnchor;
-        Vector3 forward = Vector3.ProjectOnPlane(head.forward,Vector3.up).normalized;
-        if (forward.sqrMagnitude < .5f) forward = locomotion.transform.forward;
-        panel.transform.SetPositionAndRotation(head.position + forward * 1.2f - Vector3.up * (modal ? .10f : .38f),Quaternion.LookRotation(forward));
+        if(panelRect!=null)basicPlacement.Place(locomotion.rig.centerEyeAnchor,panelRect,locomotion.transform.forward,Time.unscaledTime,force);
     }
     public void ProcessPointer(Ray ray, float maxDistance, bool pressed, out Vector3 end)
     {
@@ -300,7 +301,7 @@ public sealed class ApartmentTutorialController : MonoBehaviour
         okRect.offsetMin = new Vector2(0,24); okRect.offsetMax = new Vector2(0,102);
         okImage = okRect.gameObject.AddComponent<Image>(); okImage.material = backgroundMaterial; okImage.raycastTarget = false;
         var okLabel = MakeRect("Label",okRect,Vector2.zero,Vector2.one).gameObject.AddComponent<TextMeshProUGUI>();
-        ConfigureText(okLabel); okLabel.fontSize = 42; okLabel.text = "OK";
+        ConfigureText(okLabel); okLabel.fontSize = 42; okLabel.text = ApartmentLanguage.Display("OK");
     }
     void ConfigureText(TextMeshProUGUI text)
     {

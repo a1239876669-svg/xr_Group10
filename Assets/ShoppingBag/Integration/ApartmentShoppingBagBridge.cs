@@ -85,11 +85,11 @@ public sealed class ApartmentShoppingBagBridge : MonoBehaviour, IBagInteractionC
     {
         if (panel == null) return;
         if (!IsConfigured) { panel.Label("Bag unavailable", "Shopping Bag: Not configured", 330, 220, 730, 100, 30); return; }
-        panel.Label("Bag current size", "Current size: " + bag.CurrentSize, 330, 190, 730, 70, 33, true);
+        panel.Label("Bag current size", "Current size: " + ApartmentLanguage.Text("bag."+bag.CurrentSize.ToString().ToLowerInvariant()), 330, 190, 730, 70, 33, true);
         for (int i = 0; i < 3; i++)
         {
             var size = (BagSize)i; bool selected = bag.CurrentSize == size;
-            string title = (selected ? "●  " : "○  ") + size;
+            string title = (selected ? "●  " : "○  ") + ApartmentLanguage.Text("bag."+size.ToString().ToLowerInvariant());
             if (bag.IsHeld) panel.Label("Bag size " + size + " locked", title, 350, 278 + i * 96, 690, 72, 33);
             else panel.Button("Bag size " + size, title, 330, 278 + i * 96, 730, 78, () => TrySelectSize(size), selected, 33);
         }
