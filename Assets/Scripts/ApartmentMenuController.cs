@@ -124,6 +124,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
         ActivePanel == ApartmentPanelState.QuitConfirmation ? quitView : null;
     bool waitingNeutral = true, wasReady;
     string status = "";
+    bool guideHelpOpen;
 
     void Awake()
     {
@@ -137,7 +138,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
     void Suspend()
     {
         InputReady = wasReady = false; waitingNeutral = true; bLatch.Reset();
-        ConfirmingReset = false; status = ""; ComfortSection = 0; UIRevision++;
+        ConfirmingReset = false; status = ""; ComfortSection = 0; guideHelpOpen = false; UIRevision++;
         if (ActivePanel == ApartmentPanelState.QuitConfirmation) ActivePanel = quitSource;
         HidePanels(); locomotion?.CancelTeleport(); interactor?.ResetUIInput();
     }
@@ -163,7 +164,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
         // The welcome question is a distinct screen. B becomes available after an explicit choice.
         bool welcome = tutorial != null && tutorial.isActiveAndEnabled && tutorial.Session.Welcome;
         if (bLatch.Sample(b, !welcome && (review == null || !review.IsEditingText))) Toggle();
-        if (tour != null && tour.Complete && !tour.NotificationShown && !HasOpenPanel && !waitingNeutral && neutral &&
+        if ((tutorial == null || tutorial.guidedJourney == null || tutorial.guidedJourney.IsFinished) && tour != null && tour.Complete && !tour.NotificationShown && !HasOpenPanel && !waitingNeutral && neutral &&
             (tutorial == null || (tutorial.Session.Step == 3 && !tutorial.Session.Explaining)) && !locomotion.IsTeleportAiming)
             ShowTourCompletion();
         CurrentView?.SetVisible(Visible);
@@ -270,7 +271,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
     {
         if (page < 0 || page >= Tabs.Length) return;
         if (page == 5) { RequestQuit(); return; }
-        Page = page; ConfirmingReset = false; status = ""; ComfortSection = 0; UIRevision++;
+        Page = page; ConfirmingReset = false; status = ""; ComfortSection = 0; guideHelpOpen = false; UIRevision++;
         interactor?.ResetUIInput(); Rebuild(false);
     }
     public void RefreshMyItems()
@@ -306,6 +307,9 @@ public sealed class ApartmentMenuController : MonoBehaviour
         Application.Quit();
 #endif
     }
+    public void RefreshGuideHelp() { if (IsOpen && Page == 2) { UIRevision++; interactor?.ResetUIInput(); Rebuild(false); } }
+    void OpenGuideHelp() { guideHelpOpen = true; RefreshGuideHelp(); }
+    void CloseGuideHelp() { guideHelpOpen = false; RefreshGuideHelp(); }
     public void ShowTourCompletion()
     {
         if (!InputReady || HasOpenPanel || tour == null || !tour.Complete || tour.NotificationShown) return;
@@ -408,7 +412,16 @@ public sealed class ApartmentMenuController : MonoBehaviour
             else view.Label("Bag unavailable", "Shopping Bag: Not configured", 330, 220, 730, 100, 30);
         }
         else if (Page == 2)
-            view.Label("Controls", KeyText(MovementMode), 330, 208, 730, 455, 30);
+        {
+            var guide = tutorial != null ? tutorial.guidedJourney : null;
+            if (guideHelpOpen && guide != null && guide.isActiveAndEnabled) guide.BuildHelp(view, CloseGuideHelp);
+            else
+            {
+                view.Label("Controls", KeyText(MovementMode), 330, 208, 730, guide != null ? 330 : 455, 30);
+                if (guide != null && guide.isActiveAndEnabled)
+                    view.Button("Review guide", "Review guide / Help / Skip", 330, 585, 730, 66, OpenGuideHelp, false, 30);
+            }
+        }
         else view.Label("Placeholder", "暂未开放", 330, 300, 700, 120, 43);
         string help = tutorial != null && tutorial.Session.Step == -1 ? ChooseHelp :
             (Page == 4 && ComfortSection == 1 ? ComfortFooter : Footer);

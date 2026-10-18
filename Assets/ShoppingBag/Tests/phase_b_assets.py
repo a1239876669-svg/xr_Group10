@@ -16,7 +16,7 @@ def generate():
         # Preserve all original fileIDs and SDK wiring. Append only new components/child.
         s = s.replace('  - component: {fileID: 1008}\n', '  - component: {fileID: 1008}\n  - component: {fileID: 1009}\n  - component: {fileID: 1010}\n', 1)
         s = s.replace('  - {fileID: 1601}\n', '  - {fileID: 1601}\n  - {fileID: 1701}\n', 1)
-        s += a.mono(1009, 1000, 'BagHaptics', '  sensor: {fileID: 1703}\n  amplitude: 0.35\n  frequency: 0.5\n  duration: 0.08\n  cooldown: 0.25\n  dryRunInEditor: 1\n  logRequests: 0\n')
+        s += a.mono(1009, 1000, 'BagHaptics', '  sensor: {fileID: 1703}\n  amplitude: 0.35\n  frequency: 0.5\n  duration: 0.08\n  cooldown: 0.25\n  dryRunInEditor: 0\n  logRequests: 0\n')
         s += a.mono(1010, 1000, 'BagInteractionGate', '  bag: {fileID: 1006}\n')
         s += a.go(1700, 'BagContactSensor', [1701, 1702, 1703]) + a.transform(1701, 1700, 1001)
         s += a.collider(1702, 1700, (.45,.40,.22), (0,.20,0), True)
@@ -61,8 +61,8 @@ if __name__ == '__main__':
     prefab=(a.ROOT/'Prefabs/ShoppingBag.prefab').read_text(encoding='utf-8')
     assert 'm_Name: BagContactSensor' in prefab and 'contactTrigger: {fileID: 1702}' in prefab
     assert 'handleTrigger: {fileID: 1602}' in prefab
-    assert 'dryRunInEditor: 1' in prefab
+    assert 'dryRunInEditor: 0' in prefab
     scene=(a.ROOT/'ShoppingBag_Test.unity').read_text(encoding='utf-8')
     for name in ['ChannelA_Left','ChannelA_Right','ChannelB_Left','ChannelB_Right']:
         assert f'm_Name: {name}' in scene
-    print('PASS: Phase B separate body sensor, dry-run haptics, registered two-width fixed channel.')
+    print('PASS: Phase B separate body sensor, hardware-capable haptics prefab (desktop simulation stays dry), registered two-width fixed channel.')

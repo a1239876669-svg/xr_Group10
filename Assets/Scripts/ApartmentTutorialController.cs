@@ -9,6 +9,7 @@ public sealed class ApartmentTutorialProgress
     public ApartmentTutorialProgress(bool welcome = false) { Step = welcome ? -2 : 0; }
     public bool Welcome => Step == -2;
     public bool Skipped { get; private set; }
+    public bool PracticeSkipped { get; private set; }
     public bool MenuVisited { get; private set; }
     public bool MenuChoiceMade { get; private set; }
     public ApartmentMovementMode Mode { get; private set; } = ApartmentMovementMode.Both;
@@ -19,9 +20,9 @@ public sealed class ApartmentTutorialProgress
     public int PendingKind { get; private set; } = -1;
     public float Progress { get; private set; }
     readonly bool[] seen = new bool[3];
-    public bool AllowMove => !Explaining && !WaitingForNeutral && (Step == 0 || Step == 3);
-    public bool AllowTurn => !Explaining && !WaitingForNeutral && (Step == 1 || Step == 3);
-    public bool AllowTeleport => !Explaining && !WaitingForNeutral && (Step == 2 || Step == 3);
+    public bool AllowMove => !Explaining && !WaitingForNeutral && (Step >= 0 && Step <= 3);
+    public bool AllowTurn => !Explaining && !WaitingForNeutral && (Step >= 0 && Step <= 3);
+    public bool AllowTeleport => !Explaining && !WaitingForNeutral && (Step >= 0 && Step <= 3);
     public bool AllowInteraction => !Explaining && !WaitingForNeutral && Step == 3;
     public bool HasSeen(ApartmentInteractionKind kind) => Skipped || seen[(int)kind];
     public void ChooseTutorial(bool start)
@@ -40,7 +41,12 @@ public sealed class ApartmentTutorialProgress
     public void MenuClosed()
     {
         Suspend();
-        if (Step == -1 && MenuChoiceMade) SelectNextPractice();
+        if (Step == -1 && MenuVisited) SelectNextPractice();
+    }
+    public void SkipPractice()
+    {
+        if (Welcome) return;
+        PracticeSkipped = true; Step = 3; PendingKind = -1; Explaining = false; WaitingForNeutral = true;
     }
     public void Confirm()
     {
@@ -80,6 +86,7 @@ public sealed class ApartmentTutorialController : MonoBehaviour
     public ApartmentVRLocomotion locomotion;
     public ApartmentFurnitureInteractor interactor;
     public ApartmentMenuController menu;
+    public ApartmentGuidedJourney guidedJourney;
     public TMP_FontAsset font;
     public Shader panelShader;
     public Shader textOverlayShader;
@@ -91,25 +98,25 @@ public sealed class ApartmentTutorialController : MonoBehaviour
     public bool AllowTurn => InputReady && !MenuActive && Session.AllowTurn;
     public bool AllowTeleport => InputReady && !MenuActive && Session.AllowTeleport;
     public bool AllowInteraction => InputReady && !MenuActive && Session.AllowInteraction;
-    public bool HasSeen(ApartmentInteractionKind kind) => Session.HasSeen(kind);
+    public bool HasSeen(ApartmentInteractionKind kind) => (guidedJourney != null && guidedJourney.OwnsContextLessons) || Session.HasSeen(kind);
     public static readonly string[] Lessons = {
-        "第一步：左摇杆走路\n轻推左摇杆，让自己走一小段距离。\n实际走满 25 厘米后进入下一步。",
-        "第二步：右摇杆转向\n向左或向右推右摇杆，视角会连续转动。\n实际转过 15 度后进入下一步。",
-        "第三步：A 键传送\n按住右手 A 键，指向附近空地。\n落点变绿后松开，传送至少 50 厘米。" };
+        "Left stick: walk a short distance.\nTry about 25 cm. Right stick turns; A teleport remains available.\nB > Controls / 按键说明 > Review guide can skip a practice.",
+        "Right stick: turn left or right by about 15 degrees.\nYou can still walk or teleport. Choose smooth/snap turning in Settings.",
+        "Hold right A, point at a clear floor, then release on green.\nTry a landing at least 50 cm away. B always opens the menu." };
     public static readonly string[] KindLessons = {
-        "房门交互\n右手指向门，门板高亮后扣一下食指扳机打开。\n再扣一次关闭；不需要侧面的握把键。",
-        "厨房柜门交互\n站在柜门两米内，右手指向门板。\n扣食指扳机打开，再扣一次关闭。",
-        "阳台推拉门交互\n右手指向任一扇玻璃门或边框。\n扣食指扳机打开通道，再扣一次关闭。" };
-    public const string ConfirmHelp = "右手指向 OK，扣食指扳机确认。";
-    public const string NeutralHelp = "请松开扳机和 A 键，并让两个摇杆回到中间。";
-    public const string PracticeMove = "试一试：左摇杆走路 25 厘米";
-    public const string PracticeTurn = "试一试：右摇杆连续转向 15 度";
-    public const string PracticeTeleport = "试一试：按住 A 瞄准，松开传送至少 50 厘米";
-    public const string WelcomeTitle = "是否需要新手教程？";
-    public const string WelcomeHelp = "右手指向按钮，扣食指扳机确认。\n选择跳过后，本次游玩不再自动显示教学提示。\n仍可按 B 打开菜单查看按键说明。";
-    public const string MenuLesson = "先认识公寓菜单\n右手 B 键可以打开和关闭菜单。\n点击 OK 后，按 B 打开菜单，进入设置选择移动方式。";
-    public const string MenuPractice = "试一试：按 B 打开菜单，在设置中选择移动方式";
-    public static string AllText => WelcomeTitle + WelcomeHelp + MenuLesson + MenuPractice + "开始教程跳过教程" + string.Join("",Lessons) + string.Join("",KindLessons) + ConfirmHelp + NeutralHelp +
+        "Room door: point at the door and press right Trigger.\nPress again to close. Grip is for the shopping bag.",
+        "Kitchen cabinet: stand nearby, point at its door and press right Trigger.\nOpen, then close it; step clear if the door is blocked.",
+        "Balcony sliding door: point at its frame/glass and press right Trigger.\nWhen blocked or paused, step clear and press again." };
+    public const string ConfirmHelp = "Point at OK and press right Trigger. B opens the menu for Help / Skip.";
+    public const string NeutralHelp = "Release Trigger, A and B, and centre both sticks.";
+    public const string PracticeMove = "Try walking 25 cm; other movement remains available. B > Controls > Review guide to skip.";
+    public const string PracticeTurn = "Try turning about 15 degrees with the right stick. You may walk or teleport too.";
+    public const string PracticeTeleport = "Hold A to aim, release on green. Try 50 cm or skip in Review guide.";
+    public const string WelcomeTitle = "Welcome to the apartment review";
+    public const string WelcomeHelp = "Review everyday movement and furniture use. Carry a bag, then measure and mark an issue. Structure is fixed; dimensions are simplified assumptions. You may skip, pause or exit safely.";
+    public const string MenuLesson = "B opens and closes the menu. Point the right ray and press front Trigger to choose. Both smooth movement and A teleport are available by default. If stuck: Settings / 设置 > 返回安全点.";
+    public const string MenuPractice = "Press B, view the controls or settings, then close B. Both movement methods are available by default.";
+    public static string AllText => WelcomeTitle + WelcomeHelp + MenuLesson + MenuPractice + "Start guideSkip / explore freely" + ApartmentGuidedJourney.AllText + string.Join("",Lessons) + string.Join("",KindLessons) + ConfirmHelp + NeutralHelp +
         PracticeMove + PracticeTurn + PracticeTeleport + "OK重新练习教程推拉门配置不完整";
     GameObject panel;
     RectTransform panelRect, okRect;
@@ -182,7 +189,7 @@ public sealed class ApartmentTutorialController : MonoBehaviour
         }
         welcomeView?.SetVisible(false);
         if (Session.Skipped) { if(panel!=null)panel.SetActive(false); return; }
-        if (AllowInteraction && (menu == null || !menu.BlocksWorldInput) && Time.unscaledTime >= nextScan && !locomotion.IsTeleportAiming &&
+        if ((guidedJourney == null || !guidedJourney.OwnsContextLessons) && AllowInteraction && (menu == null || !menu.BlocksWorldInput) && Time.unscaledTime >= nextScan && !locomotion.IsTeleportAiming &&
             !OVRInput.Get(OVRInput.Button.One,OVRInput.Controller.RTouch))
         { nextScan = Time.unscaledTime + .15f; DiscoverNearbyType(); }
         EnsureVisuals();
@@ -251,13 +258,17 @@ public sealed class ApartmentTutorialController : MonoBehaviour
         welcomeView=new ApartmentVRPanel(transform,"Tutorial welcome (session only)",font,panelShader,textOverlayShader,900,430);
         welcomeView.Label("Welcome title",WelcomeTitle,42,30,816,70,44,true);
         welcomeView.Label("Welcome explanation",WelcomeHelp,42,120,816,145,30);
-        welcomeView.Button("Start tutorial","开始教程",42,314,390,78,()=>ChooseTutorial(true),true);
-        welcomeView.Button("Skip tutorial","跳过教程",468,314,390,78,()=>ChooseTutorial(false));
+        welcomeView.Button("Start tutorial","Start guide",42,314,390,78,()=>ChooseTutorial(true),true);
+        welcomeView.Button("Skip tutorial","Skip / explore freely",468,314,390,78,()=>ChooseTutorial(false));
     }
     public void ChooseTutorial(bool start)
     {
         Session.ChooseTutorial(start); interactor?.ResetUIInput(); locomotion?.CancelTeleport();
         welcomeView?.SetVisible(false); previousStep=-99;
+    }
+    public void SkipBasicPractice()
+    {
+        Session.SkipPractice(); interactor?.ResetUIInput(); locomotion?.CancelTeleport(); previousStep = -99;
     }
     public RectTransform BuildWelcomePreview() { EnsureWelcome();welcomeView.SetVisible(true);return welcomeView.Root; }
     public static bool HitRectangle(RectTransform rect, Ray ray, float maxDistance, out Vector3 point)
