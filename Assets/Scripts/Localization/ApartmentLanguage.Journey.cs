@@ -1,0 +1,73 @@
+public static partial class ApartmentLanguage
+{
+    static partial void RegisterJourney()
+    {
+        Register("language.label","Language","语言");
+        Register("language.en","English","English");
+        Register("language.zh","简体中文","简体中文");
+        Register("recovery.title","Recovery help","错误恢复帮助");
+        Register("recovery.back","Back to guide","返回任务帮助");
+        Register("journey.title.0","0 / 11 - Welcome and movement","0 / 11 - 欢迎与移动");
+        Register("journey.title.1","1 / 11 - Enter the apartment","1 / 11 - 进入公寓");
+        Register("journey.title.2","2 / 11 - Explore the living room","2 / 11 - 自由探索客厅");
+        Register("journey.title.3","3 / 11 - Try the balcony door","3 / 11 - 尝试阳台移门");
+        Register("journey.title.4","4 / 11 - Try a kitchen cabinet","4 / 11 - 尝试厨房柜门");
+        Register("journey.title.5","5 / 11 - Return to the entrance","5 / 11 - 返回入口");
+        Register("journey.title.6","6 / 11 - Choose and pick up a bag","6 / 11 - 选袋并抓取");
+        Register("journey.title.7","7 / 11 - Carry shopping to the kitchen","7 / 11 - 持袋前往厨房");
+        Register("journey.title.8","8 / 11 - Put the bag down","8 / 11 - 放下购物袋");
+        Register("journey.title.9","9 / 11 - Measure an opening","9 / 11 - 测量通道");
+        Register("journey.title.10","10 / 11 - Mark an issue and save","10 / 11 - 标记问题并保存");
+        Register("journey.title.11","11 / 11 - Free exploration","11 / 11 - 自由探索");
+        Register("journey.copy.0","Structure/walls are fixed. Selected doors and cabinets open. Furniture and dimensions are simplified assumptions, not certified clearance.","墙体等结构固定，仅部分门柜可交互。家具与尺寸经过简化，不代表合规净空认证。","Structure/walls are fixed. Selected doors and cabinets open. Furniture and dimensions are simplified assumptions, not certified clearance.");
+        Register("journey.copy.1","B > Controls > Review guide: help, skip a task, or explore freely.","B > 按键说明 > 任务帮助：查看帮助、跳过练习或自由探索。","B > Controls / 按键说明 > Review guide: help, skip a task, or explore freely.");
+        Register("journey.copy.2","Guide is unavailable. Existing menu and controls remain available.","任务帮助暂不可用；原有菜单和操作仍可使用。","Guide is unavailable. Existing menu and controls remain available.");
+        Register("journey.copy.3","Practise the basic controls, or use B > Controls > Review guide to skip a practice.","练习基本操作，或通过 B > 按键说明 > 任务帮助跳过练习。","Practise the basic controls, or use B > Controls > Review guide to skip a practice.");
+        Register("journey.copy.4","Let's enter the apartment. Point at the entrance door and press right Trigger, then move inside.","进入公寓吧。右手指向入口门，按食指扳机开门，然后进入。","Let's enter the apartment. Point at the entrance door and press right Trigger, then move inside.");
+        Register("journey.copy.5","Great! Explore the living room at your own pace. Look around, then approach the balcony.","很好！按自己的节奏探索客厅，熟悉环境后走向阳台。","Great! Explore the living room at your own pace. Look around, then approach the balcony.");
+        Register("journey.copy.6","The sliding door is paused or blocked. Step clear and press right Trigger to resume, or skip this practice in Help.","移门暂停或受阻。让开后再按右手食指扳机继续，或在帮助中跳过。","The sliding door is paused or blocked. Step clear and press right Trigger to resume, or skip this practice in Help.");
+        Register("journey.copy.7","Would you like to explore the balcony? Point at its sliding door and press right Trigger to open it.","想看看阳台吗？指向阳台移门，按右手食指扳机打开。","Would you like to explore the balcony? Point at its sliding door and press right Trigger to open it.");
+        Register("journey.copy.8","Great! Close this same cabinet with right Trigger. If blocked, step clear and press again.","很好！按右手食指扳机关闭同一柜门；受阻时让开后再按。","Great! Close this same cabinet with right Trigger. If blocked, step clear and press again.");
+        Register("journey.copy.9","Well done! Visit the kitchen and find the Cabinet practice label. Close it first if open, then open and close it with right Trigger. No bag yet.","前往厨房，找到“柜门练习”标签。如果已开，先关闭，再用右手食指扳机完整开关一次。此时无需购物袋。","Well done! Visit the kitchen and find the Cabinet practice label. Close it first if open, then open and close it with right Trigger. No bag yet.");
+        Register("journey.copy.10","Great! Return to the entrance for a daily activity. Walk or use A to teleport; choose any safe route.","很好！回到入口尝试日常任务。可以行走或用 A 瞬移，选择安全路线即可。","Great! Return to the entrance for a daily activity. Walk or use A to teleport; choose any safe route.");
+        Register("journey.copy.11","Close the menu, release Grip, move either hand near the handle, then hold Grip to pick up the bag.","关闭菜单，先松开侧握键。任意一手靠近提手，再按住侧握键抓袋。","Close the menu, release Grip, move either hand near the handle, then hold Grip to pick up the bag.");
+        Register("journey.copy.12","Your progress is kept. Return to your bag and hold Grip near the handle to carry on.","进度已保留。回到购物袋旁，在提手附近按住侧握键继续。","Your progress is kept. Return to your bag and hold Grip near the handle to carry on.");
+        Register("journey.copy.13","Carry your bag through the living room into the kitchen. Red contact warns of a possible spatial issue; move clear to restore it.","提袋经过客厅进入厨房。红色表示接触和潜在空间问题；离开后恢复。","Carry your bag through the living room into the kitchen. Red contact warns of a possible spatial issue; move clear to restore it.");
+        Register("journey.copy.14","Kitchen drop task (not cabinet storage): move the bag into the cyan floor area, release Grip, and let it settle.","厨房放袋任务（不是入柜）：将袋子移至青色地板区域，松开侧握键并等待落稳。","Kitchen drop task (not cabinet storage): move the bag into the cyan floor area, release Grip, and let it settle.");
+        Register("journey.copy.15","Feedback was not confirmed saved. Keep the record, check the error in the menu and retry Save feedback. You may skip in Help.","反馈尚未确认保存。保留记录，查看菜单错误并重试“保存反馈”；也可在帮助中跳过。","Feedback was not confirmed saved. Keep the record, check the error in the menu and retry Save feedback. You may skip in Help.");
+        Register("journey.copy.16","Guide finished with skipped tasks. Explore freely; only a successful Save confirms feedback storage. More measurements, markers and menu Exit remain available.","引导结束，部分任务已跳过。可自由探索、测距、标记或从菜单退出；只有保存成功才代表反馈已存盘。","Guide finished with skipped tasks. Explore freely; only a successful Save confirms feedback storage. More measurements, markers and menu Exit remain available.");
+        Register("journey.copy.17","Review complete! Explore freely, take more measurements, leave more feedback, or exit through the menu whenever you are ready.","评审引导完成！可以自由探索、继续测距和反馈，或随时从菜单退出。","Review complete! Explore freely, take more measurements, leave more feedback, or exit through the menu whenever you are ready.");
+        Register("journey.copy.18","Cabinet practice","柜门练习","Cabinet practice");
+        Register("journey.copy.19","Skip this task (not completed)","跳过本项（不记为完成）","Skip this task (not completed)");
+        Register("journey.copy.20","Skip all / explore","跳过引导／自由探索","Skip all / explore");
+        Register("journey.copy.21","Hide task card","隐藏任务提示","Hide task card");
+        Register("journey.copy.22","Show task card","显示任务提示","Show task card");
+        Register("journey.copy.23","Back to controls","返回按键说明","Back to controls");
+        Register("journey.copy.24","Review guide / Help / Skip","任务帮助／跳过","Review guide / Help / Skip");
+        Register("journey.copy.25","Right stick: turn left or right by about 15 degrees.\nYou can still walk or teleport. Choose smooth/snap turning in Settings.","右摇杆左右转向约15度。\n仍可行走或瞬移，可在设置中选择平滑或快照转向。","Right stick: turn left or right by about 15 degrees.\nYou can still walk or teleport. Choose smooth/snap turning in Settings.");
+        Register("journey.copy.26","Hold right A, point at a clear floor, then release on green.\nTry a landing at least 50 cm away. B always opens the menu.","按住右手 A 指向空地，在绿色落点松开。\n尝试至少50厘米距离；B 始终用于菜单。","Hold right A, point at a clear floor, then release on green.\nTry a landing at least 50 cm away. B always opens the menu.");
+        Register("journey.copy.27","Room door: point at the door and press right Trigger.\nPress again to close. Grip is for the shopping bag.","房门：指向门并按右手食指扳机，再按一次关闭。\n侧握键用于购物袋。","Room door: point at the door and press right Trigger.\nPress again to close. Grip is for the shopping bag.");
+        Register("journey.copy.28","Kitchen cabinet: stand nearby, point at its door and press right Trigger.\nOpen, then close it; step clear if the door is blocked.","厨房柜门：靠近并指向柜门，按右手食指扳机开关。\n受阻时先让开。","Kitchen cabinet: stand nearby, point at its door and press right Trigger.\nOpen, then close it; step clear if the door is blocked.");
+        Register("journey.copy.29","Balcony sliding door: point at its frame/glass and press right Trigger.\nWhen blocked or paused, step clear and press again.","阳台移门：指向门框或玻璃，按右手食指扳机。\n受阻或暂停时让开后再按。","Balcony sliding door: point at its frame/glass and press right Trigger.\nWhen blocked or paused, step clear and press again.");
+        Register("journey.copy.30","Point at OK and press right Trigger. B opens the menu for Help / Skip.","指向“确定”并按右手食指扳机。B 可打开菜单中的帮助／跳过。","Point at OK and press right Trigger. B opens the menu for Help / Skip.");
+        Register("journey.copy.31","Release Trigger, A and B, and centre both sticks.","松开食指扳机、A 和 B，并让两个摇杆回中。","Release Trigger, A and B, and centre both sticks.");
+        Register("journey.copy.32","Try walking 25 cm; other movement remains available. B > Controls > Review guide to skip.","尝试行走25厘米，其他移动仍可用。可在 B > 按键说明 > 任务帮助中跳过。","Try walking 25 cm; other movement remains available. B > Controls > Review guide to skip.");
+        Register("journey.copy.33","Try turning about 15 degrees with the right stick. You may walk or teleport too.","尝试用右摇杆转向约15度，仍可行走或瞬移。","Try turning about 15 degrees with the right stick. You may walk or teleport too.");
+        Register("journey.copy.34","Hold A to aim, release on green. Try 50 cm or skip in Review guide.","按住 A 瞄准，在绿色处松开。尝试50厘米，或在任务帮助中跳过。","Hold A to aim, release on green. Try 50 cm or skip in Review guide.");
+        Register("journey.copy.35","Welcome to the apartment review","欢迎参与公寓设计评审","Welcome to the apartment review");
+        Register("journey.copy.36","Review everyday movement and furniture use. Carry a bag, then measure and mark an issue. Structure is fixed; dimensions are simplified assumptions. You may skip, pause or exit safely.","评审日常通行与家具使用：提购物袋，再测距和标记问题。结构固定，尺寸是简化假设。可跳过、暂停或退出。","Review everyday movement and furniture use. Carry a bag, then measure and mark an issue. Structure is fixed; dimensions are simplified assumptions. You may skip, pause or exit safely.");
+        Register("journey.copy.37","Press B, view the controls or settings, then close B. Both movement methods are available by default.","按 B 打开按键说明或设置，再按 B 关闭。默认同时支持行走和瞬移。","Press B, view the controls or settings, then close B. Both movement methods are available by default.");
+        Register("journey.copy.38","Start guide","开始引导","Start guide");
+        Register("journey.copy.39","Skip / explore freely","跳过／自由探索","Skip / explore freely");
+        Register("journey.copy.40","OK","确定","OK");
+        Register("journey.refined.0","Stop if uncomfortable. B > Settings > Teleport to Safe Position recovers to the checked entrance. B > Exit ends the review.","不适时请停止。B > 设置 > 返回安全点可恢复到检查过的入口；B > 退出游戏结束评审。","Stop if uncomfortable. B > Settings / 设置 > 返回安全点 returns to a checked entrance landing. Exit through B > 退出游戏.");
+        Register("journey.refined.1","A review tool owns Trigger. B > Measurement > Stop tool, then try the door.","评审工具正占用食指扳机。通过 B > 测距 > 停止工具后再操作门。","A measurement/marker tool currently owns Trigger. Open B > 测距 and choose 停止工具 (Stop tool), then try the door.");
+        Register("journey.refined.2","A current draft is open. Save it then Continue marking, or Cancel draft. Place a new marker for this task.","当前有草稿打开。可保存后“继续标记”，或“取消草稿”。请为本任务新建标记。","An earlier draft is open. Save it then choose 继续标记 (Continue marking), or cancel that draft. Place a new marker for this task.");
+        Register("journey.refined.3","At the entrance, open B > My Items. Put the bag down and choose Small, Medium or Large.","在入口打开 B > 我的物品。放下袋子后选择小号、中号或大号。","At the entrance, open B > My Items / 我的物品. Put the bag down and choose Small, Medium or Large.");
+        Register("journey.refined.4","B > Measurement > Start measurement. Use right Trigger for two surface points. Cancel start point or Undo last display corrects mistakes; see Recovery help.","B > 测距 > 开始测距，用右手食指扳机选两个表面点。误操作可取消起点或撤销最近测距显示，详见错误恢复帮助。","Good! Open B > 测距 > 开始测距. Use right Trigger to choose two real surface points and read the distance. Cancel/retry or skip in Help.");
+        Register("journey.refined.5","B > Markers > Place marker. Choose feedback and importance, then Save feedback. Cancel draft corrects a mistake; Hide marker keeps saved feedback.","B > 标记注释 > 放置标记，选择反馈和重要程度后保存。取消草稿可纠正误放；隐藏标记保留已保存反馈。","Open B > 标记注释 > 放置标记. Place a new marker, choose aspect, rating and importance, then 保存反馈. Wait for a successful save.");
+        Register("journey.refined.6","B > Controls > Review guide | Help / Skip","B > 按键说明 > 任务帮助 | 帮助／跳过","B > 按键说明 > Review guide | Help / Skip");
+        Register("journey.refined.7","Left stick: walk about 25 cm. Right stick turns; A teleport remains available.\nB > Controls > Review guide can skip a practice.","左摇杆行走约25厘米，右摇杆转向，A 瞬移仍可用。\nB > 按键说明 > 任务帮助可跳过练习。","Left stick: walk a short distance.\nTry about 25 cm. Right stick turns; A teleport remains available.\nB > Controls / 按键说明 > Review guide can skip a practice.");
+        Register("journey.refined.8","B opens/closes the menu. Point the right ray and press Trigger. Walk with the left stick; hold A and release on green to teleport. If stuck: B > Settings > Teleport to Safe Position.","B 打开／关闭菜单，右手射线配合食指扳机选择。左摇杆行走；按住 A 并在绿色处松开瞬移。卡住时：B > 设置 > 返回安全点。","B opens and closes the menu. Point the right ray and press front Trigger to choose. Both smooth movement and A teleport are available by default. If stuck: Settings / 设置 > 返回安全点.");
+    }
+}

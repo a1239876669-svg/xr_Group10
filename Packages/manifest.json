@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "com.meta.xr.sdk.core": "file:E:/edge/com.meta.xr.sdk.core-205.0.0.tgz",
-    "com.meta.xr.sdk.interaction": "file:E:/edge/com.meta.xr.sdk.interaction-205.0.0.tgz",
-    "com.meta.xr.sdk.interaction.ovr": "file:E:/edge/com.meta.xr.sdk.interaction.ovr-205.0.0.tgz",
+    "com.meta.xr.sdk.core": "205.0.0",
+    "com.meta.xr.sdk.interaction": "205.0.0",
+    "com.meta.xr.sdk.interaction.ovr": "205.0.0",
     "com.unity.ai.navigation": "2.0.15",
     "com.unity.feature.development": "1.0.2",
     "com.unity.ide.rider": "3.0.38",

@@ -1,0 +1,1652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="172" result="Passed" total="172" passed="172" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:59Z" duration="1.453418">
+  <test-suite type="TestSuite" id="1000" name="Quest Guidence" fullname="Quest Guidence" runstate="Runnable" testcasecount="172" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:59Z" duration="1.453418" total="172" passed="172" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1095" name="Group10.GuidedJourney.Tests.dll" fullname="D:/Documents/GitHub/xr_Group10-phase2-final/Library/ScriptAssemblies/Group10.GuidedJourney.Tests.dll" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:59Z" duration="0.747043" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="29576" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1096" name="Group10" fullname="Group10" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:59Z" duration="0.746067" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1097" name="GuidedJourney" fullname="Group10.GuidedJourney" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:59Z" duration="0.745431" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1098" name="Tests" fullname="Group10.GuidedJourney.Tests" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:59Z" duration="0.744696" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="AdapterLifecycleTests" fullname="Group10.GuidedJourney.Tests.AdapterLifecycleTests" classname="Group10.GuidedJourney.Tests.AdapterLifecycleTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.036880" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1002" name="ApplicationFocusCallbackInvalidatesHeldDropProof" fullname="Group10.GuidedJourney.Tests.AdapterLifecycleTests.ApplicationFocusCallbackInvalidatesHeldDropProof" methodname="ApplicationFocusCallbackInvalidatesHeldDropProof" classname="Group10.GuidedJourney.Tests.AdapterLifecycleTests" runstate="Runnable" seed="930196785" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.011272" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.AdapterLifecycleTests.ApplicationFocusCallbackInvalidatesHeldDropProof
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.AdapterLifecycleTests.ApplicationFocusCallbackInvalidatesHeldDropProof, ResultState: Passed, Duration: 0.011s
+]]></output>
+              </test-case>
+              <test-case id="1003" name="DisablingObserverInvalidatesHalfCompletedCabinetCycle" fullname="Group10.GuidedJourney.Tests.AdapterLifecycleTests.DisablingObserverInvalidatesHalfCompletedCabinetCycle" methodname="DisablingObserverInvalidatesHalfCompletedCabinetCycle" classname="Group10.GuidedJourney.Tests.AdapterLifecycleTests" runstate="Runnable" seed="770781528" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.002583" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.AdapterLifecycleTests.DisablingObserverInvalidatesHalfCompletedCabinetCycle
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.AdapterLifecycleTests.DisablingObserverInvalidatesHalfCompletedCabinetCycle, ResultState: Passed, Duration: 0.003s
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1004" name="JourneyStateMachineTests" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" testcasecount="47" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.288445" total="47" passed="47" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1041" name="AimedTeleportDirectToKitchenWithoutLivingDoesNotComplete" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.AimedTeleportDirectToKitchenWithoutLivingDoesNotComplete" methodname="AimedTeleportDirectToKitchenWithoutLivingDoesNotComplete" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="639024925" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000278" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.AimedTeleportDirectToKitchenWithoutLivingDoesNotComplete
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.AimedTeleportDirectToKitchenWithoutLivingDoesNotComplete, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1040" name="AllTeleportCarryRouteUsesRealLivingAndKitchenEndpoints" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.AllTeleportCarryRouteUsesRealLivingAndKitchenEndpoints" methodname="AllTeleportCarryRouteUsesRealLivingAndKitchenEndpoints" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="865747238" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.001548" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.AllTeleportCarryRouteUsesRealLivingAndKitchenEndpoints
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.AllTeleportCarryRouteUsesRealLivingAndKitchenEndpoints, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1009" name="AlreadyInsideVisitorIsNotForcedOutside" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.AlreadyInsideVisitorIsNotForcedOutside" methodname="AlreadyInsideVisitorIsNotForcedOutside" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1190698917" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000283" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.AlreadyInsideVisitorIsNotForcedOutside
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.AlreadyInsideVisitorIsNotForcedOutside, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1018" name="BalconyRequiresOpenDoorRatherThanProximity" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.BalconyRequiresOpenDoorRatherThanProximity" methodname="BalconyRequiresOpenDoorRatherThanProximity" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1230158861" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000269" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.BalconyRequiresOpenDoorRatherThanProximity
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.BalconyRequiresOpenDoorRatherThanProximity, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1020" name="CabinetAlreadyOpenMustCloseThenOpenAgain" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetAlreadyOpenMustCloseThenOpenAgain" methodname="CabinetAlreadyOpenMustCloseThenOpenAgain" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1472467491" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000339" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetAlreadyOpenMustCloseThenOpenAgain
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetAlreadyOpenMustCloseThenOpenAgain, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1049" name="CabinetOpeningClosingPausedOrBlockedNeverPretendToBeClosed" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetOpeningClosingPausedOrBlockedNeverPretendToBeClosed" methodname="CabinetOpeningClosingPausedOrBlockedNeverPretendToBeClosed" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="153263318" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000349" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetOpeningClosingPausedOrBlockedNeverPretendToBeClosed
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetOpeningClosingPausedOrBlockedNeverPretendToBeClosed, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1019" name="CabinetRequiresRealOpenThenCloseInKitchen" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetRequiresRealOpenThenCloseInKitchen" methodname="CabinetRequiresRealOpenThenCloseInKitchen" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1185706730" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000385" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetRequiresRealOpenThenCloseInKitchen
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetRequiresRealOpenThenCloseInKitchen, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1021" name="CabinetStateOutsideKitchenDoesNotCompletePractice" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetStateOutsideKitchenDoesNotCompletePractice" methodname="CabinetStateOutsideKitchenDoesNotCompletePractice" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1157579115" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000340" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetStateOutsideKitchenDoesNotCompletePractice
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetStateOutsideKitchenDoesNotCompletePractice, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1050" name="CabinetUnknownInitialStateIsNotAnObservedClosedState" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetUnknownInitialStateIsNotAnObservedClosedState" methodname="CabinetUnknownInitialStateIsNotAnObservedClosedState" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1529749119" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000357" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetUnknownInitialStateIsNotAnObservedClosedState
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CabinetUnknownInitialStateIsNotAnObservedClosedState, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1027" name="CarryUsesHeldDistanceAndLivingToKitchenRoute" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.CarryUsesHeldDistanceAndLivingToKitchenRoute" methodname="CarryUsesHeldDistanceAndLivingToKitchenRoute" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1907336060" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000336" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CarryUsesHeldDistanceAndLivingToKitchenRoute
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.CarryUsesHeldDistanceAndLivingToKitchenRoute, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1025" name="DroppedBagCanBePickedUpWithoutRestartingSelection" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.DroppedBagCanBePickedUpWithoutRestartingSelection" methodname="DroppedBagCanBePickedUpWithoutRestartingSelection" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="730650501" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000303" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.DroppedBagCanBePickedUpWithoutRestartingSelection
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.DroppedBagCanBePickedUpWithoutRestartingSelection, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1030" name="EarlierCabinetPracticeNeverCompletesKitchenDrop" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.EarlierCabinetPracticeNeverCompletesKitchenDrop" methodname="EarlierCabinetPracticeNeverCompletesKitchenDrop" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1031854162" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000298" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.EarlierCabinetPracticeNeverCompletesKitchenDrop
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.EarlierCabinetPracticeNeverCompletesKitchenDrop, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1008" name="EntranceRequiresRealDoorOrActualInsideRoom" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.EntranceRequiresRealDoorOrActualInsideRoom" methodname="EntranceRequiresRealDoorOrActualInsideRoom" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="694522824" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000311" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.EntranceRequiresRealDoorOrActualInsideRoom
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.EntranceRequiresRealDoorOrActualInsideRoom, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1035" name="EventDuringFocusLossDoesNotAutoCompleteAfterReturn" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.EventDuringFocusLossDoesNotAutoCompleteAfterReturn" methodname="EventDuringFocusLossDoesNotAutoCompleteAfterReturn" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1450848266" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000509" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.EventDuringFocusLossDoesNotAutoCompleteAfterReturn
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.EventDuringFocusLossDoesNotAutoCompleteAfterReturn, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1032" name="FeedbackRequiresNewSuccessfulSaveRevision" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.FeedbackRequiresNewSuccessfulSaveRevision" methodname="FeedbackRequiresNewSuccessfulSaveRevision" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="599074933" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000406" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.FeedbackRequiresNewSuccessfulSaveRevision
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.FeedbackRequiresNewSuccessfulSaveRevision, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1043" name="FocusRecoveryDoesNotCountAnAutomaticBagReleaseAsDrop" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.FocusRecoveryDoesNotCountAnAutomaticBagReleaseAsDrop" methodname="FocusRecoveryDoesNotCountAnAutomaticBagReleaseAsDrop" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="743094738" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000344" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.FocusRecoveryDoesNotCountAnAutomaticBagReleaseAsDrop
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.FocusRecoveryDoesNotCountAnAutomaticBagReleaseAsDrop, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1044" name="FocusRecoveryDoesNotCountAnUnobservedCabinetClose" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.FocusRecoveryDoesNotCountAnUnobservedCabinetClose" methodname="FocusRecoveryDoesNotCountAnUnobservedCabinetClose" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1079599539" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000360" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.FocusRecoveryDoesNotCountAnUnobservedCabinetClose
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.FocusRecoveryDoesNotCountAnUnobservedCabinetClose, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1037" name="FreeExplorationDoesNotRepeatOrDisableAnything" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.FreeExplorationDoesNotRepeatOrDisableAnything" methodname="FreeExplorationDoesNotRepeatOrDisableAnything" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="303146311" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000453" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.FreeExplorationDoesNotRepeatOrDisableAnything
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.FreeExplorationDoesNotRepeatOrDisableAnything, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1039" name="FullRealSequenceCompletesWithoutAnySkip" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.FullRealSequenceCompletesWithoutAnySkip" methodname="FullRealSequenceCompletesWithoutAnySkip" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1907113652" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000607" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.FullRealSequenceCompletesWithoutAnySkip
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.FullRealSequenceCompletesWithoutAnySkip, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1051" name="InvalidConfigFailsEarlyInsteadOfBreakingProgress" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidConfigFailsEarlyInsteadOfBreakingProgress" methodname="InvalidConfigFailsEarlyInsteadOfBreakingProgress" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="973177521" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.002355" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidConfigFailsEarlyInsteadOfBreakingProgress
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidConfigFailsEarlyInsteadOfBreakingProgress, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1016" name="InvalidCoordinatesAndLongPauseDoNotInflateDistance" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidCoordinatesAndLongPauseDoNotInflateDistance" methodname="InvalidCoordinatesAndLongPauseDoNotInflateDistance" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1252027962" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000350" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidCoordinatesAndLongPauseDoNotInflateDistance
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidCoordinatesAndLongPauseDoNotInflateDistance, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1047" name="InvalidReportedWalkDistanceIsRejected" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidReportedWalkDistanceIsRejected" methodname="InvalidReportedWalkDistanceIsRejected" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="302938179" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000320" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidReportedWalkDistanceIsRejected
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.InvalidReportedWalkDistanceIsRejected, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1026" name="KitchenArrivalWithoutCarryingThroughLivingDoesNotComplete" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.KitchenArrivalWithoutCarryingThroughLivingDoesNotComplete" methodname="KitchenArrivalWithoutCarryingThroughLivingDoesNotComplete" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="86939051" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000331" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.KitchenArrivalWithoutCarryingThroughLivingDoesNotComplete
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.KitchenArrivalWithoutCarryingThroughLivingDoesNotComplete, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1029" name="KitchenDropRequiresRealHoldAndReleaseInCorrectVolume" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.KitchenDropRequiresRealHoldAndReleaseInCorrectVolume" methodname="KitchenDropRequiresRealHoldAndReleaseInCorrectVolume" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1973792242" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000268" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.KitchenDropRequiresRealHoldAndReleaseInCorrectVolume
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.KitchenDropRequiresRealHoldAndReleaseInCorrectVolume, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1011" name="LivingMicroJitterDoesNotCount" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingMicroJitterDoesNotCount" methodname="LivingMicroJitterDoesNotCount" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="2009995943" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000354" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingMicroJitterDoesNotCount
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingMicroJitterDoesNotCount, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1012" name="LivingRealRootMovementCompletesExploration" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingRealRootMovementCompletesExploration" methodname="LivingRealRootMovementCompletesExploration" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1475409491" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.001465" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingRealRootMovementCompletesExploration
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingRealRootMovementCompletesExploration, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1010" name="LivingStationaryRootAndHeadRotationDoNotCount" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingStationaryRootAndHeadRotationDoNotCount" methodname="LivingStationaryRootAndHeadRotationDoNotCount" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1631463808" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000255" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingStationaryRootAndHeadRotationDoNotCount
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.LivingStationaryRootAndHeadRotationDoNotCount, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1017" name="MovementOutsideLivingDoesNotCount" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.MovementOutsideLivingDoesNotCount" methodname="MovementOutsideLivingDoesNotCount" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="612071081" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000243" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.MovementOutsideLivingDoesNotCount
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.MovementOutsideLivingDoesNotCount, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1013" name="NearBalconyNaturallyCompletesWithoutDistanceGrinding" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.NearBalconyNaturallyCompletesWithoutDistanceGrinding" methodname="NearBalconyNaturallyCompletesWithoutDistanceGrinding" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1582653757" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000265" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.NearBalconyNaturallyCompletesWithoutDistanceGrinding
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.NearBalconyNaturallyCompletesWithoutDistanceGrinding, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1014" name="NearBalconyOutsideLivingDoesNotFakeAnExploration" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.NearBalconyOutsideLivingDoesNotFakeAnExploration" methodname="NearBalconyOutsideLivingDoesNotFakeAnExploration" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="638814823" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000316" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.NearBalconyOutsideLivingDoesNotFakeAnExploration
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.NearBalconyOutsideLivingDoesNotFakeAnExploration, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1031" name="OldMeasurementIsNotReusedAndFreshRevisionCompletes" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.OldMeasurementIsNotReusedAndFreshRevisionCompletes" methodname="OldMeasurementIsNotReusedAndFreshRevisionCompletes" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1726108037" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000335" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.OldMeasurementIsNotReusedAndFreshRevisionCompletes
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.OldMeasurementIsNotReusedAndFreshRevisionCompletes, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1023" name="OldSelectionAndDefaultSizeDoNotCompletePickup" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.OldSelectionAndDefaultSizeDoNotCompletePickup" methodname="OldSelectionAndDefaultSizeDoNotCompletePickup" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1002568061" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000258" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.OldSelectionAndDefaultSizeDoNotCompletePickup
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.OldSelectionAndDefaultSizeDoNotCompletePickup, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1007" name="OneSnapshotNeverCompletesMultipleStages" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.OneSnapshotNeverCompletesMultipleStages" methodname="OneSnapshotNeverCompletesMultipleStages" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1399511889" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000270" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.OneSnapshotNeverCompletesMultipleStages
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.OneSnapshotNeverCompletesMultipleStages, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1045" name="ReportedZeroIgnoresTurningCompensationAndHeadMovement" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.ReportedZeroIgnoresTurningCompensationAndHeadMovement" methodname="ReportedZeroIgnoresTurningCompensationAndHeadMovement" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="855655257" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000286" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.ReportedZeroIgnoresTurningCompensationAndHeadMovement
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.ReportedZeroIgnoresTurningCompensationAndHeadMovement, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1038" name="RestartClearsSkippedAndDistanceState" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.RestartClearsSkippedAndDistanceState" methodname="RestartClearsSkippedAndDistanceState" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="915472067" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000434" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.RestartClearsSkippedAndDistanceState
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.RestartClearsSkippedAndDistanceState, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1022" name="ReturnEntranceUsesActualRoomNotARecoveryButton" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.ReturnEntranceUsesActualRoomNotARecoveryButton" methodname="ReturnEntranceUsesActualRoomNotARecoveryButton" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="112733455" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000366" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.ReturnEntranceUsesActualRoomNotARecoveryButton
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.ReturnEntranceUsesActualRoomNotARecoveryButton, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1042" name="SafetyResetNeverSubstitutesForTheCarryingRoute" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.SafetyResetNeverSubstitutesForTheCarryingRoute" methodname="SafetyResetNeverSubstitutesForTheCarryingRoute" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1178102813" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000300" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.SafetyResetNeverSubstitutesForTheCarryingRoute
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.SafetyResetNeverSubstitutesForTheCarryingRoute, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1024" name="SelectionAndHeldAreBothRequired" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.SelectionAndHeldAreBothRequired" methodname="SelectionAndHeldAreBothRequired" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="2127690014" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000331" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.SelectionAndHeldAreBothRequired
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.SelectionAndHeldAreBothRequired, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1036" name="SkipIsRecordedAsSkippedRatherThanCompleted" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.SkipIsRecordedAsSkippedRatherThanCompleted" methodname="SkipIsRecordedAsSkippedRatherThanCompleted" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="2143242430" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000376" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.SkipIsRecordedAsSkippedRatherThanCompleted
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.SkipIsRecordedAsSkippedRatherThanCompleted, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1005" name="StartsAtWelcomeWithoutCompletingAnything" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.StartsAtWelcomeWithoutCompletingAnything" methodname="StartsAtWelcomeWithoutCompletingAnything" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1083200982" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000215" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.StartsAtWelcomeWithoutCompletingAnything
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.StartsAtWelcomeWithoutCompletingAnything, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1015" name="TeleportAndResetDoNotInflateDistance" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.TeleportAndResetDoNotInflateDistance" methodname="TeleportAndResetDoNotInflateDistance" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="928267448" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000390" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.TeleportAndResetDoNotInflateDistance
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.TeleportAndResetDoNotInflateDistance, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1048" name="TeleportCannotAddEvenReportedWalkingDistance" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.TeleportCannotAddEvenReportedWalkingDistance" methodname="TeleportCannotAddEvenReportedWalkingDistance" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1661568957" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000285" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.TeleportCannotAddEvenReportedWalkingDistance
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.TeleportCannotAddEvenReportedWalkingDistance, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1034" name="TrackingLossNeverAdvancesRealAction" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.TrackingLossNeverAdvancesRealAction" methodname="TrackingLossNeverAdvancesRealAction" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1843861515" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000328" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.TrackingLossNeverAdvancesRealAction
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.TrackingLossNeverAdvancesRealAction, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1033" name="UnfocusedSnapshotDoesNotAdvanceOrCountMovement" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.UnfocusedSnapshotDoesNotAdvanceOrCountMovement" methodname="UnfocusedSnapshotDoesNotAdvanceOrCountMovement" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="638806771" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000247" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.UnfocusedSnapshotDoesNotAdvanceOrCountMovement
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.UnfocusedSnapshotDoesNotAdvanceOrCountMovement, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1046" name="ValidReportedWalkDistanceCountsRatherThanPoseMotion" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.ValidReportedWalkDistanceCountsRatherThanPoseMotion" methodname="ValidReportedWalkDistanceCountsRatherThanPoseMotion" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="209672494" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000526" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.ValidReportedWalkDistanceCountsRatherThanPoseMotion
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.ValidReportedWalkDistanceCountsRatherThanPoseMotion, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1028" name="WalkingWithoutBagDoesNotCountAndPickupCanRecover" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.WalkingWithoutBagDoesNotCountAndPickupCanRecover" methodname="WalkingWithoutBagDoesNotCountAndPickupCanRecover" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1540568392" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000341" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.WalkingWithoutBagDoesNotCountAndPickupCanRecover
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.WalkingWithoutBagDoesNotCountAndPickupCanRecover, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1006" name="WelcomeRequiresExplicitBasicsCompletion" fullname="Group10.GuidedJourney.Tests.JourneyStateMachineTests.WelcomeRequiresExplicitBasicsCompletion" methodname="WelcomeRequiresExplicitBasicsCompletion" classname="Group10.GuidedJourney.Tests.JourneyStateMachineTests" runstate="Runnable" seed="1003969758" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000313" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.JourneyStateMachineTests.WelcomeRequiresExplicitBasicsCompletion
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.JourneyStateMachineTests.WelcomeRequiresExplicitBasicsCompletion, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1052" name="LocalizationTests" fullname="Group10.GuidedJourney.Tests.LocalizationTests" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.162234" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1063" name="AuthoredEnglishCopyHasChineseCounterpart" fullname="Group10.GuidedJourney.Tests.LocalizationTests.AuthoredEnglishCopyHasChineseCounterpart" methodname="AuthoredEnglishCopyHasChineseCounterpart" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="1115515128" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.003173" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.AuthoredEnglishCopyHasChineseCounterpart
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.AuthoredEnglishCopyHasChineseCounterpart, ResultState: Passed, Duration: 0.003s
+]]></output>
+              </test-case>
+              <test-case id="1056" name="ChineseAndEnglishToggleImmediately" fullname="Group10.GuidedJourney.Tests.LocalizationTests.ChineseAndEnglishToggleImmediately" methodname="ChineseAndEnglishToggleImmediately" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="192924980" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000474" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.ChineseAndEnglishToggleImmediately
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.ChineseAndEnglishToggleImmediately, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+              <test-case id="1057" name="EveryNewSessionStartsInEnglishAfterAnEarlierChineseSession" fullname="Group10.GuidedJourney.Tests.LocalizationTests.EveryNewSessionStartsInEnglishAfterAnEarlierChineseSession" methodname="EveryNewSessionStartsInEnglishAfterAnEarlierChineseSession" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="989797675" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000535" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.EveryNewSessionStartsInEnglishAfterAnEarlierChineseSession
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.EveryNewSessionStartsInEnglishAfterAnEarlierChineseSession, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1060" name="InvalidLanguageIsRejectedWithoutChangingCurrentSession" fullname="Group10.GuidedJourney.Tests.LocalizationTests.InvalidLanguageIsRejectedWithoutChangingCurrentSession" methodname="InvalidLanguageIsRejectedWithoutChangingCurrentSession" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="1092717345" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000980" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.InvalidLanguageIsRejectedWithoutChangingCurrentSession
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.InvalidLanguageIsRejectedWithoutChangingCurrentSession, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1065" name="LoadingUnrecognisedParticipantFeedbackDoesNotReplaceTheirWords" fullname="Group10.GuidedJourney.Tests.LocalizationTests.LoadingUnrecognisedParticipantFeedbackDoesNotReplaceTheirWords" methodname="LoadingUnrecognisedParticipantFeedbackDoesNotReplaceTheirWords" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="1806911634" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.001362" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.LoadingUnrecognisedParticipantFeedbackDoesNotReplaceTheirWords
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.LoadingUnrecognisedParticipantFeedbackDoesNotReplaceTheirWords, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1055" name="NewSessionIgnoresAndDoesNotDeleteStoredPreferences" fullname="Group10.GuidedJourney.Tests.LocalizationTests.NewSessionIgnoresAndDoesNotDeleteStoredPreferences" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.011376" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1053" name="NewSessionIgnoresAndDoesNotDeleteStoredPreferences(1)" fullname="Group10.GuidedJourney.Tests.LocalizationTests.NewSessionIgnoresAndDoesNotDeleteStoredPreferences(1)" methodname="NewSessionIgnoresAndDoesNotDeleteStoredPreferences" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="1983750534" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.001253" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.NewSessionIgnoresAndDoesNotDeleteStoredPreferences(1)
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.NewSessionIgnoresAndDoesNotDeleteStoredPreferences(1), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1054" name="NewSessionIgnoresAndDoesNotDeleteStoredPreferences(99)" fullname="Group10.GuidedJourney.Tests.LocalizationTests.NewSessionIgnoresAndDoesNotDeleteStoredPreferences(99)" methodname="NewSessionIgnoresAndDoesNotDeleteStoredPreferences" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="213515180" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000392" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.NewSessionIgnoresAndDoesNotDeleteStoredPreferences(99)
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.NewSessionIgnoresAndDoesNotDeleteStoredPreferences(99), ResultState: Passed, Duration: 0.000s
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-case id="1062" name="RecoveryCopyMatchesRealButtonsInBothLanguages" fullname="Group10.GuidedJourney.Tests.LocalizationTests.RecoveryCopyMatchesRealButtonsInBothLanguages" methodname="RecoveryCopyMatchesRealButtonsInBothLanguages" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="126981284" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.001624" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.RecoveryCopyMatchesRealButtonsInBothLanguages
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.RecoveryCopyMatchesRealButtonsInBothLanguages, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1058" name="SessionResetIsRegisteredForDisabledDomainReload" fullname="Group10.GuidedJourney.Tests.LocalizationTests.SessionResetIsRegisteredForDisabledDomainReload" methodname="SessionResetIsRegisteredForDisabledDomainReload" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="2044622937" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.001951" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.SessionResetIsRegisteredForDisabledDomainReload
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.SessionResetIsRegisteredForDisabledDomainReload, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1059" name="SessionResetRefreshesAndPreservesExistingLiveSubscribers" fullname="Group10.GuidedJourney.Tests.LocalizationTests.SessionResetRefreshesAndPreservesExistingLiveSubscribers" methodname="SessionResetRefreshesAndPreservesExistingLiveSubscribers" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="1441745565" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.001533" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.SessionResetRefreshesAndPreservesExistingLiveSubscribers
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.SessionResetRefreshesAndPreservesExistingLiveSubscribers, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1064" name="SettingsPageDefaultsToEnglishAndRefreshesChineseImmediately" fullname="Group10.GuidedJourney.Tests.LocalizationTests.SettingsPageDefaultsToEnglishAndRefreshesChineseImmediately" methodname="SettingsPageDefaultsToEnglishAndRefreshesChineseImmediately" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="1649018545" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.078880" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.SettingsPageDefaultsToEnglishAndRefreshesChineseImmediately
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.SettingsPageDefaultsToEnglishAndRefreshesChineseImmediately, ResultState: Passed, Duration: 0.079s
+]]></output>
+              </test-case>
+              <test-case id="1061" name="SourceMarkupAndNumbersArePreserved" fullname="Group10.GuidedJourney.Tests.LocalizationTests.SourceMarkupAndNumbersArePreserved" methodname="SourceMarkupAndNumbersArePreserved" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="1092379186" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000720" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.SourceMarkupAndNumbersArePreserved
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.SourceMarkupAndNumbersArePreserved, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1066" name="UnknownTextIsNeverInventedOrTranslated" fullname="Group10.GuidedJourney.Tests.LocalizationTests.UnknownTextIsNeverInventedOrTranslated" methodname="UnknownTextIsNeverInventedOrTranslated" classname="Group10.GuidedJourney.Tests.LocalizationTests" runstate="Runnable" seed="1854631337" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000497" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.LocalizationTests.UnknownTextIsNeverInventedOrTranslated
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.LocalizationTests.UnknownTextIsNeverInventedOrTranslated, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1067" name="PanelPlacementTests" fullname="Group10.GuidedJourney.Tests.PanelPlacementTests" classname="Group10.GuidedJourney.Tests.PanelPlacementTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.048805" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1072" name="InheritedNonuniformScaleCannotTiltOrStretchCanvas" fullname="Group10.GuidedJourney.Tests.PanelPlacementTests.InheritedNonuniformScaleCannotTiltOrStretchCanvas" methodname="InheritedNonuniformScaleCannotTiltOrStretchCanvas" classname="Group10.GuidedJourney.Tests.PanelPlacementTests" runstate="Runnable" seed="27537069" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.004333" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.PanelPlacementTests.InheritedNonuniformScaleCannotTiltOrStretchCanvas
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.PanelPlacementTests.InheritedNonuniformScaleCannotTiltOrStretchCanvas, ResultState: Passed, Duration: 0.004s
+]]></output>
+              </test-case>
+              <test-case id="1068" name="InitialPanelIsCenteredAndFacesViewer" fullname="Group10.GuidedJourney.Tests.PanelPlacementTests.InitialPanelIsCenteredAndFacesViewer" methodname="InitialPanelIsCenteredAndFacesViewer" classname="Group10.GuidedJourney.Tests.PanelPlacementTests" runstate="Runnable" seed="714648658" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000856" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.PanelPlacementTests.InitialPanelIsCenteredAndFacesViewer
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.PanelPlacementTests.InitialPanelIsCenteredAndFacesViewer, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1071" name="LargeTurnAndWalkingRecenter" fullname="Group10.GuidedJourney.Tests.PanelPlacementTests.LargeTurnAndWalkingRecenter" methodname="LargeTurnAndWalkingRecenter" classname="Group10.GuidedJourney.Tests.PanelPlacementTests" runstate="Runnable" seed="1553259052" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000742" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.PanelPlacementTests.LargeTurnAndWalkingRecenter
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.PanelPlacementTests.LargeTurnAndWalkingRecenter, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1069" name="LeftAndRightEdgesHaveEqualDistance" fullname="Group10.GuidedJourney.Tests.PanelPlacementTests.LeftAndRightEdgesHaveEqualDistance" methodname="LeftAndRightEdgesHaveEqualDistance" classname="Group10.GuidedJourney.Tests.PanelPlacementTests" runstate="Runnable" seed="1595984594" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.001561" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.PanelPlacementTests.LeftAndRightEdgesHaveEqualDistance
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.PanelPlacementTests.LeftAndRightEdgesHaveEqualDistance, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1070" name="SmallHeadMotionDoesNotMovePanelEveryFrame" fullname="Group10.GuidedJourney.Tests.PanelPlacementTests.SmallHeadMotionDoesNotMovePanelEveryFrame" methodname="SmallHeadMotionDoesNotMovePanelEveryFrame" classname="Group10.GuidedJourney.Tests.PanelPlacementTests" runstate="Runnable" seed="1820936818" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000686" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.PanelPlacementTests.SmallHeadMotionDoesNotMovePanelEveryFrame
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.PanelPlacementTests.SmallHeadMotionDoesNotMovePanelEveryFrame, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1073" name="VerticalViewProducesFinitePose" fullname="Group10.GuidedJourney.Tests.PanelPlacementTests.VerticalViewProducesFinitePose" methodname="VerticalViewProducesFinitePose" classname="Group10.GuidedJourney.Tests.PanelPlacementTests" runstate="Runnable" seed="92827460" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000497" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.PanelPlacementTests.VerticalViewProducesFinitePose
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.PanelPlacementTests.VerticalViewProducesFinitePose, ResultState: Passed, Duration: 0.000s
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1074" name="ReviewBillboardTests" fullname="Group10.GuidedJourney.Tests.ReviewBillboardTests" classname="Group10.GuidedJourney.Tests.ReviewBillboardTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.018675" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1075" name="AnchoredLabelMovesTowardViewerWithoutMovingRealPointAndFacesEye" fullname="Group10.GuidedJourney.Tests.ReviewBillboardTests.AnchoredLabelMovesTowardViewerWithoutMovingRealPointAndFacesEye" methodname="AnchoredLabelMovesTowardViewerWithoutMovingRealPointAndFacesEye" classname="Group10.GuidedJourney.Tests.ReviewBillboardTests" runstate="Runnable" seed="392546528" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.002553" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.ReviewBillboardTests.AnchoredLabelMovesTowardViewerWithoutMovingRealPointAndFacesEye
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.ReviewBillboardTests.AnchoredLabelMovesTowardViewerWithoutMovingRealPointAndFacesEye, ResultState: Passed, Duration: 0.003s
+]]></output>
+              </test-case>
+              <test-case id="1076" name="CoincidentViewerAndInvalidAnchorCannotProduceNonfinitePose" fullname="Group10.GuidedJourney.Tests.ReviewBillboardTests.CoincidentViewerAndInvalidAnchorCannotProduceNonfinitePose" methodname="CoincidentViewerAndInvalidAnchorCannotProduceNonfinitePose" classname="Group10.GuidedJourney.Tests.ReviewBillboardTests" runstate="Runnable" seed="671731578" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000939" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.ReviewBillboardTests.CoincidentViewerAndInvalidAnchorCannotProduceNonfinitePose
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.ReviewBillboardTests.CoincidentViewerAndInvalidAnchorCannotProduceNonfinitePose, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1077" name="UnanchoredLegacyLabelRetainsPositionAndCopiesViewerRotation" fullname="Group10.GuidedJourney.Tests.ReviewBillboardTests.UnanchoredLegacyLabelRetainsPositionAndCopiesViewerRotation" methodname="UnanchoredLegacyLabelRetainsPositionAndCopiesViewerRotation" classname="Group10.GuidedJourney.Tests.ReviewBillboardTests" runstate="Runnable" seed="1533094757" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.000727" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.ReviewBillboardTests.UnanchoredLegacyLabelRetainsPositionAndCopiesViewerRotation
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.ReviewBillboardTests.UnanchoredLegacyLabelRetainsPositionAndCopiesViewerRotation, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1078" name="SessionVisualsTests" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:59Z" duration="0.154878" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1084" name="CancelCurrentDraftCannotDeleteSavedOrHistoricalFeedback" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.CancelCurrentDraftCannotDeleteSavedOrHistoricalFeedback" methodname="CancelCurrentDraftCannotDeleteSavedOrHistoricalFeedback" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="658589140" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.017443" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.CancelCurrentDraftCannotDeleteSavedOrHistoricalFeedback
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.CancelCurrentDraftCannotDeleteSavedOrHistoricalFeedback, ResultState: Passed, Duration: 0.017s
+]]></output>
+              </test-case>
+              <test-case id="1081" name="CancelUnfinishedMeasurementCreatesNoRecord" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.CancelUnfinishedMeasurementCreatesNoRecord" methodname="CancelUnfinishedMeasurementCreatesNoRecord" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="2113382019" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.004022" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.CancelUnfinishedMeasurementCreatesNoRecord
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.CancelUnfinishedMeasurementCreatesNoRecord, ResultState: Passed, Duration: 0.004s
+]]></output>
+              </test-case>
+              <test-case id="1086" name="ExplicitShowIsIdempotentAndUndoDoesNotDeleteSavedMarker" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.ExplicitShowIsIdempotentAndUndoDoesNotDeleteSavedMarker" methodname="ExplicitShowIsIdempotentAndUndoDoesNotDeleteSavedMarker" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="324188589" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.003266" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.ExplicitShowIsIdempotentAndUndoDoesNotDeleteSavedMarker
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.ExplicitShowIsIdempotentAndUndoDoesNotDeleteSavedMarker, ResultState: Passed, Duration: 0.003s
+]]></output>
+              </test-case>
+              <test-case id="1087" name="ExportRetainsSubmittedHistoryAndOmitsDrafts" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.ExportRetainsSubmittedHistoryAndOmitsDrafts" methodname="ExportRetainsSubmittedHistoryAndOmitsDrafts" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="1081711139" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.012189" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.ExportRetainsSubmittedHistoryAndOmitsDrafts
+Review session exported: C:\Users\Kai\AppData\Local\Temp\Group10-SessionTests-d088b171a0204289b371a28838611c86\24e9f9d50d5b40eba2e9d663a089cdaa_20261018_143658976.json
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.ExportRetainsSubmittedHistoryAndOmitsDrafts, ResultState: Passed, Duration: 0.012s
+]]></output>
+              </test-case>
+              <test-case id="1080" name="HiddenHistoricalDraftDoesNotBlockNewMarkerOrCaptureRay" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.HiddenHistoricalDraftDoesNotBlockNewMarkerOrCaptureRay" methodname="HiddenHistoricalDraftDoesNotBlockNewMarkerOrCaptureRay" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="975047537" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:58Z" duration="0.003963" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.HiddenHistoricalDraftDoesNotBlockNewMarkerOrCaptureRay
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.HiddenHistoricalDraftDoesNotBlockNewMarkerOrCaptureRay, ResultState: Passed, Duration: 0.004s
+]]></output>
+              </test-case>
+              <test-case id="1083" name="HideAllMeasurementDisplaysKeepsCurrentMarkerAndAllData" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.HideAllMeasurementDisplaysKeepsCurrentMarkerAndAllData" methodname="HideAllMeasurementDisplaysKeepsCurrentMarkerAndAllData" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="1125557854" result="Passed" start-time="2026-10-18 14:36:58Z" end-time="2026-10-18 14:36:59Z" duration="0.005441" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.HideAllMeasurementDisplaysKeepsCurrentMarkerAndAllData
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.HideAllMeasurementDisplaysKeepsCurrentMarkerAndAllData, ResultState: Passed, Duration: 0.005s
+]]></output>
+              </test-case>
+              <test-case id="1090" name="MarkerReadoutUsesCurrentVisibleSelectionAndNeverHistoricalHiddenRecord" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.MarkerReadoutUsesCurrentVisibleSelectionAndNeverHistoricalHiddenRecord" methodname="MarkerReadoutUsesCurrentVisibleSelectionAndNeverHistoricalHiddenRecord" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="1790668033" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.004253" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.MarkerReadoutUsesCurrentVisibleSelectionAndNeverHistoricalHiddenRecord
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.MarkerReadoutUsesCurrentVisibleSelectionAndNeverHistoricalHiddenRecord, ResultState: Passed, Duration: 0.004s
+]]></output>
+              </test-case>
+              <test-case id="1088" name="PreviewReadoutUsesRealPointsWithoutCreatingOrChangingARecord" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.PreviewReadoutUsesRealPointsWithoutCreatingOrChangingARecord" methodname="PreviewReadoutUsesRealPointsWithoutCreatingOrChangingARecord" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="1670978960" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.004419" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.PreviewReadoutUsesRealPointsWithoutCreatingOrChangingARecord
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.PreviewReadoutUsesRealPointsWithoutCreatingOrChangingARecord, ResultState: Passed, Duration: 0.004s
+]]></output>
+              </test-case>
+              <test-case id="1089" name="ReadoutFollowsVisibleMeasurementUndoAndHideWithoutErasingData" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.ReadoutFollowsVisibleMeasurementUndoAndHideWithoutErasingData" methodname="ReadoutFollowsVisibleMeasurementUndoAndHideWithoutErasingData" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="2002248682" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.004256" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.ReadoutFollowsVisibleMeasurementUndoAndHideWithoutErasingData
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.ReadoutFollowsVisibleMeasurementUndoAndHideWithoutErasingData, ResultState: Passed, Duration: 0.004s
+]]></output>
+              </test-case>
+              <test-case id="1079" name="RestoreKeepsHistoryButCreatesNoVisualsOrCompletionEvents" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.RestoreKeepsHistoryButCreatesNoVisualsOrCompletionEvents" methodname="RestoreKeepsHistoryButCreatesNoVisualsOrCompletionEvents" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="281339710" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.013069" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.RestoreKeepsHistoryButCreatesNoVisualsOrCompletionEvents
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.RestoreKeepsHistoryButCreatesNoVisualsOrCompletionEvents, ResultState: Passed, Duration: 0.013s
+]]></output>
+              </test-case>
+              <test-case id="1085" name="SaveNewFeedbackPreservesHistoryAndNextRunStartsClean" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.SaveNewFeedbackPreservesHistoryAndNextRunStartsClean" methodname="SaveNewFeedbackPreservesHistoryAndNextRunStartsClean" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="1765269533" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.011568" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.SaveNewFeedbackPreservesHistoryAndNextRunStartsClean
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.SaveNewFeedbackPreservesHistoryAndNextRunStartsClean, ResultState: Passed, Duration: 0.012s
+]]></output>
+              </test-case>
+              <test-case id="1091" name="TestStorageRejectsNonTemporaryPersistentPath" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.TestStorageRejectsNonTemporaryPersistentPath" methodname="TestStorageRejectsNonTemporaryPersistentPath" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="301012796" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001536" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.TestStorageRejectsNonTemporaryPersistentPath
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.TestStorageRejectsNonTemporaryPersistentPath, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1082" name="UndoMeasurementOnlyHidesAndRetainsLinkedHistoryAndDisk" fullname="Group10.GuidedJourney.Tests.SessionVisualsTests.UndoMeasurementOnlyHidesAndRetainsLinkedHistoryAndDisk" methodname="UndoMeasurementOnlyHidesAndRetainsLinkedHistoryAndDisk" classname="Group10.GuidedJourney.Tests.SessionVisualsTests" runstate="Runnable" seed="570047101" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.006630" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SessionVisualsTests.UndoMeasurementOnlyHidesAndRetainsLinkedHistoryAndDisk
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SessionVisualsTests.UndoMeasurementOnlyHidesAndRetainsLinkedHistoryAndDisk, ResultState: Passed, Duration: 0.007s
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1092" name="ToolHintDisplayTests" fullname="Group10.GuidedJourney.Tests.ToolHintDisplayTests" classname="Group10.GuidedJourney.Tests.ToolHintDisplayTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.031758" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1093" name="ActiveMeasurementRetainsSmallReadableHintAndLanguageRefresh" fullname="Group10.GuidedJourney.Tests.ToolHintDisplayTests.ActiveMeasurementRetainsSmallReadableHintAndLanguageRefresh" methodname="ActiveMeasurementRetainsSmallReadableHintAndLanguageRefresh" classname="Group10.GuidedJourney.Tests.ToolHintDisplayTests" runstate="Runnable" seed="1570843392" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.003769" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.ToolHintDisplayTests.ActiveMeasurementRetainsSmallReadableHintAndLanguageRefresh
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.ToolHintDisplayTests.ActiveMeasurementRetainsSmallReadableHintAndLanguageRefresh, ResultState: Passed, Duration: 0.004s
+]]></output>
+              </test-case>
+              <test-case id="1094" name="MarkerAndToolStopChangeOnlyPresentationAndKeepJourney" fullname="Group10.GuidedJourney.Tests.ToolHintDisplayTests.MarkerAndToolStopChangeOnlyPresentationAndKeepJourney" methodname="MarkerAndToolStopChangeOnlyPresentationAndKeepJourney" classname="Group10.GuidedJourney.Tests.ToolHintDisplayTests" runstate="Runnable" seed="1943054972" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001866" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.ToolHintDisplayTests.MarkerAndToolStopChangeOnlyPresentationAndKeepJourney
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.ToolHintDisplayTests.MarkerAndToolStopChangeOnlyPresentationAndKeepJourney, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1209" name="XRGroup10.ShoppingBag.EditorTests.dll" fullname="D:/Documents/GitHub/xr_Group10-phase2-final/Library/ScriptAssemblies/XRGroup10.ShoppingBag.EditorTests.dll" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.698526" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="29576" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1210" name="XRGroup10" fullname="XRGroup10" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.696733" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1211" name="ShoppingBag" fullname="XRGroup10.ShoppingBag" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.695850" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1212" name="Tests" fullname="XRGroup10.ShoppingBag.Tests" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.694977" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1111" name="BagFeedbackTests" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" testcasecount="19" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.204997" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1112" name="DedicatedBodyTriggerMatchesAllUnchangedProfiles" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.DedicatedBodyTriggerMatchesAllUnchangedProfiles" methodname="DedicatedBodyTriggerMatchesAllUnchangedProfiles" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1362821366" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.008608" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.DedicatedBodyTriggerMatchesAllUnchangedProfiles
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.DedicatedBodyTriggerMatchesAllUnchangedProfiles, ResultState: Passed, Duration: 0.009s
+]]></output>
+              </test-case>
+              <test-case id="1120" name="FocusLossAndDisableClearContactsAndPulse" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.FocusLossAndDisableClearContactsAndPulse" methodname="FocusLossAndDisableClearContactsAndPulse" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="561523983" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.008856" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.FocusLossAndDisableClearContactsAndPulse
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.FocusLossAndDisableClearContactsAndPulse, ResultState: Passed, Duration: 0.009s
+]]></output>
+              </test-case>
+              <test-case id="1129" name="GateCombinesBlockersWithoutDroppingExistingHold" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.GateCombinesBlockersWithoutDroppingExistingHold" methodname="GateCombinesBlockersWithoutDroppingExistingHold" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1453952531" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.002146" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.GateCombinesBlockersWithoutDroppingExistingHold
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.GateCombinesBlockersWithoutDroppingExistingHold, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1121" name="HapticCooldownIsPerHandAndExpiresAtBoundary" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticCooldownIsPerHandAndExpiresAtBoundary" methodname="HapticCooldownIsPerHandAndExpiresAtBoundary" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="223555603" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001355" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticCooldownIsPerHandAndExpiresAtBoundary
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticCooldownIsPerHandAndExpiresAtBoundary, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1119" name="HapticRequestsOnlyUseOwnerAndCleanUpOnRelease" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticRequestsOnlyUseOwnerAndCleanUpOnRelease" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.013802" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1117" name="HapticRequestsOnlyUseOwnerAndCleanUpOnRelease(Left)" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticRequestsOnlyUseOwnerAndCleanUpOnRelease(Left)" methodname="HapticRequestsOnlyUseOwnerAndCleanUpOnRelease" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1420160812" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.002998" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticRequestsOnlyUseOwnerAndCleanUpOnRelease(Left)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticRequestsOnlyUseOwnerAndCleanUpOnRelease(Left), ResultState: Passed, Duration: 0.003s
+]]></output>
+                </test-case>
+                <test-case id="1118" name="HapticRequestsOnlyUseOwnerAndCleanUpOnRelease(Right)" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticRequestsOnlyUseOwnerAndCleanUpOnRelease(Right)" methodname="HapticRequestsOnlyUseOwnerAndCleanUpOnRelease" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1878608501" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001281" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticRequestsOnlyUseOwnerAndCleanUpOnRelease(Right)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.HapticRequestsOnlyUseOwnerAndCleanUpOnRelease(Right), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-case id="1114" name="MultipleCollidersDoNotEndFurnitureWarningUntilLastColliderLeaves" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleCollidersDoNotEndFurnitureWarningUntilLastColliderLeaves" methodname="MultipleCollidersDoNotEndFurnitureWarningUntilLastColliderLeaves" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1679322677" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.002006" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleCollidersDoNotEndFurnitureWarningUntilLastColliderLeaves
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleCollidersDoNotEndFurnitureWarningUntilLastColliderLeaves, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1115" name="MultipleFurnitureTargetsAndTargetDisableCleanUpIndependently" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleFurnitureTargetsAndTargetDisableCleanUpIndependently" methodname="MultipleFurnitureTargetsAndTargetDisableCleanUpIndependently" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1257039617" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.002096" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleFurnitureTargetsAndTargetDisableCleanUpIndependently
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleFurnitureTargetsAndTargetDisableCleanUpIndependently, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1130" name="MultipleRenderersReceiveOverlayWithoutDuplicatingGeometryOnReentry" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleRenderersReceiveOverlayWithoutDuplicatingGeometryOnReentry" methodname="MultipleRenderersReceiveOverlayWithoutDuplicatingGeometryOnReentry" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1229074852" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.008124" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleRenderersReceiveOverlayWithoutDuplicatingGeometryOnReentry
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.MultipleRenderersReceiveOverlayWithoutDuplicatingGeometryOnReentry, ResultState: Passed, Duration: 0.008s
+]]></output>
+              </test-case>
+              <test-case id="1113" name="OnlyHeldRegisteredFurnitureIsDetectedAndRepeatedScanDoesNotRetrigger" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.OnlyHeldRegisteredFurnitureIsDetectedAndRepeatedScanDoesNotRetrigger" methodname="OnlyHeldRegisteredFurnitureIsDetectedAndRepeatedScanDoesNotRetrigger" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1999642556" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.002129" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.OnlyHeldRegisteredFurnitureIsDetectedAndRepeatedScanDoesNotRetrigger
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.OnlyHeldRegisteredFurnitureIsDetectedAndRepeatedScanDoesNotRetrigger, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1116" name="OverlayLeavesHoverPropertyBlockAndSharedMaterialsUntouched" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.OverlayLeavesHoverPropertyBlockAndSharedMaterialsUntouched" methodname="OverlayLeavesHoverPropertyBlockAndSharedMaterialsUntouched" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1594986105" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.003273" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.OverlayLeavesHoverPropertyBlockAndSharedMaterialsUntouched
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.OverlayLeavesHoverPropertyBlockAndSharedMaterialsUntouched, ResultState: Passed, Duration: 0.003s
+]]></output>
+              </test-case>
+              <test-case id="1132" name="RedOverlayActuallyRendersOverHoverAndRestoresHoverAfterExit" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.RedOverlayActuallyRendersOverHoverAndRestoresHoverAfterExit" methodname="RedOverlayActuallyRendersOverHoverAndRestoresHoverAfterExit" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="187133263" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.055448" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.RedOverlayActuallyRendersOverHoverAndRestoresHoverAfterExit
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.RedOverlayActuallyRendersOverHoverAndRestoresHoverAfterExit, ResultState: Passed, Duration: 0.055s
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1128" name="SameUprightRouteProducesRealSizeDependentContacts" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.036310" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1122" name="SameUprightRouteProducesRealSizeDependentContacts(Small,0.38f,0)" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Small,0.38f,0)" methodname="SameUprightRouteProducesRealSizeDependentContacts" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1750895471" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001768" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Small,0.38f,0)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Small,0.38f,0), ResultState: Passed, Duration: 0.002s
+]]></output>
+                </test-case>
+                <test-case id="1123" name="SameUprightRouteProducesRealSizeDependentContacts(Medium,0.38f,2)" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Medium,0.38f,2)" methodname="SameUprightRouteProducesRealSizeDependentContacts" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1064873042" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001310" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Medium,0.38f,2)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Medium,0.38f,2), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1124" name="SameUprightRouteProducesRealSizeDependentContacts(Large,0.38f,2)" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Large,0.38f,2)" methodname="SameUprightRouteProducesRealSizeDependentContacts" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="16899476" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001150" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Large,0.38f,2)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Large,0.38f,2), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1125" name="SameUprightRouteProducesRealSizeDependentContacts(Small,0.52f,0)" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Small,0.52f,0)" methodname="SameUprightRouteProducesRealSizeDependentContacts" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="378156428" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001169" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Small,0.52f,0)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Small,0.52f,0), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1126" name="SameUprightRouteProducesRealSizeDependentContacts(Medium,0.52f,0)" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Medium,0.52f,0)" methodname="SameUprightRouteProducesRealSizeDependentContacts" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="1989892206" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001226" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Medium,0.52f,0)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Medium,0.52f,0), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1127" name="SameUprightRouteProducesRealSizeDependentContacts(Large,0.52f,2)" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Large,0.52f,2)" methodname="SameUprightRouteProducesRealSizeDependentContacts" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="186431814" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001084" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Large,0.52f,2)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.SameUprightRouteProducesRealSizeDependentContacts(Large,0.52f,2), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-case id="1131" name="TwoBagSourcesKeepWarningUntilBothHaveReleased" fullname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests.TwoBagSourcesKeepWarningUntilBothHaveReleased" methodname="TwoBagSourcesKeepWarningUntilBothHaveReleased" classname="XRGroup10.ShoppingBag.Tests.BagFeedbackTests" runstate="Runnable" seed="306997305" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.002415" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.TwoBagSourcesKeepWarningUntilBothHaveReleased
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagFeedbackTests.TwoBagSourcesKeepWarningUntilBothHaveReleased, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1133" name="BagGripSafetyTests" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" testcasecount="52" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.362464" total="52" passed="52" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1183" name="BackgroundPollingCannotArmAStaleHeldSdkGrip" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.BackgroundPollingCannotArmAStaleHeldSdkGrip" methodname="BackgroundPollingCannotArmAStaleHeldSdkGrip" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="2059264347" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.003720" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.BackgroundPollingCannotArmAStaleHeldSdkGrip
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.BackgroundPollingCannotArmAStaleHeldSdkGrip, ResultState: Passed, Duration: 0.004s
+]]></output>
+              </test-case>
+              <test-case id="1175" name="BAndGripInSameSampleBlockBeforeMenuStateChanges" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.BAndGripInSameSampleBlockBeforeMenuStateChanges" methodname="BAndGripInSameSampleBlockBeforeMenuStateChanges" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1863430117" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001579" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.BAndGripInSameSampleBlockBeforeMenuStateChanges
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.BAndGripInSameSampleBlockBeforeMenuStateChanges, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1174" name="ContextBlockersAreReadInsideTheSdkFilter" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.087971" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1160" name="ContextBlockersAreReadInsideTheSdkFilter(Menu)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Menu)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1400227347" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001276" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Menu)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Menu), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1161" name="ContextBlockersAreReadInsideTheSdkFilter(Tutorial)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Tutorial)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="2103609740" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001189" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Tutorial)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Tutorial), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1162" name="ContextBlockersAreReadInsideTheSdkFilter(Teleport)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Teleport)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="580042578" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001007" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Teleport)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Teleport), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1163" name="ContextBlockersAreReadInsideTheSdkFilter(Tracking)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Tracking)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1164602154" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001119" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Tracking)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Tracking), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1164" name="ContextBlockersAreReadInsideTheSdkFilter(InputFocus)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(InputFocus)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1216182001" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001001" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(InputFocus)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(InputFocus), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1165" name="ContextBlockersAreReadInsideTheSdkFilter(VrFocus)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(VrFocus)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1867365269" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001180" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(VrFocus)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(VrFocus), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1166" name="ContextBlockersAreReadInsideTheSdkFilter(TextEditing)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(TextEditing)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1495798705" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000922" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(TextEditing)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(TextEditing), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1167" name="ContextBlockersAreReadInsideTheSdkFilter(ApplicationFocus)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(ApplicationFocus)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1283999749" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000897" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(ApplicationFocus)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(ApplicationFocus), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1168" name="ContextBlockersAreReadInsideTheSdkFilter(Paused)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Paused)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1008567893" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001101" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Paused)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Paused), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1169" name="ContextBlockersAreReadInsideTheSdkFilter(MenuIntent)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(MenuIntent)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="829156041" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000874" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(MenuIntent)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(MenuIntent), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1170" name="ContextBlockersAreReadInsideTheSdkFilter(TeleportIntent)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(TeleportIntent)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1213522782" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000867" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(TeleportIntent)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(TeleportIntent), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1171" name="ContextBlockersAreReadInsideTheSdkFilter(ContextUnavailable)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(ContextUnavailable)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1761292856" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000986" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(ContextUnavailable)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(ContextUnavailable), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1172" name="ContextBlockersAreReadInsideTheSdkFilter(InputUnavailable)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(InputUnavailable)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="154636613" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001134" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(InputUnavailable)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(InputUnavailable), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1173" name="ContextBlockersAreReadInsideTheSdkFilter(Disabled)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Disabled)" methodname="ContextBlockersAreReadInsideTheSdkFilter" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="349822151" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000893" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Disabled)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextBlockersAreReadInsideTheSdkFilter(Disabled), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-case id="1179" name="ContextDisappearanceOrExceptionFailsClosed" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextDisappearanceOrExceptionFailsClosed" methodname="ContextDisappearanceOrExceptionFailsClosed" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="693822772" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001143" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextDisappearanceOrExceptionFailsClosed
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ContextDisappearanceOrExceptionFailsClosed, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1152" name="EachHandRearmsIndependently" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EachHandRearmsIndependently" methodname="EachHandRearmsIndependently" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="43631146" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001147" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EachHandRearmsIndependently
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EachHandRearmsIndependently, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1148" name="EveryBlockerRequiresANewNeutralFrame" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.092506" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1134" name="EveryBlockerRequiresANewNeutralFrame(Menu)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Menu)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="362036981" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001360" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Menu)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Menu), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1135" name="EveryBlockerRequiresANewNeutralFrame(Tutorial)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Tutorial)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1694950115" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001355" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Tutorial)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Tutorial), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1136" name="EveryBlockerRequiresANewNeutralFrame(Teleport)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Teleport)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="2110477277" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001135" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Teleport)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Teleport), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1137" name="EveryBlockerRequiresANewNeutralFrame(Tracking)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Tracking)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="896226573" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001142" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Tracking)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Tracking), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1138" name="EveryBlockerRequiresANewNeutralFrame(InputFocus)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(InputFocus)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="760548411" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001089" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(InputFocus)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(InputFocus), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1139" name="EveryBlockerRequiresANewNeutralFrame(VrFocus)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(VrFocus)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="2049373454" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001287" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(VrFocus)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(VrFocus), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1140" name="EveryBlockerRequiresANewNeutralFrame(TextEditing)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(TextEditing)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="167615135" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000875" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(TextEditing)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(TextEditing), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1141" name="EveryBlockerRequiresANewNeutralFrame(ApplicationFocus)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(ApplicationFocus)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="246044491" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001077" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(ApplicationFocus)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(ApplicationFocus), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1142" name="EveryBlockerRequiresANewNeutralFrame(Paused)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Paused)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1625749124" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000927" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Paused)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Paused), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1143" name="EveryBlockerRequiresANewNeutralFrame(MenuIntent)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(MenuIntent)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1465418517" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001143" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(MenuIntent)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(MenuIntent), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1144" name="EveryBlockerRequiresANewNeutralFrame(TeleportIntent)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(TeleportIntent)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1721749666" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000914" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(TeleportIntent)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(TeleportIntent), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1145" name="EveryBlockerRequiresANewNeutralFrame(ContextUnavailable)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(ContextUnavailable)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="48798763" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001126" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(ContextUnavailable)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(ContextUnavailable), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1146" name="EveryBlockerRequiresANewNeutralFrame(InputUnavailable)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(InputUnavailable)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1165932324" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000977" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(InputUnavailable)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(InputUnavailable), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1147" name="EveryBlockerRequiresANewNeutralFrame(Disabled)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Disabled)" methodname="EveryBlockerRequiresANewNeutralFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1285935684" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000876" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Disabled)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.EveryBlockerRequiresANewNeutralFrame(Disabled), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-case id="1187" name="ExistingOwnerPassesWhileBlockedButSecondHandCannotTakeOver" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ExistingOwnerPassesWhileBlockedButSecondHandCannotTakeOver" methodname="ExistingOwnerPassesWhileBlockedButSecondHandCannotTakeOver" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="530741606" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001701" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ExistingOwnerPassesWhileBlockedButSecondHandCannotTakeOver
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.ExistingOwnerPassesWhileBlockedButSecondHandCannotTakeOver, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1181" name="FocusAndPauseCallbacksRemainBlockedUntilAllHaveRecovered" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.FocusAndPauseCallbacksRemainBlockedUntilAllHaveRecovered" methodname="FocusAndPauseCallbacksRemainBlockedUntilAllHaveRecovered" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="775938732" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001257" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.FocusAndPauseCallbacksRemainBlockedUntilAllHaveRecovered
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.FocusAndPauseCallbacksRemainBlockedUntilAllHaveRecovered, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1186" name="GateDisableOrRemovalAndNonGripSelectorsFailClosed" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GateDisableOrRemovalAndNonGripSelectorsFailClosed" methodname="GateDisableOrRemovalAndNonGripSelectorsFailClosed" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1360615427" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001125" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GateDisableOrRemovalAndNonGripSelectorsFailClosed
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GateDisableOrRemovalAndNonGripSelectorsFailClosed, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1151" name="GripHeldAtStartupCannotAcquire" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GripHeldAtStartupCannotAcquire" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.024297" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1149" name="GripHeldAtStartupCannotAcquire(Left)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GripHeldAtStartupCannotAcquire(Left)" methodname="GripHeldAtStartupCannotAcquire" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="641825091" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001225" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GripHeldAtStartupCannotAcquire(Left)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GripHeldAtStartupCannotAcquire(Left), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1150" name="GripHeldAtStartupCannotAcquire(Right)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GripHeldAtStartupCannotAcquire(Right)" methodname="GripHeldAtStartupCannotAcquire" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1834605782" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001155" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GripHeldAtStartupCannotAcquire(Right)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.GripHeldAtStartupCannotAcquire(Right), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-case id="1180" name="InitiallyBlockedContextCanRecoverWithoutAnotherBindCall" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InitiallyBlockedContextCanRecoverWithoutAnotherBindCall" methodname="InitiallyBlockedContextCanRecoverWithoutAnotherBindCall" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="918729241" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001673" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InitiallyBlockedContextCanRecoverWithoutAnotherBindCall
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InitiallyBlockedContextCanRecoverWithoutAnotherBindCall, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1185" name="InputExceptionMissingTrackingAndDisconnectedControllerFailClosed" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InputExceptionMissingTrackingAndDisconnectedControllerFailClosed" methodname="InputExceptionMissingTrackingAndDisconnectedControllerFailClosed" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1835421790" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001448" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InputExceptionMissingTrackingAndDisconnectedControllerFailClosed
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InputExceptionMissingTrackingAndDisconnectedControllerFailClosed, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1155" name="InvalidTrackingCannotBeMistakenForARelease" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InvalidTrackingCannotBeMistakenForARelease" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.012882" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1153" name="InvalidTrackingCannotBeMistakenForARelease(Left)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InvalidTrackingCannotBeMistakenForARelease(Left)" methodname="InvalidTrackingCannotBeMistakenForARelease" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="57096361" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001431" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InvalidTrackingCannotBeMistakenForARelease(Left)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InvalidTrackingCannotBeMistakenForARelease(Left), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1154" name="InvalidTrackingCannotBeMistakenForARelease(Right)" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InvalidTrackingCannotBeMistakenForARelease(Right)" methodname="InvalidTrackingCannotBeMistakenForARelease" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="721956757" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001139" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InvalidTrackingCannotBeMistakenForARelease(Right)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.InvalidTrackingCannotBeMistakenForARelease(Right), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-case id="1158" name="LaterBlockerInSameFrameOverridesEarlierArmedSample" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.LaterBlockerInSameFrameOverridesEarlierArmedSample" methodname="LaterBlockerInSameFrameOverridesEarlierArmedSample" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="798526656" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001320" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.LaterBlockerInSameFrameOverridesEarlierArmedSample
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.LaterBlockerInSameFrameOverridesEarlierArmedSample, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1157" name="MultipleReadsAndReleasePressInOneFrameDoNotRearm" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.MultipleReadsAndReleasePressInOneFrameDoNotRearm" methodname="MultipleReadsAndReleasePressInOneFrameDoNotRearm" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1324848370" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001298" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.MultipleReadsAndReleasePressInOneFrameDoNotRearm
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.MultipleReadsAndReleasePressInOneFrameDoNotRearm, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1156" name="NeutralDuringBlockingDoesNotArmAndClearInSameFrameDoesNotArm" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.NeutralDuringBlockingDoesNotArmAndClearInSameFrameDoesNotArm" methodname="NeutralDuringBlockingDoesNotArmAndClearInSameFrameDoesNotArm" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="278364287" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001290" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.NeutralDuringBlockingDoesNotArmAndClearInSameFrameDoesNotArm
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.NeutralDuringBlockingDoesNotArmAndClearInSameFrameDoesNotArm, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1184" name="NewlySeenSdkControllerCannotInheritRawOnlyArming" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.NewlySeenSdkControllerCannotInheritRawOnlyArming" methodname="NewlySeenSdkControllerCannotInheritRawOnlyArming" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="667419193" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001445" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.NewlySeenSdkControllerCannotInheritRawOnlyArming
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.NewlySeenSdkControllerCannotInheritRawOnlyArming, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1177" name="RawTeleportIntentBlocksBeforeTeleportStateChanges" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.RawTeleportIntentBlocksBeforeTeleportStateChanges" methodname="RawTeleportIntentBlocksBeforeTeleportStateChanges" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1022160958" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001310" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.RawTeleportIntentBlocksBeforeTeleportStateChanges
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.RawTeleportIntentBlocksBeforeTeleportStateChanges, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1176" name="RightMenuIntentAlsoBlocksLeftGripAndIsNotCachedPerFrame" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.RightMenuIntentAlsoBlocksLeftGripAndIsNotCachedPerFrame" methodname="RightMenuIntentAlsoBlocksLeftGripAndIsNotCachedPerFrame" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="2121268630" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001449" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.RightMenuIntentAlsoBlocksLeftGripAndIsNotCachedPerFrame
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.RightMenuIntentAlsoBlocksLeftGripAndIsNotCachedPerFrame, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1182" name="SdkGripStillPressedCannotBeArmedByNeutralRawInput" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkGripStillPressedCannotBeArmedByNeutralRawInput" methodname="SdkGripStillPressedCannotBeArmedByNeutralRawInput" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="2013269998" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001421" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkGripStillPressedCannotBeArmedByNeutralRawInput
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkGripStillPressedCannotBeArmedByNeutralRawInput, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1189" name="SdkQueuedGripReleaseIsNotSuppressedByBlocking" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkQueuedGripReleaseIsNotSuppressedByBlocking" methodname="SdkQueuedGripReleaseIsNotSuppressedByBlocking" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1465528651" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.011304" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkQueuedGripReleaseIsNotSuppressedByBlocking
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkQueuedGripReleaseIsNotSuppressedByBlocking, ResultState: Passed, Duration: 0.011s
+]]></output>
+              </test-case>
+              <test-case id="1188" name="SdkSelectionEligibilityUsesFilterBeforeSelect" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkSelectionEligibilityUsesFilterBeforeSelect" methodname="SdkSelectionEligibilityUsesFilterBeforeSelect" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1353771475" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.006446" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkSelectionEligibilityUsesFilterBeforeSelect
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.SdkSelectionEligibilityUsesFilterBeforeSelect, ResultState: Passed, Duration: 0.006s
+]]></output>
+              </test-case>
+              <test-case id="1178" name="StackedManualBlockersCannotPrematurelyReenable" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.StackedManualBlockersCannotPrematurelyReenable" methodname="StackedManualBlockersCannotPrematurelyReenable" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="1918740509" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001647" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.StackedManualBlockersCannotPrematurelyReenable
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.StackedManualBlockersCannotPrematurelyReenable, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1159" name="StaleSampleAndUnknownHandFailClosed" fullname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.StaleSampleAndUnknownHandFailClosed" methodname="StaleSampleAndUnknownHandFailClosed" classname="XRGroup10.ShoppingBag.Tests.BagGripSafetyTests" runstate="Runnable" seed="305740714" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001528" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.StaleSampleAndUnknownHandFailClosed
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.BagGripSafetyTests.StaleSampleAndUnknownHandFailClosed, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1190" name="ShoppingBagTests" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.054566" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1198" name="FilterRejectsObjectsWithoutControllerNearGrab" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests.FilterRejectsObjectsWithoutControllerNearGrab" methodname="FilterRejectsObjectsWithoutControllerNearGrab" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests" runstate="Runnable" seed="2116466274" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001757" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.FilterRejectsObjectsWithoutControllerNearGrab
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.FilterRejectsObjectsWithoutControllerNearGrab, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1195" name="HeldSizeChangeDoesNotMutateGeometryOrEmitEvent" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests.HeldSizeChangeDoesNotMutateGeometryOrEmitEvent" methodname="HeldSizeChangeDoesNotMutateGeometryOrEmitEvent" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests" runstate="Runnable" seed="457250022" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001250" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.HeldSizeChangeDoesNotMutateGeometryOrEmitEvent
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.HeldSizeChangeDoesNotMutateGeometryOrEmitEvent, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1196" name="InvalidSizeOrScaledParentCannotResize" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests.InvalidSizeOrScaledParentCannotResize" methodname="InvalidSizeOrScaledParentCannotResize" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests" runstate="Runnable" seed="476895043" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000886" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.InvalidSizeOrScaledParentCannotResize
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.InvalidSizeOrScaledParentCannotResize, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1197" name="PrefabHasSingleControllerNearGrabAndNoRemoteOrHandTargets" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests.PrefabHasSingleControllerNearGrabAndNoRemoteOrHandTargets" methodname="PrefabHasSingleControllerNearGrabAndNoRemoteOrHandTargets" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests" runstate="Runnable" seed="596797395" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001297" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.PrefabHasSingleControllerNearGrabAndNoRemoteOrHandTargets
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.PrefabHasSingleControllerNearGrabAndNoRemoteOrHandTargets, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1194" name="SizeChangesBodyAndColliderInMetres" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.017709" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1191" name="SizeChangesBodyAndColliderInMetres(Small,0.3f,0.3f,0.15f)" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Small,0.3f,0.3f,0.15f)" methodname="SizeChangesBodyAndColliderInMetres" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests" runstate="Runnable" seed="899180187" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001430" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Small,0.3f,0.3f,0.15f)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Small,0.3f,0.3f,0.15f), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1192" name="SizeChangesBodyAndColliderInMetres(Medium,0.45f,0.4f,0.22f)" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Medium,0.45f,0.4f,0.22f)" methodname="SizeChangesBodyAndColliderInMetres" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests" runstate="Runnable" seed="2108553969" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000745" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Medium,0.45f,0.4f,0.22f)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Medium,0.45f,0.4f,0.22f), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1193" name="SizeChangesBodyAndColliderInMetres(Large,0.6f,0.48f,0.3f)" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Large,0.6f,0.48f,0.3f)" methodname="SizeChangesBodyAndColliderInMetres" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagTests" runstate="Runnable" seed="272480445" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.000570" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Large,0.6f,0.48f,0.3f)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagTests.SizeChangesBodyAndColliderInMetres(Large,0.6f,0.48f,0.3f), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestFixture" id="1199" name="ShoppingBagUIIntegrationTests" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.071417" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1205" name="ClosedOrUnrelatedPageRejectsOldCallbacks" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.ClosedOrUnrelatedPageRejectsOldCallbacks" methodname="ClosedOrUnrelatedPageRejectsOldCallbacks" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests" runstate="Runnable" seed="1138554181" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.004068" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.ClosedOrUnrelatedPageRejectsOldCallbacks
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.ClosedOrUnrelatedPageRejectsOldCallbacks, ResultState: Passed, Duration: 0.004s
+]]></output>
+              </test-case>
+              <test-case id="1206" name="DisabledOrMissingContextFailsClosed" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.DisabledOrMissingContextFailsClosed" methodname="DisabledOrMissingContextFailsClosed" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests" runstate="Runnable" seed="621154019" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001950" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.DisabledOrMissingContextFailsClosed
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.DisabledOrMissingContextFailsClosed, ResultState: Passed, Duration: 0.002s
+]]></output>
+              </test-case>
+              <test-case id="1208" name="FixtureHasSerializedGateBridgeAndNoSecondRig" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.FixtureHasSerializedGateBridgeAndNoSecondRig" methodname="FixtureHasSerializedGateBridgeAndNoSecondRig" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests" runstate="Runnable" seed="1631369930" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.015020" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.FixtureHasSerializedGateBridgeAndNoSecondRig
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.FixtureHasSerializedGateBridgeAndNoSecondRig, ResultState: Passed, Duration: 0.015s
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1203" name="MenuBlocksGripButAllowsActualProfileChange" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.019579" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1200" name="MenuBlocksGripButAllowsActualProfileChange(Small,0.3f)" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Small,0.3f)" methodname="MenuBlocksGripButAllowsActualProfileChange" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests" runstate="Runnable" seed="29769764" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.002070" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Small,0.3f)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Small,0.3f), ResultState: Passed, Duration: 0.002s
+]]></output>
+                </test-case>
+                <test-case id="1201" name="MenuBlocksGripButAllowsActualProfileChange(Medium,0.45f)" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Medium,0.45f)" methodname="MenuBlocksGripButAllowsActualProfileChange" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests" runstate="Runnable" seed="1008735584" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001279" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Medium,0.45f)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Medium,0.45f), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+                <test-case id="1202" name="MenuBlocksGripButAllowsActualProfileChange(Large,0.6f)" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Large,0.6f)" methodname="MenuBlocksGripButAllowsActualProfileChange" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests" runstate="Runnable" seed="1853691182" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001111" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Large,0.6f)
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.MenuBlocksGripButAllowsActualProfileChange(Large,0.6f), ResultState: Passed, Duration: 0.001s
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-case id="1204" name="StaleButtonCannotResizeHeldBagAndReleaseRestoresSizing" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.StaleButtonCannotResizeHeldBagAndReleaseRestoresSizing" methodname="StaleButtonCannotResizeHeldBagAndReleaseRestoresSizing" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests" runstate="Runnable" seed="234473898" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001479" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.StaleButtonCannotResizeHeldBagAndReleaseRestoresSizing
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.StaleButtonCannotResizeHeldBagAndReleaseRestoresSizing, ResultState: Passed, Duration: 0.001s
+]]></output>
+              </test-case>
+              <test-case id="1207" name="UnrelatedPageDoesNotRefreshAndChangesAreCoalesced" fullname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.UnrelatedPageDoesNotRefreshAndChangesAreCoalesced" methodname="UnrelatedPageDoesNotRefreshAndChangesAreCoalesced" classname="XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests" runstate="Runnable" seed="671034769" result="Passed" start-time="2026-10-18 14:36:59Z" end-time="2026-10-18 14:36:59Z" duration="0.001986" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[TestRunnerTools] Test Started: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.UnrelatedPageDoesNotRefreshAndChangesAreCoalesced
+[TestRunnerTools] Test Finished: XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests.UnrelatedPageDoesNotRefreshAndChangesAreCoalesced, ResultState: Passed, Duration: 0.002s
+Saving results to: C:/Users/Kai/AppData/LocalLow/DefaultCompany/Quest Guidence\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

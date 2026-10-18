@@ -1,0 +1,525 @@
+File,Line at 07ba53a,Literal,Classification
+Assets/Scripts/ApartmentMenuController.cs,70,"""quit""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,77,"""公寓菜单""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,78,"""测距""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,78,"""标记注释""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,78,"""按键说明""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,78,"""我的物品""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,78,"""设置""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,78,"""退出游戏""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,79,"""退出游戏""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,80,"""您已看完整个公寓，您可以继续探索和标记注释或者退出游戏""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,81,"""平滑移动""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,81,"""A 键瞬移""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,81,"""两种都使用""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,82,"""使用左摇杆行走""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,82,"""按住 A 瞄准，松开后传送""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,82,"""左摇杆行走 + A 键瞬移""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,83,"""右手指向按钮 · 扣食指扳机确认""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,84,"""请松开扳机、A、B，并让摇杆回中""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,85,"""教学：进入设置，点击一种移动方式，再按 B 关闭""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,86,"""返回出生安全点？""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,87,"""保持当前朝向，返回初始安全位置。\n不会重置门或当前教学进度。""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,88,"""舒适度调节""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,89,"""舒适度预设""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,90,"""转向方式""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,91,"""平滑""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,92,"""快照""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,93,"""角度""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,96,"""起步""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,97,"""停止""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,98,"""恢复默认""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,99,"""返回""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,100,"""右摇杆上下  调节数值 · 扣食指扳机确认""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,101,"""舒适""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,101,"""标准""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,101,"""灵敏""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,104,"""移动暗角""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,104,"""最大移动速度""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,104,"""移动平滑""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,104,"""转向速度""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,104,"""转向平滑""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,110,"""%m/sdeg/s当前未启用""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,112,"""继续探索取消确认退出""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,114,"""关闭菜单暂未开放当前未启用移动方式选择适合你的移动方式安全重置卡住或迷路时，返回出生安全位置返回安全点返回取消安全点未配置安全点被物体占用，请稍后重试安全点下方没有可站立的地板头显高度无效，请恢复正常追踪等待头显、右手柄追踪和输入焦点安全点配置无效○●""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,116,"""左摇杆   平滑行走""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,116,"""（当前未启用）""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,117,"""\n右摇杆左右   连续转向\n右手 A   按住瞄准，松开瞬移""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,117,"""（当前未启用）""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,118,"""\n右手 B   打开 / 关闭菜单\n右食指扳机   确认按钮 / 开关门\n测距或标记开启时，扳机用于放置点位""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,322,"""安全点未配置""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,351,"""Tour completion (session only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,353,"""Quit confirmation (session only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,355,"""Tour title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,355,"""Exit title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,361,"""Continue exploring""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,361,"""继续探索""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,362,"""Tour quit""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,362,"""退出游戏""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,366,"""Confirm quit""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,366,"""确认退出""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,367,"""Cancel quit""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,367,"""取消""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,373,"""Apartment menu (session only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,374,"""Menu title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,375,"""Close""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,375,"""B  关闭菜单""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,376,"""Divider""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,380,"""Tab """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,380,"""\n<size=70%>暂未开放</size>""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,383,"""Page title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,386,"""Reset title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,387,"""Reset explanation""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,388,"""Confirm reset""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,388,"""返回""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,389,"""Cancel reset""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,389,"""取消""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,398,"""Mode title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,398,"""移动方式""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,402,"""Mode """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,402,"""\n<size=75%>""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,402,"""</size>""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,405,"""Comfort entry""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,406,"""Safety text""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,406,"""安全重置：卡住或迷路时，返回出生安全位置""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,407,"""Safety reset""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,407,"""返回安全点""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,412,"""Bag unavailable""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,412,"""Shopping Bag: Not configured""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,420,"""Controls""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,422,"""Review guide""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,422,"""Review guide / Help / Skip""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,425,"""Placeholder""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,425,"""暂未开放""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,428,"""Footer""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,434,"""Tab 4 is the settings page""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,451,"""设置 / 舒适度调节""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,453,"""Preset title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,457,"""Preset """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,462,"""Comfort vignette""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,464,"""Comfort speed""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,464,""" m/s""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,467,"""移动平滑""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,467,"""Comfort move start""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,467,""" s""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,468,"""Comfort move stop""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,468,""" s""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,469,"""Comfort turn speed""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,469,""" deg/s""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,473,"""转向平滑""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,473,"""Comfort turn start""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,473,""" s""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,474,"""Comfort turn stop""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,474,""" s""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,476,"""Turn mode title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,477,"""Turn smooth""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,478,"""Turn snap""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,479,"""Comfort snap angle""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,482,"""Comfort default""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,483,"""Comfort back""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,491,""" title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,552,""" accent""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,553,""" label""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,567,""" title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,568,""" value""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,571,""" minus""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,571,""" plus""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,573,""" minus""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,574,""" plus""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,586,""" label""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,587,""" value""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,590,""" minus""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,590,""" plus""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,592,""" minus""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,593,""" plus""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentMenuController.cs,598,""" label""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,103,"""Left stick: walk a short distance.\nTry about 25 cm. Right stick turns; A teleport remains available.\nB > Controls / 按键说明 > Review guide can skip a practice.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,104,"""Right stick: turn left or right by about 15 degrees.\nYou can still walk or teleport. Choose smooth/snap turning in Settings.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,105,"""Hold right A, point at a clear floor, then release on green.\nTry a landing at least 50 cm away. B always opens the menu.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,107,"""Room door: point at the door and press right Trigger.\nPress again to close. Grip is for the shopping bag.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,108,"""Kitchen cabinet: stand nearby, point at its door and press right Trigger.\nOpen, then close it; step clear if the door is blocked.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,109,"""Balcony sliding door: point at its frame/glass and press right Trigger.\nWhen blocked or paused, step clear and press again.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,110,"""Point at OK and press right Trigger. B opens the menu for Help / Skip.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,111,"""Release Trigger, A and B, and centre both sticks.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,112,"""Try walking 25 cm; other movement remains available. B > Controls > Review guide to skip.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,113,"""Try turning about 15 degrees with the right stick. You may walk or teleport too.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,114,"""Hold A to aim, release on green. Try 50 cm or skip in Review guide.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,115,"""Welcome to the apartment review""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,116,"""Review everyday movement and furniture use. Carry a bag, then measure and mark an issue. Structure is fixed; dimensions are simplified assumptions. You may skip, pause or exit safely.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,117,"""B opens and closes the menu. Point the right ray and press front Trigger to choose. Both smooth movement and A teleport are available by default. If stuck: Settings / 设置 > 返回安全点.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,118,"""Press B, view the controls or settings, then close B. Both movement methods are available by default.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,119,"""Start guideSkip / explore freely""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,120,"""OK重新练习教程推拉门配置不完整""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,210,"""\n\n""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,258,"""Tutorial welcome (session only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,259,"""Welcome title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,260,"""Welcome explanation""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,261,"""Start tutorial""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,261,"""Start guide""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,262,"""Skip tutorial""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,262,"""Skip / explore freely""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,285,"""Apartment/TutorialOverlay""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,286,"""TextMeshPro/Distance Field Overlay""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,290,"""VR Tutorial (session only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,295,"""Panel""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,297,"""Chinese instruction""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,299,"""OK""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,302,"""Label""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentTutorialController.cs,303,"""OK""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,40,"""0 / 11 - Welcome and movement""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,40,"""1 / 11 - Enter the apartment""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,40,"""2 / 11 - Explore the living room""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,41,"""3 / 11 - Try the balcony door""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,41,"""4 / 11 - Try a kitchen cabinet""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,41,"""5 / 11 - Return to the entrance""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,42,"""6 / 11 - Choose and pick up a bag""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,42,"""7 / 11 - Carry shopping to the kitchen""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,42,"""8 / 11 - Put the bag down""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,43,"""9 / 11 - Measure an opening""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,43,"""10 / 11 - Mark an issue and save""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,43,"""11 / 11 - Free exploration""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,44,"""Structure/walls are fixed. Selected doors and cabinets open. Furniture and dimensions are simplified assumptions, not certified clearance.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,45,"""Stop if uncomfortable. B > Settings / 设置 > 返回安全点 returns to a checked entrance landing. Exit through B > 退出游戏.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,46,"""B > Controls / 按键说明 > Review guide: help, skip a task, or explore freely.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,48,"""Review guideSkip this taskSkip all / exploreShow task cardHide task cardBack to controlsSkip basic practice""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,49,"""Welcome! You are reviewing this apartment to identify possible problems with everyday movement and furniture use.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,71,"""Guided journey: missing explicit scene references; existing apartment controls remain available.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,119,"""measurement""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,120,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,125,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,131,"""Entrance""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,132,"""LivingRoom""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,132,"""Living Room""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,133,"""Kitchen""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,134,"""Balcony""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,207,"""Guide is unavailable. Existing menu and controls remain available.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,210,"""A measurement/marker tool currently owns Trigger. Open B > 测距 and choose 停止工具 (Stop tool), then try the door.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,213,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,214,"""An earlier draft is open. Save it then choose 继续标记 (Continue marking), or cancel that draft. Place a new marker for this task.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,217,"""Practise the basic controls, or use B > Controls > Review guide to skip a practice.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,218,"""Let's enter the apartment. Point at the entrance door and press right Trigger, then move inside.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,219,"""Great! Explore the living room at your own pace. Look around, then approach the balcony.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,220,"""The sliding door is paused or blocked. Step clear and press right Trigger to resume, or skip this practice in Help.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,220,"""Would you like to explore the balcony? Point at its sliding door and press right Trigger to open it.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,221,"""Great! Close this same cabinet with right Trigger. If blocked, step clear and press again.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,221,"""Well done! Visit the kitchen and find the Cabinet practice label. Close it first if open, then open and close it with right Trigger. No bag yet.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,222,"""Great! Return to the entrance for a daily activity. Walk or use A to teleport; choose any safe route.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,223,"""At the entrance, open B > My Items / 我的物品. Put the bag down and choose Small, Medium or Large.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,223,"""Close the menu, release Grip, move either hand near the handle, then hold Grip to pick up the bag.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,224,"""Your progress is kept. Return to your bag and hold Grip near the handle to carry on.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,224,"""Carry your bag through the living room into the kitchen. Red contact warns of a possible spatial issue; move clear to restore it.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,225,"""Kitchen drop task (not cabinet storage): move the bag into the cyan floor area, release Grip, and let it settle.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,226,"""Good! Open B > 测距 > 开始测距. Use right Trigger to choose two real surface points and read the distance. Cancel/retry or skip in Help.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,227,"""Feedback was not confirmed saved. Keep the record, check the error in the menu and retry Save feedback. You may skip in Help.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,227,"""Open B > 标记注释 > 放置标记. Place a new marker, choose aspect, rating and importance, then 保存反馈. Wait for a successful save.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,228,"""Guide finished with skipped tasks. Explore freely; only a successful Save confirms feedback storage. More measurements, markers and menu Exit remain available.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,228,"""Review complete! Explore freely, take more measurements, leave more feedback, or exit through the menu whenever you are ready.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,235,"""Guided review task card (no collider)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,236,"""Stage""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,237,"""Current task""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,238,"""Help""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,238,"""B > 按键说明 > Review guide | Help / Skip""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,247,"""Kitchen drop outline (visual only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,263,"""Cabinet practice label (no collider)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,264,"""Target""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,264,"""Cabinet practice""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,290,"""Guide stage""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,291,"""Guide instruction""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,292,"""Model and safety""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,292,"""\n""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,293,"""Skip task""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,293,"""Skip this task (not completed)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,294,"""Skip guide""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,294,"""Skip all / explore""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,295,"""Toggle task card""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,295,"""Hide task card""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,295,"""Show task card""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,296,"""Back controls""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,296,"""Back to controls""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,13,"""反馈内容评价选择房间大小过道舒适度家具摆放采光通风太小合适宽敞太窄刚好不合理一般差好""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,14,"""开始测距停止工具取消起点已有测距上一页下一页暂无测距右手指向表面，扣动扳机选择两个点距离以米显示，记录自动保存已选起点，请选择终点放置标记继续标记现象描述日常影响点击输入重要程度低中高关联测距无保存留言取消草稿删除标记上一条下一条暂无标记标记自动保存请选择标记或放置新标记请先填写现象描述和日常影响已保存请输入留言请在头显内使用系统键盘输入存储失败请输入字符数量不能超过提交失败位置房间""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,15,"""低""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,15,"""中""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,15,"""高""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,18,"""房间大小""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,18,"""过道舒适度""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,18,"""家具摆放""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,18,"""采光通风""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,21,"""太小""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,21,"""合适""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,21,"""宽敞""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,22,"""太窄""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,22,"""刚好""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,22,"""宽敞""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,23,"""不合理""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,23,"""一般""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,23,"""合理""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,24,"""差""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,24,"""一般""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,24,"""好""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,100,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,111,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,136,"""Begin measurement""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,136,"""开始测距""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,137,"""Stop review""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,137,"""停止工具""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,138,"""Measurement help""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,138,"""已选起点，请选择终点""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,138,"""右手指向表面，扣动扳机选择两个点\n距离以米显示，记录自动保存""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,139,"""Cancel measurement point""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,139,"""取消起点""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,140,"""measurement""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,147,"""Measurement """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,147,"""F2""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,147,""" m   """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,148,"""Delete measurement """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,148,"""删除""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,150,"""No measurements""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,150,"""暂无测距""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,151,"""Previous measurements""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,151,"""上一页""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,152,"""Next measurements""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,152,"""下一页""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,156,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,161,"""Begin marking""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,161,"""放置标记""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,162,"""Marker help""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,162,"""右手指向表面，扣动扳机放置标记\n选择标记后填写现象描述和日常影响\n标记和留言自动保存""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,163,"""Stop marking""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,163,"""停止工具""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,166,"""Marker location""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,167,"""Previous marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,167,"""上一条""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,168,"""Next marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,168,"""下一条""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,169,"""Aspect title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,169,"""反馈内容""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,173,"""Aspect """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,175,"""Rating title""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,175,"""评价""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,179,"""Rating """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,181,"""Importance""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,181,"""重要程度：""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,183,"""Linked measurement""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,183,"""关联测距：""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,183,"""无""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,183,"""F2""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,183,""" m""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,184,"""Review status""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,185,"""Save feedback""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,185,"""保存反馈""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,186,"""Delete marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,186,"""取消草稿""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,186,"""删除标记""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,188,"""Continue marking""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,188,"""继续标记""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,189,"""Stop marking""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,189,"""停止工具""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,197,"""点击输入""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,205,"""请在头显内使用系统键盘输入""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,208,"""请输入留言""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,212,"""measurement""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,235,"""请先选择反馈内容和评价""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,236,"""已保存""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ApartmentReviewController.cs,237,"""提交失败""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,32,"""N""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,41,"""Unassigned""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,60,"""Not saved""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,63,"""ReviewSessions""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,63,"""_current.json""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,101,"""Saved locally """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,101,"""HH:mm:ss""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,104,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,110,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,117,""".bak""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,133,"""Recovered backup; damaged file preserved""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,133,"""Restored local session""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,141,"""Restore failed. Autosave paused to protect existing data: """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,163,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,176,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,208,"""Unassigned""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,234,"""F2""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,234,""" m (preview)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,240,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,242,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,249,"""Pending measurement""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,257,"""Preview label""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,270,"""N""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,271,"""measurement""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,271,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,275,"""o""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,287,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,299,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,301,"""Invalid marker or importance.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,303,"""Please enter both an observation and an everyday impact.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,305,"""Each field must be at most 2000 characters.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,306,"""measurement""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,307,"""The linked measurement no longer exists.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,313,"""o""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,318,"""Save feedback""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,350,"""ReviewSessions""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,352,"""yyyyMMdd_HHmmssfff""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,352,""".json""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,354,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,358,"""Exported: """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,360,"""Review session exported: """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,365,"""Review export failed: """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,372,"""measurement""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,373,"""marker""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,376,""" Draft""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,377,"""measurement""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,388,"""F2""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,388,""" m""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,390,"""Label""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,415,"""Point""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/Review/ReviewTools.cs,425,"""_Color""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,46,"""Waiting for tracked VR""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,83,"""_Color""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,120,"""Menu owns trigger""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,134,"""Tutorial confirmation owns trigger""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,137,"""Waiting for released controls""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,139,"""Tutorial practice""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,143,"""Teleport has priority""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,145,"""Interaction visuals/font are not configured""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,157,"""Review tool owns trigger""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,169,"""No interactive target""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,220,"""Paused: tracking/input focus unavailable""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,243,"""Sprites/Default""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,245,"""Furniture Interaction Visuals""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,246,"""Right Trigger Ray""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,250,"""Cabinet Hint""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,256,"""Background""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentFurnitureInteractor.cs,260,"""Instruction""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,30,"""按右扳机打开""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,31,"""按右扳机关闭""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,32,"""正在打开……""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,33,"""正在关闭……""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,34,"""被挡住，请让开后再按右扳机""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,35,"""已暂停，按右扳机继续""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,36,"""柜门配置不完整""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,38,"""厨房柜门""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,50,"""Cabinet door references are incomplete.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,54,"""Expected unscaled kinematic hinge with an enabled solid child door.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,57,"""Invalid opening angle or speed.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,85,"""Input focus or tracking lost.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,100,"""Invalid motion configuration.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,133,"""Tracked head is near the door sweep.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,137,"""Collision query capacity exceeded.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentCabinetDoor.cs,145,"""Door sweep blocked by """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentSlidingDoor.cs,25,"""推拉门配置不完整""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentSlidingDoor.cs,38,"""Sliding door references are incomplete.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentSlidingDoor.cs,41,"""Invalid sliding geometry.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentSlidingDoor.cs,43,"""Invalid sliding collider.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentSlidingDoor.cs,55,"""Input focus or tracking lost.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentSlidingDoor.cs,91,"""Tracked head near sliding door.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentSlidingDoor.cs,93,"""Collision query capacity exceeded.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentSlidingDoor.cs,99,"""Sliding door blocked by """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentSlidingDoor.cs,99,""" depth=""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentSlidingDoor.cs,99,"""F6""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,16,"""Assigned by the M2-B2 installer""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,21,"""VR input""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,31,"""Comfort: ramp time to reach full speed / full turn rate (0 = instant, legacy behaviour)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,34,"""Comfort: brake time from full speed / full turn rate down to a stop (0 = stop in the same frame)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,38,"""FloorLevel capsule (metres)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,51,"""Teleport: hold right A, release to travel""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,71,"""Explicit desktop test; never a Quest Link test""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,79,"""Not running""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,112,"""Rig, manager and desktop camera references must be assigned.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,115,"""Rig/manager/debug camera hierarchy does not match VRPlayer.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,119,"""Rig must have identity local transform; VRPlayer cannot also have a Rigidbody mover.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,122,"""VRPlayer must be an upright, unscaled scene root.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,128,"""A parameter is not finite.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,141,"""Movement/capsule parameters are outside the supported safety ranges.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,147,"""传送未开启""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,148,"""请选择 TeleportFloor 地板层""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,150,"""传送距离必须在 1 到 8 米之间""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,152,"""传送模式无效""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,154,"""传送地图未配置或未烘焙，请运行 M2-B3 的配置菜单""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,155,"""传送地图与玩家不在同一个场景""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,159,"""导航体型配置无效，请重新配置 TeleportPlayer 并烘焙""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,171,"""Exactly one enabled CharacterController is required.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,175,"""JoystickLocomotion""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,176,"""OVRPlayerController""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,177,"""Another player controller/script is present: """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,180,"""M2-B2 stopped: """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,218,"""DESKTOP DEBUG ONLY""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,218,"""Waiting for tracked HMD""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,263,"""Configuration changed to unsupported values; locomotion disabled.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,286,"""Desktop debug requires the installed Input System to be enabled; no legacy input fallback.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,298,"""Runtime tracking origin is not FloorLevel; input paused. No XR setting is changed automatically.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,317,"""Tracked VR; hardware acceptance tests still required""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,320,"""Waiting for tracked HMD""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,330,"""M2-B2 input suspended after an SDK/input exception; re-enable component to retry. """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,337,"""Non-finite input rejected; no horizontal movement or snap turn executed.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,424,"""等待头显、右手柄追踪和输入焦点""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,466,"""settings were reset""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,476,"""Comfort values were rejected by the movement configuration check; defaults restored.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,525,"""请指向公寓地板""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,547,"""碰撞查询过多，无法安全判断落点""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,549,"""墙壁、门和家具不能作为传送落点""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,551,"""地面坡度过大""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,585,"""玩家引用或落点无效""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,588,"""落点超出传送距离""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,592,"""落点不是可站立的地板""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,597,"""Walkable""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,598,"""Walkable""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,602,"""落点太靠近墙、家具或地板边缘""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,606,"""落点与当前位置的可行走区域不连通""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,615,"""身体脚下缺少完整地板支撑""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,622,"""落点没有足够空间容纳玩家身体""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,629,"""通路被关闭的门、家具或低门框挡住""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,633,"""落点入口被障碍物挡住""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,645,"""落点没有足够空间容纳玩家身体""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,659,"""需要有效的 Quest 头显、右手柄追踪和输入焦点""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,682,"""请重新瞄准有效地面""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,685,"""当前头部或身体位置不安全，请先回到可站立位置""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,699,"""等待头显、右手柄追踪和输入焦点""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,717,"""安全点配置无效""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,722,"""头显高度无效，请恢复正常追踪""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,726,"""安全点下方没有可站立的地板""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,730,"""安全点被物体占用，请稍后重试""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,757,"""Unlit/Color""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,758,"""Teleport preview shader Unlit/Color is missing.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,759,"""Teleport preview (runtime only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,760,"""TeleportPreview (runtime only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,762,"""AimArc""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,763,"""LandingRing""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,764,"""LandingBeam""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,810,"""LandingDisc""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,825,"""Teleport landing disc (runtime only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,861,"""DESIGN LIMIT: tracked capsule adjustment is obstructed; stick movement/turning paused. Physical head tracking is not constrained by CharacterController.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,869,"""DESIGN LIMIT: room-scale capsule sweep blocked; return to the previous clear position.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,887,"""Turn refused: tracked body is obstructed. Return to clear space.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,897,"""Head-pivot turn drift exceeded 1 cm; stop and inspect.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ApartmentVRLocomotion.cs,939,"""M2-B2: """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ShoppingBagHint.cs,8,"""按住左手握把可以提起购物袋""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ShoppingBagHint.cs,9,"""按 B 键打开菜单，在「我的物品」里调节袋子大小""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ShoppingBagHint.cs,10,"""我知道了""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ShoppingBagHint.cs,25,"""ShoppingBagHint: menu/font/shaders are not assigned, so the hint stays hidden.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ShoppingBagHint.cs,54,"""Bag hint (session only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ShoppingBagHint.cs,56,"""Hint line one""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ShoppingBagHint.cs,57,"""Hint line two""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ShoppingBagHint.cs,58,"""Hint dismiss""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ShoppingBagHint.cs,66,"""Hint dismiss target""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/ShoppingBagHint.cs,95,"""扣扳机关闭提示""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,14,"""Optional final-integration context, for example review text editing.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,16,"""Shopping BagSmallMediumLargeCurrent sizeHeldRelease firstNot configured""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,50,"""Menu and bag are required.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,51,"""Menu already has a bag bridge.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,54,"""The bag requires its existing C1 gate.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,80,"""Not configured""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,87,"""Bag unavailable""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,87,"""Shopping Bag: Not configured""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,88,"""Bag current size""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,88,"""Current size: """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,93,"""Bag size """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,93,""" locked""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,94,"""Bag size """,Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,96,"""Bag status""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs,96,"""Held - release first""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scenes/Apartment_Detailed_VR.unity,53916,m_text: Locomotion,Serialized display candidate
+Assets/Scenes/Apartment_Detailed_VR.unity,202621,"m_text: ""off = teleport   \xB7   on = free walk""",Serialized display candidate
+Assets/Scenes/Apartment_Detailed_VR.unity,245517,m_text: Movement mode,Serialized display candidate
+Assets/Scenes/Apartment_Detailed_VR.unity,253357,"firstLine: ""\u6309\u4F4F\u5DE6\u624B\u63E1\u628A\u53EF\u4EE5\u63D0\u8D77\u8D2D\u7269\u888B""",Serialized display candidate
+Assets/Scenes/Apartment_Detailed_VR.unity,253358,"secondLine: ""\u6309 B \u952E\u6253\u5F00\u83DC\u5355\uFF0C\u5728\u300C\u6211\u7684\u7269\u54C1\u300D\u91CC\u8C03\u8282\u888B\u5B50\u5927\u5C0F""",Serialized display candidate
+Assets/Scenes/Apartment_Detailed_VR.unity,253359,"dismissLabel: ""\u6211\u77E5\u9053\u4E86""",Serialized display candidate

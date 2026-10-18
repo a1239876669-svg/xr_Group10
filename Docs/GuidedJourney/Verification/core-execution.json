@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-10-18T11:28:47.4877764Z",
+  "framework": "Unity-shipped Mono with built-in NUnit assertions, reflection runner",
+  "unityEditorStarted": false,
+  "coreSourceSHA256": "307481DAC1666AA6DB8EADCC035C63B3F03733BBAC215032C31E58CE3FDBB260",
+  "testsSourceSHA256": "E7BBAB937E29F59E7642D8D33F8BC52CE79F1E742BD432917ECE612B33EB14B1",
+  "exitCode": 0,
+  "expectedTests": 47,
+  "evidence": "test-results.log",
+  "limitation": "Offline core unit tests; not Unity Test Runner, scene lifecycle, physics, SDK or Quest validation",
+  "publishedEvidence": "core-test-results.txt"
+}
