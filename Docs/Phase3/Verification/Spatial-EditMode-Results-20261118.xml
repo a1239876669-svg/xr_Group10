@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-18 14:03:35Z" end-time="2026-11-18 14:03:43Z" duration="7.2793832">
+  <test-suite type="TestSuite" id="1000" name="Quest Guidence" fullname="Quest Guidence" runstate="Runnable" testcasecount="186" result="Passed" start-time="2026-11-18 14:03:35Z" end-time="2026-11-18 14:03:43Z" duration="7.279383" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1112" name="Group10.GuidedJourney.Tests.dll" fullname="C:/Users/Kai/AppData/Local/Temp/c27/Library/ScriptAssemblies/Group10.GuidedJourney.Tests.dll" runstate="Runnable" testcasecount="100" result="Passed" start-time="2026-11-18 14:03:35Z" end-time="2026-11-18 14:03:43Z" duration="7.268954" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="38980" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1113" name="Group10" fullname="Group10" runstate="Runnable" testcasecount="100" result="Passed" start-time="2026-11-18 14:03:35Z" end-time="2026-11-18 14:03:43Z" duration="7.267027" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1114" name="GuidedJourney" fullname="Group10.GuidedJourney" runstate="Runnable" testcasecount="100" result="Passed" start-time="2026-11-18 14:03:35Z" end-time="2026-11-18 14:03:43Z" duration="7.265269" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1115" name="Tests" fullname="Group10.GuidedJourney.Tests" runstate="Runnable" testcasecount="100" result="Passed" start-time="2026-11-18 14:03:35Z" end-time="2026-11-18 14:03:43Z" duration="7.263550" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1100" name="SpatialStabilizationTests" fullname="Group10.GuidedJourney.Tests.SpatialStabilizationTests" classname="Group10.GuidedJourney.Tests.SpatialStabilizationTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-11-18 14:03:35Z" end-time="2026-11-18 14:03:43Z" duration="7.261487" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="ParameterizedMethod" id="1108" name="ImportedFormalScenePreservesSpatialContract" fullname="Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract" classname="Group10.GuidedJourney.Tests.SpatialStabilizationTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-11-18 14:03:35Z" end-time="2026-11-18 14:03:43Z" duration="7.257454" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1101" name="ImportedFormalScenePreservesSpatialContract(&quot;EnvelopeAndScale&quot;)" fullname="Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract(&quot;EnvelopeAndScale&quot;)" methodname="ImportedFormalScenePreservesSpatialContract" classname="Group10.GuidedJourney.Tests.SpatialStabilizationTests" runstate="Runnable" seed="168980887" result="Passed" start-time="2026-11-18 14:03:35Z" end-time="2026-11-18 14:03:36Z" duration="0.725490" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("EnvelopeAndScale")
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("EnvelopeAndScale"), ResultState: Passed, Duration: 0.725s
+]]></output>
+                </test-case>
+                <test-case id="1102" name="ImportedFormalScenePreservesSpatialContract(&quot;FurnitureSupport&quot;)" fullname="Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract(&quot;FurnitureSupport&quot;)" methodname="ImportedFormalScenePreservesSpatialContract" classname="Group10.GuidedJourney.Tests.SpatialStabilizationTests" runstate="Runnable" seed="1616233211" result="Passed" start-time="2026-11-18 14:03:36Z" end-time="2026-11-18 14:03:39Z" duration="3.212765" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("FurnitureSupport")
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("FurnitureSupport"), ResultState: Passed, Duration: 3.213s
+]]></output>
+                </test-case>
+                <test-case id="1103" name="ImportedFormalScenePreservesSpatialContract(&quot;DoorsAndRecovery&quot;)" fullname="Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract(&quot;DoorsAndRecovery&quot;)" methodname="ImportedFormalScenePreservesSpatialContract" classname="Group10.GuidedJourney.Tests.SpatialStabilizationTests" runstate="Runnable" seed="725443947" result="Passed" start-time="2026-11-18 14:03:39Z" end-time="2026-11-18 14:03:40Z" duration="0.960637" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("DoorsAndRecovery")
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("DoorsAndRecovery"), ResultState: Passed, Duration: 0.961s
+]]></output>
+                </test-case>
+                <test-case id="1104" name="ImportedFormalScenePreservesSpatialContract(&quot;CoreCapsulePaths&quot;)" fullname="Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract(&quot;CoreCapsulePaths&quot;)" methodname="ImportedFormalScenePreservesSpatialContract" classname="Group10.GuidedJourney.Tests.SpatialStabilizationTests" runstate="Runnable" seed="2001652553" result="Passed" start-time="2026-11-18 14:03:40Z" end-time="2026-11-18 14:03:41Z" duration="0.643208" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("CoreCapsulePaths")
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("CoreCapsulePaths"), ResultState: Passed, Duration: 0.643s
+]]></output>
+                </test-case>
+                <test-case id="1105" name="ImportedFormalScenePreservesSpatialContract(&quot;ExplicitContactReferences&quot;)" fullname="Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract(&quot;ExplicitContactReferences&quot;)" methodname="ImportedFormalScenePreservesSpatialContract" classname="Group10.GuidedJourney.Tests.SpatialStabilizationTests" runstate="Runnable" seed="1253065245" result="Passed" start-time="2026-11-18 14:03:41Z" end-time="2026-11-18 14:03:42Z" duration="0.704031" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("ExplicitContactReferences")
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("ExplicitContactReferences"), ResultState: Passed, Duration: 0.704s
+]]></output>
+                </test-case>
+                <test-case id="1106" name="ImportedFormalScenePreservesSpatialContract(&quot;TaskAnchorsAndData&quot;)" fullname="Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract(&quot;TaskAnchorsAndData&quot;)" methodname="ImportedFormalScenePreservesSpatialContract" classname="Group10.GuidedJourney.Tests.SpatialStabilizationTests" runstate="Runnable" seed="1545568728" result="Passed" start-time="2026-11-18 14:03:42Z" end-time="2026-11-18 14:03:42Z" duration="0.499944" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("TaskAnchorsAndData")
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("TaskAnchorsAndData"), ResultState: Passed, Duration: 0.500s
+]]></output>
+                </test-case>
+                <test-case id="1107" name="ImportedFormalScenePreservesSpatialContract(&quot;ShoppingBagSizes&quot;)" fullname="Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract(&quot;ShoppingBagSizes&quot;)" methodname="ImportedFormalScenePreservesSpatialContract" classname="Group10.GuidedJourney.Tests.SpatialStabilizationTests" runstate="Runnable" seed="227934312" result="Passed" start-time="2026-11-18 14:03:42Z" end-time="2026-11-18 14:03:43Z" duration="0.476243" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[[TestRunnerTools] Test Started: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("ShoppingBagSizes")
+[TestRunnerTools] Test Finished: Group10.GuidedJourney.Tests.SpatialStabilizationTests.ImportedFormalScenePreservesSpatialContract("ShoppingBagSizes"), ResultState: Passed, Duration: 0.476s
+Saving results to: C:/Users/Kai/AppData/LocalLow/DefaultCompany/Quest Guidence\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

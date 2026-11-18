@@ -60,12 +60,19 @@ public static class Phase3SpatialVerification
     static void Supports(List<string> errors)
     {
         float rugTop=Phase3SpatialStabilization.VisualBounds(Phase3SpatialStabilization.Find<Transform>(233736802)).max.y;
-        foreach(long id in new long[]{233736802,732500854,1580692884,1337975014,247076002,47526949,730754861,1629213757})
+        foreach(long id in new long[]{233736802,1580692884,1337975014,247076002,47526949,730754861,1629213757})
             Require(Near(Phase3SpatialStabilization.VisualBounds(Phase3SpatialStabilization.Find<Transform>(id)).min.y,.001f),"Floor support mismatch "+id,errors);
-        foreach(long id in new long[]{16152113,1858018937})
+        foreach(long id in new long[]{16152113,732500854,1858018937})
             Require(Near(Phase3SpatialStabilization.VisualBounds(Phase3SpatialStabilization.Find<Transform>(id)).min.y,rugTop+.001f),"Rug support mismatch "+id,errors);
+        // The compact balcony set replaces these retained, intentionally disabled originals.
         foreach(long id in new long[]{221027378,1212511184,1517314931,1247993134})
-            Require(Near(Phase3SpatialStabilization.VisualBounds(Phase3SpatialStabilization.Find<Transform>(id)).min.y,.013f),"Balcony support mismatch "+id,errors);
+            Require(!Phase3SpatialStabilization.Find<Transform>(id).gameObject.activeInHierarchy,"Legacy balcony furniture unexpectedly active "+id,errors);
+        foreach(string name in new[]{"Balcony_Compact_Deck_Chair_Left","Balcony_Compact_Deck_Chair_Right","Balcony_Compact_Round_Coffee_Table"})
+        {
+            var furniture=Phase3SpatialStabilization.Named(name);
+            Require(furniture.gameObject.activeInHierarchy,"Compact balcony furniture inactive: "+name,errors);
+            Require(Near(Phase3SpatialStabilization.VisualBounds(furniture).min.y,.013f),"Compact balcony support mismatch: "+name,errors);
+        }
         Require(!Phase3SpatialStabilization.Find<Collider>(140617042).enabled,"Redundant high carpet support must remain disabled",errors);
         Require(Phase3SpatialStabilization.Find<Collider>(1448635157).enabled,"Real floor must remain solid",errors);
     }
