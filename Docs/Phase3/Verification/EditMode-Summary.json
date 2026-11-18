@@ -1,0 +1,50 @@
+{
+  "evidence": "Actually executed Unity6000.6.4f1 DX11 EditMode on FINAL geometry; not Quest or Player",
+  "result": {
+    "id": "2",
+    "testcasecount": "186",
+    "result": "Passed",
+    "total": "186",
+    "passed": "186",
+    "failed": "0",
+    "inconclusive": "0",
+    "skipped": "0",
+    "asserts": "0",
+    "engine-version": "3.5.0.0",
+    "clr-version": "4.0.30319.42000",
+    "start-time": "2026-10-25 21:24:16Z",
+    "end-time": "2026-10-25 21:24:24Z",
+    "duration": "8.1401717"
+  },
+  "groups": {
+    "Group10.GuidedJourney.Tests.AdapterLifecycleTests": 2,
+    "Group10.GuidedJourney.Tests.JourneyStateMachineTests": 47,
+    "Group10.GuidedJourney.Tests.LocalizationTests": 13,
+    "Group10.GuidedJourney.Tests.PanelPlacementTests": 6,
+    "Group10.GuidedJourney.Tests.Phase3ReviewStorageTests": 7,
+    "Group10.GuidedJourney.Tests.ReviewBillboardTests": 3,
+    "Group10.GuidedJourney.Tests.SessionVisualsTests": 13,
+    "Group10.GuidedJourney.Tests.SpatialStabilizationTests": 7,
+    "Group10.GuidedJourney.Tests.ToolHintDisplayTests": 2,
+    "XRGroup10.ShoppingBag.Tests.BagFeedbackTests": 19,
+    "XRGroup10.ShoppingBag.Tests.BagGripSafetyTests": 52,
+    "XRGroup10.ShoppingBag.Tests.ShoppingBagTests": 7,
+    "XRGroup10.ShoppingBag.Tests.ShoppingBagUIIntegrationTests": 8
+  },
+  "compilerErrors": [],
+  "compilerWarnings": [
+    "Assets\\Scripts\\Editor\\ApartmentDetailedMigration.cs(790,62): warning CS0252: Possible unintended reference comparison; to get a value comparison, cast the left hand side to type 'Object'"
+  ],
+  "exceptionHeaders": [
+    "UnassignedReferenceException: The variable m_AtlasTextures of TMP_FontAsset has not been assigned."
+  ],
+  "testRunnerReportedExit0": true,
+  "xmlSHA256": "1dbae7624ed81ba44001c88e8692d7e5bba6bd0a346231b80892798788557104",
+  "logSHA256": "7a5674f54cec46a7a7629d3af9c5ee77a630724bd308f04341125aa0cd966fab",
+  "quest": "Not Run for this layout",
+  "windowsBuild": "Not Run; Phase2 outputs preserved",
+  "playMode": "Not Run this round; no automated XR/headset session",
+  "preWhitespaceGeometrySceneSHA256": "412911e221b92acd6720bd12a41eb92d4e4462c4da7529c5bf6039b05d5f936f",
+  "finalSceneSHA256": "23a9813c3479d699846a03a277d9368b3482bd5eb5f70383c6f81dc0bc710da5",
+  "postTestOnlySceneChange": "11 trailing spaces removed from empty m_Name YAML values; exact object-wise semantic equality checked"
+}

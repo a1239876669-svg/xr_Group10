@@ -1,0 +1,40 @@
+{
+    "evidence": "Actual Unity EditMode imported meshes and Physics; Quest and Player Not Run",
+    "groups": [
+        {
+            "name": "EnvelopeAndScale",
+            "passed": true,
+            "errors": []
+        },
+        {
+            "name": "FurnitureSupport",
+            "passed": true,
+            "errors": []
+        },
+        {
+            "name": "DoorsAndRecovery",
+            "passed": true,
+            "errors": []
+        },
+        {
+            "name": "CoreCapsulePaths",
+            "passed": true,
+            "errors": []
+        },
+        {
+            "name": "ExplicitContactReferences",
+            "passed": true,
+            "errors": []
+        },
+        {
+            "name": "TaskAnchorsAndData",
+            "passed": true,
+            "errors": []
+        },
+        {
+            "name": "ShoppingBagSizes",
+            "passed": true,
+            "errors": []
+        }
+    ]
+}
