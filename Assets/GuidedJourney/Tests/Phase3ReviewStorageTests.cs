@@ -89,6 +89,45 @@ namespace Group10.GuidedJourney.Tests
             Assert.That(File.Exists(first), Is.False, "Selecting storage must not create or copy feedback records.");
         }
 
+        private string EnsurePlayPath()
+        {
+            object[] args = { null, null };
+            Assert.That((bool)Invoke("TryEnsureDevelopmentPath", args), Is.True, args[1] as string);
+            string path = (string)args[0];
+            string directory = Path.GetDirectoryName(path);
+            if (!ownedDirectories.Contains(directory)) ownedDirectories.Add(directory);
+            return path;
+        }
+
+        [Test]
+        public void FirstPlayAfterRestartAutomaticallyIsolatesAndSecondPlayReusesFeedback()
+        {
+            string first = EnsurePlayPath();
+            Assert.That(File.Exists(first), Is.False);
+            File.WriteAllText(first, "development feedback");
+            Assert.That(EnsurePlayPath(), Is.EqualTo(first));
+            SessionState.EraseString(key); // Unity clears SessionState on an Editor restart.
+            string next = EnsurePlayPath();
+            Assert.That(next, Is.Not.EqualTo(first));
+            Assert.That(File.Exists(next), Is.False);
+            Assert.That(File.ReadAllText(first), Is.EqualTo("development feedback"));
+        }
+
+        [Test]
+        public void PlayReplacesAMissingOrInvalidSelectionWithoutWritingToIt()
+        {
+            foreach (string root in new[] { Path.GetTempPath(), Application.dataPath })
+            {
+                string missing = Path.Combine(root, "Group10-Phase3Review-" + Guid.NewGuid().ToString("N"));
+                SessionState.SetString(key, missing);
+                string fresh = EnsurePlayPath();
+                Assert.That(Path.GetDirectoryName(fresh), Is.Not.EqualTo(missing));
+                Assert.That(Directory.Exists(missing), Is.False);
+                Assert.That(TryPath(out string validated, out _), Is.True);
+                Assert.That(fresh, Is.EqualTo(validated));
+            }
+        }
+
         [Test]
         public void OutsideTempSelectionIsRejectedWithoutCreatingFiles()
         {

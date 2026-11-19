@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Explicit, Editor-session-only storage isolation for the formal Phase 3 scene.
+/// Automatic, Editor-session-only storage isolation for the formal Phase 3 scene.
 /// No scene asset, Player code, schema or historical data is changed.
 /// </summary>
 [InitializeOnLoad]
@@ -53,6 +53,11 @@ public static class Phase3ReviewTestStorage
     {
         if (EditorApplication.isPlayingOrWillChangePlaymode)
             throw new InvalidOperationException("Select development storage before entering Play.");
+        CreateDevelopmentFolder();
+    }
+
+    private static void CreateDevelopmentFolder()
+    {
         string directory = Path.Combine(Path.GetTempPath(), DirectoryPrefix + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(directory);
         SessionState.SetString(SessionKey, Path.GetFullPath(directory));
@@ -69,8 +74,7 @@ public static class Phase3ReviewTestStorage
         if (TryGetDevelopmentPath(out string path, out string reason))
             Debug.Log("Phase 3 development review file: " + path);
         else
-            Debug.LogWarning("Phase 3 development storage is not selected: " + reason + ". Use " + Menu
-                + "Use New Isolated Development Folder before Play.");
+            Debug.Log("Phase 3 development storage: " + reason + ". Play will prepare a fresh folder automatically.");
     }
 
     [MenuItem(Menu + "Forget Folder Without Deleting Data")]
@@ -110,28 +114,25 @@ public static class Phase3ReviewTestStorage
         }
         if (state != PlayModeStateChange.ExitingEditMode || !FormalSceneWillRun()) return;
 
-        bool selected = TryGetDevelopmentPath(out _, out string reason);
-        if (selected && EditorSettings.enterPlayModeOptionsEnabled
+        if (EditorSettings.enterPlayModeOptionsEnabled
             && (EditorSettings.enterPlayModeOptions & EnterPlayModeOptions.DisableSceneReload) != 0)
         {
             StopBeforePlay("Scene Reload is disabled. This isolation adapter requires fresh scene objects. "
                 + "Do not change protected ProjectSettings without approval.");
             return;
         }
-        if (selected && (ConfigureStorage == null || StorageBlocked == null))
+        if (ConfigureStorage == null || StorageBlocked == null)
         {
             StopBeforePlay("The existing ReviewTools test-storage seam or safety field could not be resolved.");
             return;
         }
-        if (!selected && HistoricalDirectoryExists())
-            StopBeforePlay(reason + ". Historical ReviewSessions exists. Select " + Menu
-                + "Use New Isolated Development Folder, then enter Play.");
+        if (!TryEnsureDevelopmentPath(out _, out string reason)) StopBeforePlay(reason);
     }
 
     private static bool FormalSceneWillRun()
     {
-        if (EditorSceneManager.playModeStartScene != null
-            && AssetDatabase.GetAssetPath(EditorSceneManager.playModeStartScene) == FormalScene) return true;
+        if (EditorSceneManager.playModeStartScene != null)
+            return AssetDatabase.GetAssetPath(EditorSceneManager.playModeStartScene) == FormalScene;
         for (int i = 0; i < SceneManager.sceneCount; i++)
             if (SceneManager.GetSceneAt(i).path == FormalScene) return true;
         return false;
@@ -145,10 +146,9 @@ public static class Phase3ReviewTestStorage
         foreach (GameObject root in scene.GetRootGameObjects())
             tools.AddRange(root.GetComponentsInChildren<ReviewTools>(true));
 
-        bool selected = TryGetDevelopmentPath(out string path, out string reason);
-        if (!selected)
+        if (!TryEnsureDevelopmentPath(out string path, out string reason))
         {
-            if (HistoricalDirectoryExists()) StopLoadedScene(tools, reason);
+            StopLoadedScene(tools, reason);
             return;
         }
         if (EditorSettings.enterPlayModeOptionsEnabled
@@ -180,9 +180,22 @@ public static class Phase3ReviewTestStorage
         }
     }
 
-    private static bool HistoricalDirectoryExists()
+    // A fresh Editor has no SessionState selection. Never run against the shared review directory.
+    // If Windows cleaned up the previous temp folder, allocate a new one without touching the old path.
+    private static bool TryEnsureDevelopmentPath(out string path, out string reason)
     {
-        return Directory.Exists(Path.Combine(Application.persistentDataPath, "ReviewSessions"));
+        if (TryGetDevelopmentPath(out path, out reason)) return true;
+        try
+        {
+            CreateDevelopmentFolder();
+            return TryGetDevelopmentPath(out path, out reason);
+        }
+        catch (Exception error)
+        {
+            path = null;
+            reason = "Could not prepare isolated storage under " + Path.GetTempPath() + ": " + error.Message;
+            return false;
+        }
     }
 
     private static bool TryGetDevelopmentPath(out string path, out string reason)

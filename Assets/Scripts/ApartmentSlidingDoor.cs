@@ -14,6 +14,16 @@ public sealed class ApartmentSlidingDoor : MonoBehaviour, IApartmentInteractable
     public float metresPerSecond = .75f;
     public ApartmentCabinetState State { get; private set; }
     public float CurrentTravel { get; private set; }
+    public long InteractionRevision { get; private set; }
+    public float DistanceToClosedOpening(Vector3 position)
+    {
+        if (movingLeaf == null || doorRenderer == null) return float.PositiveInfinity;
+        // Restore the glass bounds to their closed pose. The door group's origin is the model origin.
+        var bounds = doorRenderer.bounds;
+        bounds.center -= transform.TransformVector(movingLeaf.localPosition - closedLocalPosition);
+        position.y = bounds.center.y;
+        return Vector3.Distance(position, bounds.ClosestPoint(position));
+    }
     public string BlockedReason { get; private set; } = "";
     public bool IsMoving => State == ApartmentCabinetState.Opening || State == ApartmentCabinetState.Closing;
     public bool CanInteract => isActiveAndEnabled && ConfigurationError() == null && !IsMoving;
@@ -59,6 +69,7 @@ public sealed class ApartmentSlidingDoor : MonoBehaviour, IApartmentInteractable
         if (IsMoving) { reason = InteractionPrompt; return false; }
         if (State == ApartmentCabinetState.Closed) target = localTravel.magnitude;
         else if (State == ApartmentCabinetState.Open) target = 0;
+        InteractionRevision++;
         SetState(target > CurrentTravel ? ApartmentCabinetState.Opening : ApartmentCabinetState.Closing, "");
         reason = ""; return true;
     }

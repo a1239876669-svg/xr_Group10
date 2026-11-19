@@ -57,7 +57,19 @@ public sealed class ApartmentMenuController : MonoBehaviour
     public bool HasOpenPanel => ActivePanel != ApartmentPanelState.Closed;
     public bool InputReady { get; private set; }
     public bool Visible => HasOpenPanel && InputReady;
-    public bool BlocksWorldInput => !InputReady || HasOpenPanel || waitingNeutral;
+    public bool WaitingForUI => !InputReady || HasOpenPanel || waitingNeutral;
+    public bool BlocksWorldInput => WaitingForUI || (tutorial != null && tutorial.guidedJourney != null && tutorial.guidedJourney.TaskCardModal);
+    public void RearmWorldInput()
+    {
+        waitingNeutral = true;
+        locomotion?.CancelTeleport();
+        interactor?.ResetUIInput();
+    }
+    public void FinishGuidedFeedback()
+    {
+        if (IsOpen && Page == 1) ChangePanel(ApartmentPanelState.Closed);
+        else RearmWorldInput();
+    }
     public bool AllowsSmoothMove => MovementMode != ApartmentMovementMode.TeleportOnly;
     public bool AllowsTeleport => MovementMode != ApartmentMovementMode.SmoothOnly;
     public int UIRevision { get; private set; }
@@ -115,7 +127,8 @@ public sealed class ApartmentMenuController : MonoBehaviour
     public static string KeyText(ApartmentMovementMode mode) =>
         "左摇杆   平滑行走" + (mode == ApartmentMovementMode.TeleportOnly ? "（当前未启用）" : "") +
         "\n右摇杆左右   连续转向\n右手 A   按住瞄准，松开瞬移" + (mode == ApartmentMovementMode.SmoothOnly ? "（当前未启用）" : "") +
-        "\n右手 B   打开 / 关闭菜单\n右食指扳机   确认按钮 / 开关门\n测距或标记开启时，扳机用于放置点位";
+        "\n右手 B   打开 / 关闭菜单\n左手 X   开启 / 退出测距\n左手 Y   开启 / 退出标记" +
+        "\n右食指扳机   确认按钮 / 开关门\n测距或标记开启时，扳机用于放置点位";
     readonly ApartmentMenuButtonLatch bLatch = new ApartmentMenuButtonLatch();
     ApartmentVRPanel view, completionView, quitView;
     ApartmentPanelState quitSource = ApartmentPanelState.Menu;
