@@ -195,11 +195,99 @@ namespace XRGroup10.ShoppingBag.Tests
             otherBag.EndDesktopSimulation();Assert.That(target.WarningActive,Is.False);InvokeLifecycle(otherSensor,"OnDisable");
         }
 
+        [Test]
+        public void TwoBagsProduceSeparateMovingPatchesOnOneWallAndRestoreEachPatchOnRelease()
+        {
+            if (UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline != null)
+                Assert.Ignore("This pixel capture uses the project's Built-in pipeline.");
+            var wall = Target(new Vector3(0, .2f, .07f), Vector3.one);
+            wall.transform.localScale = new Vector3(2.8f, .9f, .04f);
+            wall.gameObject.layer = 31;
+            var original = new Material(Shader.Find("Unlit/Color")) { color = Color.cyan };
+            wall.GetComponent<Renderer>().sharedMaterial = original;
+
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/ShoppingBag/Prefabs/ShoppingBag.prefab");
+            var second = Object.Instantiate(prefab);
+            roots.Add(second);
+            SceneManager.MoveGameObjectToScene(second, scene);
+            var otherBag = second.GetComponent<ShoppingBag>();
+            var otherSensor = second.GetComponentInChildren<BagContactSensor>();
+            var cameraRoot = new GameObject("Local bag warning sample");
+            roots.Add(cameraRoot);
+            SceneManager.MoveGameObjectToScene(cameraRoot, scene);
+            var camera = cameraRoot.AddComponent<Camera>();
+            camera.enabled = false;
+            camera.scene = scene;
+            camera.transform.position = Origin + new Vector3(0, .2f, -3f);
+            camera.orthographic = true;
+            camera.orthographicSize = .8f;
+            camera.aspect = 2f;
+            camera.cullingMask = (1 << 31) | (1 << 2);
+            camera.clearFlags = CameraClearFlags.SolidColor;
+            camera.backgroundColor = Color.black;
+            var rt = new RenderTexture(256, 128, 24);
+            var pixels = new Texture2D(rt.width, rt.height, TextureFormat.RGB24, false);
+            var previous = RenderTexture.active;
+            try
+            {
+                camera.targetTexture = rt;
+                bool[] ColorsAtThreePoints()
+                {
+                    InvokeLifecycle(wall, "LateUpdate");
+                    camera.Render();
+                    RenderTexture.active = rt;
+                    pixels.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0);
+                    pixels.Apply();
+                    var samples = new List<bool>();
+                    foreach (float x in new[] { -.8f, 0f, .8f })
+                    {
+                        var viewport = camera.WorldToViewportPoint(Origin + new Vector3(x, .2f, .05f));
+                        var c = pixels.GetPixel((int)(viewport.x * rt.width), (int)(viewport.y * rt.height));
+                        bool redPixel = c.r > .8f && c.g < .2f && c.b < .2f;
+                        bool cyanPixel = c.r < .2f && c.g > .8f && c.b > .8f;
+                        Assert.That(redPixel || cyanPixel, Is.True, $"x={x}, color={c}");
+                        samples.Add(redPixel);
+                    }
+                    return samples.ToArray();
+                }
+
+                bag.transform.position = Origin + Vector3.left * .8f;
+                Hold();
+                Scan();
+                Assert.That(ColorsAtThreePoints(), Is.EqualTo(new[] { true, false, false }), "Only the touched area turns red");
+                bag.transform.position = Origin;
+                Scan();
+                Assert.That(ColorsAtThreePoints(), Is.EqualTo(new[] { false, true, false }), "Patch follows the bag while contact continues");
+                second.transform.position = Origin + Vector3.right * .8f;
+                Assert.That(otherBag.TrySetSize(BagSize.Medium), Is.True);
+                InvokeLifecycle(otherSensor, "OnEnable");
+                Assert.That(otherBag.TryBeginDesktopSimulation(Handedness.Right), Is.True);
+                Physics.SyncTransforms();
+                otherSensor.ScanNow();
+                Assert.That(ColorsAtThreePoints(), Is.EqualTo(new[] { false, true, true }), "Both bags warn independently");
+                bag.EndDesktopSimulation();
+                Assert.That(ColorsAtThreePoints(), Is.EqualTo(new[] { false, false, true }), "Only the remaining owner warns");
+                otherBag.EndDesktopSimulation();
+                Assert.That(ColorsAtThreePoints(), Is.EqualTo(new[] { false, false, false }));
+            }
+            finally
+            {
+                otherBag.EndDesktopSimulation();
+                InvokeLifecycle(otherSensor, "OnDisable");
+                camera.targetTexture = null;
+                RenderTexture.active = previous;
+                Object.DestroyImmediate(rt);
+                Object.DestroyImmediate(pixels);
+                Object.DestroyImmediate(original);
+            }
+        }
+
         [Test] public void RedOverlayActuallyRendersOverHoverAndRestoresHoverAfterExit()
         {
             if (UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline!=null)
                 Assert.Ignore("Camera.Render image check requires Built-in pipeline; use the project's SRP render test path instead.");
-            var target=Target(new Vector3(0,.2f,0),Vector3.one*.1f);
+            var target=Target(new Vector3(0,.2f,0),Vector3.one);
+            target.transform.localScale = Vector3.one * .1f;
             var renderer=target.GetComponent<Renderer>();
             var baseMaterial=new Material(Shader.Find("Unlit/Color"));renderer.sharedMaterial=baseMaterial;
             target.gameObject.layer=31;
