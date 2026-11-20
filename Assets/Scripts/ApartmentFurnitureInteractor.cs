@@ -71,6 +71,7 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
 
     readonly ApartmentInteractionTriggerLatch trigger = new ApartmentInteractionTriggerLatch();
     readonly ApartmentMenuStickStepLatch menuStep = new ApartmentMenuStickStepLatch();
+    readonly ApartmentMenuButtonLatch reviewShortcut = new ApartmentMenuButtonLatch();
     readonly RaycastHit[] hits = new RaycastHit[128];
     readonly Collider[] originOverlaps = new Collider[128];
     IApartmentInteractable hover;
@@ -88,7 +89,7 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
         trigger.Reset();
         if (locomotion != null) locomotion.Teleported += OnTeleported;
     }
-    void OnTeleported(Vector3 _) { teleportFrame = Time.frameCount; trigger.Reset(); ClearHover(); HideVisuals(); }
+    void OnTeleported(Vector3 _) { teleportFrame = Time.frameCount; trigger.Reset(); ClearMarkerHover(); ClearHover(); HideVisuals(); }
     void OnDisable()
     {
         if (locomotion != null) locomotion.Teleported -= OnTeleported;
@@ -105,6 +106,8 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
         if (!RuntimeReady) { CancelForTrackingLoss(); return; }
         if (menu != null && menu.isActiveAndEnabled && menu.Visible)
         {
+            ClearMarkerHover();
+            reviewShortcut.Reset();
             ClearHover(); EnsureVisuals(); if(line==null)return;
             if(hint!=null)hint.SetActive(false);
             var hand=locomotion.rig.rightControllerAnchor;
@@ -122,6 +125,8 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
         }
         if (tutorial != null && tutorial.isActiveAndEnabled && tutorial.ModalVisible)
         {
+            ClearMarkerHover();
+            reviewShortcut.Reset();
             ClearHover(); EnsureVisuals(); if (line == null) return;
             if (hint != null) hint.SetActive(false);
             var hand = locomotion.rig.rightControllerAnchor;
@@ -134,20 +139,31 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
             line.startColor = line.endColor = new Color(.2f,.95f,.85f);
             Status = "Tutorial confirmation owns trigger"; return;
         }
-        if(menu!=null && menu.isActiveAndEnabled && menu.BlocksWorldInput)
-        { trigger.Reset(); ClearHover(); HideVisuals(); Status="Waiting for released controls";return; }
+        if(menu!=null && menu.isActiveAndEnabled && menu.WaitingForUI)
+        { ResetUIInput(); Status = "Waiting for released controls"; return; }
         if (tutorial != null && tutorial.isActiveAndEnabled && !tutorial.AllowInteraction)
-        { trigger.Reset(); ClearHover(); HideVisuals(); Status = "Tutorial practice"; return; }
+        { ResetUIInput(); Status = "Tutorial practice"; return; }
         bool teleportOwnsInput = locomotion.IsTeleportAiming || teleportFrame == Time.frameCount ||
             ((menu == null || !menu.isActiveAndEnabled || menu.AllowsTeleport) && OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch));
-        if (teleportOwnsInput)
-        { trigger.Reset(); ClearHover(); HideVisuals(); Status = "Teleport has priority"; return; }
+        var guide = tutorial != null ? tutorial.guidedJourney : null;
+        bool cardModal = guide != null && guide.TaskCardModal;
+        if (teleportOwnsInput && !cardModal)
+        { ResetUIInput(); Status = "Teleport has priority"; return; }
         EnsureVisuals();
-        if (line == null || label == null) { trigger.Reset(); Status = "Interaction visuals/font are not configured"; return; }
+        if (line == null || label == null) { ClearMarkerHover(); trigger.Reset(); Status = "Interaction visuals/font are not configured"; return; }
+        if (!cardModal && HandleReviewShortcut()) return;
         Physics.SyncTransforms();
         var origin = locomotion.rig.rightControllerAnchor;
         Ray ray = new Ray(origin.position, origin.forward);
         bool pressed = trigger.Sample(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch), true);
+        if (guide != null && guide.PointAtTaskCard(ray, maxDistance, pressed, out Vector3 cardEnd))
+        {
+            ClearMarkerHover(); ClearHover();
+            if (hint != null) hint.SetActive(false);
+            line.enabled = true; line.SetPosition(0, ray.origin); line.SetPosition(1, cardEnd);
+            line.startColor = line.endColor = Color.cyan;
+            return;
+        }
         if (menu != null && menu.review != null && menu.review.ProcessPointer(ray, pressed, out Vector3 reviewEnd))
         {
             ClearHover();
@@ -178,7 +194,32 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
         Status = label.text;
     }
 
-    public void ResetUIInput() { trigger.Reset(); menuStep.Reset(); ClearHover(); HideVisuals(); }
+    bool HandleReviewShortcut()
+    {
+        if (menu == null || !menu.isActiveAndEnabled || menu.review == null || !menu.review.isActiveAndEnabled ||
+            !OVRInput.IsControllerConnected(OVRInput.Controller.LTouch) ||
+            !OVRInput.GetControllerOrientationTracked(OVRInput.Controller.LTouch) ||
+            !OVRInput.GetControllerPositionTracked(OVRInput.Controller.LTouch))
+        {
+            reviewShortcut.Reset();
+            return false;
+        }
+
+        bool x = OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch);
+        bool y = OVRInput.Get(OVRInput.Button.Two, OVRInput.Controller.LTouch);
+        // Both buttons share a latch so a chord needs a full release before either can fire.
+        if (!reviewShortcut.Sample(x || y, !(x && y))) return false;
+        ResetUIInput();
+        menu.review.ToggleTool(x ? QuestGuidance.Review.ReviewMode.Measure : QuestGuidance.Review.ReviewMode.Mark);
+        return true;
+    }
+
+    void ClearMarkerHover()
+    {
+        if (menu != null && menu.review != null && menu.review.tools != null) menu.review.tools.ClearMarkerHover();
+    }
+
+    public void ResetUIInput() { reviewShortcut.Reset(); trigger.Reset(); menuStep.Reset(); ClearMarkerHover(); ClearHover(); HideVisuals(); }
 
     // The two-argument form keeps the authored interaction reach; the overload exists for callers that
     // need a longer ray (review measuring reaches 30 m) without changing any existing caller's behaviour.
@@ -218,7 +259,7 @@ public sealed class ApartmentFurnitureInteractor : MonoBehaviour
 
     void CancelForTrackingLoss()
     {
-        trigger.Reset(); menuStep.Reset(); ClearHover(); HideVisuals(); Status = "Paused: tracking/input focus unavailable";
+        ResetUIInput(); Status = "Paused: tracking/input focus unavailable";
         if (doors != null) foreach (var door in doors) if (door != null) door.PauseMotion();
         if (slidingDoors != null) foreach (var door in slidingDoors) if (door != null) door.PauseMotion();
     }

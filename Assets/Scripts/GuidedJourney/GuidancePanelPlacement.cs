@@ -6,7 +6,8 @@ public sealed class GuidancePanelPlacement
     bool placed;
     Vector3 placedHead, placedForward;
     float nextRecenter;
-    public float VerticalOffset { get; set; } = -.10f;
+    public bool AboveGaze { get; set; }
+    public float PanelScale { get; set; } = .001f;
     public void Reset() { placed = false; }
     public static float DistanceForWidth(float metres) => Mathf.Clamp(metres / (2f * Mathf.Tan(17f * Mathf.Deg2Rad)), 1.3f, 1.6f);
     public static bool Finite(Vector3 v) => float.IsFinite(v.x) && float.IsFinite(v.y) && float.IsFinite(v.z);
@@ -24,12 +25,14 @@ public sealed class GuidancePanelPlacement
         if (forward.sqrMagnitude < .5f) forward = Vector3.ProjectOnPlane(fallback,Vector3.up).normalized;
         if (forward.sqrMagnitude < .5f) forward = Vector3.forward;
         float pitch = Mathf.Clamp(Mathf.Asin(Mathf.Clamp(head.forward.y,-1,1))*Mathf.Rad2Deg,-35f,35f);
+        if (AboveGaze) pitch += 10f;
         forward = Quaternion.AngleAxis(-pitch,Vector3.Cross(Vector3.up,forward)) * forward;
-        float distance = DistanceForWidth(panel.sizeDelta.x*.001f);
-        Vector3 position = head.position+forward*distance+Vector3.up*Mathf.Clamp(VerticalOffset,-.4f,0f);
+        float distance = AboveGaze ? 1.4f : DistanceForWidth(panel.sizeDelta.x*.001f);
+        Vector3 position = head.position + forward * distance;
+        if (!AboveGaze) position -= Vector3.up * .10f;
         // Undo only this Canvas's inherited scale/rotation, never its owner or XR hierarchy.
         if (panel.parent != null) panel.SetParent(null,true);
-        panel.localScale = Vector3.one*.001f;
+        panel.localScale = Vector3.one * PanelScale;
         panel.SetPositionAndRotation(position,FaceViewer(head.position,position));
         placed = true; placedHead = head.position; placedForward = head.forward; nextRecenter = now+.6f;
         var canvas=panel.GetComponent<Canvas>(); if(canvas!=null)canvas.worldCamera=head.GetComponent<Camera>();

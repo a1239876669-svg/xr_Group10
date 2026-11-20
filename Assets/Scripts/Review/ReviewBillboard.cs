@@ -7,6 +7,7 @@ namespace QuestGuidance.Review
     {
         private Vector3 anchor;
         private bool hasAnchor;
+        internal bool IsPreviewCard { get; set; }
 
         public bool SetAnchor(Vector3 actualPointOrMidpoint)
         {
@@ -30,6 +31,13 @@ namespace QuestGuidance.Review
             Vector3 offset = towardViewer.sqrMagnitude > .000001f
                 ? towardViewer.normalized * .06f : Vector3.zero;
             Vector3 position = anchor + offset + Vector3.up * .08f;
+            if (IsPreviewCard)
+            {
+                // Keep the card readable at different pointing distances and clear of the marked surface.
+                float scale = Mathf.Clamp(towardViewer.magnitude / 1.5f, .15f, 12f);
+                transform.localScale = Vector3.one * (.0008f * scale);
+                position = anchor + towardViewer.normalized * (.25f * scale) + viewer.up * (.11f * scale);
+            }
             if (!Finite(position)) return false;
             Vector3 facing = position - viewer.position;
             if (facing.sqrMagnitude < .000001f) facing = viewer.forward;

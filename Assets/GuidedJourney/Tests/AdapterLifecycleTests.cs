@@ -20,6 +20,59 @@ namespace Group10.GuidedJourney.Tests
             while (result.CurrentStage != target) result.SkipCurrentStage(observation);
             return result;
         }
+        [Test] public void NumberedTaskTransitionsUseOneShortCenteredCueAndSkipAllIsSilent()
+        {
+            var go = new GameObject("Task cue test");
+            try
+            {
+                var adapter = go.AddComponent(Adapter);
+                var observation = Ready();
+                var session = At(JourneyStage.Measurement, observation);
+                Adapter.GetField("<Journey>k__BackingField", Private).SetValue(adapter, session);
+                Adapter.GetField("previousStage", Private).SetValue(adapter, session.CurrentStage);
+                var present = Adapter.GetMethod("PresentStageChange", Private);
+                void Refresh() => present.Invoke(adapter, new object[] { observation });
+                Refresh();
+                Assert.IsNull(go.GetComponent<AudioSource>(), "Showing or redrawing the initial task is silent.");
+
+                observation.MeasurementRevision++;
+                Assert.IsTrue(session.Tick(observation));
+                Refresh();
+                var source = go.GetComponent<AudioSource>();
+                Assert.IsNotNull(source);
+                Assert.IsFalse(source.playOnAwake);
+                Assert.That(source.spatialBlend, Is.Zero);
+                Assert.That(source.panStereo, Is.Zero);
+                Assert.IsNotNull(source.clip);
+                Assert.That(source.clip.channels, Is.EqualTo(1));
+                Assert.That(source.clip.length, Is.EqualTo(.2f).Within(.005f));
+                observation.FeedbackSavedRevision++;
+                Assert.IsTrue(session.Tick(observation));
+                Refresh();
+                Assert.That(go.GetComponents<AudioSource>(), Is.EqualTo(new[] { source }));
+
+                UnityEngine.Object.DestroyImmediate(source);
+                Refresh();
+                Assert.IsNull(go.GetComponent<AudioSource>(), "A second frame on the new task is silent.");
+                session.Reset(observation);
+                Refresh();
+                session.SkipCurrentStage(observation);
+                observation.TrackingValid = false;
+                Refresh();
+                observation.TrackingValid = true;
+                Refresh();
+                Assert.IsNull(go.GetComponent<AudioSource>(), "Tracking recovery must not replay an earlier update.");
+                session.SkipCurrentStage(observation);
+                Refresh();
+                Assert.IsNotNull(go.GetComponent<AudioSource>(), "Skipping one task announces the next one.");
+                UnityEngine.Object.DestroyImmediate(go.GetComponent<AudioSource>());
+                Adapter.GetField("skippedFromWelcome", Private).SetValue(adapter, true);
+                session.SkipAll(observation);
+                Refresh();
+                Assert.IsNull(go.GetComponent<AudioSource>());
+            }
+            finally { UnityEngine.Object.DestroyImmediate(go); }
+        }
         [Test] public void ApplicationFocusCallbackInvalidatesHeldDropProof()
         {
             var go = new GameObject("Guide lifecycle test");

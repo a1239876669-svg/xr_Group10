@@ -27,6 +27,18 @@ namespace Group10.GuidedJourney.Tests
             Assert.AreEqual(legacyValue,PlayerPrefs.GetInt(key),"A new session must not clear saved settings");
         }
         [Test] public void ChineseAndEnglishToggleImmediately(){Set(1);Assert.AreEqual("设置",Display("设置"));Assert.AreEqual("保存反馈",Display("Save feedback"));Set(0);Assert.AreEqual("Save feedback",Display("保存反馈"));}
+        [Test] public void MeasurementLessonNamesTheStartAndEndPointsInBothLanguages()
+        {
+            var guide = Type.GetType("ApartmentGuidedJourney, Assembly-CSharp", true);
+            string title = ((string[])guide.GetField("Titles").GetValue(null))[9];
+            Assert.AreEqual("9 / 11 - Select the start and end points", Display(title));
+            StringAssert.Contains("end point", Text("journey.refined.4"));
+            StringAssert.Contains("start and end points", Text("tool.measure.task"));
+            Set(1);
+            Assert.AreEqual("9 / 11 - 选择起点和终点", Display(title));
+            Assert.AreEqual("按左手 X 开启测距。用右手指向起点，扣一次食指扳机，再指向终点扣一次，即可查看两点之间的距离。", Text("journey.refined.4"));
+            StringAssert.Contains("起点和终点", Text("tool.measure.task"));
+        }
         [Test] public void EveryNewSessionStartsInEnglishAfterAnEarlierChineseSession()
         {
             for(int run=0;run<3;run++)

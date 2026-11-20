@@ -27,6 +27,7 @@ public sealed class ApartmentReviewController : MonoBehaviour
     int aspect, rating = 1;
     IssueImportance importance = IssueImportance.Medium;
     int measurementPage;
+    int feedbackPage = 1;
     TouchScreenKeyboard keyboard;
     bool editingImpact, originalText;
     public bool IsEditingText => keyboard != null && keyboard.status == TouchScreenKeyboard.Status.Visible;
@@ -47,6 +48,7 @@ public sealed class ApartmentReviewController : MonoBehaviour
             tools.onRecordsChanged.RemoveListener(Refresh);
             tools.onModeChanged.RemoveListener(Refresh);
             tools.PreviewPoint(default, false);
+            tools.ClearMarkerHover();
         }
         CloseKeyboard();
     }
@@ -79,7 +81,7 @@ public sealed class ApartmentReviewController : MonoBehaviour
     void LoadEditor(ReviewRecord record)
     {
         if (editingId == record.id) return;
-        CloseKeyboard(); editingId = record.id;
+        CloseKeyboard(); editingId = record.id; feedbackPage = 1;
         observation = record.observation; impact = record.everydayImpact;
         importance = record.importance; measurementId = record.measurementId;
         // Preset feedback reuses the two text fields the record already stores, so a record written by
@@ -93,20 +95,33 @@ public sealed class ApartmentReviewController : MonoBehaviour
         originalText |= !string.IsNullOrEmpty(record.everydayImpact) && System.Array.IndexOf(AspectRatings[aspect],record.everydayImpact)<0;
         if(!originalText) { observation = AspectNames[aspect]; impact = AspectRatings[aspect][rating]; }
     }
-    public bool Begin(ReviewMode mode)
+    public void ToggleTool(ReviewMode mode) => SetTool(mode, true);
+    public bool Begin(ReviewMode mode) => SetTool(mode, false);
+
+    bool SetTool(ReviewMode mode, bool toggle)
     {
-        if (tools == null || tools.IsStorageBlocked || (mode != ReviewMode.Mark && mode != ReviewMode.Measure)) return false;
+        if (tools == null || (mode != ReviewMode.Mark && mode != ReviewMode.Measure)) return false;
         CloseKeyboard(); status = "";
-        if (mode == ReviewMode.Mark)
+        if (!tools.IsStorageBlocked && mode == ReviewMode.Mark)
             foreach (var record in tools.ActiveRecords)
                 if (record.kind == "marker" && record.state == FeedbackState.Draft)
-                { tools.SelectMarker(record.id); return false; }
+                {
+                    tools.StopTool();
+                    tools.SelectMarker(record.id);
+                    return false;
+                }
+        if (toggle && tools.Mode == mode)
+        {
+            tools.StopTool();
+            return false;
+        }
+        if (tools.IsStorageBlocked) return false;
         tools.SetMode(mode); return true;
     }
     public bool ProcessPointer(Ray ray, bool pressed, out Vector3 end)
     {
         end = ray.GetPoint(maximumDistance);
-        if (tools == null || menu == null || menu.interactor == null || !isActiveAndEnabled) return false;
+        if (tools == null || !tools.isActiveAndEnabled || menu == null || menu.interactor == null || !isActiveAndEnabled) return false;
         if (tools.Mode == ReviewMode.None)
         {
             bool hasMarker = false;
@@ -115,14 +130,16 @@ public sealed class ApartmentReviewController : MonoBehaviour
         }
         bool valid = menu.interactor.TryFirstHit(ray, maximumDistance, out RaycastHit hit);
         if (valid) end = hit.point;
-        tools.PreviewPoint(hit.point, valid);
-        if (menu.interactor.RayOriginBlocked) { end = ray.origin; return tools.Mode != ReviewMode.None; }
-        string marker = tools.Mode != ReviewMode.Measure ? tools.FindMarkerOnRay(ray, valid ? hit.distance : maximumDistance, maximumDistance) : null;
-        if (marker != null)
+        if (menu.interactor.RayOriginBlocked)
         {
-            if (pressed) tools.SelectMarker(marker);
-            return true;
+            tools.ClearMarkerHover();
+            tools.PreviewPoint(default, false);
+            end = ray.origin;
+            return tools.Mode != ReviewMode.None;
         }
+        if (tools.PointAtPendingStart(ray.origin, ref end, pressed)) return true;
+        tools.PreviewPoint(hit.point, valid);
+        if (tools.PointAtMarker(ray.origin, ref end, pressed)) return true;
         if (tools.Mode == ReviewMode.None) return false;
         if (valid && pressed) tools.ConfirmPoint(hit.point, hit.transform);
         return true;
@@ -173,8 +190,19 @@ public sealed class ApartmentReviewController : MonoBehaviour
         if(originalText)
         {
             panel.Label("Original title",ApartmentLanguage.Text("recovery.original"),330,232,730,32,27);
-            panel.LabelRaw("User saved feedback",Preview(observation)+" / "+Preview(impact),330,272,730,82,27);
-            panel.Button("Use preset feedback",ApartmentLanguage.Text("recovery.usepresets"),330,368,730,58,()=>{originalText=false;SelectAspect(aspect);},false,27);
+            var body = panel.LabelRaw("User saved feedback", observation + "\n" + impact, 330, 270, 730, 92, 24);
+            body.enableAutoSizing = false;
+            body.alignment = TMPro.TextAlignmentOptions.TopLeft;
+            body.overflowMode = TMPro.TextOverflowModes.Page;
+            body.ForceMeshUpdate(true);
+            int pages = Mathf.Max(1, body.textInfo.pageCount);
+            feedbackPage = Mathf.Clamp(feedbackPage, 1, pages);
+            body.pageToDisplay = feedbackPage;
+            if (feedbackPage > 1)
+                panel.Button("Previous feedback page", "上一页", 330, 368, 165, 58, () => { feedbackPage--; Refresh(); }, false, 24);
+            if (feedbackPage < pages)
+                panel.Button("Next feedback page", "下一页", 505, 368, 165, 58, () => { feedbackPage++; Refresh(); }, false, 24);
+            panel.Button("Use preset feedback",ApartmentLanguage.Text("recovery.usepresets"),685,368,375,58,()=>{originalText=false;SelectAspect(aspect);},false,27);
         }
         else
         {
@@ -205,13 +233,22 @@ public sealed class ApartmentReviewController : MonoBehaviour
     {
         if (markers.Count > 0) tools.SelectMarker(markers[(markers.IndexOf(current) + direction + markers.Count) % markers.Count].id);
     }
-    static string Preview(string text)
+    internal static string MarkerFeedbackSummary(ReviewRecord record)
     {
-        if (string.IsNullOrWhiteSpace(text)) return "点击输入";
-        string line = text.Replace('\r', ' ').Replace('\n', ' ').Replace('\t', ' ');
-        if (line.Length <= 36) return line;
-        int length = char.IsHighSurrogate(line[35]) ? 35 : 36;
-        return line.Substring(0, length) + "…";
+        int preset = System.Array.IndexOf(AspectNames, record.observation);
+        if (preset >= 0 && System.Array.IndexOf(AspectRatings[preset], record.everydayImpact) >= 0)
+            return ApartmentLanguage.Display(record.observation) + " / " + ApartmentLanguage.Display(record.everydayImpact);
+        // Only the built-in preset pairs are translated. Free-form feedback stays in its original language.
+        if (string.IsNullOrWhiteSpace(record.observation) && string.IsNullOrWhiteSpace(record.everydayImpact))
+            return ApartmentLanguage.Text("review.pendingfeedback");
+        string Excerpt(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) return ApartmentLanguage.Text("review.pendingfeedback");
+            string line = value.Trim().Replace('\r', ' ').Replace('\n', ' ').Replace('\t', ' ');
+            var elements = new StringInfo(line);
+            return elements.LengthInTextElements <= 28 ? line : elements.SubstringByTextElements(0, 28) + "…";
+        }
+        return Excerpt(record.observation) + " / " + Excerpt(record.everydayImpact);
     }
     void EditText(bool everydayImpact)
     {

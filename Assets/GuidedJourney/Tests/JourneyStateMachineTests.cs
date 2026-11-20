@@ -46,11 +46,14 @@ namespace Group10.GuidedJourney.Tests
             Assert.AreEqual(JourneyStage.LivingExplore, machine.CurrentStage);
         }
 
-        [Test] public void EntranceRequiresRealDoorOrActualInsideRoom()
+        [Test] public void OpenEntranceWhileStillOutsideKeepsTheEntrancePrompt()
         {
             var observation = Observation(); var machine = At(JourneyStage.EntranceDoor, ref observation);
             Assert.IsFalse(machine.Tick(observation));
             observation.EntranceDoorOpen = true;
+            Assert.IsFalse(machine.Tick(observation));
+            observation.DiscontinuousMove = observation.AimedTeleport = true;
+            observation.Room = JourneyRoom.Dining;
             Assert.IsTrue(machine.Tick(observation));
         }
 
@@ -134,7 +137,34 @@ namespace Group10.GuidedJourney.Tests
             observation.NearBalcony = true;
             Assert.IsFalse(machine.Tick(observation));
             observation.BalconyDoorOpen = true;
+            Assert.IsFalse(machine.Tick(observation), "An unsolicited state change cannot complete the exercise");
+            observation.BalconyInteractionRevision++;
             Assert.IsTrue(machine.Tick(observation));
+        }
+
+        [Test] public void BalconyAlreadyOpenRequiresNewActionAndFullyClosedDoor()
+        {
+            var observation = Observation();
+            observation.BalconyDoorOpen = true;
+            var machine = At(JourneyStage.BalconyDoor, ref observation);
+            Assert.IsTrue(machine.BalconyShouldClose);
+            Assert.IsFalse(machine.Tick(observation));
+            observation.BalconyInteractionRevision++;
+            observation.BalconyDoorOpen = false;
+            Assert.IsFalse(machine.Tick(observation), "Moving, blocked or paused");
+            observation.BalconyDoorClosed = true;
+            Assert.IsTrue(machine.Tick(observation));
+        }
+
+        [Test] public void TeleportToDiningSideOfBalconyOffersDoorPractice()
+        {
+            var observation = Observation();
+            var machine = At(JourneyStage.LivingExplore, ref observation);
+            observation.Room = JourneyRoom.Dining;
+            observation.AimedTeleport = observation.DiscontinuousMove = observation.NearBalcony = true;
+            Assert.IsTrue(machine.Tick(observation));
+            Assert.AreEqual(JourneyStage.BalconyDoor, machine.CurrentStage);
+            Assert.AreEqual(0, machine.LivingDistance);
         }
 
         [Test] public void CabinetRequiresRealOpenThenCloseInKitchen()
@@ -295,6 +325,8 @@ namespace Group10.GuidedJourney.Tests
             observation.TrackingValid = false; observation.BalconyDoorOpen = true;
             Assert.IsFalse(machine.Tick(observation));
             observation.TrackingValid = true;
+            Assert.IsFalse(machine.Tick(observation));
+            observation.BalconyInteractionRevision++;
             Assert.IsTrue(machine.Tick(observation));
         }
 
@@ -339,9 +371,9 @@ namespace Group10.GuidedJourney.Tests
         {
             var observation = Observation(); var machine = new JourneyStateMachine();
             observation.BasicsFinished = true; machine.Tick(observation);
-            observation.EntranceDoorOpen = true; machine.Tick(observation);
+            observation.EntranceDoorOpen = true; observation.Room = JourneyRoom.Living; machine.Tick(observation);
             observation.Room = JourneyRoom.Living; observation.NearBalcony = true; machine.Tick(observation);
-            observation.BalconyDoorOpen = true; machine.Tick(observation);
+            observation.BalconyDoorOpen = true; observation.BalconyInteractionRevision++; machine.Tick(observation);
             observation.Room = JourneyRoom.Kitchen; observation.CabinetOpen = false; observation.CabinetClosed = true; machine.Tick(observation);
             observation.CabinetOpen = true; observation.CabinetClosed = false; machine.Tick(observation);
             observation.CabinetOpen = false; observation.CabinetClosed = true; machine.Tick(observation);

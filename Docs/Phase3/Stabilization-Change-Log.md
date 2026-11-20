@@ -44,7 +44,7 @@ S/M/L remain .30×.30×.15, .45×.40×.22 and .60×.48×.30m. Held bags still se
 
 Two original historical JSON byte streams were backed up and their hashes rechecked unchanged. Never silently migrate old world-coordinate markers. Raw backups and potentially identifiable feedback remain under ignored local Logs, excluded from commits. Phase 2 EXE/ZIP hashes still match the saved manifest; no new Player build was produced.
 
-An Editor-only, explicit opt-in storage adapter protects development runs. Before Play select **Apartment Phase 3 > Review Test Storage > Use New Isolated Development Folder**, then confirm the pre-Start isolation log/path. Repeated Play in the same Editor reuses that temporary folder; a restarted Editor requires a new selection. No file is deleted. Actual Play timing still requires the first manual smoke check; Windows Player is not covered by this adapter. See [baseline notes](Evaluation-Baseline-Notes.md).
+The Editor automatically sets up isolated review storage on the first Play in the detailed scene and reuses it until the Editor closes. **Apartment Phase 3 > Review Test Storage > Use New Isolated Development Folder** remains available for starting a separate dataset. See the [baseline notes](Evaluation-Baseline-Notes.md).
 
 ## Files authored
 
