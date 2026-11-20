@@ -15,6 +15,13 @@ namespace XRGroup10.ShoppingBag
         private readonly HashSet<BagContactSensor> owners = new HashSet<BagContactSensor>();
         private readonly List<Renderer> overlays = new List<Renderer>();
         private readonly List<Renderer> sources = new List<Renderer>();
+        // Each simultaneous bag gets a separate clipped overlay on this target's meshes.
+        // Keep those slots for re-entry without allocating new meshes or materials.
+        private readonly List<int> overlayGroupEnds = new List<int>();
+        private static readonly int WorldToBox = Shader.PropertyToID("_BagContactWorldToBox");
+        private static readonly int HalfSize = Shader.PropertyToID("_BagContactHalfSize");
+        private MaterialPropertyBlock contactProperties;
+        private const float ContactMarginMetres = .05f;
         public bool WarningActive => owners.Count > 0;
         public int WarningSourceCount => owners.Count;
         public IReadOnlyList<Renderer> OverlayRenderers => overlays;
@@ -54,7 +61,7 @@ namespace XRGroup10.ShoppingBag
         {
             if (source == null) return;
             if (active && isActiveAndEnabled) owners.Add(source); else owners.Remove(source);
-            if (WarningActive && overlays.Count == 0) CreateOverlays();
+            if (owners.Count > overlayGroupEnds.Count) CreateOverlays();
             RefreshOverlays();
         }
         private void ClearWarnings() { owners.Clear(); RefreshOverlays(); }
@@ -91,18 +98,43 @@ namespace XRGroup10.ShoppingBag
                 overlay.lightProbeUsage = LightProbeUsage.Off; overlay.reflectionProbeUsage = ReflectionProbeUsage.Off;
                 overlays.Add(overlay); sources.Add(source);
             }
+            overlayGroupEnds.Add(overlays.Count);
         }
         private void RefreshOverlays()
         {
-            for (int i=0; i<overlays.Count; i++)
-                if (overlays[i] != null) overlays[i].enabled = WarningActive && sources[i] != null
-                    && sources[i].enabled && sources[i].gameObject.activeInHierarchy && !sources[i].forceRenderingOff;
+            int group = 0, first = 0;
+            foreach (var owner in owners)
+            {
+                if (group == overlayGroupEnds.Count) break;
+                var box = owner.ContactTrigger;
+                if (box == null) continue;
+                var t = box.transform;
+                var scale = t.lossyScale;
+                var half = Vector3.Scale(box.size * .5f, new Vector3(Mathf.Abs(scale.x), Mathf.Abs(scale.y), Mathf.Abs(scale.z)));
+                var boxPose = Matrix4x4.TRS(t.TransformPoint(box.center), t.rotation, Vector3.one);
+                contactProperties ??= new MaterialPropertyBlock();
+                contactProperties.SetMatrix(WorldToBox, boxPose.inverse);
+                contactProperties.SetVector(HalfSize, half + Vector3.one * ContactMarginMetres);
+
+                int end = overlayGroupEnds[group++];
+                for (int i = first; i < end; i++)
+                {
+                    var overlay = overlays[i];
+                    if (overlay == null) continue;
+                    var surface = sources[i];
+                    overlay.enabled = surface != null && surface.enabled && surface.gameObject.activeInHierarchy && !surface.forceRenderingOff;
+                    overlay.SetPropertyBlock(contactProperties);
+                }
+                first = end;
+            }
+            for (int i = first; i < overlays.Count; i++)
+                if (overlays[i] != null && overlays[i].enabled) overlays[i].enabled = false;
         }
         private void DestroyOverlays()
         {
             foreach (var overlay in overlays)
                 if (overlay != null) { if (Application.isPlaying) Destroy(overlay.gameObject); else DestroyImmediate(overlay.gameObject); }
-            overlays.Clear(); sources.Clear();
+            overlays.Clear(); sources.Clear(); overlayGroupEnds.Clear();
         }
     }
 }

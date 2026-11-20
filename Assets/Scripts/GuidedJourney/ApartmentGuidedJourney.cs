@@ -41,6 +41,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         "3 / 11 - Try the balcony door", "4 / 11 - Try a kitchen cabinet", "5 / 11 - Return to the entrance",
         "6 / 11 - Choose and pick up a bag", "7 / 11 - Carry shopping to the kitchen", "8 / 11 - Put the bag down",
         "9 / 11 - Select the start and end points", "10 / 11 - Mark an issue and save", "11 / 11 - Free exploration" };
+    public static string BagContactHintText => ApartmentLanguage.Text("bag.contact.hint");
     public const string ModelHelp = "Structure/walls are fixed. Selected doors and cabinets open. Furniture and dimensions are simplified assumptions, not certified clearance.";
     public const string SafetyHelp = "Stop if uncomfortable. B > Settings / 设置 > 返回安全点 returns to a checked entrance landing. Exit through B > 退出游戏.";
     public const string GuideFooter = "B > Controls / 按键说明 > Review guide: help, skip a task, or explore freely.";
@@ -59,7 +60,12 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     AudioSource taskCue;
     TextMeshProUGUI toolTitle, toolTask, toolHelp;
     bool toolWasVisible;
-    bool recoveryHelp;
+    enum HelpTopic { Overview, Recovery, BagContact }
+    HelpTopic helpTopic;
+    bool showingBagContactHint;
+    static uint bagHintPlay = 1;
+    uint announcedBagHintPlay;
+    float bagHintSecondsRemaining;
     GameObject dropVisual;
     Material dropMaterial;
     long sizeRevision, measurementRevision, savedRevision;
@@ -77,6 +83,31 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     }
     void OnEnable() { ApartmentLanguage.Changed += LanguageChanged; Subscribe(); }
     void LanguageChanged() { card?.RefreshCopy(); RefreshToolHintText(); }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void BeginBagHintSession() { bagHintPlay++; }
+
+    void RememberBagPickup()
+    {
+        if (announcedBagHintPlay == bagHintPlay) return;
+        announcedBagHintPlay = bagHintPlay;
+        bagHintSecondsRemaining = 5f;
+        showingBagContactHint = false;
+    }
+
+    void BagHoldChanged(ShoppingBag bag)
+    {
+        if (bag.IsSdkHeld) RememberBagPickup();
+    }
+
+    bool AdvanceBagContactHint(bool sdkHeld, bool canDisplay, float elapsed)
+    {
+        if (sdkHeld) RememberBagPickup();
+        if (showingBagContactHint && canDisplay)
+            bagHintSecondsRemaining = Mathf.Max(0f, bagHintSecondsRemaining - Mathf.Max(0f, elapsed));
+        showingBagContactHint = canDisplay && announcedBagHintPlay == bagHintPlay && bagHintSecondsRemaining > 0f;
+        return showingBagContactHint;
+    }
     void Start()
     {
         if (!IsConfigured) { Debug.LogError("Guided journey: missing explicit scene references; existing apartment controls remain available.", this); enabled = false; return; }
@@ -89,6 +120,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         locomotion.Teleported += Relocated;
         locomotion.Walked += Walked;
         bagBridge.SizeSelected += SizeSelected;
+        bagBridge.bag.HoldStateChanged += BagHoldChanged;
         review.RecordCreated += RecordCreated;
         review.FeedbackSaved += FeedbackSaved;
         subscribed = true;
@@ -99,7 +131,11 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         if (subscribed)
         {
             if (locomotion != null) { locomotion.Teleported -= Relocated; locomotion.Walked -= Walked; }
-            if (bagBridge != null) bagBridge.SizeSelected -= SizeSelected;
+            if (bagBridge != null)
+            {
+                bagBridge.SizeSelected -= SizeSelected;
+                if (bagBridge.bag != null) bagBridge.bag.HoldStateChanged -= BagHoldChanged;
+            }
             if (review != null) { review.RecordCreated -= RecordCreated; review.FeedbackSaved -= FeedbackSaved; }
         }
         subscribed = false; card?.Hide(); if (dropVisual != null) dropVisual.SetActive(false);
@@ -117,6 +153,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     {
         if (taskCue != null) taskCue.Stop();
         discontinuous = true; aimedTeleport = false; walkedThisFrame = 0; settled = 0;
+        showingBagContactHint = false;
         var unavailable = lastObservation; unavailable.Focused = unavailable.TrackingValid = false;
         Journey?.Tick(unavailable);
         card?.Hide(); targetTag?.SetVisible(false); toolHint?.SetVisible(false); toolWasVisible=false;
@@ -205,7 +242,15 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
                 card?.Introduce();
         }
         bool reading = card != null && (card.Current == JourneyTaskCard.Layout.Introduction || card.Current == JourneyTaskCard.Layout.Expanded);
-        UpdateToolHint(canDisplay && !(showTaskCard && reading));
+        bool cardAvailable = canDisplay && review.Mode == ReviewMode.None && card != null && !card.Modal;
+        bool bagHint = AdvanceBagContactHint(bagBridge.bag.IsSdkHeld, cardAvailable, Time.unscaledDeltaTime);
+        UpdateToolHint(canDisplay && !(showTaskCard && reading) && !bagHint);
+        if (bagHint)
+        {
+            card.Draw(locomotion.rig.centerEyeAnchor, locomotion.transform.forward,
+                ApartmentLanguage.Text("bag.contact.title"), BagContactHintText, BagContactHintText);
+            return;
+        }
         if (!canDisplay || !showTaskCard || Journey.CurrentStage == JourneyStage.WelcomeMovement || (review.Mode != ReviewMode.None && !reading))
         { card?.Hide(); return; }
         card?.Draw(locomotion.rig.centerEyeAnchor, locomotion.transform.forward, StageTitle, CurrentInstruction, ShortInstruction());
@@ -364,14 +409,21 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         if (!Ready || !menu.IsOpen) return;
         tutorial.SkipBasicPractice(); Journey.SkipAll(Observe()); skippedFromWelcome = true; showTaskCard = false; card?.Hide();
     }
+    void ShowHelpTopic(HelpTopic topic)
+    {
+        helpTopic = topic;
+        menu.RefreshGuideHelp();
+    }
+
     public void BuildHelp(ApartmentVRPanel panel, Action back)
     {
         if (panel == null) return;
-        if(recoveryHelp)
+        if (helpTopic != HelpTopic.Overview)
         {
-            panel.Label("Recovery title",ApartmentLanguage.Text("recovery.title"),330,190,730,48,30,true);
-            panel.Label("Recovery text",ApartmentLanguage.Text("recovery.help"),330,246,730,310,26);
-            panel.Button("Back guide",ApartmentLanguage.Text("recovery.back"),330,580,730,54,()=>{ recoveryHelp=false; menu.RefreshGuideHelp(); },false,25);
+            bool bagContact = helpTopic == HelpTopic.BagContact;
+            panel.Label("Help topic", ApartmentLanguage.Text(bagContact ? "bag.contact.title" : "recovery.title"), 330, 190, 730, 48, 30, true);
+            panel.Label("Help text", bagContact ? BagContactHintText : ApartmentLanguage.Text("recovery.help"), 330, 246, 730, 310, 26);
+            panel.Button("Back guide", ApartmentLanguage.Text("recovery.back"), 330, 580, 730, 54, () => ShowHelpTopic(HelpTopic.Overview), false, 25);
             return;
         }
         panel.Label("Guide stage", StageTitle, 330, 190, 730, 48, 30, true);
@@ -381,6 +433,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         panel.Button("Skip guide", "Skip all / explore", 710, 510, 350, 56, () => { SkipAll(); menu.RefreshGuideHelp(); }, false, 25);
         panel.Button("Toggle task card", showTaskCard ? "Hide task card" : "Show task card", 330, 580, 350, 54, () => { showTaskCard = !showTaskCard; menu.RefreshGuideHelp(); }, false, 25);
         panel.Button("Back controls", "Back to controls", 710, 580, 350, 54, back, false, 25);
-        panel.Button("Recovery help",ApartmentLanguage.Text("recovery.title"),330,635,730,42,()=>{ recoveryHelp=true;menu.RefreshGuideHelp(); },false,24);
+        panel.Button("Recovery help", ApartmentLanguage.Text("recovery.title"), 330, 635, 350, 42, () => ShowHelpTopic(HelpTopic.Recovery), false, 24);
+        panel.Button("Bag contact help", ApartmentLanguage.Text("bag.contact.title"), 710, 635, 350, 42, () => ShowHelpTopic(HelpTopic.BagContact), false, 24);
     }
 }
