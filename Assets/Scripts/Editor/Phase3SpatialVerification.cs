@@ -100,7 +100,8 @@ public static class Phase3SpatialVerification
         foreach(string field in new[]{"tutorial","menu","locomotion","interactor","roomMap","review","bagBridge","entranceDoor","balconyDoor","practiceCabinet","kitchenDropPoint"})
             Require(data.FindProperty(field).objectReferenceValue!=null,"Journey reference missing: "+field,errors);
         var drop=(Transform)data.FindProperty("kitchenDropPoint").objectReferenceValue;
-        Require(Vector3.Distance(drop.position,new Vector3(2.1f,.012f,5.5f))<.0001f&&Near(data.FindProperty("dropFloorY").floatValue,.012f),"Kitchen task/floor datum must remain unchanged",errors);
+        var area=data.FindProperty("dropAreaSize").vector3Value;
+        Require(Vector3.Distance(drop.position,new Vector3(1.81f,.1f,6.885f))<.0001f&&Near(data.FindProperty("dropFloorY").floatValue,.103f)&&Vector3.Distance(area,new Vector3(.9f,.72f,.5f))<.0001f,"Cabinet storage target/volume changed",errors);
         Require(Vector3.Distance(Phase3SpatialStabilization.Find<Transform>(1342695680).position,new Vector3(4.25f,0,-1.55f))<.0001f,"Safe reset anchor changed",errors);
         Require(QuestGuidance.Review.ReviewStorage.SceneKey(Phase3SpatialStabilization.ScenePath)=="2129619AB63EE0D1","Historical scene key changed",errors);
     }

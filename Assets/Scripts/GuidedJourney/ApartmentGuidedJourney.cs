@@ -20,9 +20,11 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     public ApartmentRoomDoor entranceDoor;
     public ApartmentSlidingDoor balconyDoor;
     public ApartmentCabinetDoor practiceCabinet;
+    // Legacy field name kept for scene serialization: the transform now marks the practised
+    // cabinet's interior storage volume instead of a kitchen floor area.
     public Transform kitchenDropPoint;
-    public Vector3 dropAreaSize = new Vector3(1.30f, 1f, .90f);
-    public float dropFloorY = .012f;
+    public Vector3 dropAreaSize = new Vector3(.90f, .72f, .50f);
+    public float dropFloorY = .103f;
     public float livingExplorationMetres = 2f;
     public float nearBalconyDistance = 1.65f;
     public ShoppingBagHint supersededBagHint;
@@ -39,7 +41,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     public static readonly string[] Titles = {
         "0 / 11 - Welcome and movement", "1 / 11 - Enter the apartment", "2 / 11 - Explore the living room",
         "3 / 11 - Try the balcony door", "4 / 11 - Try a kitchen cabinet", "5 / 11 - Return to the entrance",
-        "6 / 11 - Choose and pick up a bag", "7 / 11 - Carry shopping to the kitchen", "8 / 11 - Put the bag down",
+        "6 / 11 - Choose and pick up a bag", "7 / 11 - Carry shopping to the kitchen", "8 / 11 - Store the bag in the cabinet",
         "9 / 11 - Select the start and end points", "10 / 11 - Mark an issue and save", "11 / 11 - Free exploration" };
     public static string BagContactHintText => ApartmentLanguage.Text("bag.contact.hint");
     public const string ModelHelp = "Structure/walls are fixed. Selected doors and cabinets open. Furniture and dimensions are simplified assumptions, not certified clearance.";
@@ -58,7 +60,8 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     }
     readonly GuidancePanelPlacement toolPlacement = new GuidancePanelPlacement { AboveGaze = true, PanelScale = .0008f };
     AudioSource taskCue;
-    TextMeshProUGUI toolTitle, toolTask, toolHelp;
+    TextMeshProUGUI toolTitle, toolTask, toolHelp, targetTagLabel;
+    string targetTagText;
     bool toolWasVisible;
     enum HelpTopic { Overview, Recovery, BagContact }
     HelpTopic helpTopic;
@@ -209,13 +212,14 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
             MeasurementRevision = measurementRevision, FeedbackSavedRevision = savedRevision
         };
         o.NearBalcony = balconyDoor.DistanceToClosedOpening(tracked) <= nearBalconyDistance;
-        bool inside = BagReleasedInsideDropArea();
+        bool inside = BagInsideStorageVolume();
         settled = ready && inside ? settled + Mathf.Min(Time.unscaledDeltaTime, .1f) : 0;
         o.BagInsideDropZone = settled >= .35f;
         return o;
     }
-    // Whole real body bounds must fit; the user must release and settle near the actual floor.
-    public bool BagReleasedInsideDropArea()
+    // Whole real body bounds must fit inside the practised cabinet's interior volume;
+    // the user must release the bag and let it settle on the cabinet floor.
+    public bool BagInsideStorageVolume()
     {
         if (!IsConfigured || bagBridge.bag.IsHeld || bagBridge.bag.BodyCollider == null || !bagBridge.bag.BodyCollider.enabled) return false;
         Bounds bag = bagBridge.bag.BodyCollider.bounds;
@@ -350,7 +354,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
                 case JourneyStage.ReturnEntrance: return "Great! Return to the entrance for a daily activity. Walk or use A to teleport; choose any safe route.";
                 case JourneyStage.BagSelectPickup: return !Journey.SizeSelectedThisStage ? "At the entrance, open B > My Items / 我的物品. Put the bag down and choose Small, Medium or Large." : "Close the menu, release Grip, move either hand near the handle, then hold Grip to pick up the bag.";
                 case JourneyStage.CarryKitchen: return !bagBridge.bag.IsHeld ? "Your progress is kept. Return to your bag and hold Grip near the handle to carry on." : "Carry your bag through the living room into the kitchen. Red contact warns of a possible spatial issue; move clear to restore it.";
-                case JourneyStage.KitchenDrop: return "Kitchen drop task (not cabinet storage): move the bag into the cyan floor area, release Grip, and let it settle.";
+                case JourneyStage.KitchenDrop: return "Open the kitchen cabinet you practised with, put the whole bag inside the cyan-marked shelf, release Grip, and let it settle.";
                 case JourneyStage.Measurement: return ApartmentLanguage.Text("journey.refined.4");
                 case JourneyStage.Feedback: return !string.IsNullOrEmpty(review.LastError) ? "Feedback was not confirmed saved. Keep the record, check the error in the menu and retry Save feedback. You may skip in Help." : "Open B > 标记注释 > 放置标记. Place a new marker, choose aspect, rating and importance, then 保存反馈. Wait for a successful save.";
                 default: return ApartmentLanguage.Text("journey.short.11");
@@ -368,7 +372,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         if (visible && dropVisual == null)
         {
             // Visual only: a flat line rectangle cannot obstruct doors, rays, locomotion or bag physics.
-            dropVisual = new GameObject("Kitchen drop outline (visual only)");
+            dropVisual = new GameObject("Cabinet storage outline (visual only)");
             dropVisual.transform.SetParent(kitchenDropPoint, false);
             var line = dropVisual.AddComponent<LineRenderer>();
             line.useWorldSpace = false; line.loop = true; line.positionCount = 4; line.startWidth = line.endWidth = .025f;
@@ -381,14 +385,18 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     }
     void UpdateCabinetTag()
     {
-        bool visible = Ready && !menu.HasOpenPanel && !tutorial.ModalVisible && Journey.CurrentStage == JourneyStage.CabinetPractice;
+        bool storage = Journey.CurrentStage == JourneyStage.KitchenDrop;
+        bool visible = Ready && !menu.HasOpenPanel && !tutorial.ModalVisible &&
+            (storage || Journey.CurrentStage == JourneyStage.CabinetPractice);
         if (visible && targetTag == null)
         {
-            targetTag = new ApartmentVRPanel(transform, "Cabinet practice label (no collider)", menu.font, menu.panelShader, menu.textOverlayShader, 340, 66);
-            targetTag.Label("Target", "Cabinet practice", 10, 7, 320, 50, 28, true);
+            targetTag = new ApartmentVRPanel(transform, "Cabinet task label (no collider)", menu.font, menu.panelShader, menu.textOverlayShader, 340, 66);
+            targetTagLabel = targetTag.Label("Target", "Cabinet practice", 10, 7, 320, 50, 28, true);
         }
         targetTag?.SetVisible(visible);
         if (!visible || targetTag == null) return;
+        string tagText = storage ? "Bag storage cabinet" : "Cabinet practice";
+        if (tagText != targetTagText) { targetTag.SetLabelText(targetTagLabel, tagText); targetTagText = tagText; }
         var renderer = practiceCabinet.HighlightRenderer;
         if (renderer == null) return;
         Vector3 point = renderer.bounds.center + Vector3.up * (renderer.bounds.extents.y + .12f);
