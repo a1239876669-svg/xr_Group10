@@ -50,8 +50,8 @@ namespace Group10.GuidedJourney
 
     /// <summary>
     /// Pure state machine: no scene search, XR input, persistence, physics or Unity dependency.
-    /// Each Tick can complete at most one stage. Stage 8 is an explicit kitchen drop task,
-    /// not a claim that a bag physically fits inside the cabinet.
+    /// Each Tick can complete at most one stage. Stage 8 is an explicit storage task: the adapter
+    /// supplies whether the released bag sits inside the practised kitchen cabinet's interior.
     /// </summary>
     public sealed class JourneyStateMachine
     {
@@ -153,7 +153,8 @@ namespace Group10.GuidedJourney
                     reason = "Bag carried through living room to kitchen";
                     break;
                 case JourneyStage.KitchenDrop:
-                    // Deliberately independent of the earlier cabinet open/close exercise.
+                    // The bag must be stored in the same practised cabinet; the earlier open/close
+                    // proof is still independent and cannot satisfy this stage.
                     if (observation.BagHeld) _dropSawHeld = true;
                     complete = _dropSawHeld && !observation.BagHeld && observation.BagInsideDropZone &&
                         observation.Room == JourneyRoom.Kitchen;

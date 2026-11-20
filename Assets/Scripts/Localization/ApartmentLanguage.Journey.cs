@@ -15,7 +15,7 @@ public static partial class ApartmentLanguage
         Register("journey.title.5","5 / 11 - Return to the entrance","5 / 11 - 返回入口");
         Register("journey.title.6","6 / 11 - Choose and pick up a bag","6 / 11 - 选袋并抓取");
         Register("journey.title.7","7 / 11 - Carry shopping to the kitchen","7 / 11 - 持袋前往厨房");
-        Register("journey.title.8","8 / 11 - Put the bag down","8 / 11 - 放下购物袋");
+        Register("journey.title.8","8 / 11 - Store the bag in the cabinet","8 / 11 - 将购物袋放入橱柜");
         Register("journey.title.9","9 / 11 - Measure an opening","9 / 11 - 测量通道");
         Register("journey.title.10","10 / 11 - Mark an issue and save","10 / 11 - 标记问题并保存");
         Register("journey.title.11","11 / 11 - Free exploration","11 / 11 - 自由探索");
@@ -33,7 +33,7 @@ public static partial class ApartmentLanguage
         Register("journey.copy.11","Close the menu, release Grip, move either hand near the handle, then hold Grip to pick up the bag.","关闭菜单，先松开侧握键。任意一手靠近提手，再按住侧握键抓袋。","Close the menu, release Grip, move either hand near the handle, then hold Grip to pick up the bag.");
         Register("journey.copy.12","Your progress is kept. Return to your bag and hold Grip near the handle to carry on.","进度已保留。回到购物袋旁，在提手附近按住侧握键继续。","Your progress is kept. Return to your bag and hold Grip near the handle to carry on.");
         Register("journey.copy.13","Carry your bag through the living room into the kitchen. Red contact warns of a possible spatial issue; move clear to restore it.","提袋经过客厅进入厨房。红色表示接触和潜在空间问题；离开后恢复。","Carry your bag through the living room into the kitchen. Red contact warns of a possible spatial issue; move clear to restore it.");
-        Register("journey.copy.14","Kitchen drop task (not cabinet storage): move the bag into the cyan floor area, release Grip, and let it settle.","厨房放袋任务（不是入柜）：将袋子移至青色地板区域，松开侧握键并等待落稳。","Kitchen drop task (not cabinet storage): move the bag into the cyan floor area, release Grip, and let it settle.");
+        Register("journey.copy.14","Open the kitchen cabinet you practised with, put the whole bag inside the cyan-marked shelf, release Grip, and let it settle.","打开刚才练习过的厨房橱柜，把整只购物袋放进青色标记的柜内，松开侧握键并等待落稳。","Open the kitchen cabinet you practised with, put the whole bag inside the cyan-marked shelf, release Grip, and let it settle.");
         Register("journey.copy.15","Feedback was not confirmed saved. Keep the record, check the error in the menu and retry Save feedback. You may skip in Help.","反馈尚未确认保存。保留记录，查看菜单错误并重试“保存反馈”；也可在帮助中跳过。","Feedback was not confirmed saved. Keep the record, check the error in the menu and retry Save feedback. You may skip in Help.");
         Register("journey.copy.16","Guide finished with skipped tasks. Explore freely; only a successful Save confirms feedback storage. More measurements, markers and menu Exit remain available.","引导结束，部分任务已跳过。可自由探索、测距、标记或从菜单退出；只有保存成功才代表反馈已存盘。","Guide finished with skipped tasks. Explore freely; only a successful Save confirms feedback storage. More measurements, markers and menu Exit remain available.");
         Register("journey.copy.17","Review complete! Explore freely, take more measurements, leave more feedback, or exit through the menu whenever you are ready.","评审引导完成！可以自由探索、继续测距和反馈，或随时从菜单退出。","Review complete! Explore freely, take more measurements, leave more feedback, or exit through the menu whenever you are ready.");
@@ -60,6 +60,7 @@ public static partial class ApartmentLanguage
         Register("journey.copy.38","Start guide","开始引导","Start guide");
         Register("journey.copy.39","Skip / explore freely","跳过／自由探索","Skip / explore freely");
         Register("journey.copy.40","OK","确定","OK");
+        Register("journey.copy.41","Bag storage cabinet","购物袋存放柜","Bag storage cabinet");
         Register("journey.refined.0","Stop if uncomfortable. B > Settings > Teleport to Safe Position recovers to the checked entrance. B > Exit ends the review.","不适时请停止。B > 设置 > 返回安全点可恢复到检查过的入口；B > 退出游戏结束评审。","Stop if uncomfortable. B > Settings / 设置 > 返回安全点 returns to a checked entrance landing. Exit through B > 退出游戏.");
         Register("journey.refined.1","A review tool owns Trigger. B > Measurement > Stop tool, then try the door.","评审工具正占用食指扳机。通过 B > 测距 > 停止工具后再操作门。","A measurement/marker tool currently owns Trigger. Open B > 测距 and choose 停止工具 (Stop tool), then try the door.");
         Register("journey.refined.2","A current draft is open. Save it then Continue marking, or Cancel draft. Place a new marker for this task.","当前有草稿打开。可保存后“继续标记”，或“取消草稿”。请为本任务新建标记。","An earlier draft is open. Save it then choose 继续标记 (Continue marking), or cancel that draft. Place a new marker for this task.");
