@@ -4147,6 +4147,7 @@ GameObject:
   - component: {fileID: 46826864}
   - component: {fileID: 46826863}
   - component: {fileID: 46826862}
+  - component: {fileID: 2147060013}
   m_Layer: 0
   m_Name: SideWest
   m_TagString: Untagged
@@ -16389,6 +16390,7 @@ GameObject:
   - component: {fileID: 93272000}
   - component: {fileID: 93271999}
   - component: {fileID: 93272002}
+  - component: {fileID: 2147060003}
   m_Layer: 0
   m_Name: WallLC_2b
   m_TagString: Untagged
@@ -20068,6 +20070,7 @@ GameObject:
   - component: {fileID: 155559708}
   - component: {fileID: 155559707}
   - component: {fileID: 155559710}
+  - component: {fileID: 2147060021}
   m_Layer: 0
   m_Name: WallBalS_1
   m_TagString: Untagged
@@ -38497,6 +38500,7 @@ GameObject:
   - component: {fileID: 258165235}
   - component: {fileID: 258165234}
   - component: {fileID: 258165237}
+  - component: {fileID: 2147060001}
   m_Layer: 0
   m_Name: WallS_3
   m_TagString: Untagged
@@ -43238,6 +43242,7 @@ GameObject:
   - component: {fileID: 325839291}
   - component: {fileID: 325839290}
   - component: {fileID: 325839289}
+  - component: {fileID: 2147060007}
   m_Layer: 0
   m_Name: Door_4
   m_TagString: Untagged
@@ -65789,6 +65794,7 @@ GameObject:
   - component: {fileID: 459582846}
   - component: {fileID: 459582845}
   - component: {fileID: 459582848}
+  - component: {fileID: 2147060018}
   m_Layer: 0
   m_Name: WallMW_3
   m_TagString: Untagged
@@ -105063,6 +105069,7 @@ GameObject:
   - component: {fileID: 654696608}
   - component: {fileID: 654696607}
   - component: {fileID: 654696610}
+  - component: {fileID: 2147060002}
   m_Layer: 0
   m_Name: WallLC_1
   m_TagString: Untagged
@@ -108806,6 +108813,7 @@ GameObject:
   - component: {fileID: 678326721}
   - component: {fileID: 678326720}
   - component: {fileID: 678326719}
+  - component: {fileID: 2147060010}
   m_Layer: 0
   m_Name: Door_1
   m_TagString: Untagged
@@ -139439,6 +139447,7 @@ GameObject:
   - component: {fileID: 794669774}
   - component: {fileID: 794669773}
   - component: {fileID: 794669772}
+  - component: {fileID: 2147060005}
   m_Layer: 0
   m_Name: Door_2
   m_TagString: Untagged
@@ -179343,6 +179352,7 @@ GameObject:
   - component: {fileID: 1032958825}
   - component: {fileID: 1032958824}
   - component: {fileID: 1032958827}
+  - component: {fileID: 2147060017}
   m_Layer: 0
   m_Name: WallMW_1
   m_TagString: Untagged
@@ -195248,6 +195258,7 @@ GameObject:
   - component: {fileID: 1108874041}
   - component: {fileID: 1108874040}
   - component: {fileID: 1108874043}
+  - component: {fileID: 2147060011}
   m_Layer: 0
   m_Name: Door_2
   m_TagString: Untagged
@@ -214809,6 +214820,7 @@ GameObject:
   - component: {fileID: 1298356312}
   - component: {fileID: 1298356311}
   - component: {fileID: 1298356310}
+  - component: {fileID: 2147060008}
   m_Layer: 0
   m_Name: SideNorth
   m_TagString: Untagged
@@ -215808,6 +215820,7 @@ GameObject:
   - component: {fileID: 1301155363}
   - component: {fileID: 1301155362}
   - component: {fileID: 1301155361}
+  - component: {fileID: 2147060012}
   m_Layer: 0
   m_Name: SideEast
   m_TagString: Untagged
@@ -222648,6 +222661,7 @@ GameObject:
   - component: {fileID: 1372850653}
   - component: {fileID: 1372850652}
   - component: {fileID: 1372850655}
+  - component: {fileID: 2147060020}
   m_Layer: 0
   m_Name: WallBalW
   m_TagString: Untagged
@@ -225089,6 +225103,7 @@ GameObject:
   - component: {fileID: 1389006495}
   - component: {fileID: 1389006494}
   - component: {fileID: 1389006493}
+  - component: {fileID: 2147060004}
   m_Layer: 0
   m_Name: Door_1
   m_TagString: Untagged
@@ -257533,6 +257548,7 @@ GameObject:
   - component: {fileID: 1639251956}
   - component: {fileID: 1639251955}
   - component: {fileID: 1639251954}
+  - component: {fileID: 2147060006}
   m_Layer: 0
   m_Name: Door_3
   m_TagString: Untagged
@@ -260029,6 +260045,7 @@ GameObject:
   - component: {fileID: 1682545328}
   - component: {fileID: 1682545327}
   - component: {fileID: 1682545326}
+  - component: {fileID: 2147060009}
   m_Layer: 0
   m_Name: SideSouth
   m_TagString: Untagged
@@ -263221,6 +263238,7 @@ GameObject:
   - component: {fileID: 1707161060}
   - component: {fileID: 1707161059}
   - component: {fileID: 1707161062}
+  - component: {fileID: 2147060015}
   m_Layer: 0
   m_Name: WallLC_4a
   m_TagString: Untagged
@@ -297976,6 +297994,7 @@ GameObject:
   - component: {fileID: 2032388105}
   - component: {fileID: 2032388104}
   - component: {fileID: 2032388107}
+  - component: {fileID: 2147060019}
   m_Layer: 0
   m_Name: WallMN_1
   m_TagString: Untagged
@@ -298307,6 +298326,7 @@ GameObject:
   - component: {fileID: 2032878461}
   - component: {fileID: 2032878460}
   - component: {fileID: 2032878463}
+  - component: {fileID: 2147060016}
   m_Layer: 0
   m_Name: WallS_6a
   m_TagString: Untagged
@@ -301290,6 +301310,7 @@ GameObject:
   - component: {fileID: 2064818230}
   - component: {fileID: 2064818229}
   - component: {fileID: 2064818232}
+  - component: {fileID: 2147060014}
   m_Layer: 0
   m_Name: WallLC_2a
   m_TagString: Untagged
@@ -310263,6 +310284,363 @@ MonoBehaviour:
   - {fileID: 27991930}
   furnitureRenderers:
   - {fileID: 27991929}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258165232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 258165237}
+  furnitureRenderers:
+  - {fileID: 258165236}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654696605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 654696610}
+  furnitureRenderers:
+  - {fileID: 654696609}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93271997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 93272002}
+  furnitureRenderers:
+  - {fileID: 93272001}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389006491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 1389006493}
+  furnitureRenderers:
+  - {fileID: 1389006494}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794669770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 794669772}
+  furnitureRenderers:
+  - {fileID: 794669773}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639251952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 1639251954}
+  furnitureRenderers:
+  - {fileID: 1639251955}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325839287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 325839289}
+  furnitureRenderers:
+  - {fileID: 325839290}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298356308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 1298356310}
+  furnitureRenderers:
+  - {fileID: 1298356311}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682545324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 1682545326}
+  furnitureRenderers:
+  - {fileID: 1682545327}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678326717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 678326719}
+  furnitureRenderers:
+  - {fileID: 678326720}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108874039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 1108874043}
+  furnitureRenderers:
+  - {fileID: 1108874040}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301155359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 1301155361}
+  furnitureRenderers:
+  - {fileID: 1301155362}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46826860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 46826862}
+  furnitureRenderers:
+  - {fileID: 46826863}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064818227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 2064818232}
+  furnitureRenderers:
+  - {fileID: 2064818231}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707161057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 1707161062}
+  furnitureRenderers:
+  - {fileID: 1707161061}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032878458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 2032878463}
+  furnitureRenderers:
+  - {fileID: 2032878462}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032958822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 1032958827}
+  furnitureRenderers:
+  - {fileID: 1032958826}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459582843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 459582848}
+  furnitureRenderers:
+  - {fileID: 459582847}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032388102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 2032388107}
+  furnitureRenderers:
+  - {fileID: 2032388106}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372850650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 1372850655}
+  furnitureRenderers:
+  - {fileID: 1372850654}
+  warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
+--- !u!114 &2147060021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155559705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143778c301585e06bf2b3e1ef75be50b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRGroup10.ShoppingBag::XRGroup10.ShoppingBag.BagContactTarget
+  furnitureColliders:
+  - {fileID: 155559710}
+  furnitureRenderers:
+  - {fileID: 155559709}
   warningMaterial: {fileID: 2100000, guid: 77b608892d835a498d83230311d36980, type: 2}
 --- !u!43 &2147221167
 Mesh:

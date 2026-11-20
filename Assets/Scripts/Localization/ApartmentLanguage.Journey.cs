@@ -5,6 +5,8 @@ public static partial class ApartmentLanguage
         Register("language.label","Language","语言");
         Register("language.en","English","English");
         Register("language.zh","简体中文","简体中文");
+        Register("bag.contact.title","Bag contact","购物袋接触提示");
+        Register("bag.contact.hint","Red shows bag contact. The controller holding the bag vibrates briefly. Keep walking or move the bag aside.","变红表示袋子碰到了这里，持袋手会短震。可以继续走，也可以移开袋子。");
         Register("recovery.title","Recovery help","错误恢复帮助");
         Register("recovery.back","Back to guide","返回任务帮助");
         Register("journey.title.0","0 / 11 - Welcome and movement","0 / 11 - 欢迎与移动");
