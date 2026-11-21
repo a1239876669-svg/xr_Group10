@@ -231,6 +231,11 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     {
         if (!IsConfigured) { card?.Hide(); toolHint?.SetVisible(false); return; }
         Subscribe();
+        // A reading-only expanded card must not strand the bag pickup: opening the menu or
+        // actually grabbing the bag means the user has finished reading it.
+        if (card != null && card.Current == JourneyTaskCard.Layout.Expanded &&
+            (menu.HasOpenPanel || (Journey.CurrentStage == JourneyStage.BagSelectPickup && bagBridge.bag.IsHeld)))
+            card.FoldExpanded();
         lastObservation = Observe();
         if (tutorial.Session.Skipped && !skippedFromWelcome) { Journey.SkipAll(lastObservation); skippedFromWelcome = true; showTaskCard = false; }
         else AdvanceJourney(lastObservation);

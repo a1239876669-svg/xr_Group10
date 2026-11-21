@@ -77,6 +77,18 @@ internal sealed class JourneyTaskCard : IDisposable
 
     internal void Flash() => flashUntil = Time.unscaledTime + .8f;
 
+    // The expanded card is a reading overlay, not an input owner. Fold it when the user opens
+    // the menu or actually grabs the bag so it cannot leave the Stage 6 pickup blocked. The
+    // introduction deliberately does not fold: onboarding still needs its Acknowledge button.
+    internal void FoldExpanded()
+    {
+        if (Current != Layout.Expanded) return;
+        Current = Layout.Compact;
+        hover = false;
+        animating = false;
+        needsPlacement = true;
+    }
+
     internal void Draw(Transform head, Vector3 fallback, string title, string task, string shortTask)
     {
         bool compact = Current == Layout.Compact;

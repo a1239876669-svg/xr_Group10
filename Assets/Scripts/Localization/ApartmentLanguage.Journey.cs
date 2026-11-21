@@ -10,7 +10,7 @@ public static partial class ApartmentLanguage
         Register("recovery.title","Recovery help","错误恢复帮助");
         Register("recovery.back","Back to guide","返回任务帮助");
         Register("journey.title.0","0 / 11 - Welcome and movement","0 / 11 - 欢迎与移动");
-        Register("journey.card.intro","Tasks will appear near the top of your view. Aim the right ray at the card and squeeze the index trigger to expand it. Squeeze again to fold it.","之后的任务会显示在视野上方。用右手射线指向任务卡，扣食指扳机可展开，再扣一次可收起。");
+        Register("journey.card.intro","Point the right ray at Got it and squeeze the index trigger to continue. Later task cards can be expanded and folded with the right trigger.","用右手射线指向“知道了”并扣食指扳机继续。之后的任务卡可指向后扣扳机展开或收起。");
         Register("journey.card.ok","Got it","知道了");
         Register("journey.card.expand","Point here and squeeze the right trigger to expand.","指向这里，扣右扳机展开。");
         Register("journey.card.fold","Point here and squeeze the right trigger to fold.","指向这里，扣右扳机收起。");

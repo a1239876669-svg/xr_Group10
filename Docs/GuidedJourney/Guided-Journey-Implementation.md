@@ -22,7 +22,7 @@ Existing menu runs at 8500, tutorial at 9000, locomotion at 10000 and furniture/
 
 Rooms use the existing `ReviewRoomMap` and the tracked head's horizontal world position. Distance uses actual locomotion-reported displacement; head sway, rotation compensation, blocked motion, discontinuities and safety resets are excluded. Ordinary A teleport can provide a real held-bag arrival from Living Room to Kitchen without being counted as walk mileage. Losing focus/tracking or disabling the observer invalidates partial cabinet/drop proofs. Door intermediate/blocked states cannot count as Closed.
 
-Task cards and the cabinet label have no collider and hide during menus, modal onboarding, unavailable input and teleport aiming. The card sits below/left of central view. Comfort/readability and dynamic-font rendering are runtime checks, not proven by static layout inspection.
+Task cards and the cabinet label have no collider and hide during menus, modal onboarding, unavailable input and teleport aiming. The card sits below/left of central view. The expanded card is a read-only overlay: it blocks the ray/trigger and movement, but it no longer blocks bag Grip. Opening the menu folds an expanded card, and a real bag grab folds it again, so Stage 6 cannot be stranded by a card left open. The introduction still requires its explicit Acknowledge button. Comfort/readability and dynamic-font rendering are runtime checks, not proven by static layout inspection.
 
 ## Real feedback-save acknowledgement
 
