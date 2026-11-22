@@ -2,6 +2,40 @@ public static partial class ApartmentLanguage
 {
     static partial void RegisterCatalog()
     {
+        Register("exit.title","Review before exiting","退出前核对记录");
+        Register("exit.current","This visit","本次新增");
+        Register("exit.history","Earlier visits","先前载入");
+        Register("exit.count","Records: {0} · Measurements: {1} · Submitted markers: {2} · Drafts: {3}","共 {0} 条记录 · 测距 {1} 条 · 已提交标注 {2} 条 · 草稿 {3} 条");
+        Register("exit.empty","No records in this list.","此清单暂无记录。");
+        Register("exit.draft","Marker (draft)","标注（草稿）");
+        Register("exit.marker","Marker (submitted)","标注（已提交）");
+        Register("exit.measure","Measurement","测距");
+        Register("exit.unknown","Location unspecified","位置未记录");
+        Register("exit.linked","Linked measurement #{0} · {1:F2} m","关联测距 #{0} · {1:F2} m");
+        Register("exit.recordIndex","Record {0} of {1}","第 {0} 条记录，共 {1} 条");
+        Register("exit.detailPage","Details {0} of {1}","详情第 {0} 页，共 {1} 页");
+        Register("exit.prevRecord","Previous record","上一条记录");
+        Register("exit.nextRecord","Next record","下一条记录");
+        Register("exit.prevDetail","Previous detail page","上一页详情");
+        Register("exit.nextDetail","Next detail page","下一页详情");
+        Register("feedback.chooseAspect","Choose a topic above to see its ratings.","先选择上方类别，再选择评价。");
+        Register("feedback.aspectQuestion","What would you like to comment on?","你想评价哪一方面？");
+        Register("feedback.question.0","How does the room size feel?","你觉得这个房间大小怎么样？");
+        Register("feedback.question.1","How does the passage width feel?","你觉得这里的过道怎么样？");
+        Register("feedback.question.2","How does the furniture arrangement work for you?","你觉得家具摆放得怎么样？");
+        Register("feedback.question.3","How are the daylight and ventilation?","你觉得采光和通风怎么样？");
+        Register("exit.view","View location · B to return","查看位置 · 按 B 返回");
+        Register("exit.edit","Review or edit feedback","核对或编辑意见");
+        Register("exit.save","Save and exit","保存并退出");
+        Register("exit.retry","Retry local save","重试本机保存");
+        Register("exit.failed","Could not save locally. Your session is still open.","本机保存失败。当前体验仍然保留。");
+        Register("exit.saved","Records saved to this device.","评审记录已保存到本机。");
+        Register("exit.finish","Exit now","现在退出");
+        Register("exit.back","Back to review","返回核对清单");
+        Register("exit.inspectLabel","#{0} · B: back to review","#{0} · 按 B 返回清单");
+        Register("exit.nodata","Review storage is unavailable.","评审存储未就绪。");
+        Register("exit.draftHelp","Drafts are saved locally as drafts.","未完成意见会以草稿保存到本机。");
+        Register("exit.unspecified","No feedback entered yet.","尚未填写意见。");
         Register("menu.title","Apartment menu","公寓菜单");
         Register("menu.measure","Measurement","测距");
         Register("menu.mark","Markers","标记注释");
@@ -90,9 +124,9 @@ public static partial class ApartmentLanguage
         Register("review.medium","Medium","中");
         Register("review.high","High","高");
         Register("review.roomsize","Room size","房间大小");
-        Register("review.circulation","Passage comfort","过道舒适度");
-        Register("review.furniture","Furniture layout","家具摆放");
-        Register("review.light","Light and ventilation","采光通风");
+        Register("review.circulation","Passages","过道舒适度");
+        Register("review.furniture","Furniture","家具摆放");
+        Register("review.light","Light & air","采光通风");
         Register("rating.small","Too small","太小");
         Register("rating.fit","Appropriate","合适");
         Register("rating.spacious","Spacious","宽敞");

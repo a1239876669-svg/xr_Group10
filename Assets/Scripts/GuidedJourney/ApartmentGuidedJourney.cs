@@ -20,6 +20,10 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
     public ApartmentRoomDoor entranceDoor;
     public ApartmentSlidingDoor balconyDoor;
     public ApartmentCabinetDoor practiceCabinet;
+    public ApartmentCabinetDoor adjacentStorageDoor;
+
+    public bool StorageDoorsClosed => practiceCabinet.State == ApartmentCabinetState.Closed &&
+        (adjacentStorageDoor == null || adjacentStorageDoor.State == ApartmentCabinetState.Closed);
     // Legacy field name kept for scene serialization: the transform now marks the practised
     // cabinet's interior storage volume instead of a kitchen floor area.
     public Transform kitchenDropPoint;
@@ -207,7 +211,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
             BalconyDoorOpening = balconyDoor.State == ApartmentCabinetState.Opening,
             BalconyInteractionRevision = balconyDoor.InteractionRevision,
             CabinetOpen = practiceCabinet.State == ApartmentCabinetState.Open,
-            CabinetClosed = practiceCabinet.State == ApartmentCabinetState.Closed,
+            CabinetClosed = Journey.CurrentStage == JourneyStage.KitchenDrop ? StorageDoorsClosed : practiceCabinet.State == ApartmentCabinetState.Closed,
             BagHeld = bagBridge.bag.IsHeld, SizeSelectionRevision = sizeRevision,
             MeasurementRevision = measurementRevision, FeedbackSavedRevision = savedRevision
         };
@@ -300,8 +304,20 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
             review.StopTool(); menu.FinishGuidedFeedback();
         }
     }
+    string StorageInstruction()
+    {
+        if (Journey.BagReadyToClose) return ApartmentLanguage.Text(adjacentStorageDoor != null &&
+            adjacentStorageDoor.State != ApartmentCabinetState.Closed ? "journey.storage.closeDoors" : "journey.storage.close");
+        if (practiceCabinet.State == ApartmentCabinetState.Open && adjacentStorageDoor != null &&
+            adjacentStorageDoor.State != ApartmentCabinetState.Open && bagBridge.bag.CurrentSize != BagSize.Small)
+            return ApartmentLanguage.Text("journey.storage.widen");
+        return ApartmentLanguage.Text(practiceCabinet.State == ApartmentCabinetState.Open
+            ? "journey.storage.place" : "journey.short.8");
+    }
+
     string ShortInstruction()
     {
+        if (Journey.CurrentStage == JourneyStage.KitchenDrop) return StorageInstruction();
         if (Journey.CurrentStage == JourneyStage.BalconyDoor)
             return ApartmentLanguage.Text(balconyDoor.NeedsAttention ? "journey.short.blocked" :
                 Journey.BalconyShouldClose ? "journey.short.close" : "journey.short.3");
@@ -359,7 +375,7 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
                 case JourneyStage.ReturnEntrance: return "Great! Return to the entrance for a daily activity. Walk or use A to teleport; choose any safe route.";
                 case JourneyStage.BagSelectPickup: return !Journey.SizeSelectedThisStage ? "At the entrance, open B > My Items / 我的物品. Put the bag down and choose Small, Medium or Large." : "Close the menu, release Grip, move either hand near the handle, then hold Grip to pick up the bag.";
                 case JourneyStage.CarryKitchen: return !bagBridge.bag.IsHeld ? "Your progress is kept. Return to your bag and hold Grip near the handle to carry on." : "Carry your bag through the living room into the kitchen. Red contact warns of a possible spatial issue; move clear to restore it.";
-                case JourneyStage.KitchenDrop: return "Open the kitchen cabinet you practised with, put the whole bag inside the cyan-marked shelf, release Grip, and let it settle.";
+                case JourneyStage.KitchenDrop: return StorageInstruction();
                 case JourneyStage.Measurement: return ApartmentLanguage.Text("journey.refined.4");
                 case JourneyStage.Feedback: return !string.IsNullOrEmpty(review.LastError) ? "Feedback was not confirmed saved. Keep the record, check the error in the menu and retry Save feedback. You may skip in Help." : "Open B > 标记注释 > 放置标记. Place a new marker, choose aspect, rating and importance, then 保存反馈. Wait for a successful save.";
                 default: return ApartmentLanguage.Text("journey.short.11");
@@ -435,13 +451,13 @@ public sealed class ApartmentGuidedJourney : MonoBehaviour
         {
             bool bagContact = helpTopic == HelpTopic.BagContact;
             panel.Label("Help topic", ApartmentLanguage.Text(bagContact ? "bag.contact.title" : "recovery.title"), 330, 190, 730, 48, 30, true);
-            panel.Label("Help text", bagContact ? BagContactHintText : ApartmentLanguage.Text("recovery.help"), 330, 246, 730, 310, 26);
+            panel.PagedText("Help text", bagContact ? BagContactHintText : ApartmentLanguage.Text("recovery.help"), 330, 246, 730, 310, 26);
             panel.Button("Back guide", ApartmentLanguage.Text("recovery.back"), 330, 580, 730, 54, () => ShowHelpTopic(HelpTopic.Overview), false, 25);
             return;
         }
         panel.Label("Guide stage", StageTitle, 330, 190, 730, 48, 30, true);
-        panel.Label("Guide instruction", CurrentInstruction, 330, 246, 730, 128, 27);
-        panel.Label("Model and safety", ModelHelp + "\n" + SafetyHelp, 330, 384, 730, 112, 22);
+        panel.PagedText("Guide instruction", CurrentInstruction + "<page>" + ModelHelp + "\n" + SafetyHelp,
+            330, 246, 730, 250, 28);
         panel.Button("Skip task", "Skip this task (not completed)", 330, 510, 350, 56, () => { SkipCurrent(); menu.RefreshGuideHelp(); }, false, 23);
         panel.Button("Skip guide", "Skip all / explore", 710, 510, 350, 56, () => { SkipAll(); menu.RefreshGuideHelp(); }, false, 25);
         panel.Button("Toggle task card", showTaskCard ? "Hide task card" : "Show task card", 330, 580, 350, 54, () => { showTaskCard = !showTaskCard; menu.RefreshGuideHelp(); }, false, 25);

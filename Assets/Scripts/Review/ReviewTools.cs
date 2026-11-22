@@ -204,6 +204,44 @@ namespace QuestGuidance.Review
 
         public ReviewRecord FindRecord(string id) { return session.records.Find(item => item.id == id); }
 
+        public bool WasCreatedThisRun(string id) => createdThisRun.Contains(id);
+
+        private GameObject inspection;
+        public bool HighlightForReview(string id)
+        {
+            EndReviewHighlight();
+            var record = FindRecord(id);
+            if (record == null) return false;
+            inspection = NewRoot("Inspect #" + record.number);
+            Color color = Color.yellow;
+            Dot(inspection.transform, record.point, color).transform.localScale = Vector3.one * .065f;
+            if (record.kind == "measurement")
+            {
+                Dot(inspection.transform, record.endPoint, color).transform.localScale = Vector3.one * .065f;
+                var line = inspection.AddComponent<LineRenderer>();
+                line.sharedMaterial = visualMaterial;
+                line.startColor = line.endColor = color;
+                line.startWidth = line.endWidth = .018f;
+                line.useWorldSpace = true;
+                line.positionCount = 2;
+                line.SetPositions(new[] {record.point, record.endPoint});
+            }
+            var anchor = record.kind == "measurement" ? (record.point + record.endPoint) * .5f : record.point;
+            var label = new GameObject("Inspection label");
+            label.layer = 2;
+            label.transform.SetParent(inspection.transform, false);
+            label.transform.position = anchor + Vector3.up * .18f;
+            AddLabel(label, color).text = ApartmentLanguage.Format("exit.inspectLabel", record.number);
+            label.AddComponent<ReviewBillboard>().SetAnchor(anchor + Vector3.up * .10f);
+            return true;
+        }
+
+        public void EndReviewHighlight()
+        {
+            RemoveVisual(inspection);
+            inspection = null;
+        }
+
         public bool IsRecordVisible(string id) { return id != null && visuals.ContainsKey(id); }
 
         /// <summary>Explicitly opens a persisted record without creating a new record or save acknowledgement.</summary>
@@ -611,7 +649,7 @@ namespace QuestGuidance.Review
         private static string RecordLabel(ReviewRecord record)
         {
             return record.kind == "measurement"
-                ? record.distanceMetres.ToString("F2", System.Globalization.CultureInfo.InvariantCulture) + " m"
+                ? "#" + record.number + "  " + record.distanceMetres.ToString("F2", System.Globalization.CultureInfo.InvariantCulture) + " m"
                 : "#" + record.number + " " + (record.state == FeedbackState.Draft ? ApartmentLanguage.Text("review.draft") : ApartmentLanguage.Text("review.importance."+(int)record.importance));
         }
 
@@ -682,6 +720,6 @@ namespace QuestGuidance.Review
             if (Application.isPlaying) Destroy(visual); else DestroyImmediate(visual);
         }
 
-        private void OnDisable() { ApartmentLanguage.Changed -= RefreshVisibleLabels; ClearMarkerHover(); CancelPending(); }
+        private void OnDisable() { EndReviewHighlight(); ApartmentLanguage.Changed -= RefreshVisibleLabels; ClearMarkerHover(); CancelPending(); }
     }
 }

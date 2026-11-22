@@ -80,6 +80,7 @@ namespace Group10.GuidedJourney
         public bool TutorialCompleted { get { return IsFinished && !WasSkipped; } }
         public bool SizeSelectedThisStage { get { return _sizeSelected; } }
         public bool CabinetOpenedThisStage { get { return _cabinetOpenedAfterEntry; } }
+        public bool BagReadyToClose { get; private set; }
         public double LivingDistance { get; private set; }
         public double CarryDistance { get; private set; }
         public string LastTransitionReason { get; private set; }
@@ -161,9 +162,12 @@ namespace Group10.GuidedJourney
                     // The bag must be stored in the same practised cabinet; the earlier open/close
                     // proof is still independent and cannot satisfy this stage.
                     if (observation.BagHeld) _dropSawHeld = true;
-                    complete = _dropSawHeld && !observation.BagHeld && observation.BagInsideDropZone &&
+                    if (observation.BagHeld || !observation.BagInsideDropZone) BagReadyToClose = false;
+                    else if (_dropSawHeld && observation.CabinetOpen && observation.Room == JourneyRoom.Kitchen)
+                        BagReadyToClose = true;
+                    complete = BagReadyToClose && observation.CabinetClosed && !observation.CabinetOpen &&
                         observation.Room == JourneyRoom.Kitchen;
-                    reason = "Bag released in the designated kitchen drop area";
+                    reason = "Bag stored and the marked cabinet closed";
                     break;
                 case JourneyStage.Measurement:
                     complete = observation.MeasurementRevision > _measurementBaseline;
@@ -227,6 +231,7 @@ namespace Group10.GuidedJourney
             _cabinetSawClosed = observation.CabinetClosed && !observation.CabinetOpen;
             _cabinetOpenedAfterEntry = false;
             _sizeSelected = false;
+            BagReadyToClose = false;
             _dropSawHeld = observation.BagHeld;
             _previousHeld = observation.BagHeld;
             if (stage == JourneyStage.LivingExplore) LivingDistance = 0;
@@ -267,7 +272,11 @@ namespace Group10.GuidedJourney
         private void IgnoreUnfocusedRevisions(JourneyObservation observation)
         {
             // An action occurring while the headset is unavailable cannot silently finish a task on return.
-            if (_stage == JourneyStage.KitchenDrop) _dropSawHeld = false;
+            if (_stage == JourneyStage.KitchenDrop)
+            {
+                _dropSawHeld = false;
+                BagReadyToClose = false;
+            }
             if (_stage == JourneyStage.CabinetPractice)
             {
                 _cabinetOpenedAfterEntry = false;

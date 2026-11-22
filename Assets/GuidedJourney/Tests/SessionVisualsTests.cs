@@ -129,6 +129,116 @@ namespace Group10.GuidedJourney.Tests
             Seed();Call(tools,"RestoreSession");Call(tools,"ShowRecord","old-feedback");Call(tools,"ShowRecord","old-feedback");Assert.AreEqual(1,Records(tools,"ActiveRecords").Length);
             string json=(string)Call(tools,"ToJson");Call(tools,"UndoLast");Assert.AreEqual(json,Call(tools,"ToJson"));Assert.AreEqual(0,Records(tools,"ActiveRecords").Length);
         }
+        Component ExitMenu()
+        {
+            var menu = first.AddComponent(Type.GetType("ApartmentMenuController, Assembly-CSharp", true));
+            var review = first.AddComponent(Type.GetType("ApartmentReviewController, Assembly-CSharp", true));
+            Put(review, "tools", tools);
+            Put(review, "menu", menu);
+            Put(menu, "review", review);
+            Put(menu, "font", Value(tools, "DisplayFont"));
+            Put(menu, "panelShader", Shader.Find("Apartment/TutorialOverlay"));
+            Put(menu, "textOverlayShader", Shader.Find("TextMeshPro/Distance Field Overlay"));
+            review.GetType().GetMethod("OnEnable", Any).Invoke(review, null);
+            menu.GetType().GetProperty("InputReady").SetValue(menu, true);
+            menu.GetType().GetMethod("BuildPreview").Invoke(menu, new object[] { 2 });
+            ExitClick(menu, "Tab 5");
+            return menu;
+        }
+
+        static RectTransform ExitRoot(Component menu) => (RectTransform)menu.GetType().GetProperty("PanelRect").GetValue(menu);
+
+        static void ExitClick(Component menu, string name)
+        {
+            var button = ExitRoot(menu).Find(name) as RectTransform;
+            Assert.IsNotNull(button, name);
+            var centre = button.TransformPoint(button.rect.center);
+            var ray = new Ray(centre - button.forward, button.forward);
+            menu.GetType().GetMethod("ProcessPointer").Invoke(menu, new object[] { ray, 3f, true, Vector3.zero, 0 });
+        }
+
+        [Test] public void ExitChecklistSeparatesHistorySkipsCancelledAndReturnsFromLocationAndEditing()
+        {
+            Seed();
+            Call(tools, "RestoreSession");
+            string removed = AddMarker(tools);
+            Call(tools, "CancelCurrentDraft", removed);
+            string measure = AddMeasurement(tools);
+            string draft = AddMarker(tools);
+            var menu = ExitMenu();
+            string Copy(string name) => ExitRoot(menu).Find(name).GetComponent<TMP_Text>().text;
+            StringAssert.Contains("#5", Copy("Record details"));
+            StringAssert.Contains("2", Copy("Record counts"));
+            ExitClick(menu, "Next record");
+            StringAssert.Contains("#6", Copy("Record details"));
+            ExitClick(menu, "Edit reviewed marker");
+            Assert.IsNull(ExitRoot(menu).Find("Rating 0"));
+            ExitClick(menu, "Save feedback");
+            Assert.AreEqual("Draft", Field(Call(tools, "FindRecord", draft), "state").ToString());
+            ExitClick(menu, "Aspect 1");
+            ExitClick(menu, "Rating 0");
+            ExitClick(menu, "Aspect 2");
+            ExitClick(menu, "Save feedback");
+            Assert.AreEqual("Draft", Field(Call(tools, "FindRecord", draft), "state").ToString());
+            ExitClick(menu, "Rating 2");
+            ExitClick(menu, "Save feedback");
+            Assert.AreEqual("家具摆放", Field(Call(tools, "FindRecord", draft), "observation"));
+            Assert.AreEqual("合理", Field(Call(tools, "FindRecord", draft), "everydayImpact"));
+            StringAssert.Contains("#6", Copy("Record details"));
+            Assert.AreEqual("Submitted", Field(Call(tools, "FindRecord", draft), "state").ToString());
+            ExitClick(menu, "Earlier visits");
+            ExitClick(menu, "Next record");
+            StringAssert.Contains("Original resident text", Copy("Record details"));
+            StringAssert.Contains("#1", Copy("Record details"));
+            var before = (string)Call(tools, "ToJson");
+            ExitClick(menu, "Inspect location");
+            Assert.IsNotNull(first.transform.Find("Inspect #2"));
+            menu.GetType().GetMethod("Toggle").Invoke(menu, null);
+            Assert.IsNull(first.transform.Find("Inspect #2"));
+            Assert.IsFalse((bool)Call(tools, "IsRecordVisible", "old-feedback"));
+            Assert.AreEqual(before, Call(tools, "ToJson"));
+            Assert.IsTrue((bool)Call(tools, "WasCreatedThisRun", measure));
+        }
+
+        [TestCase(0, "Records: 1", "This visit")]
+        [TestCase(1, "共 1 条记录", "本次新增")]
+        public void ExitChecklistUsesCurrentLanguageAndCountsHiddenMeasurements(int language, string count, string scope)
+        {
+            var catalog = Type.GetType("ApartmentLanguage, Assembly-CSharp", true);
+            var previous = catalog.GetProperty("Current").GetValue(null);
+            var set = catalog.GetMethod("SetLanguage");
+            try
+            {
+                set.Invoke(null, new[] {Enum.ToObject(previous.GetType(), language)});
+                string id = AddMeasurement(tools);
+                Call(tools, "HideRecord", id);
+                var menu = ExitMenu();
+                StringAssert.Contains(count, ExitRoot(menu).Find("Record counts").GetComponent<TMP_Text>().text);
+                Assert.AreEqual(scope, ExitRoot(menu).Find("This visit label").GetComponent<TMP_Text>().text);
+            }
+            finally { set.Invoke(null, new[] {previous}); }
+        }
+
+        [Test] public void ExitChecklistOffersRetryUntilDiskWriteSucceedsAndReceiptPrecedesQuit()
+        {
+            AddMeasurement(tools);
+            var menu = ExitMenu();
+            Directory.CreateDirectory(path); // A directory cannot be atomically replaced as a file.
+            ExitClick(menu, "Save and exit");
+            Assert.IsNotNull(ExitRoot(menu).Find("Save failure"));
+            Assert.IsNull(ExitRoot(menu).Find("Confirm quit"));
+            Directory.Delete(path);
+            ExitClick(menu, "Save and exit");
+            Assert.IsTrue(File.Exists(path));
+            Assert.IsNotNull(ExitRoot(menu).Find("Save receipt"));
+            second = new GameObject("Reader");
+            var reader = Create(second);
+            Assert.IsTrue((bool)Call(reader, "RestoreSession"));
+            Assert.AreEqual(1, Records(reader, "Records").Length);
+            ExitClick(menu, "Confirm quit");
+            Assert.IsNull(ExitRoot(menu));
+        }
+
         [Test] public void ExportRetainsSubmittedHistoryAndOmitsDrafts()
         {
             Seed();Call(tools,"RestoreSession");Call(tools,"ExportSession");string exported=(string)Value(tools,"LastExportPath");Assert.IsTrue(exported.StartsWith(directory));
@@ -148,7 +258,7 @@ namespace Group10.GuidedJourney.Tests
             string id = AddMeasurement(tools);
             Assert.AreEqual(pickStart, Value(tools, "CurrentToolReadout"));
             Assert.AreEqual(1f, Field(Call(tools, "FindRecord", id), "distanceMetres"));
-            Assert.IsTrue(first.GetComponentsInChildren<TMP_Text>().Any(label => label.text == "1.00 m"));
+            Assert.IsTrue(first.GetComponentsInChildren<TMP_Text>().Any(label => label.text == "#1  1.00 m"));
             Call(tools, "UndoLastMeasurementDisplay");
             Assert.AreEqual(pickStart, Value(tools, "CurrentToolReadout"));
             Assert.IsNotNull(Call(tools, "FindRecord", id));

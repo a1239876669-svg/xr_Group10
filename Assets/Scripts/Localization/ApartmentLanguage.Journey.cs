@@ -24,7 +24,11 @@ public static partial class ApartmentLanguage
         Register("journey.short.5","Return to the apartment entrance.","回到公寓入口。");
         Register("journey.short.6","Choose a bag in My Items, then hold Grip at its handle.","在“我的物品”选择购物袋，再按住侧握键提起。");
         Register("journey.short.7","Carry the bag through the living room into the kitchen.","提着购物袋穿过客厅，进入厨房。");
-        Register("journey.short.8","Set the bag down inside the kitchen floor outline.","将购物袋放在厨房地面的指定区域内。");
+        Register("journey.short.8","Aim at the marked cabinet door and press the right trigger to open it.","用右手射线指向标记的柜门，按食指扳机打开。");
+        Register("journey.storage.place","Put the whole bag inside the cyan outline in the cabinet. Release Grip.","把整只购物袋放进柜内的青色方框，再松开持袋手的 Grip。");
+        Register("journey.storage.widen","Open the adjacent door for more room. Place the bag in the cyan outline and release Grip.","再打开旁边的柜门，留出宽度。把整袋放入柜内青框，松开 Grip。");
+        Register("journey.storage.closeDoors","Close both cabinet doors to finish storage and start the measurement tutorial.","关好两扇柜门，完成收纳任务并开始测距教程。");
+        Register("journey.storage.close","Close this door to finish storage and start the measurement tutorial.","关上这扇柜门，完成收纳任务并开始测距教程。");
         Register("journey.short.9","Press X, then select the start and end points with the right trigger.","按 X 开启测距，用右扳机选择起点和终点。");
         Register("journey.short.10","Press Y, place a new marker and save your feedback.","按 Y 放置新标记，填写并保存评价。");
         Register("journey.short.11","You can keep exploring. To leave, press B on the right controller and choose “Exit” from the menu.","你可以继续自由探索。想退出时，按右手 B 键打开菜单，选择「退出游戏」。");

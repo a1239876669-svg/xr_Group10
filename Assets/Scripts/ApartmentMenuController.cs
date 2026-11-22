@@ -67,6 +67,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
     }
     public void FinishGuidedFeedback()
     {
+        if (EditingExitRecord) { ReturnToExitReview(); return; }
         if (IsOpen && Page == 1) ChangePanel(ApartmentPanelState.Closed);
         else RearmWorldInput();
     }
@@ -138,6 +139,15 @@ public sealed class ApartmentMenuController : MonoBehaviour
     bool waitingNeutral = true, wasReady;
     string status = "";
     bool guideHelpOpen;
+    readonly ApartmentExitReview exitReview = new ApartmentExitReview();
+    public bool EditingExitRecord => exitReview.Editing;
+
+    public void ReturnToExitReview()
+    {
+        if (EditingExitRecord) review?.CloseExitEditor();
+        exitReview.EndInspection(review?.tools);
+        ChangePanel(ApartmentPanelState.QuitConfirmation);
+    }
 
     void OnEnable() { ApartmentLanguage.Changed += LanguageChanged; }
     void LanguageChanged() { UIRevision++; interactor?.ResetUIInput(); if (HasOpenPanel) Rebuild(false); }
@@ -154,7 +164,13 @@ public sealed class ApartmentMenuController : MonoBehaviour
     {
         InputReady = wasReady = false; waitingNeutral = true; bLatch.Reset();
         ConfirmingReset = false; status = ""; ComfortSection = 0; guideHelpOpen = false; UIRevision++;
-        if (ActivePanel == ApartmentPanelState.QuitConfirmation) ActivePanel = quitSource;
+        if (exitReview.Inspecting || EditingExitRecord)
+        {
+            if (EditingExitRecord) review?.CloseExitEditor();
+            exitReview.EndInspection(review?.tools);
+            ActivePanel = ApartmentPanelState.QuitConfirmation;
+        }
+        else if (ActivePanel == ApartmentPanelState.QuitConfirmation) ActivePanel = quitSource;
         HidePanels(); locomotion?.CancelTeleport(); interactor?.ResetUIInput();
     }
     public static bool ControlsNeutral(ApartmentVRLocomotion mover)
@@ -179,7 +195,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
         // The welcome question is a distinct screen. B becomes available after an explicit choice.
         bool welcome = tutorial != null && tutorial.isActiveAndEnabled && tutorial.Session.Welcome;
         if (bLatch.Sample(b, !welcome && (review == null || !review.IsEditingText))) Toggle();
-        if ((tutorial == null || tutorial.guidedJourney == null || tutorial.guidedJourney.IsFinished) && tour != null && tour.Complete && !tour.NotificationShown && !HasOpenPanel && !waitingNeutral && neutral &&
+        if (!exitReview.Inspecting && (tutorial == null || tutorial.guidedJourney == null || tutorial.guidedJourney.IsFinished) && tour != null && tour.Complete && !tour.NotificationShown && !HasOpenPanel && !waitingNeutral && neutral &&
             (tutorial == null || (tutorial.Session.Step == 3 && !tutorial.Session.Explaining)) && !locomotion.IsTeleportAiming)
             ShowTourCompletion();
         CurrentView?.SetVisible(Visible);
@@ -187,6 +203,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
     public void Toggle()
     {
         if (!InputReady || (tutorial != null && tutorial.isActiveAndEnabled && tutorial.Session.Welcome)) return;
+        if (exitReview.Inspecting || EditingExitRecord) { ReturnToExitReview(); return; }
         if (ActivePanel == ApartmentPanelState.QuitConfirmation) { CancelQuit(); return; }
         if (ShowingTourCompletion) return; // Completion has exactly two explicit choices; B cannot dismiss it.
         ChangePanel(IsOpen ? ApartmentPanelState.Closed : ApartmentPanelState.Menu);
@@ -205,6 +222,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
     void RequestQuit()
     {
         if (!Visible || (ActivePanel != ApartmentPanelState.Menu && !ShowingTourCompletion)) return;
+        exitReview.Reset();
         quitSource = ActivePanel;
         ChangePanel(ApartmentPanelState.QuitConfirmation);
     }
@@ -285,6 +303,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
     void SetPage(int page)
     {
         if (page < 0 || page >= Tabs.Length) return;
+        if (EditingExitRecord) { ReturnToExitReview(); return; }
         if (page == 5) { RequestQuit(); return; }
         Page = page; ConfirmingReset = false; status = ""; ComfortSection = 0; guideHelpOpen = false; UIRevision++;
         interactor?.ResetUIInput(); Rebuild(false);
@@ -296,7 +315,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
     }
     public void StartReview(QuestGuidance.Review.ReviewMode mode)
     {
-        if (!Visible || review == null || !review.Begin(mode)) return;
+        if (EditingExitRecord || !Visible || review == null || !review.Begin(mode)) return;
         ChangePanel(ApartmentPanelState.Closed);
     }
     public void OpenMarkerEditor()
@@ -313,7 +332,7 @@ public sealed class ApartmentMenuController : MonoBehaviour
     void RequestReset() { ConfirmingReset = true; status = ""; UIRevision++; interactor?.ResetUIInput(); Rebuild(false); }
     void ConfirmQuit()
     {
-        if (!Visible || ActivePanel != ApartmentPanelState.QuitConfirmation) return;
+        if (!Visible || ActivePanel != ApartmentPanelState.QuitConfirmation || (review != null && !exitReview.Saved)) return;
         interactor?.ResetUIInput(); locomotion?.CancelTeleport();
         ChangePanel(ApartmentPanelState.Closed);
 #if UNITY_EDITOR
@@ -362,6 +381,22 @@ public sealed class ApartmentMenuController : MonoBehaviour
         if (ShowingTourCompletion || ActivePanel == ApartmentPanelState.QuitConfirmation)
         {
             bool complete = ShowingTourCompletion;
+            if (!complete && review != null)
+            {
+                if (quitView == null)
+                    quitView = new ApartmentVRPanel(transform,"Exit review (session only)",font,panelShader,textOverlayShader,1000,700);
+                quitView.Clear();
+                quitView.SetVisible(true);
+                exitReview.Draw(quitView, review.tools,
+                    () => { UIRevision++; interactor?.ResetUIInput(); Rebuild(false); },
+                    () => ChangePanel(ApartmentPanelState.Closed),
+                    id => { Page = 1; ChangePanel(ApartmentPanelState.Menu); review.tools.SelectMarker(id); },
+                    CancelQuit, ConfirmQuit);
+                if (place && locomotion != null && locomotion.rig != null)
+                    quitView.Place(locomotion.rig.centerEyeAnchor,locomotion.transform.forward);
+                quitView.SetVisible(Visible);
+                return;
+            }
             if (complete && completionView == null)
                 completionView = new ApartmentVRPanel(transform,"Tour completion (session only)",font,panelShader,textOverlayShader,900,440);
             if (!complete && quitView == null)
@@ -386,7 +421,10 @@ public sealed class ApartmentMenuController : MonoBehaviour
         }
         if (!IsOpen) return;
         if (view == null) view = new ApartmentVRPanel(transform, "Apartment menu (session only)", font, panelShader, textOverlayShader, 1100, 740);
-        view.Clear(); view.Label("Menu title", MenuTitle, 35, 10, 600, 84, 48, true);
+        view.Clear();
+        // Inactive canvases can report zero TMP pages on a menu rebuild.
+        view.SetVisible(true);
+        view.Label("Menu title", MenuTitle, 35, 10, 600, 84, 48, true);
         view.Button("Close", "B  关闭菜单", 840, 26, 225, 62, () => Toggle(), false, 29);
         view.Box("Divider", 28, 107, 1044, 2, new Color(.2f,.3f,.36f,1));
         for (int i = 0; i < Tabs.Length; i++)
@@ -435,7 +473,9 @@ public sealed class ApartmentMenuController : MonoBehaviour
             if (guideHelpOpen && guide != null && guide.isActiveAndEnabled) guide.BuildHelp(view, CloseGuideHelp);
             else
             {
-                view.Label("Controls", KeyText(MovementMode), 330, 208, 730, guide != null ? 330 : 455, 30);
+                // Movement and menu controls on one page, review tools and Trigger on the next.
+                string keys = KeyText(MovementMode).Replace("\n左手 X", "<page>左手 X");
+                view.PagedText("Controls", keys, 330, 200, 730, 359, 32);
                 if (guide != null && guide.isActiveAndEnabled)
                     view.Button("Review guide", "Review guide / Help / Skip", 330, 585, 730, 66, OpenGuideHelp, false, 30);
             }
@@ -443,7 +483,9 @@ public sealed class ApartmentMenuController : MonoBehaviour
         else view.Label("Placeholder", "暂未开放", 330, 300, 700, 120, 43);
         string help = tutorial != null && tutorial.Session.Step == -1 ? ChooseHelp :
             (Page == 4 && ComfortSection == 1 ? ComfortFooter : Footer);
-        view.Label("Footer", help, 24, 690, 1052, 44, 23);
+        if (EditingExitRecord)
+            view.Button("Return to exit review", ApartmentLanguage.Text("exit.back"), 330, 681, 730, 52, ReturnToExitReview, false, 28);
+        else view.Label("Footer", help, 24, 690, 1052, 44, 23);
         if (place && locomotion != null) view.Place(locomotion.rig.centerEyeAnchor, locomotion.transform.forward);
         view.SetVisible(Visible);
     }
@@ -526,7 +568,7 @@ public sealed class ApartmentVRPanel : IDisposable
     readonly List<Control> controls = new List<Control>();
     readonly List<GameObject> content = new List<GameObject>();
     readonly Dictionary<TextMeshProUGUI,string> authoredLabels = new Dictionary<TextMeshProUGUI,string>();
-    sealed class Control { public RectTransform rect; public Image image; public Color color; public Action action; public Action<int> step; }
+    sealed class Control { public RectTransform rect; public Image image; public Color color; public GameObject caption; public Action action; public Action<int> step; }
     // Fixed comfort-row geometry so every row lines up and the ray target stays predictable.
     public const float StepperButton = 90f, StepperGap = 10f;
     // Paired-row cells: two of these share one 720 wide row (title 140 + 2 * 276 + gaps).
@@ -563,19 +605,75 @@ public sealed class ApartmentVRPanel : IDisposable
         var label=Rect(name,x,y,w,h).gameObject.AddComponent<TextMeshProUGUI>();label.font=font;label.fontSharedMaterial=textMaterial;
         authoredLabels[label]=text; label.text=ApartmentLanguage.Display(text);label.color=Color.white;label.fontSize=size;label.fontStyle=bold?FontStyles.Bold:FontStyles.Normal;
         label.enableAutoSizing=true;label.fontSizeMin=size*.82f;label.fontSizeMax=size;
+        label.textWrappingMode = TextWrappingModes.Normal;
+        label.overflowMode = TextOverflowModes.Ellipsis;
         label.alignment=TextAlignmentOptions.MidlineLeft;label.raycastTarget=false;return label;
     }
+    // Reserve a navigation row inside the allocated rectangle. TMP breaks lines/pages
+    // using the actual font metrics; the same trigger used by other buttons flips pages.
+    public void PagedText(string name, string copy, float x, float y, float width, float height, float size, bool raw = false, bool detailNavigation = false)
+    {
+        const float row = 54;
+        float bodyHeight = detailNavigation ? height : height - row;
+        var body = raw ? LabelRaw(name, copy, x, y, width, bodyHeight, size) : Label(name, copy, x, y, width, bodyHeight, size);
+        body.enableAutoSizing = false;
+        body.fontSize = size;
+        body.alignment = TextAlignmentOptions.TopLeft;
+        body.overflowMode = TextOverflowModes.Page;
+        body.ForceMeshUpdate(true, true);
+        int pages = Mathf.Max(1, body.textInfo.pageCount);
+        if (pages == 1) return;
+        if (detailNavigation)
+        {
+            body.rectTransform.sizeDelta = new Vector2(width, height - row);
+            body.ForceMeshUpdate(true, true);
+            pages = Mathf.Max(1, body.textInfo.pageCount);
+        }
+        string PageText(int current) => detailNavigation
+            ? ApartmentLanguage.Format("exit.detailPage", current, pages) : current + " / " + pages;
+        int page = 1;
+        float navY = y + height - row + 4;
+        var counter = LabelRaw(name + " page", PageText(1), x + width * .36f, navY, width * .28f, row - 8, 24);
+        counter.alignment = TextAlignmentOptions.Center;
+        Control previous = null, next = null;
+        void ShowNavigation()
+        {
+            previous.rect.gameObject.SetActive(page > 1);
+            previous.caption.SetActive(page > 1);
+            next.rect.gameObject.SetActive(page < pages);
+            next.caption.SetActive(page < pages);
+        }
+        void Move(int delta)
+        {
+            page = Mathf.Clamp(page + delta, 1, pages);
+            body.pageToDisplay = page;
+            counter.text = PageText(page);
+            ShowNavigation();
+        }
+        previous = AddButton(name + " previous", detailNavigation ? ApartmentLanguage.Text("exit.prevDetail") : "上一页", x, navY, width * .34f, row - 8, () => Move(-1), false, 24);
+        next = AddButton(name + " next", detailNavigation ? ApartmentLanguage.Text("exit.nextDetail") : "下一页", x + width * .66f, navY, width * .34f, row - 8, () => Move(1), false, 24);
+        ShowNavigation();
+    }
+
     public void SetLabelText(TextMeshProUGUI label,string copy) { if(label==null)return; authoredLabels[label]=copy;label.text=ApartmentLanguage.Display(copy); }
     public TextMeshProUGUI LabelRaw(string name,string raw,float x,float y,float w,float h,float size)
     { var label=Label(name,raw,x,y,w,h,size);authoredLabels.Remove(label);label.text=raw;label.richText=false;return label; }
     void RefreshLanguage() { foreach(var item in authoredLabels) if(item.Key!=null)item.Key.text=ApartmentLanguage.Display(item.Value); }
     public void Button(string name,string text,float x,float y,float w,float h,Action action,bool selected=false,float size=33,bool richText=true)
     {
+        AddButton(name, text, x, y, w, h, action, selected, size, richText);
+    }
+
+    Control AddButton(string name,string text,float x,float y,float w,float h,Action action,bool selected,float size,bool richText=true)
+    {
         var rect=Rect(name,x,y,w,h);var image=rect.gameObject.AddComponent<Image>();image.material=background;image.sprite=rounded;image.type=Image.Type.Sliced;image.raycastTarget=false;
         Color color=selected?new Color(.06f,.36f,.39f,1):new Color(.10f,.15f,.21f,1);image.color=color;
         if(selected)Box(name+" accent",x,y+12,4,h-24,new Color(.18f,.94f,.88f,1));
-        Label(name+" label",text,x+19,y+4,w-38,h-8,size).richText=richText;
-        controls.Add(new Control{rect=rect,image=image,color=color,action=action});
+        var caption = Label(name+" label",text,x+19,y+4,w-38,h-8,size);
+        caption.richText=richText;
+        var control = new Control{rect=rect,image=image,color=color,action=action,caption=caption.gameObject};
+        controls.Add(control);
+        return control;
     }
     // A comfort row: one ray target spanning the whole row, plus -/+ buttons that step the same value.
     // The row is stepped with the right stick while it is hovered; an inactive row renders flat and
@@ -626,6 +724,7 @@ public sealed class ApartmentVRPanel : IDisposable
         end=ray.GetPoint(distance);Control hit=null,stepHit=null;
         foreach(var c in controls)
         {
+            if (!c.rect.gameObject.activeInHierarchy) continue;
             bool hover=ApartmentTutorialController.HitRectangle(c.rect,ray,distance,out var point);
             c.image.color=hover?new Color(.12f,.48f,.50f,1):c.color;
             if(hover){hit=c;end=point;if(c.step!=null)stepHit=c;}
