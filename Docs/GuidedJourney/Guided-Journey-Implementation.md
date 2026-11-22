@@ -4,9 +4,9 @@
 
 ## Implemented route
 
-Welcome/movement → Entrance door → Living-room exploration → Balcony sliding door → Kitchen cabinet open/close → Return to Entrance → Choose S/M/L and Grip pickup → Carry through Living Room to Kitchen → **Kitchen floor drop** → Real measurement → New marker and successfully saved feedback → Free exploration/menu exit.
+Welcome/movement → Entrance door → Living-room exploration → Balcony sliding door → Kitchen cabinet open/close → Return to Entrance → Choose S/M/L and Grip pickup → Carry through Living Room to Kitchen → **Store the bag in the practised cabinet** → Real measurement → New marker and successfully saved feedback → Free exploration/menu exit.
 
-The floor-drop task is the declared Stage 8 alternative, **not cabinet storage**. A single inspected cabinet leaf is approximately 0.468 m wide while Large is 0.60 m wide. No bag was shrunk, no collision disabled, and no cabinet geometry changed. The cyan floor outline is visual only. The entire actual body bounds must fit the configured horizontal area, be released near the actual floor, and remain settled for 0.35 s. The user must also be in Kitchen. Clearance and physics still require Play/Quest validation.
+The Stage 8 task stores the bag inside the same kitchen cabinet exercised in Stage 4. The observed cabinet has real solid bottom/top/back/sides and two independently interactive leaves; its clear interior is approximately X `[1.338,2.282]`, Y `[.103,.837]`, Z `[.618,7.162]` m. The adapter requires the whole released body to fit the wired interior volume, rest on the shelf, remain settled for 0.35 s, and the visitor to be in Kitchen. Because the held bag's solid collider is disabled, insertion is limited by hand reach rather than door width; after release the body collider re-enables and must settle inside. A Large bag needs both leaves open and must rest with its 0.60 m side along the cabinet width. No bag size, collision or cabinet geometry was changed. The cyan outline marks the interior shelf and is visual only. Clearance and physics still require Play/Quest validation.
 
 ## Reused systems and dependency direction
 
@@ -22,7 +22,7 @@ Existing menu runs at 8500, tutorial at 9000, locomotion at 10000 and furniture/
 
 Rooms use the existing `ReviewRoomMap` and the tracked head's horizontal world position. Distance uses actual locomotion-reported displacement; head sway, rotation compensation, blocked motion, discontinuities and safety resets are excluded. Ordinary A teleport can provide a real held-bag arrival from Living Room to Kitchen without being counted as walk mileage. Losing focus/tracking or disabling the observer invalidates partial cabinet/drop proofs. Door intermediate/blocked states cannot count as Closed.
 
-Task cards and the cabinet label have no collider and hide during menus, modal onboarding, unavailable input and teleport aiming. The card sits below/left of central view. Comfort/readability and dynamic-font rendering are runtime checks, not proven by static layout inspection.
+Task cards and the cabinet label have no collider and hide during menus, modal onboarding, unavailable input and teleport aiming. The card sits below/left of central view. The expanded card is a read-only overlay: it blocks the ray/trigger and movement, but it no longer blocks bag Grip. Opening the menu folds an expanded card, and a real bag grab folds it again, so Stage 6 cannot be stranded by a card left open. The introduction still requires its explicit Acknowledge button. Comfort/readability and dynamic-font rendering are runtime checks, not proven by static layout inspection.
 
 ## Real feedback-save acknowledgement
 

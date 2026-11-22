@@ -29,8 +29,8 @@ for fid,(typ,body) in after.items():
 guide=after['2147000001'][1]
 for key,value in {'tutorial':'1260247395','menu':'184434899','locomotion':'542895441','interactor':'742092206','roomMap':'854460277','review':'854460278','bagBridge':'1082077889','entranceDoor':'171350835','balconyDoor':'527763517','practiceCabinet':'154016231','kitchenDropPoint':'2147000003'}.items():assert key+': {fileID: '+value+'}' in guide,key
 assert 'guidedJourney: {fileID: 2147000001}' in after['1260247395'][1]
-assert 'm_Name: GuidedJourney_KitchenDropPoint_VisualOnly' in after['2147000002'][1]
-assert 'm_LocalPosition: {x: 2.1, y: 0.012, z: 5.5}' in after['2147000003'][1]
+assert 'm_Name: GuidedJourney_CabinetStoragePoint_VisualOnly' in after['2147000002'][1]
+assert 'm_LocalPosition: {x: 1.81, y: 0.1, z: 6.885}' in after['2147000003'][1]
 for component,collider,renderer in [('2147000004','1261912979','1261912978'),('2147000005','27991930','27991929')]:
     block=after[component][1]
     assert 'furnitureColliders:\n  - {fileID: '+collider+'}' in block

@@ -21,7 +21,7 @@ Each new Play/Player starts English. **B > Settings > Language > 简体中文** 
 
 ## Follow the review guide
 
-Practise movement, enter and explore the living room. Try the balcony sliding door and open/close the designated kitchen cabinet. Return to the entrance; choose **My Items > Small / Medium / Large** while the bag is released, then pick it up. Carry through the living room to the kitchen and release into the outlined **floor area**, not a cupboard.
+Practise movement, enter and explore the living room. Try the balcony sliding door and open/close the designated kitchen cabinet. Return to the entrance; choose **My Items > Small / Medium / Large** while the bag is released, then pick it up. Carry through the living room to the kitchen, open the practised cabinet, and release the whole bag inside the cyan-marked **cabinet shelf**.
 
 Red furniture and holding-hand vibration indicate registered contact. Move clear; warnings do not physically block you. Put down before changing size.
 

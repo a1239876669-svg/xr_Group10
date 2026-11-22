@@ -129,6 +129,116 @@ namespace Group10.GuidedJourney.Tests
             Seed();Call(tools,"RestoreSession");Call(tools,"ShowRecord","old-feedback");Call(tools,"ShowRecord","old-feedback");Assert.AreEqual(1,Records(tools,"ActiveRecords").Length);
             string json=(string)Call(tools,"ToJson");Call(tools,"UndoLast");Assert.AreEqual(json,Call(tools,"ToJson"));Assert.AreEqual(0,Records(tools,"ActiveRecords").Length);
         }
+        Component ExitMenu()
+        {
+            var menu = first.AddComponent(Type.GetType("ApartmentMenuController, Assembly-CSharp", true));
+            var review = first.AddComponent(Type.GetType("ApartmentReviewController, Assembly-CSharp", true));
+            Put(review, "tools", tools);
+            Put(review, "menu", menu);
+            Put(menu, "review", review);
+            Put(menu, "font", Value(tools, "DisplayFont"));
+            Put(menu, "panelShader", Shader.Find("Apartment/TutorialOverlay"));
+            Put(menu, "textOverlayShader", Shader.Find("TextMeshPro/Distance Field Overlay"));
+            review.GetType().GetMethod("OnEnable", Any).Invoke(review, null);
+            menu.GetType().GetProperty("InputReady").SetValue(menu, true);
+            menu.GetType().GetMethod("BuildPreview").Invoke(menu, new object[] { 2 });
+            ExitClick(menu, "Tab 5");
+            return menu;
+        }
+
+        static RectTransform ExitRoot(Component menu) => (RectTransform)menu.GetType().GetProperty("PanelRect").GetValue(menu);
+
+        static void ExitClick(Component menu, string name)
+        {
+            var button = ExitRoot(menu).Find(name) as RectTransform;
+            Assert.IsNotNull(button, name);
+            var centre = button.TransformPoint(button.rect.center);
+            var ray = new Ray(centre - button.forward, button.forward);
+            menu.GetType().GetMethod("ProcessPointer").Invoke(menu, new object[] { ray, 3f, true, Vector3.zero, 0 });
+        }
+
+        [Test] public void ExitChecklistSeparatesHistorySkipsCancelledAndReturnsFromLocationAndEditing()
+        {
+            Seed();
+            Call(tools, "RestoreSession");
+            string removed = AddMarker(tools);
+            Call(tools, "CancelCurrentDraft", removed);
+            string measure = AddMeasurement(tools);
+            string draft = AddMarker(tools);
+            var menu = ExitMenu();
+            string Copy(string name) => ExitRoot(menu).Find(name).GetComponent<TMP_Text>().text;
+            StringAssert.Contains("#5", Copy("Record details"));
+            StringAssert.Contains("2", Copy("Record counts"));
+            ExitClick(menu, "Next record");
+            StringAssert.Contains("#6", Copy("Record details"));
+            ExitClick(menu, "Edit reviewed marker");
+            Assert.IsNull(ExitRoot(menu).Find("Rating 0"));
+            ExitClick(menu, "Save feedback");
+            Assert.AreEqual("Draft", Field(Call(tools, "FindRecord", draft), "state").ToString());
+            ExitClick(menu, "Aspect 1");
+            ExitClick(menu, "Rating 0");
+            ExitClick(menu, "Aspect 2");
+            ExitClick(menu, "Save feedback");
+            Assert.AreEqual("Draft", Field(Call(tools, "FindRecord", draft), "state").ToString());
+            ExitClick(menu, "Rating 2");
+            ExitClick(menu, "Save feedback");
+            Assert.AreEqual("家具摆放", Field(Call(tools, "FindRecord", draft), "observation"));
+            Assert.AreEqual("合理", Field(Call(tools, "FindRecord", draft), "everydayImpact"));
+            StringAssert.Contains("#6", Copy("Record details"));
+            Assert.AreEqual("Submitted", Field(Call(tools, "FindRecord", draft), "state").ToString());
+            ExitClick(menu, "Earlier visits");
+            ExitClick(menu, "Next record");
+            StringAssert.Contains("Original resident text", Copy("Record details"));
+            StringAssert.Contains("#1", Copy("Record details"));
+            var before = (string)Call(tools, "ToJson");
+            ExitClick(menu, "Inspect location");
+            Assert.IsNotNull(first.transform.Find("Inspect #2"));
+            menu.GetType().GetMethod("Toggle").Invoke(menu, null);
+            Assert.IsNull(first.transform.Find("Inspect #2"));
+            Assert.IsFalse((bool)Call(tools, "IsRecordVisible", "old-feedback"));
+            Assert.AreEqual(before, Call(tools, "ToJson"));
+            Assert.IsTrue((bool)Call(tools, "WasCreatedThisRun", measure));
+        }
+
+        [TestCase(0, "Records: 1", "This visit")]
+        [TestCase(1, "共 1 条记录", "本次新增")]
+        public void ExitChecklistUsesCurrentLanguageAndCountsHiddenMeasurements(int language, string count, string scope)
+        {
+            var catalog = Type.GetType("ApartmentLanguage, Assembly-CSharp", true);
+            var previous = catalog.GetProperty("Current").GetValue(null);
+            var set = catalog.GetMethod("SetLanguage");
+            try
+            {
+                set.Invoke(null, new[] {Enum.ToObject(previous.GetType(), language)});
+                string id = AddMeasurement(tools);
+                Call(tools, "HideRecord", id);
+                var menu = ExitMenu();
+                StringAssert.Contains(count, ExitRoot(menu).Find("Record counts").GetComponent<TMP_Text>().text);
+                Assert.AreEqual(scope, ExitRoot(menu).Find("This visit label").GetComponent<TMP_Text>().text);
+            }
+            finally { set.Invoke(null, new[] {previous}); }
+        }
+
+        [Test] public void ExitChecklistOffersRetryUntilDiskWriteSucceedsAndReceiptPrecedesQuit()
+        {
+            AddMeasurement(tools);
+            var menu = ExitMenu();
+            Directory.CreateDirectory(path); // A directory cannot be atomically replaced as a file.
+            ExitClick(menu, "Save and exit");
+            Assert.IsNotNull(ExitRoot(menu).Find("Save failure"));
+            Assert.IsNull(ExitRoot(menu).Find("Confirm quit"));
+            Directory.Delete(path);
+            ExitClick(menu, "Save and exit");
+            Assert.IsTrue(File.Exists(path));
+            Assert.IsNotNull(ExitRoot(menu).Find("Save receipt"));
+            second = new GameObject("Reader");
+            var reader = Create(second);
+            Assert.IsTrue((bool)Call(reader, "RestoreSession"));
+            Assert.AreEqual(1, Records(reader, "Records").Length);
+            ExitClick(menu, "Confirm quit");
+            Assert.IsNull(ExitRoot(menu));
+        }
+
         [Test] public void ExportRetainsSubmittedHistoryAndOmitsDrafts()
         {
             Seed();Call(tools,"RestoreSession");Call(tools,"ExportSession");string exported=(string)Value(tools,"LastExportPath");Assert.IsTrue(exported.StartsWith(directory));
@@ -141,18 +251,207 @@ namespace Group10.GuidedJourney.Tests
             Assert.AreEqual(before,Call(tools,"ToJson"));Call(tools,"PreviewPoint",Vector3.zero,false);StringAssert.DoesNotContain("2.50",(string)Value(tools,"CurrentToolReadout"));
             Call(tools,"CancelPending");Assert.AreEqual(before,Call(tools,"ToJson"));
         }
-        [Test] public void ReadoutFollowsVisibleMeasurementUndoAndHideWithoutErasingData()
+        [Test] public void FinishedDistanceStaysOnTheLineAndInRecordsOnly()
         {
-            Seed();Call(tools,"RestoreSession");AddMeasurement(tools);Call(tools,"BeginMeasurement");Call(tools,"ConfirmPoint",Vector3.zero,null);Call(tools,"ConfirmPoint",Vector3.right*3,null);
-            StringAssert.Contains("3.00",(string)Value(tools,"CurrentToolReadout"));string before=(string)Call(tools,"ToJson");Call(tools,"UndoLastMeasurementDisplay");
-            StringAssert.Contains("1.00",(string)Value(tools,"CurrentToolReadout"));Call(tools,"HideMeasurementDisplays");StringAssert.DoesNotContain("1.00",(string)Value(tools,"CurrentToolReadout"));Assert.AreEqual(before,Call(tools,"ToJson"));
+            Call(tools, "BeginMeasurement");
+            string pickStart = (string)Value(tools, "CurrentToolReadout");
+            string id = AddMeasurement(tools);
+            Assert.AreEqual(pickStart, Value(tools, "CurrentToolReadout"));
+            Assert.AreEqual(1f, Field(Call(tools, "FindRecord", id), "distanceMetres"));
+            Assert.IsTrue(first.GetComponentsInChildren<TMP_Text>().Any(label => label.text == "#1  1.00 m"));
+            Call(tools, "UndoLastMeasurementDisplay");
+            Assert.AreEqual(pickStart, Value(tools, "CurrentToolReadout"));
+            Assert.IsNotNull(Call(tools, "FindRecord", id));
         }
+
+        [Test] public void StartDotAcceptsOneFreshPressAndLeavesNearbyEndpointsMeasurable()
+        {
+            string id = AddMeasurement(tools);
+            var savedDot = first.GetComponentsInChildren<Renderer>().First(renderer => renderer.name == "Point");
+            var properties = new MaterialPropertyBlock();
+            Color DotColor(Renderer renderer)
+            {
+                renderer.GetPropertyBlock(properties);
+                return properties.GetColor("_Color");
+            }
+            string before = (string)Call(tools, "ToJson");
+            string pickStart = (string)Value(tools, "CurrentToolReadout");
+            var latch = Activator.CreateInstance(Type.GetType("ApartmentInteractionTriggerLatch, Assembly-CSharp", true));
+            var sample = latch.GetType().GetMethod("Sample");
+            bool Trigger(float value) => (bool)sample.Invoke(latch, new object[] { value, true });
+            bool Point(Vector3 origin, Vector3 end, bool pressed) =>
+                (bool)Call(tools, "PointAtPendingStart", origin, end, pressed);
+
+            Vector3 start = Vector3.forward;
+            Trigger(0f);
+            Assert.IsTrue(Trigger(1f));
+            Call(tools, "ConfirmPoint", start, null);
+            var startDot = first.transform.Find("Pending measurement/Point").GetComponent<Renderer>();
+            Assert.AreEqual(Color.cyan, DotColor(startDot));
+            Assert.IsTrue(Point(Vector3.zero, start, Trigger(1f)));
+            Assert.AreEqual(Color.red, DotColor(startDot));
+            Assert.AreEqual(Color.cyan, DotColor(savedDot));
+            Assert.IsTrue((bool)Value(tools, "HasPendingPoint"));
+            var language = Type.GetType("ApartmentLanguage, Assembly-CSharp", true);
+            Assert.AreEqual(language.GetMethod("Text").Invoke(null, new object[] { "tool.cancel.start" }),
+                Value(tools, "CurrentToolReadout"));
+            Assert.IsFalse(Point(Vector3.zero, start * .95f, false), "A nearer surface occludes the dot");
+            Call(tools, "PreviewPoint", start * .95f, true);
+            Assert.AreEqual(Color.cyan, DotColor(startDot));
+            StringAssert.Contains("0.05", (string)Value(tools, "CurrentToolReadout"));
+            Trigger(0f);
+            Assert.IsTrue(Point(Vector3.zero, start, Trigger(1f)));
+            Assert.IsFalse((bool)Value(tools, "HasPendingPoint"));
+            Assert.AreEqual(pickStart, Value(tools, "CurrentToolReadout"));
+            Assert.AreEqual(before, Call(tools, "ToJson"));
+            Assert.IsTrue((bool)Call(tools, "IsRecordVisible", id));
+
+            Call(tools, "ConfirmPoint", start, null);
+            Vector3 offset = .013f * Vector3.right;
+            Assert.IsFalse(Point(offset, start + offset, true), "Just outside the 12.5 mm radius");
+            Call(tools, "PreviewPoint", start + offset, true);
+            Assert.IsTrue((bool)Call(tools, "ConfirmPoint", start + offset, null));
+            Assert.AreEqual(.013f, (float)Field(Records(tools, "Records").Last(), "distanceMetres"), .00001f);
+        }
+        [Test] public void MarkerHoverUsesNearestVisibleDotAndReusesOneReadOnlyCard()
+        {
+            Seed();
+            Call(tools, "RestoreSession");
+            Call(tools, "ShowRecord", "old-draft");
+            Call(tools, "ShowRecord", "old-feedback");
+            var submitted = first.transform.Find("marker 2/Point").GetComponent<Renderer>();
+            var draft = first.transform.Find("marker 3/Point").GetComponent<Renderer>();
+            Color ColorOf(Renderer dot)
+            {
+                var properties = new MaterialPropertyBlock();
+                dot.GetPropertyBlock(properties);
+                return properties.GetColor("_Color");
+            }
+            bool Point(Vector3 origin, Vector3 end, bool pressed = false) =>
+                (bool)Call(tools, "PointAtMarker", origin, end, pressed);
+            string before = (string)Call(tools, "ToJson");
+            Color savedColor = ColorOf(submitted);
+            Assert.IsFalse(Point(Vector3.zero, Vector3.forward * 1.98f), "Nearer surface stops the ray");
+            Assert.IsTrue(Point(Vector3.zero, Vector3.forward * 6f));
+            Assert.AreEqual(Color.green, ColorOf(submitted));
+            Assert.AreEqual(Color.gray, ColorOf(draft));
+            var card = first.transform.Find("Marker preview");
+            var label = card.GetComponentInChildren<TextMeshProUGUI>();
+            StringAssert.Contains("#2", label.text);
+            StringAssert.Contains("Original resident text 原文", label.text);
+            StringAssert.Contains("#1  1.00 m", label.text);
+            Assert.IsFalse(label.raycastTarget);
+            Assert.IsEmpty(card.GetComponentsInChildren<Collider>());
+            Assert.IsNull(Value(tools, "SelectedId"), "Hover does not enter the editor");
+            Assert.AreEqual(before, Call(tools, "ToJson"));
+
+            Assert.IsTrue(Point(Vector3.forward * 3f, Vector3.forward * 6f));
+            Assert.AreEqual(savedColor, ColorOf(submitted));
+            Assert.AreEqual(Color.green, ColorOf(draft));
+            StringAssert.Contains("#3", label.text);
+            var language = Type.GetType("ApartmentLanguage, Assembly-CSharp", true);
+            string Copy(string key) => (string)language.GetMethod("Text").Invoke(null, new object[] { key });
+            StringAssert.Contains(Copy("review.draft"), label.text);
+            StringAssert.Contains(Copy("review.pendingfeedback"), label.text);
+            Assert.AreEqual(1, first.GetComponentsInChildren<Canvas>(true).Length);
+            var offset = Vector3.right * .013f;
+            Assert.IsFalse(Point(offset, Vector3.forward * 6f + offset), "Just outside the visible dots");
+            Assert.IsFalse(card.gameObject.activeSelf);
+            Assert.AreEqual(Color.gray, ColorOf(draft));
+
+            var selected = toolsType.GetEvent("MarkerSelected");
+            var handler = typeof(SessionVisualsTests).GetMethod("Count", BindingFlags.Static | BindingFlags.NonPublic).MakeGenericMethod(recordType);
+            selected.AddEventHandler(tools, Delegate.CreateDelegate(selected.EventHandlerType, handler));
+            Call(tools, "BeginMarking");
+            Assert.IsTrue(Point(Vector3.zero, Vector3.forward * 2f, true));
+            Assert.AreEqual(1, events);
+            Assert.AreEqual("old-feedback", Value(tools, "SelectedId"));
+            Assert.IsFalse(card.gameObject.activeSelf);
+            Assert.IsTrue(Point(Vector3.zero, Vector3.forward * 2f));
+            Call(tools, "BeginMeasurement");
+            Assert.IsFalse(card.gameObject.activeSelf);
+            Assert.AreEqual(savedColor, ColorOf(submitted));
+            Assert.IsFalse(Point(Vector3.zero, Vector3.forward * 2f, true));
+            Assert.IsTrue((bool)Call(tools, "ConfirmPoint", Vector3.forward * 2f, null));
+            Assert.IsTrue((bool)Value(tools, "HasPendingPoint"));
+            Assert.AreEqual(1, events);
+        }
+
+        [Test] public void FreeTextMarkerShowsAnExcerptAndPagesThroughTheFullOriginal()
+        {
+            Seed();
+            Call(tools, "RestoreSession");
+            var record = Call(tools, "FindRecord", "old-feedback");
+            string longText = string.Concat(Enumerable.Repeat("Kitchen 太小 <tag> ", 35)) + "LAST";
+            Put(record, "observation", longText);
+            Call(tools, "ShowRecord", "old-feedback");
+            Call(tools, "PointAtMarker", Vector3.zero, Vector3.forward * 2f, false);
+            var preview = first.transform.Find("Marker preview").GetComponentInChildren<TextMeshProUGUI>();
+            StringAssert.Contains("Kitchen 太小 <tag>", preview.text);
+            StringAssert.DoesNotContain("LAST", preview.text);
+            Assert.IsFalse(preview.richText);
+
+            var controllerType = Type.GetType("ApartmentReviewController, Assembly-CSharp", true);
+            var controller = first.AddComponent(controllerType);
+            Put(controller, "tools", tools);
+            var panelType = Type.GetType("ApartmentVRPanel, Assembly-CSharp", true);
+            var font = (TMP_FontAsset)Value(tools, "DisplayFont");
+            using (var panel = (IDisposable)Activator.CreateInstance(panelType, first.transform, "Preview test editor",
+                font, Shader.Find("UI/Default"), font.material.shader, 1100f, 720f))
+            {
+                controllerType.GetMethod("BuildMarkerPage").Invoke(controller, new object[] { panel });
+                var root = (RectTransform)panelType.GetProperty("Root").GetValue(panel);
+                var body = root.Find("User saved feedback").GetComponent<TextMeshProUGUI>();
+                Assert.AreEqual(longText + "\nOriginal impact", body.text);
+                Assert.IsFalse(body.richText);
+                Assert.Greater(body.textInfo.pageCount, 1);
+                Assert.IsNotNull(root.Find("Next feedback page"));
+            }
+        }
+
         [Test] public void MarkerReadoutUsesCurrentVisibleSelectionAndNeverHistoricalHiddenRecord()
         {
             Seed();Call(tools,"RestoreSession");Call(tools,"BeginMarking");StringAssert.DoesNotContain("#2",(string)Value(tools,"CurrentToolReadout"));
             string id=AddMarker(tools);StringAssert.Contains("#4",(string)Value(tools,"CurrentToolReadout"));string before=(string)Call(tools,"ToJson");
             Call(tools,"HideRecord",id);StringAssert.DoesNotContain("#4",(string)Value(tools,"CurrentToolReadout"));Assert.AreEqual(before,Call(tools,"ToJson"));
         }
+        [Test] public void ShortcutsSwitchAndCancelWithoutLosingMeasurementsOrDrafts()
+        {
+            var controllerType = Type.GetType("ApartmentReviewController, Assembly-CSharp", true);
+            var controller = first.AddComponent(controllerType);
+            Put(controller, "tools", tools);
+            var toggle = controllerType.GetMethod("ToggleTool");
+            var modeType = toggle.GetParameters()[0].ParameterType;
+            void Press(string mode) => toggle.Invoke(controller, new[] { Enum.Parse(modeType, mode) });
+
+            Press("Measure");
+            Call(tools, "ConfirmPoint", Vector3.zero, null);
+            Call(tools, "ConfirmPoint", Vector3.right, null);
+            string saved = (string)Call(tools, "ToJson");
+            Call(tools, "ConfirmPoint", Vector3.up, null);
+            Press("Measure");
+            Assert.AreEqual("None", Value(tools, "Mode").ToString());
+            Assert.IsFalse((bool)Value(tools, "HasPendingPoint"));
+            Press("Measure");
+            Call(tools, "ConfirmPoint", Vector3.up, null);
+            Press("Mark");
+            Assert.AreEqual("Mark", Value(tools, "Mode").ToString());
+            Assert.IsFalse((bool)Value(tools, "HasPendingPoint"));
+            Assert.AreEqual(saved, Call(tools, "ToJson"));
+            Press("Mark");
+            Assert.AreEqual("None", Value(tools, "Mode").ToString());
+            Press("Mark");
+            Call(tools, "ConfirmPoint", Vector3.forward, null);
+            string draft = (string)Value(tools, "SelectedId");
+            Press("Measure");
+            Call(tools, "ConfirmPoint", Vector3.up, null);
+            Press("Mark");
+            Assert.AreEqual(draft, Value(tools, "SelectedId"));
+            Assert.AreEqual("None", Value(tools, "Mode").ToString());
+            Assert.IsFalse((bool)Value(tools, "HasPendingPoint"));
+            Assert.AreEqual(2, Records(tools, "Records").Length);
+        }
+
         [Test] public void TestStorageRejectsNonTemporaryPersistentPath()
         {
             var error=Assert.Throws<TargetInvocationException>(()=>Call(tools,"ConfigureStorageForTests",Path.Combine(Application.dataPath,"forbidden.json")));

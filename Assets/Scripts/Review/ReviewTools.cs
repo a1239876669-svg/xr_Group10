@@ -67,13 +67,11 @@ namespace QuestGuidance.Review
             {
                 if (mode == ReviewMode.Measure)
                 {
+                    if (aimingAtStart) return ApartmentLanguage.Text("tool.cancel.start");
                     if (pending)
                         return preview != null && preview.enabled
                             ? ApartmentLanguage.Format("tool.distance.preview", Vector3.Distance(firstPoint, preview.GetPosition(1)).ToString("F2", System.Globalization.CultureInfo.InvariantCulture))
                             : ApartmentLanguage.Text("tool.select.end");
-                    for (int i = activeRecords.Count - 1; i >= 0; i--)
-                        if (activeRecords[i].kind == "measurement")
-                            return ApartmentLanguage.Format("tool.distance.last", activeRecords[i].distanceMetres.ToString("F2", System.Globalization.CultureInfo.InvariantCulture));
                     return ApartmentLanguage.Text("tool.select.start");
                 }
                 if (mode == ReviewMode.Mark)
@@ -100,6 +98,10 @@ namespace QuestGuidance.Review
         private ReviewSession session = new ReviewSession();
         private IReadOnlyList<ReviewRecord> recordView;
         private readonly Dictionary<string, GameObject> visuals = new Dictionary<string, GameObject>();
+        private readonly Dictionary<ReviewRecord, Renderer> markerDots = new Dictionary<ReviewRecord, Renderer>();
+        private static readonly Color SavedMarkerColor = new Color(1f, 0.65f, 0.12f);
+        private ReviewRecord hoveredMarker;
+        private MarkerPreviewCard markerCard;
         private readonly List<ReviewRecord> activeRecords = new List<ReviewRecord>();
         private IReadOnlyList<ReviewRecord> activeRecordView;
         // Non-serialized test seam. Runtime callers keep the original persistent-data path.
@@ -107,6 +109,9 @@ namespace QuestGuidance.Review
         private bool pending;
         private Vector3 firstPoint;
         private GameObject pendingVisual;
+        private Renderer startDot;
+        private MaterialPropertyBlock dotProperties;
+        private bool aimingAtStart;
         private LineRenderer preview;
         private TMP_Text previewLabel;
         private readonly HashSet<string> createdThisRun = new HashSet<string>();
@@ -162,6 +167,8 @@ namespace QuestGuidance.Review
                 var restored = ReviewStorage.Load(SavePath, gameObject.scene.path, out recovered);
                 // Validate completely before replacing the current session or its visuals.
                 CancelPending();
+                ClearMarkerHover();
+                markerDots.Clear();
                 foreach (var visual in visuals.Values) RemoveVisual(visual);
                 visuals.Clear();
                 activeRecords.Clear(); createdThisRun.Clear();
@@ -197,6 +204,44 @@ namespace QuestGuidance.Review
 
         public ReviewRecord FindRecord(string id) { return session.records.Find(item => item.id == id); }
 
+        public bool WasCreatedThisRun(string id) => createdThisRun.Contains(id);
+
+        private GameObject inspection;
+        public bool HighlightForReview(string id)
+        {
+            EndReviewHighlight();
+            var record = FindRecord(id);
+            if (record == null) return false;
+            inspection = NewRoot("Inspect #" + record.number);
+            Color color = Color.yellow;
+            Dot(inspection.transform, record.point, color).transform.localScale = Vector3.one * .065f;
+            if (record.kind == "measurement")
+            {
+                Dot(inspection.transform, record.endPoint, color).transform.localScale = Vector3.one * .065f;
+                var line = inspection.AddComponent<LineRenderer>();
+                line.sharedMaterial = visualMaterial;
+                line.startColor = line.endColor = color;
+                line.startWidth = line.endWidth = .018f;
+                line.useWorldSpace = true;
+                line.positionCount = 2;
+                line.SetPositions(new[] {record.point, record.endPoint});
+            }
+            var anchor = record.kind == "measurement" ? (record.point + record.endPoint) * .5f : record.point;
+            var label = new GameObject("Inspection label");
+            label.layer = 2;
+            label.transform.SetParent(inspection.transform, false);
+            label.transform.position = anchor + Vector3.up * .18f;
+            AddLabel(label, color).text = ApartmentLanguage.Format("exit.inspectLabel", record.number);
+            label.AddComponent<ReviewBillboard>().SetAnchor(anchor + Vector3.up * .10f);
+            return true;
+        }
+
+        public void EndReviewHighlight()
+        {
+            RemoveVisual(inspection);
+            inspection = null;
+        }
+
         public bool IsRecordVisible(string id) { return id != null && visuals.ContainsKey(id); }
 
         /// <summary>Explicitly opens a persisted record without creating a new record or save acknowledgement.</summary>
@@ -215,9 +260,12 @@ namespace QuestGuidance.Review
         public bool HideRecord(string id)
         {
             if (id == null || !visuals.TryGetValue(id, out var visual)) return false;
+            if (hoveredMarker?.id == id) ClearMarkerHover();
+            var record = FindRecord(id);
+            if (record != null) markerDots.Remove(record);
             RemoveVisual(visual);
             visuals.Remove(id);
-            activeRecords.RemoveAll(record => record.id == id);
+            activeRecords.Remove(record);
             if (SelectedId == id) SelectedId = null;
             onRecordsChanged.Invoke();
             return true;
@@ -226,6 +274,7 @@ namespace QuestGuidance.Review
         /// <summary>Refreshes labels only; never translates or rewrites participants' feedback.</summary>
         public void RefreshVisibleLabels()
         {
+            RefreshMarkerCard();
             foreach (var record in activeRecords)
             {
                 if (!visuals.TryGetValue(record.id, out var visual) || visual == null) continue;
@@ -250,25 +299,66 @@ namespace QuestGuidance.Review
 
         public string FindMarkerOnRay(Ray ray, float surfaceDistance, float maximumDistance = 30f)
         {
-            string selected = null;
-            float nearest = maximumDistance;
-            Vector3 direction = ray.direction.normalized;
-            foreach (var record in activeRecords)
+            var end = ray.origin + ray.direction.normalized * Mathf.Max(0f, Mathf.Min(surfaceDistance, maximumDistance));
+            return FirstMarker(ray.origin, end, out _)?.id;
+        }
+
+        private ReviewRecord FirstMarker(Vector3 origin, Vector3 end, out float nearest)
+        {
+            nearest = float.PositiveInfinity;
+            ReviewRecord selected = null;
+            foreach (var pair in markerDots)
             {
-                if (record.kind != "marker") continue;
-                float along = Vector3.Dot(record.point - ray.origin, direction);
-                if (along < 0 || along >= nearest || along > surfaceDistance + 0.04f) continue;
-                if (Vector3.Distance(ray.origin + direction * along, record.point) > 0.06f) continue;
-                nearest = along;
-                selected = record.id;
+                if (HitDot(pair.Value.transform, origin, end, out float fraction) && fraction < nearest)
+                {
+                    nearest = fraction;
+                    selected = pair.Key;
+                }
             }
             return selected;
+        }
+
+        public bool PointAtMarker(Vector3 origin, ref Vector3 end, bool pressed)
+        {
+            float fraction = 0f;
+            var target = mode == ReviewMode.Measure ? null : FirstMarker(origin, end, out fraction);
+            if (target != hoveredMarker)
+            {
+                ClearMarkerHover();
+                if (target != null)
+                {
+                    hoveredMarker = target;
+                    SetDotColor(markerDots[target], Color.green);
+                    markerCard ??= new MarkerPreviewCard(transform, DisplayFont);
+                    RefreshMarkerCard();
+                }
+            }
+            if (target == null) return false;
+            end = Vector3.Lerp(origin, end, fraction);
+            if (pressed) SelectMarker(target.id);
+            return true;
+        }
+
+        private void RefreshMarkerCard()
+        {
+            if (hoveredMarker != null)
+                markerCard.Show(hoveredMarker, FindRecord(hoveredMarker.measurementId));
+        }
+
+        public void ClearMarkerHover()
+        {
+            if (hoveredMarker == null) return;
+            if (markerDots.TryGetValue(hoveredMarker, out var dot) && dot != null)
+                SetDotColor(dot, MarkerColor(hoveredMarker));
+            hoveredMarker = null;
+            markerCard.Hide();
         }
 
         public bool SelectMarker(string id)
         {
             var record = FindRecord(id);
             if (record == null || record.kind != "marker") return false;
+            ClearMarkerHover();
             CancelPending();
             ShowRecord(id);
             SelectedId = id;
@@ -285,6 +375,7 @@ namespace QuestGuidance.Review
             if (pendingFeedbackSaveId == id) pendingFeedbackSaveId = null;
             foreach (var record in session.records)
                 if (record.measurementId == id) record.measurementId = "";
+            RefreshMarkerCard();
             if (SelectedId == id) SelectedId = null;
             Changed();
             return true;
@@ -303,6 +394,7 @@ namespace QuestGuidance.Review
         public void SetRoomId(string roomId) { currentRoomId = string.IsNullOrWhiteSpace(roomId) ? "Unassigned" : roomId; }
         public void SetMode(ReviewMode value)
         {
+            ClearMarkerHover();
             CancelPending();
             mode = value;
             onModeChanged.Invoke();
@@ -311,15 +403,52 @@ namespace QuestGuidance.Review
         public void CancelPending()
         {
             pending = false;
+            aimingAtStart = false;
+            startDot = null;
             RemoveVisual(pendingVisual);
             pendingVisual = null;
             preview = null;
             previewLabel = null;
         }
 
-        public void PreviewPoint(Vector3 point, bool valid)
+        // Intersect only the visible segment, in the rendered sphere's local space (radius 0.5).
+        // The first surface intersection also orders adjacent or overlapping markers correctly.
+        private static bool HitDot(Transform dot, Vector3 origin, Vector3 end, out float fraction)
+        {
+            fraction = 0f;
+            Vector3 localOrigin = dot.InverseTransformPoint(origin);
+            Vector3 segment = dot.InverseTransformPoint(end) - localOrigin;
+            float length = segment.magnitude;
+            if (length <= 0f) return false;
+            Vector3 direction = segment / length;
+            float halfChordSquared = 0.25f - Vector3.Cross(localOrigin, direction).sqrMagnitude;
+            if (halfChordSquared < 0f) return false;
+            float center = -Vector3.Dot(localOrigin, direction);
+            float halfChord = Mathf.Sqrt(halfChordSquared);
+            if (center + halfChord < 0f || center - halfChord > length) return false;
+            fraction = Mathf.Max(0f, center - halfChord) / length;
+            return true;
+        }
+
+        public bool PointAtPendingStart(Vector3 origin, ref Vector3 end, bool pressed)
+        {
+            if (startDot == null || !HitDot(startDot.transform, origin, end, out float fraction)) return false;
+            end = Vector3.Lerp(origin, end, fraction);
+            if (pressed) CancelPending();
+            else UpdatePreview(default, false, true);
+            return true;
+        }
+
+        public void PreviewPoint(Vector3 point, bool valid) => UpdatePreview(point, valid, false);
+
+        private void UpdatePreview(Vector3 point, bool valid, bool overStart)
         {
             if (!pending || preview == null) return;
+            if (aimingAtStart != overStart)
+            {
+                aimingAtStart = overStart;
+                SetDotColor(startDot, overStart ? Color.red : Color.cyan);
+            }
             preview.enabled = valid;
             previewLabel.gameObject.SetActive(valid);
             if (!valid) return;
@@ -343,7 +472,7 @@ namespace QuestGuidance.Review
                 firstPoint = point;
                 pending = true;
                 pendingVisual = NewRoot("Pending measurement");
-                Dot(pendingVisual.transform, point, Color.cyan);
+                startDot = Dot(pendingVisual.transform, point, Color.cyan);
                 preview = pendingVisual.AddComponent<LineRenderer>();
                 preview.sharedMaterial = visualMaterial;
                 preview.startColor = preview.endColor = Color.cyan;
@@ -407,6 +536,7 @@ namespace QuestGuidance.Review
             // Updating an explicitly addressed historical record must not reveal other history.
             if (IsRecordVisible(id))
             {
+                if (hoveredMarker == record) ClearMarkerHover();
                 RemoveVisual(visuals[id]);
                 visuals[id] = CreateVisual(record, record.number);
             }
@@ -447,6 +577,8 @@ namespace QuestGuidance.Review
         public void ClearAll()
         {
             CancelPending();
+            ClearMarkerHover();
+            markerDots.Clear();
             foreach (var visual in visuals.Values) RemoveVisual(visual);
             visuals.Clear();
             activeRecords.Clear(); createdThisRun.Clear();
@@ -481,12 +613,15 @@ namespace QuestGuidance.Review
             }
         }
 
+        private static Color MarkerColor(ReviewRecord record) =>
+            record.state == FeedbackState.Draft ? Color.gray : SavedMarkerColor;
+
         private GameObject CreateVisual(ReviewRecord record, int number)
         {
             var root = NewRoot(record.kind + " " + number);
-            Color color = record.kind == "measurement" ? Color.cyan : new Color(1f, 0.65f, 0.12f);
-            if (record.kind == "marker" && record.state == FeedbackState.Draft) color = Color.gray;
-            Dot(root.transform, record.point, color);
+            Color color = record.kind == "measurement" ? Color.cyan : MarkerColor(record);
+            var dot = Dot(root.transform, record.point, color);
+            if (record.kind == "marker") markerDots[record] = dot;
             Vector3 labelPosition = record.point;
             string label = RecordLabel(record);
             if (record.kind == "measurement")
@@ -514,7 +649,7 @@ namespace QuestGuidance.Review
         private static string RecordLabel(ReviewRecord record)
         {
             return record.kind == "measurement"
-                ? record.distanceMetres.ToString("F2", System.Globalization.CultureInfo.InvariantCulture) + " m"
+                ? "#" + record.number + "  " + record.distanceMetres.ToString("F2", System.Globalization.CultureInfo.InvariantCulture) + " m"
                 : "#" + record.number + " " + (record.state == FeedbackState.Draft ? ApartmentLanguage.Text("review.draft") : ApartmentLanguage.Text("review.importance."+(int)record.importance));
         }
 
@@ -536,7 +671,7 @@ namespace QuestGuidance.Review
             return root;
         }
 
-        private void Dot(Transform parent, Vector3 position, Color color)
+        private Renderer Dot(Transform parent, Vector3 position, Color color)
         {
             var dot = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             dot.name = "Point";
@@ -548,9 +683,16 @@ namespace QuestGuidance.Review
             collider.enabled = false;
             var renderer = dot.GetComponent<Renderer>();
             renderer.sharedMaterial = visualMaterial;
-            var properties = new MaterialPropertyBlock();
-            properties.SetColor("_Color", color);
-            renderer.SetPropertyBlock(properties);
+            SetDotColor(renderer, color);
+            return renderer;
+        }
+
+        private void SetDotColor(Renderer renderer, Color color)
+        {
+            dotProperties ??= new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(dotProperties);
+            dotProperties.SetColor("_Color", color);
+            renderer.SetPropertyBlock(dotProperties);
         }
 
         private static bool Finite(Vector3 value)
@@ -578,6 +720,6 @@ namespace QuestGuidance.Review
             if (Application.isPlaying) Destroy(visual); else DestroyImmediate(visual);
         }
 
-        private void OnDisable() { ApartmentLanguage.Changed -= RefreshVisibleLabels; CancelPending(); }
+        private void OnDisable() { EndReviewHighlight(); ApartmentLanguage.Changed -= RefreshVisibleLabels; ClearMarkerHover(); CancelPending(); }
     }
 }

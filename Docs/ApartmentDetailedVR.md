@@ -4,7 +4,7 @@
 
 ## 场景为什么不一样
 
-同学的 `apartmentguidence-by` 分支里有 `Assets/Scenes/Apartment.unity`；它与原来的灰盒 `ApartmentPhase2_VR` 不是同一个场景。本次把精细场景及所需家具、材质资源导入当前个人分支 `fzj/teleport`，没有切换分支、提交或推送 GitHub。
+同学的 `apartmentguidence-by` 分支里有 `Assets/Scenes/test/Apartment.unity`；它与原来的灰盒 `ApartmentPhase2_VR` 不是同一个场景。本次把精细场景及所需家具、材质资源导入当前个人分支 `fzj/teleport`，没有切换分支、提交或推送 GitHub。该源场景仅作参考和旧迁移工具使用，不参与正式体验。
 
 `Apartment.unity` 保持导入时的内容不变。所有玩家接线、空心柜体、新柜门、家具通路调整和教学组件只保存在 `Apartment_Detailed_VR` 副本中。共用移动脚本保留旧导航模式；原灰盒 VR 场景继续使用旧模式，未配置教程的场景仍显示原来的柜门操作提示。
 

@@ -23,7 +23,8 @@ namespace XRGroup10.ShoppingBag
     }
 
     // Implement on the apartment side. Read current state synchronously, not a LateUpdate cache.
-    // Tutorial means !AllowInteraction; Menu means BlocksWorldInput, including neutral recovery.
+    // Tutorial means !AllowInteraction; Menu means the real menu/onboarding/neutral recovery
+    // (ApartmentMenuController.WaitingForUI), not the read-only guided task card.
     public interface IBagInteractionContext
     {
         BagInteractionBlockers Blockers { get; }

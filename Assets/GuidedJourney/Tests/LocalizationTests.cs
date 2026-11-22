@@ -27,6 +27,18 @@ namespace Group10.GuidedJourney.Tests
             Assert.AreEqual(legacyValue,PlayerPrefs.GetInt(key),"A new session must not clear saved settings");
         }
         [Test] public void ChineseAndEnglishToggleImmediately(){Set(1);Assert.AreEqual("设置",Display("设置"));Assert.AreEqual("保存反馈",Display("Save feedback"));Set(0);Assert.AreEqual("Save feedback",Display("保存反馈"));}
+        [Test] public void MeasurementLessonNamesTheStartAndEndPointsInBothLanguages()
+        {
+            var guide = Type.GetType("ApartmentGuidedJourney, Assembly-CSharp", true);
+            string title = ((string[])guide.GetField("Titles").GetValue(null))[9];
+            Assert.AreEqual("9 / 11 - Select the start and end points", Display(title));
+            StringAssert.Contains("end point", Text("journey.refined.4"));
+            StringAssert.Contains("start and end points", Text("tool.measure.task"));
+            Set(1);
+            Assert.AreEqual("9 / 11 - 选择起点和终点", Display(title));
+            Assert.AreEqual("按左手 X 开启测距。用右手指向起点，扣一次食指扳机，再指向终点扣一次，即可查看两点之间的距离。", Text("journey.refined.4"));
+            StringAssert.Contains("起点和终点", Text("tool.measure.task"));
+        }
         [Test] public void EveryNewSessionStartsInEnglishAfterAnEarlierChineseSession()
         {
             for(int run=0;run<3;run++)
@@ -103,6 +115,80 @@ namespace Group10.GuidedJourney.Tests
                 Assert.IsTrue(reopenedChinese,"Menu reopening must retain this session's language choice");
             }
             finally {UnityEngine.Object.DestroyImmediate(go);}
+        }
+        [Test] public void FirstSdkPickupAnnouncesOnceAndWaitsForVisibleGuideTime()
+        {
+            var guideType = Type.GetType("ApartmentGuidedJourney, Assembly-CSharp", true);
+            var reset = guideType.GetMethod("BeginBagHintSession", BindingFlags.Static | BindingFlags.NonPublic);
+            Assert.That(reset.GetCustomAttribute<RuntimeInitializeOnLoadMethodAttribute>().loadType,
+                Is.EqualTo(RuntimeInitializeLoadType.SubsystemRegistration));
+            var root = new GameObject("First pickup hint regression");
+            try
+            {
+                var guide = root.AddComponent(guideType);
+                var update = guideType.GetMethod("AdvanceBagContactHint", BindingFlags.Instance | BindingFlags.NonPublic);
+                bool Tick(bool sdkHeld, bool visible, float seconds) =>
+                    (bool)update.Invoke(guide, new object[] { sdkHeld, visible, seconds });
+                reset.Invoke(null, null);
+                Assert.That(Tick(false, true, 1), Is.False, "No successful pickup");
+                Assert.That(Tick(true, false, 1), Is.False, "An open menu owns the view");
+                Assert.That(Tick(false, false, 20), Is.False);
+                Assert.That(Tick(false, true, 0), Is.True, "Show the queued hint after the menu closes");
+                Assert.That(Tick(false, true, 2), Is.True);
+                Assert.That(Tick(true, true, 3.1f), Is.False, "Hand transfer must not restart the timer");
+                Assert.That(Tick(false, true, 1), Is.False);
+                Assert.That(Tick(true, true, 1), Is.False, "Later pickup in the same run");
+                reset.Invoke(null, null);
+                Assert.That(Tick(false, true, 0), Is.False);
+                Assert.That(Tick(true, true, .1f), Is.True, "First pickup of the next Play");
+            }
+            finally { UnityEngine.Object.DestroyImmediate(root); }
+        }
+
+        [Test] public void BagContactHelpButtonOpensThePickupInstructionsAndRefreshesLanguage()
+        {
+            var guideType = Type.GetType("ApartmentGuidedJourney, Assembly-CSharp", true);
+            var panelType = Type.GetType("ApartmentVRPanel, Assembly-CSharp", true);
+            var menuType = Type.GetType("ApartmentMenuController, Assembly-CSharp", true);
+            var fontType = Type.GetType("TMPro.TMP_FontAsset, Unity.TextMeshPro", true);
+            var textType = Type.GetType("TMPro.TMP_Text, Unity.TextMeshPro", true);
+            var root = new GameObject("Bag help regression");
+            IDisposable panel = null;
+            try
+            {
+                var guide = root.AddComponent(guideType);
+                guideType.GetField("menu").SetValue(guide, root.AddComponent(menuType));
+                var font = UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Apartment/Fonts/VRStandaloneUI-SC.asset", fontType);
+                panel = (IDisposable)Activator.CreateInstance(panelType, root.transform, "Help", font,
+                    Shader.Find("Apartment/TutorialOverlay"), Shader.Find("TextMeshPro/Distance Field Overlay"), 1200f, 720f);
+                var build = guideType.GetMethod("BuildHelp");
+                build.Invoke(guide, new object[] { panel, (Action)(() => {}) });
+                var button = (RectTransform)root.transform.Find("Help/Bag contact help");
+                Assert.That(button, Is.Not.Null);
+                var center = button.TransformPoint(button.rect.center);
+                var ray = new Ray(center - button.forward, button.forward);
+                panelType.GetMethod("ProcessPointer").Invoke(panel, new object[] { ray, 2f, true, Vector3.zero, 0 });
+                panelType.GetMethod("Clear").Invoke(panel, null);
+                build.Invoke(guide, new object[] { panel, (Action)(() => {}) });
+                var help = root.transform.Find("Help/Help text");
+                Assert.That(help, Is.Not.Null, "Pressing the real button opens its topic");
+                var label = help.GetComponent(textType);
+                string Copy() => (string)textType.GetProperty("text").GetValue(label);
+                string PickupCopy() => (string)guideType.GetProperty("BagContactHintText").GetValue(null);
+                Assert.That(Copy(), Is.EqualTo(PickupCopy()));
+                StringAssert.Contains("red", Copy().ToLowerInvariant());
+                StringAssert.Contains("vibrat", Copy().ToLowerInvariant());
+                StringAssert.Contains("walk", Copy().ToLowerInvariant());
+                Set(1);
+                Assert.That(Copy(), Is.EqualTo(PickupCopy()));
+                StringAssert.Contains("红", Copy());
+                StringAssert.Contains("震", Copy());
+                StringAssert.Contains("走", Copy());
+                Set(0);
+                Assert.That(Copy(), Is.EqualTo(PickupCopy()));
+                StringAssert.Contains("vibrat", Copy().ToLowerInvariant());
+            }
+            finally { panel?.Dispose(); UnityEngine.Object.DestroyImmediate(root); }
         }
         [Test] public void LoadingUnrecognisedParticipantFeedbackDoesNotReplaceTheirWords()
         {

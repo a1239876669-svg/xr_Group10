@@ -9,7 +9,7 @@ namespace Group10.GuidedJourney
         Feedback, FreeExploration
     }
 
-    public enum JourneyRoom { Unknown, Entrance, Living, Kitchen, Balcony }
+    public enum JourneyRoom { Unknown, Entrance, Living, Kitchen, Balcony, Dining, OtherInterior }
     public enum JourneyStageOutcome { Pending, Completed, Skipped }
 
     /// <summary>A snapshot of real scene state; revision values must only increase after real actions.</summary>
@@ -22,6 +22,9 @@ namespace Group10.GuidedJourney
         public JourneyRoom Room;
         public bool NearBalcony, BasicsFinished;
         public bool EntranceDoorOpen, BalconyDoorOpen, CabinetOpen, CabinetClosed;
+        public bool BalconyDoorClosed, BalconyDoorOpening;
+        public long BalconyInteractionRevision;
+        public bool IsInterior => Room != JourneyRoom.Unknown && Room != JourneyRoom.Entrance;
         public bool BagHeld, BagInsideDropZone;
         public long SizeSelectionRevision, MeasurementRevision, FeedbackSavedRevision;
     }
@@ -50,8 +53,8 @@ namespace Group10.GuidedJourney
 
     /// <summary>
     /// Pure state machine: no scene search, XR input, persistence, physics or Unity dependency.
-    /// Each Tick can complete at most one stage. Stage 8 is an explicit kitchen drop task,
-    /// not a claim that a bag physically fits inside the cabinet.
+    /// Each Tick can complete at most one stage. Stage 8 is an explicit storage task: the adapter
+    /// supplies whether the released bag sits inside the practised kitchen cabinet's interior.
     /// </summary>
     public sealed class JourneyStateMachine
     {
@@ -62,6 +65,8 @@ namespace Group10.GuidedJourney
         private bool _cabinetSawClosed, _cabinetOpenedAfterEntry, _sizeSelected, _dropSawHeld;
         private double _previousX, _previousZ, _sampleDisplacement;
         private long _sizeBaseline, _measurementBaseline, _feedbackBaseline;
+        private long _balconyBaseline;
+        public bool BalconyShouldClose { get; private set; }
 
         public JourneyStateMachine(JourneyConfig config = null)
         {
@@ -75,6 +80,7 @@ namespace Group10.GuidedJourney
         public bool TutorialCompleted { get { return IsFinished && !WasSkipped; } }
         public bool SizeSelectedThisStage { get { return _sizeSelected; } }
         public bool CabinetOpenedThisStage { get { return _cabinetOpenedAfterEntry; } }
+        public bool BagReadyToClose { get; private set; }
         public double LivingDistance { get; private set; }
         public double CarryDistance { get; private set; }
         public string LastTransitionReason { get; private set; }
@@ -102,10 +108,8 @@ namespace Group10.GuidedJourney
                     break;
                 case JourneyStage.EntranceDoor:
                     // A visitor already inside should not have to walk back outside.
-                    complete = observation.EntranceDoorOpen ||
-                        observation.Room == JourneyRoom.Living || observation.Room == JourneyRoom.Kitchen ||
-                        observation.Room == JourneyRoom.Balcony;
-                    reason = "Entrance opened or visitor already inside";
+                    complete = observation.IsInterior;
+                    reason = "Visitor entered an indoor exploration area";
                     break;
                 case JourneyStage.LivingExplore:
                     if (observation.Room == JourneyRoom.Living)
@@ -113,12 +117,14 @@ namespace Group10.GuidedJourney
                         _livingVisited = true;
                         LivingDistance += distance;
                     }
-                    complete = _livingVisited && (LivingDistance >= _config.LivingExplorationMetres || observation.NearBalcony);
+                    complete = (_livingVisited && LivingDistance >= _config.LivingExplorationMetres) ||
+                        (observation.NearBalcony && (observation.Room == JourneyRoom.Living || observation.Room == JourneyRoom.Dining));
                     reason = "Living room explored or balcony naturally approached";
                     break;
                 case JourneyStage.BalconyDoor:
-                    complete = observation.BalconyDoorOpen;
-                    reason = "Real balcony sliding door open";
+                    complete = observation.BalconyInteractionRevision > _balconyBaseline &&
+                        (BalconyShouldClose ? observation.BalconyDoorClosed : observation.BalconyDoorOpen);
+                    reason = BalconyShouldClose ? "Visitor closed the balcony door" : "Visitor opened the balcony door";
                     break;
                 case JourneyStage.CabinetPractice:
                     if (observation.Room == JourneyRoom.Kitchen)
@@ -153,11 +159,15 @@ namespace Group10.GuidedJourney
                     reason = "Bag carried through living room to kitchen";
                     break;
                 case JourneyStage.KitchenDrop:
-                    // Deliberately independent of the earlier cabinet open/close exercise.
+                    // The bag must be stored in the same practised cabinet; the earlier open/close
+                    // proof is still independent and cannot satisfy this stage.
                     if (observation.BagHeld) _dropSawHeld = true;
-                    complete = _dropSawHeld && !observation.BagHeld && observation.BagInsideDropZone &&
+                    if (observation.BagHeld || !observation.BagInsideDropZone) BagReadyToClose = false;
+                    else if (_dropSawHeld && observation.CabinetOpen && observation.Room == JourneyRoom.Kitchen)
+                        BagReadyToClose = true;
+                    complete = BagReadyToClose && observation.CabinetClosed && !observation.CabinetOpen &&
                         observation.Room == JourneyRoom.Kitchen;
-                    reason = "Bag released in the designated kitchen drop area";
+                    reason = "Bag stored and the marked cabinet closed";
                     break;
                 case JourneyStage.Measurement:
                     complete = observation.MeasurementRevision > _measurementBaseline;
@@ -213,12 +223,15 @@ namespace Group10.GuidedJourney
             LastTransitionReason = reason;
             _sizeBaseline = observation.SizeSelectionRevision;
             _measurementBaseline = observation.MeasurementRevision;
+            _balconyBaseline = observation.BalconyInteractionRevision;
+            BalconyShouldClose = stage == JourneyStage.BalconyDoor && (observation.BalconyDoorOpen || observation.BalconyDoorOpening);
             _feedbackBaseline = observation.FeedbackSavedRevision;
             _livingVisited = false;
             _carrySawLiving = false;
             _cabinetSawClosed = observation.CabinetClosed && !observation.CabinetOpen;
             _cabinetOpenedAfterEntry = false;
             _sizeSelected = false;
+            BagReadyToClose = false;
             _dropSawHeld = observation.BagHeld;
             _previousHeld = observation.BagHeld;
             if (stage == JourneyStage.LivingExplore) LivingDistance = 0;
@@ -259,7 +272,11 @@ namespace Group10.GuidedJourney
         private void IgnoreUnfocusedRevisions(JourneyObservation observation)
         {
             // An action occurring while the headset is unavailable cannot silently finish a task on return.
-            if (_stage == JourneyStage.KitchenDrop) _dropSawHeld = false;
+            if (_stage == JourneyStage.KitchenDrop)
+            {
+                _dropSawHeld = false;
+                BagReadyToClose = false;
+            }
             if (_stage == JourneyStage.CabinetPractice)
             {
                 _cabinetOpenedAfterEntry = false;

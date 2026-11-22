@@ -66,7 +66,8 @@ assert 'else if (Page == 3)' in menu and 'shoppingBag.BuildMyItemsPage(view)' in
 assert 'public void RefreshMyItems()' in menu and 'Page != 3' in menu
 bridge=read('Assets/ShoppingBag/Integration/ApartmentShoppingBagBridge.cs')
 assert 'bag.TrySetSize(size)' in bridge and 'bag.IsHeld' in bridge
-assert 'menu.BlocksWorldInput' in bridge and '!tutorial.AllowInteraction' in bridge and 'locomotion.IsTeleportAiming' in bridge
+assert 'menu.WaitingForUI' in bridge and '!tutorial.AllowInteraction' in bridge and 'locomotion.IsTeleportAiming' in bridge
+assert 'menu.BlocksWorldInput' not in bridge, 'Read-only task card must not block bag Grip'
 assert 'localScale =' not in bridge and 'FindObjects' not in bridge
 for p in (R/'Assets/ShoppingBag/Integration').rglob('*'):
     if p.suffix!='.meta':assert Path(str(p)+'.meta').exists(),p

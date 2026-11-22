@@ -15,7 +15,7 @@ using Object = UnityEngine.Object;
 // Explicit user-invoked tools only. Source scenes and the original working VR scene are never saved here.
 public static class ApartmentDetailedMigration
 {
-    public const string SourcePath = "Assets/Scenes/Apartment.unity";
+    public const string SourcePath = "Assets/Scenes/test/Apartment.unity";
     public const string OriginalVRPath = "Assets/Scenes/test/ApartmentPhase2_VR.unity";
     public const string TargetPath = "Assets/Scenes/Apartment_Detailed_VR.unity";
     public const string GeneratedFolder = "Assets/Apartment/DetailedMigration";

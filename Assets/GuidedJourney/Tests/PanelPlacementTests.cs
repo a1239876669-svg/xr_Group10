@@ -15,6 +15,23 @@ namespace Group10.GuidedJourney.Tests
         [Test]public void LeftAndRightEdgesHaveEqualDistance(){Place(0);Vector3 a=panelGO.transform.position+panelGO.transform.right*.435f,b=panelGO.transform.position-panelGO.transform.right*.435f;Assert.That(Vector3.Distance(headGO.transform.position,a),Is.EqualTo(Vector3.Distance(headGO.transform.position,b)).Within(.0001));}
         [Test]public void SmallHeadMotionDoesNotMovePanelEveryFrame(){Place(0);Vector3 before=panelGO.transform.position;headGO.transform.rotation=Quaternion.Euler(0,5,0);Assert.IsFalse(Place(1));Assert.AreEqual(before,panelGO.transform.position);}
         [Test]public void LargeTurnAndWalkingRecenter(){Place(0);headGO.transform.rotation=Quaternion.Euler(0,70,0);Assert.IsTrue(Place(1));headGO.transform.position+=Vector3.right;Assert.IsTrue(Place(2));}
+        [Test] public void RaisedCardStaysPutWhileReadingAndRecentersAboveANewHeading()
+        {
+            type.GetProperty("AboveGaze").SetValue(placement, true);
+            Vector3 UpFromGaze() => (panelGO.transform.position - headGO.transform.position).normalized;
+            Assert.IsTrue(Place(0));
+            Vector3 initial = panelGO.transform.position;
+            Assert.That(initial.x, Is.EqualTo(0).Within(.001));
+            Assert.That(Vector3.Distance(initial, headGO.transform.position), Is.EqualTo(1.4f).Within(.001));
+            headGO.transform.rotation = Quaternion.LookRotation(UpFromGaze());
+            Assert.IsFalse(Place(1), "Looking up at the card should not move it away.");
+            Assert.AreEqual(initial, panelGO.transform.position);
+            headGO.transform.rotation = Quaternion.Euler(-10, 70, 0);
+            Assert.IsTrue(Place(2));
+            Vector3 direction = UpFromGaze();
+            Assert.That(Vector3.Dot(headGO.transform.right, direction), Is.EqualTo(0).Within(.001));
+            Assert.That(Mathf.Asin(direction.y) * Mathf.Rad2Deg, Is.EqualTo(20).Within(.1));
+        }
         [Test]public void InheritedNonuniformScaleCannotTiltOrStretchCanvas(){parent=new GameObject("Scaled owner");parent.transform.localScale=new Vector3(2,3,4);parent.transform.rotation=Quaternion.Euler(10,20,30);panelGO.transform.SetParent(parent.transform);Place(0);Assert.IsNull(panelGO.transform.parent);Assert.That(Vector3.Distance(panelGO.transform.lossyScale,Vector3.one*.001f),Is.LessThan(.00001));Assert.AreEqual(new Vector3(2,3,4),parent.transform.localScale);}
         [Test]public void VerticalViewProducesFinitePose(){headGO.transform.rotation=Quaternion.Euler(-90,0,0);Assert.IsTrue(Place(0));Assert.IsFalse(float.IsNaN(panelGO.transform.position.x));Assert.IsFalse(float.IsNaN(panelGO.transform.rotation.w));}
     }

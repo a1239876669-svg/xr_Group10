@@ -27,7 +27,10 @@ public sealed class ApartmentShoppingBagBridge : MonoBehaviour, IBagInteractionC
         {
             if (!IsConfigured) return BagInteractionBlockers.ContextUnavailable;
             var blockers = BagInteractionBlockers.None;
-            if (menu.BlocksWorldInput) blockers |= BagInteractionBlockers.Menu;
+            // Only the actual menu/onboarding/neutral-recovery state owns the hand. The guided
+            // task card is a read-only overlay: while expanded it blocks the ray/trigger and
+            // movement, but it must not make the shopping bag ungrabbable (Stage 6).
+            if (menu.WaitingForUI) blockers |= BagInteractionBlockers.Menu;
             if (!ReferenceEquals(tutorial, null) && (tutorial == null || !tutorial.isActiveAndEnabled || !tutorial.AllowInteraction)) blockers |= BagInteractionBlockers.Tutorial;
             if (!ReferenceEquals(locomotion, null) && (locomotion == null || !locomotion.isActiveAndEnabled || locomotion.IsTeleportAiming))
                 blockers |= locomotion != null && locomotion.isActiveAndEnabled ? BagInteractionBlockers.Teleport : BagInteractionBlockers.ContextUnavailable;

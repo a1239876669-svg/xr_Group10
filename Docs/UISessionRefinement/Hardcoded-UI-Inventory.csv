@@ -174,7 +174,7 @@ Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,41,"""4 / 11 - Try a kitc
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,41,"""5 / 11 - Return to the entrance""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,42,"""6 / 11 - Choose and pick up a bag""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,42,"""7 / 11 - Carry shopping to the kitchen""",Authored-copy candidate; identifiers/storage literals reviewed separately
-Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,42,"""8 / 11 - Put the bag down""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,44,"""8 / 11 - Store the bag in the cabinet""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,43,"""9 / 11 - Measure an opening""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,43,"""10 / 11 - Mark an issue and save""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,43,"""11 / 11 - Free exploration""",Authored-copy candidate; identifiers/storage literals reviewed separately
@@ -208,7 +208,7 @@ Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,223,"""At the entrance, o
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,223,"""Close the menu, release Grip, move either hand near the handle, then hold Grip to pick up the bag.""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,224,"""Your progress is kept. Return to your bag and hold Grip near the handle to carry on.""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,224,"""Carry your bag through the living room into the kitchen. Red contact warns of a possible spatial issue; move clear to restore it.""",Authored-copy candidate; identifiers/storage literals reviewed separately
-Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,225,"""Kitchen drop task (not cabinet storage): move the bag into the cyan floor area, release Grip, and let it settle.""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,257,"""Open the kitchen cabinet you practised with, put the whole bag inside the cyan-marked shelf, release Grip, and let it settle.""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,226,"""Good! Open B > 测距 > 开始测距. Use right Trigger to choose two real surface points and read the distance. Cancel/retry or skip in Help.""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,227,"""Feedback was not confirmed saved. Keep the record, check the error in the menu and retry Save feedback. You may skip in Help.""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,227,"""Open B > 标记注释 > 放置标记. Place a new marker, choose aspect, rating and importance, then 保存反馈. Wait for a successful save.""",Authored-copy candidate; identifiers/storage literals reviewed separately
@@ -219,7 +219,8 @@ Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,236,"""Stage""",Authored-
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,237,"""Current task""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,238,"""Help""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,238,"""B > 按键说明 > Review guide | Help / Skip""",Authored-copy candidate; identifiers/storage literals reviewed separately
-Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,247,"""Kitchen drop outline (visual only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,279,"""Cabinet storage outline (visual only)""",Authored-copy candidate; identifiers/storage literals reviewed separately
+Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,302,"""Bag storage cabinet""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,263,"""Cabinet practice label (no collider)""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,264,"""Target""",Authored-copy candidate; identifiers/storage literals reviewed separately
 Assets/Scripts/GuidedJourney/ApartmentGuidedJourney.cs,264,"""Cabinet practice""",Authored-copy candidate; identifiers/storage literals reviewed separately
