@@ -4,6 +4,10 @@
 
 The apartment is representative and simplified: no client BIM/CAD was supplied. Walls/structure are fixed; selected doors and cabinets are operable. Dimensions are stated model assumptions, not construction information or certified clearance. Alternative interior layouts and direct furniture redesign remain deferred.
 
+## Testing the current Phase 3 source
+
+Open the formal scene listed below. In the Editor, choose **Apartment Phase 3 > Review Test Storage > Use New Isolated Development Folder** before Play. Choose English or Simplified Chinese on the welcome page. At G08, open the marked kitchen cupboard (both doors for Medium or Large), release the whole bag inside the cyan outline on the shelf, let it settle, then close the open doors. Closing completes G08 and starts measurement practice. At exit, check this visit’s records, save locally and confirm exit. The Phase 2 executable described below follows the older floor-placement journey.
+
 ## Team and responsibilities
 
 | Member | Student ID | Recorded GitHub account | Main contribution area |
@@ -88,7 +92,7 @@ New grabs are blocked by menu/tutorial restrictions, teleport aiming, unavailabl
 - **Stuck virtual position:** B > Settings > **Teleport to Safe Position**, confirm, release controls, then resume. Remain within the physical Quest boundary.
 - **Help:** B > Controls > **Review guide**. You may skip practice or explore freely; skipped tasks remain distinguished from completed tasks.
 
-## Guided review journey and implemented features
+## Phase 2 executable journey and implemented features
 
 | Stage | What the reviewer does |
 |---|---|

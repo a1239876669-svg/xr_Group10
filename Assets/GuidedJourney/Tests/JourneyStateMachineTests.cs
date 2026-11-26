@@ -275,7 +275,19 @@ namespace Group10.GuidedJourney.Tests
             observation.BagInsideDropZone = false; observation.BagHeld = false;
             Assert.IsFalse(machine.Tick(observation));
             observation.BagInsideDropZone = true;
+            observation.CabinetClosed = true;
+            Assert.IsFalse(machine.Tick(observation));
+            observation.CabinetClosed = false; observation.CabinetOpen = true;
+            Assert.IsFalse(machine.Tick(observation));
+            Assert.IsTrue(machine.BagReadyToClose);
+            observation.BagInsideDropZone = false;
+            Assert.IsFalse(machine.Tick(observation));
+            Assert.IsFalse(machine.BagReadyToClose);
+            observation.BagInsideDropZone = true;
+            Assert.IsFalse(machine.Tick(observation));
+            observation.CabinetOpen = false; observation.CabinetClosed = true;
             Assert.IsTrue(machine.Tick(observation));
+            Assert.AreEqual(JourneyStage.Measurement, machine.CurrentStage);
         }
 
         [Test] public void EarlierCabinetPracticeNeverCompletesKitchenDrop()
@@ -381,7 +393,9 @@ namespace Group10.GuidedJourney.Tests
             observation.SizeSelectionRevision = 1; observation.BagHeld = true; machine.Tick(observation);
             observation.Room = JourneyRoom.Living; observation.PositionX = 0.5; machine.Tick(observation);
             observation.Room = JourneyRoom.Kitchen; observation.PositionX = 1; machine.Tick(observation);
+            observation.CabinetOpen = true; observation.CabinetClosed = false;
             observation.BagHeld = false; observation.BagInsideDropZone = true; machine.Tick(observation);
+            observation.CabinetOpen = false; observation.CabinetClosed = true; machine.Tick(observation);
             observation.MeasurementRevision = 1; machine.Tick(observation);
             observation.FeedbackSavedRevision = 1; machine.Tick(observation);
             Assert.IsTrue(machine.TutorialCompleted); Assert.IsFalse(machine.WasSkipped);
@@ -426,7 +440,10 @@ namespace Group10.GuidedJourney.Tests
             machine.Tick(observation);
             observation.Focused = true; Assert.IsFalse(machine.Tick(observation));
             observation.BagHeld = true; machine.Tick(observation);
-            observation.BagHeld = false; Assert.IsTrue(machine.Tick(observation));
+            observation.CabinetOpen = true; observation.CabinetClosed = false;
+            observation.BagHeld = false; Assert.IsFalse(machine.Tick(observation));
+            observation.CabinetOpen = false; observation.CabinetClosed = true;
+            Assert.IsTrue(machine.Tick(observation));
         }
 
         [Test] public void FocusRecoveryDoesNotCountAnUnobservedCabinetClose()

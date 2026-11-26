@@ -148,7 +148,7 @@ public sealed class ApartmentTutorialController : MonoBehaviour
         panel = null;
         welcomeView?.Dispose(); welcomeView = null;
     }
-    void LanguageChanged() { previousStep = -99; if(label!=null)label.text=ApartmentLanguage.Display(label.text); if(okRect!=null) { var caption=okRect.GetComponentInChildren<TextMeshProUGUI>();if(caption!=null)caption.text=ApartmentLanguage.Display("OK"); } }
+    void LanguageChanged() { if (welcomeView != null && Session.Welcome) DrawWelcome(); previousStep = -99; if(label!=null)label.text=ApartmentLanguage.Display(label.text); if(okRect!=null) { var caption=okRect.GetComponentInChildren<TextMeshProUGUI>();if(caption!=null)caption.text=ApartmentLanguage.Display("OK"); } }
     static void DisposeVisual(UnityEngine.Object value) { if(Application.isPlaying)Destroy(value);else DestroyImmediate(value); }
     void OnWalked(float value) { if (AllowMove) Session.Walk(value); }
     void OnTurned(float value) { if (AllowTurn) Session.Turn(value); }
@@ -256,11 +256,25 @@ public sealed class ApartmentTutorialController : MonoBehaviour
     void EnsureWelcome()
     {
         if(welcomeView!=null || font==null || panelShader==null || textOverlayShader==null)return;
-        welcomeView=new ApartmentVRPanel(transform,"Tutorial welcome (session only)",font,panelShader,textOverlayShader,900,430);
-        welcomeView.Label("Welcome title",WelcomeTitle,42,30,816,70,44,true);
-        welcomeView.Label("Welcome explanation",WelcomeHelp,42,120,816,145,30);
-        welcomeView.Button("Start tutorial","Start guide",42,314,390,78,()=>ChooseTutorial(true),true);
-        welcomeView.Button("Skip tutorial","Skip / explore freely",468,314,390,78,()=>ChooseTutorial(false));
+        welcomeView=new ApartmentVRPanel(transform,"Tutorial welcome (session only)",font,panelShader,textOverlayShader,920,600);
+        DrawWelcome();
+    }
+
+    void DrawWelcome()
+    {
+        welcomeView.Clear();
+        welcomeView.Label("Welcome title", WelcomeTitle, 40, 22, 840, 66, 41, true);
+        // Both prompts must be readable before the person has chosen a language.
+        welcomeView.LabelRaw("Language prompt",
+            "Point and press the right trigger to choose your language.\n用右手指向语言按钮，按食指扳机选择。",
+            40, 97, 840, 82, 26);
+        welcomeView.Button("Welcome English", "English", 40, 187, 402, 68,
+            () => ApartmentLanguage.SetLanguage(ApartmentDisplayLanguage.English), !ApartmentLanguage.IsChinese);
+        welcomeView.Button("Welcome Chinese", "简体中文", 478, 187, 402, 68,
+            () => ApartmentLanguage.SetLanguage(ApartmentDisplayLanguage.SimplifiedChinese), ApartmentLanguage.IsChinese);
+        welcomeView.Label("Welcome explanation", WelcomeHelp, 40, 281, 840, 178, 30);
+        welcomeView.Button("Start tutorial", "Start guide", 40, 490, 402, 74, () => ChooseTutorial(true), true);
+        welcomeView.Button("Skip tutorial", "Skip / explore freely", 478, 490, 402, 74, () => ChooseTutorial(false));
     }
     public void ChooseTutorial(bool start)
     {
